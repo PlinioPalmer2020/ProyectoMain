@@ -38,7 +38,7 @@ namespace ProyectoMain.Fractura.Forms
             try
             {
                 //  this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
-                CargarDatos();
+                CargarDatos(txtBuscar.Text);
             }
             catch (Exception)
             {
@@ -48,9 +48,10 @@ namespace ProyectoMain.Fractura.Forms
 
         }
 
-        private void CargarDatos()
+        private void CargarDatos(string buscar)
         {
-            this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
+            // this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
+            gridInventario.DataSource = _inventarioNegocio.TenerInventarios(buscar);
         }
 
         private void panelAgregar_Paint(object sender, PaintEventArgs e)
@@ -141,7 +142,7 @@ namespace ProyectoMain.Fractura.Forms
                 ReducirInventario(inventario);
 
             }
-            CargarDatos();
+            CargarDatos(txtBuscar.Text);
             _detallesfactura.Clear();
             dgvDetalles.Rows.Clear();
 
