@@ -31,6 +31,15 @@ namespace ProyectoMain.Inventario.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.gridInventario = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Añadir = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Modificar = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.inventarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ferreteriaDataSet = new ProyectoMain.FerreteriaDataSet();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -41,18 +50,16 @@ namespace ProyectoMain.Inventario.Forms
             this.inventarioTableAdapter = new ProyectoMain.FerreteriaDataSetTableAdapters.inventarioTableAdapter();
             this.btnFacturacion = new System.Windows.Forms.Button();
             this.btnPagos = new System.Windows.Forms.Button();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Añadir = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Modificar = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmgToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.ejemploDeProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridInventario
@@ -76,6 +83,64 @@ namespace ProyectoMain.Inventario.Forms
             this.gridInventario.TabIndex = 0;
             this.gridInventario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridInventario_CellContentClick);
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "nombre";
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "descripcion";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            // 
+            // precioDataGridViewTextBoxColumn
+            // 
+            this.precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
+            this.precioDataGridViewTextBoxColumn.HeaderText = "precio";
+            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            // 
+            // cantidadDataGridViewTextBoxColumn
+            // 
+            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "cantidad";
+            this.cantidadDataGridViewTextBoxColumn.HeaderText = "cantidad";
+            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
+            // 
+            // Añadir
+            // 
+            this.Añadir.HeaderText = "Añadir";
+            this.Añadir.Name = "Añadir";
+            this.Añadir.Text = "Añadir";
+            this.Añadir.UseColumnTextForLinkValue = true;
+            // 
+            // Modificar
+            // 
+            this.Modificar.HeaderText = "Modificar";
+            this.Modificar.Name = "Modificar";
+            this.Modificar.Text = "Modificar";
+            this.Modificar.UseColumnTextForLinkValue = true;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Text = "Eliminar";
+            this.Eliminar.UseColumnTextForLinkValue = true;
+            // 
             // inventarioBindingSource
             // 
             this.inventarioBindingSource.DataMember = "inventario";
@@ -88,12 +153,18 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnBuscar
             // 
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(210)))), ((int)(((byte)(189)))));
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(95)))), ((int)(((byte)(115)))));
             this.btnBuscar.Location = new System.Drawing.Point(379, 63);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 1;
             this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnAgregar
@@ -155,69 +226,76 @@ namespace ProyectoMain.Inventario.Forms
             this.btnPagos.UseVisualStyleBackColor = true;
             this.btnPagos.Click += new System.EventHandler(this.btnPagos_Click);
             // 
-            // idDataGridViewTextBoxColumn
+            // menuStrip1
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agregarToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(951, 24);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // codigoDataGridViewTextBoxColumn
+            // agregarToolStripMenuItem
             // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            this.agregarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoProductoToolStripMenuItem,
+            this.mmgToolStripMenuItem,
+            this.ejemploDeProductoToolStripMenuItem});
+            this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.agregarToolStripMenuItem.Text = "Agregar";
             // 
-            // nombreDataGridViewTextBoxColumn
+            // nuevoProductoToolStripMenuItem
             // 
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "nombre";
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.nuevoProductoToolStripMenuItem.Name = "nuevoProductoToolStripMenuItem";
+            this.nuevoProductoToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.nuevoProductoToolStripMenuItem.Text = "Nuevo Producto";
+            this.nuevoProductoToolStripMenuItem.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // descripcionDataGridViewTextBoxColumn
+            // mmgToolStripMenuItem
             // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "descripcion";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            this.mmgToolStripMenuItem.Name = "mmgToolStripMenuItem";
+            this.mmgToolStripMenuItem.Size = new System.Drawing.Size(182, 6);
             // 
-            // precioDataGridViewTextBoxColumn
+            // ejemploDeProductoToolStripMenuItem
             // 
-            this.precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
-            this.precioDataGridViewTextBoxColumn.HeaderText = "precio";
-            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            this.ejemploDeProductoToolStripMenuItem.Name = "ejemploDeProductoToolStripMenuItem";
+            this.ejemploDeProductoToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.ejemploDeProductoToolStripMenuItem.Text = "ejemplo de producto";
+            this.ejemploDeProductoToolStripMenuItem.Click += new System.EventHandler(this.ejemploDeProductoToolStripMenuItem_Click);
             // 
-            // cantidadDataGridViewTextBoxColumn
+            // guna2TextBox1
             // 
-            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "cantidad";
-            this.cantidadDataGridViewTextBoxColumn.HeaderText = "cantidad";
-            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
-            // 
-            // Añadir
-            // 
-            this.Añadir.HeaderText = "Añadir";
-            this.Añadir.Name = "Añadir";
-            this.Añadir.Text = "Añadir";
-            this.Añadir.UseColumnTextForLinkValue = true;
-            // 
-            // Modificar
-            // 
-            this.Modificar.HeaderText = "Modificar";
-            this.Modificar.Name = "Modificar";
-            this.Modificar.Text = "Modificar";
-            this.Modificar.UseColumnTextForLinkValue = true;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Text = "Eliminar";
-            this.Eliminar.UseColumnTextForLinkValue = true;
+            this.guna2TextBox1.Animated = true;
+            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox1.DefaultText = "";
+            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.DisabledState.Parent = this.guna2TextBox1;
+            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.FocusedState.Parent = this.guna2TextBox1;
+            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.HoverState.Parent = this.guna2TextBox1;
+            this.guna2TextBox1.Location = new System.Drawing.Point(335, 27);
+            this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PasswordChar = '\0';
+            this.guna2TextBox1.PlaceholderText = "hola";
+            this.guna2TextBox1.SelectedText = "";
+            this.guna2TextBox1.ShadowDecoration.Parent = this.guna2TextBox1;
+            this.guna2TextBox1.Size = new System.Drawing.Size(200, 36);
+            this.guna2TextBox1.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.guna2TextBox1.TabIndex = 9;
             // 
             // FormMenuInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(951, 450);
+            this.Controls.Add(this.guna2TextBox1);
             this.Controls.Add(this.btnPagos);
             this.Controls.Add(this.btnFacturacion);
             this.Controls.Add(this.txtBuscar);
@@ -226,12 +304,17 @@ namespace ProyectoMain.Inventario.Forms
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.gridInventario);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMenuInventario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventario";
             this.Load += new System.EventHandler(this.FormMenuInventario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,5 +342,11 @@ namespace ProyectoMain.Inventario.Forms
         private System.Windows.Forms.DataGridViewLinkColumn Añadir;
         private System.Windows.Forms.DataGridViewLinkColumn Modificar;
         private System.Windows.Forms.DataGridViewLinkColumn Eliminar;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevoProductoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator mmgToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ejemploDeProductoToolStripMenuItem;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
     }
 }

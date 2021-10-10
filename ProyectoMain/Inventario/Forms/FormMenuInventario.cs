@@ -23,6 +23,7 @@ namespace ProyectoMain.Inventario.Forms
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             FormAgregarProducto formAgregar = new FormAgregarProducto();
+            formAgregar.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width / 2) - (formAgregar.Size.Width / 2),(Screen.PrimaryScreen.WorkingArea.Height / 2) - (formAgregar.Size.Height / 2));
             formAgregar.ShowDialog(this);
         }
 
@@ -123,6 +124,11 @@ namespace ProyectoMain.Inventario.Forms
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             cargardatosdgv(txtBuscar.Text);
+        }
+
+        private void ejemploDeProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("aqui funciona");
         }
     }
 }
