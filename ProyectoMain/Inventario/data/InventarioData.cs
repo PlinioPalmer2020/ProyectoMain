@@ -146,7 +146,7 @@ namespace ProyectoMain.Inventario.data
             {
                 conn.Open();
                 String querry = @"update inventario 
-                                  set  cantidad = @cantidad
+                                  set  cantidad = cantidad - @cantidad
                                        where codigo = @codigo";
 
 

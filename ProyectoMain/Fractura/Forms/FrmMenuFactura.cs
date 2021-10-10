@@ -37,8 +37,8 @@ namespace ProyectoMain.Fractura.Forms
 
             try
             {
-            this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
-
+                //  this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
+                CargarDatos();
             }
             catch (Exception)
             {
@@ -46,6 +46,11 @@ namespace ProyectoMain.Fractura.Forms
                 
             }
 
+        }
+
+        private void CargarDatos()
+        {
+            this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
         }
 
         private void panelAgregar_Paint(object sender, PaintEventArgs e)
@@ -114,6 +119,7 @@ namespace ProyectoMain.Fractura.Forms
             DateTime hoy = DateTime.Today;
             foreach (var item in _detallesfactura)
             {
+                Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
                 Entidades.Factura factura = new Entidades.Factura();
                 factura.Codigofactura = "CDF" + hoy.ToString("dd-MM-yyyy");
                 factura.NameCliente = txtNombreCliente.Text;
@@ -127,8 +133,15 @@ namespace ProyectoMain.Fractura.Forms
                 factura.Tipofactura = cbTipoFactura.SelectedIndex;// int.Parse(cbTipoFactura.SelectedValue.ToString());
                 factura.Fecha_crear = hoy;
                 factura.Pago = 0;
+
+                inventario.Cantidad = int.Parse(item.Cantidad.ToString());
+                inventario.Codigo = item.Codigo;
+
                 GenerarFactura(factura);
+                ReducirInventario(inventario);
+
             }
+            CargarDatos();
             _detallesfactura.Clear();
             dgvDetalles.Rows.Clear();
 
@@ -138,6 +151,11 @@ namespace ProyectoMain.Fractura.Forms
         {
             _negocioFactura.InsentarFactura(factura);
 
+        }
+
+        private void ReducirInventario(Inventario.Entidades.Inventario inventario)
+        {
+            _inventarioNegocio.ReducirExistenciaInventario(inventario);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
