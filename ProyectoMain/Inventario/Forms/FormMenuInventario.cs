@@ -130,5 +130,7 @@ namespace ProyectoMain.Inventario.Forms
         {
             MessageBox.Show("aqui funciona");
         }
+
+
     }
 }
