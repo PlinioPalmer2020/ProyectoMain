@@ -32,7 +32,21 @@ namespace ProyectoMain.Inventario.Forms
 
             cargardatosdgv(txtBuscar.Text);
 
+            //foreach (Control item in gridInventario.Controls)
+            //{
+            //    if (item is Button)
+            //    {
+            //        item.Click += eventoboton;
+            //    }
+            //}
+
         }
+
+        //private void eventoboton(object sender, EventArgs e)
+        //{
+        //    Button button = (Button)sender;
+        //    MessageBox.Show(button.Name);
+        //}
 
         private void gridInventario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

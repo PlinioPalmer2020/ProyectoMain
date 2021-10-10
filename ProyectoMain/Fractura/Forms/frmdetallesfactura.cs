@@ -21,14 +21,23 @@ namespace ProyectoMain.Fractura.Forms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
-            inventario.Codigo = txtCodigo.Text;
-            inventario.Nombre = txtNombre.Text;
-            inventario.descripcion = txtDescripcion.Text;
-            inventario.Precio = decimal.Parse(txtPrecio.Text);
-            inventario.Cantidad = int.Parse(txtCantidad.Text);
-            this.Close();
-            ((FrmMenuFactura)this.Owner).cargardetalles(inventario);
+
+            if (_inventario.Cantidad >= int.Parse(txtCantidad.Text))
+            {
+                Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
+                inventario.Codigo = txtCodigo.Text;
+                inventario.Nombre = txtNombre.Text;
+                inventario.descripcion = txtDescripcion.Text;
+                inventario.Precio = decimal.Parse(txtPrecio.Text);
+                inventario.Cantidad = int.Parse(txtCantidad.Text);
+                this.Close();
+                ((FrmMenuFactura)this.Owner).cargardetalles(inventario);
+
+            }
+            else
+            {
+               MessageBox.Show("Usted no puede agregar mas que no hay en el inventario");
+            }
 
         }
 
@@ -55,6 +64,11 @@ namespace ProyectoMain.Fractura.Forms
             txtDescripcion.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtPrecio.Text = string.Empty;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

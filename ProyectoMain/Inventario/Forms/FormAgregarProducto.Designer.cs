@@ -45,12 +45,14 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(198, 87);
+            this.btnAgregar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregar.Location = new System.Drawing.Point(35, 324);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label1
@@ -73,7 +75,7 @@ namespace ProyectoMain.Inventario.Forms
             // 
             this.txtNombre.Location = new System.Drawing.Point(50, 90);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.Size = new System.Drawing.Size(148, 20);
             this.txtNombre.TabIndex = 4;
             // 
             // label2
@@ -89,7 +91,7 @@ namespace ProyectoMain.Inventario.Forms
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(50, 130);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(148, 20);
             this.txtDescripcion.TabIndex = 6;
             // 
             // label3
@@ -105,7 +107,7 @@ namespace ProyectoMain.Inventario.Forms
             // 
             this.txtPrecio.Location = new System.Drawing.Point(50, 171);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecio.Size = new System.Drawing.Size(148, 20);
             this.txtPrecio.TabIndex = 8;
             // 
             // label4
@@ -121,7 +123,7 @@ namespace ProyectoMain.Inventario.Forms
             // 
             this.txtCantidad.Location = new System.Drawing.Point(50, 229);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(100, 20);
+            this.txtCantidad.Size = new System.Drawing.Size(148, 20);
             this.txtCantidad.TabIndex = 10;
             // 
             // label5
@@ -135,7 +137,8 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(320, 90);
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.Location = new System.Drawing.Point(137, 324);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 11;
@@ -147,7 +150,7 @@ namespace ProyectoMain.Inventario.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 303);
+            this.ClientSize = new System.Drawing.Size(257, 388);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.label5);
@@ -161,7 +164,7 @@ namespace ProyectoMain.Inventario.Forms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAgregar);
             this.Name = "FormAgregarProducto";
-            this.Text = "FormAgregarProducto";
+            this.Text = "Crear Nuevo Producto";
             this.Load += new System.EventHandler(this.FormAgregarProducto_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

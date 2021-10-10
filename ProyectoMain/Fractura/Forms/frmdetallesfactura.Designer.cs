@@ -45,18 +45,19 @@ namespace ProyectoMain.Fractura.Forms
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(294, 89);
+            this.btnCancelar.Location = new System.Drawing.Point(116, 334);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 22;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // txtCantidad
             // 
             this.txtCantidad.Location = new System.Drawing.Point(24, 228);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(100, 20);
+            this.txtCantidad.Size = new System.Drawing.Size(167, 20);
             this.txtCantidad.TabIndex = 21;
             // 
             // label5
@@ -73,7 +74,7 @@ namespace ProyectoMain.Fractura.Forms
             this.txtPrecio.Enabled = false;
             this.txtPrecio.Location = new System.Drawing.Point(24, 170);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecio.Size = new System.Drawing.Size(167, 20);
             this.txtPrecio.TabIndex = 19;
             // 
             // label4
@@ -90,7 +91,7 @@ namespace ProyectoMain.Fractura.Forms
             this.txtDescripcion.Enabled = false;
             this.txtDescripcion.Location = new System.Drawing.Point(24, 129);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(167, 20);
             this.txtDescripcion.TabIndex = 17;
             // 
             // label3
@@ -107,7 +108,7 @@ namespace ProyectoMain.Fractura.Forms
             this.txtNombre.Enabled = false;
             this.txtNombre.Location = new System.Drawing.Point(24, 89);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.Size = new System.Drawing.Size(167, 20);
             this.txtNombre.TabIndex = 15;
             // 
             // label2
@@ -124,12 +125,12 @@ namespace ProyectoMain.Fractura.Forms
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Location = new System.Drawing.Point(24, 47);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(100, 20);
+            this.txtCodigo.Size = new System.Drawing.Size(167, 20);
             this.txtCodigo.TabIndex = 13;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(172, 86);
+            this.btnAgregar.Location = new System.Drawing.Point(24, 334);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 12;
@@ -150,7 +151,7 @@ namespace ProyectoMain.Fractura.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 450);
+            this.ClientSize = new System.Drawing.Size(223, 380);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtCantidad);
