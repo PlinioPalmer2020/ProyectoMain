@@ -150,7 +150,7 @@ namespace ProyectoMain.Inventario.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 388);
+            this.ClientSize = new System.Drawing.Size(251, 388);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.label5);
@@ -163,7 +163,10 @@ namespace ProyectoMain.Inventario.Forms
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAgregar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormAgregarProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Nuevo Producto";
             this.Load += new System.EventHandler(this.FormAgregarProducto_Load);
             this.ResumeLayout(false);

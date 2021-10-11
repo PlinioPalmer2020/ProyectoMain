@@ -55,7 +55,7 @@ namespace ProyectoMain.Fractura.Forms
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(24, 228);
+            this.txtCantidad.Location = new System.Drawing.Point(24, 186);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(167, 20);
             this.txtCantidad.TabIndex = 21;
@@ -63,7 +63,7 @@ namespace ProyectoMain.Fractura.Forms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 211);
+            this.label5.Location = new System.Drawing.Point(21, 169);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 20;
@@ -72,7 +72,7 @@ namespace ProyectoMain.Fractura.Forms
             // txtPrecio
             // 
             this.txtPrecio.Enabled = false;
-            this.txtPrecio.Location = new System.Drawing.Point(24, 170);
+            this.txtPrecio.Location = new System.Drawing.Point(24, 128);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(167, 20);
             this.txtPrecio.TabIndex = 19;
@@ -80,7 +80,7 @@ namespace ProyectoMain.Fractura.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 153);
+            this.label4.Location = new System.Drawing.Point(21, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 18;
@@ -89,7 +89,7 @@ namespace ProyectoMain.Fractura.Forms
             // txtDescripcion
             // 
             this.txtDescripcion.Enabled = false;
-            this.txtDescripcion.Location = new System.Drawing.Point(24, 129);
+            this.txtDescripcion.Location = new System.Drawing.Point(24, 87);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(167, 20);
             this.txtDescripcion.TabIndex = 17;
@@ -97,7 +97,7 @@ namespace ProyectoMain.Fractura.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 112);
+            this.label3.Location = new System.Drawing.Point(21, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 16;
@@ -106,19 +106,21 @@ namespace ProyectoMain.Fractura.Forms
             // txtNombre
             // 
             this.txtNombre.Enabled = false;
-            this.txtNombre.Location = new System.Drawing.Point(24, 89);
+            this.txtNombre.Location = new System.Drawing.Point(24, 236);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(167, 20);
             this.txtNombre.TabIndex = 15;
+            this.txtNombre.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 72);
+            this.label2.Location = new System.Drawing.Point(21, 219);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = "Nombre";
+            this.label2.Visible = false;
             // 
             // txtCodigo
             // 
@@ -164,7 +166,10 @@ namespace ProyectoMain.Fractura.Forms
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btnAgregar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmdetallesfactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmdetallesfactura";
             this.ResumeLayout(false);
             this.PerformLayout();

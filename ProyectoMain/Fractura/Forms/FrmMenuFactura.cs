@@ -51,13 +51,14 @@ namespace ProyectoMain.Fractura.Forms
         private void CargarDatos(string buscar)
         {
             // this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
-            gridInventario.DataSource = _inventarioNegocio.TenerInventarios(buscar);
+            var consulta = _inventarioNegocio.TenerInventarios(buscar);
+            foreach (var item in consulta)
+            {
+                gridInventario.Rows.Add(item.Codigo,item.Nombre+" "+item.descripcion,item.Precio,item.Cantidad) ;
+            }
         }
 
-        private void panelAgregar_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -69,23 +70,32 @@ namespace ProyectoMain.Fractura.Forms
 
         private void gridInventario_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewLinkCell cell = (DataGridViewLinkCell)gridInventario.Rows[e.RowIndex].Cells[e.ColumnIndex];
-
-            if (cell.Value.ToString() == "Agregar")
+            try
             {
-                frmdetallesfactura detallesfactura = new frmdetallesfactura();
-                detallesfactura.CargarInventario(new Inventario.Entidades.Inventario
+                DataGridViewLinkCell cell = (DataGridViewLinkCell)gridInventario.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                if (cell.Value.ToString() == "Agregar")
                 {
-                    Id = int.Parse(gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString()),
-                    Codigo = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                    Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                    descripcion = gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                    Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
-                    Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString()),
+                    frmdetallesfactura detallesfactura = new frmdetallesfactura();
+                    detallesfactura.CargarInventario(new Inventario.Entidades.Inventario
+                    {
+                       // Id = int.Parse(gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString()),
+                        Codigo = gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                       // Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                        descripcion = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                        Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString()),
+                        Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString()),
 
-                });
+                    });
 
-                detallesfactura.ShowDialog(this);
+                    detallesfactura.ShowDialog(this);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                //throw;
             }
         }
 
@@ -95,22 +105,31 @@ namespace ProyectoMain.Fractura.Forms
                 _detallesfactura.Add(inventario);
              foreach (var item in _detallesfactura)
                 {
-                    dgvDetalles.Rows.Add(item.Codigo.ToString(),item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
+                    dgvDetalles.Rows.Add(item.Codigo.ToString(),item.Nombre.ToString()+" "+item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
                 }
 
         }
 
         private void dgvDetalles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewLinkCell cell = (DataGridViewLinkCell)dgvDetalles.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            if (cell.Value.ToString() == "Quitar")
+            try
             {
-                _detallesfactura.RemoveAt(e.RowIndex);
-                dgvDetalles.Rows.Clear();
-                foreach (var item in _detallesfactura)
+                DataGridViewLinkCell cell = (DataGridViewLinkCell)dgvDetalles.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value.ToString() == "Quitar")
                 {
-                    dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
+                    _detallesfactura.RemoveAt(e.RowIndex);
+                    dgvDetalles.Rows.Clear();
+                    foreach (var item in _detallesfactura)
+                    {
+                        dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
+                    }
                 }
+
+            }
+            catch (Exception)
+            {
+
+               // throw;
             }
         }
 
@@ -164,6 +183,12 @@ namespace ProyectoMain.Fractura.Forms
             Inventario.Forms.FormMenuInventario formMenuInventario = new FormMenuInventario();
             formMenuInventario.Show();
             this.Close();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            gridInventario.Rows.Clear();
+            CargarDatos(txtBuscar.Text);
         }
     }
 }
