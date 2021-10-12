@@ -252,7 +252,7 @@ namespace ProyectoMain.Fractura.Forms
         }
         private void gridInventario_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            string v = this.gridInventario.Columns[e.ColumnIndex].Name;
+            //string v = this.gridInventario.Columns[e.ColumnIndex].Name;
             if (this.gridInventario.Columns[e.ColumnIndex].Name == "Canti")
             {
                 if (Convert.ToInt32(e.Value) <= 10)

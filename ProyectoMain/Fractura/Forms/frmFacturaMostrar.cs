@@ -12,7 +12,8 @@ namespace ProyectoMain.Fractura.Forms
 {
     public partial class frmFacturaMostrar : Form
     {
-        Negocio_Data.NegocioFactura _negocioFactura;
+        private Negocio_Data.NegocioFactura _negocioFactura;
+        public int volver = 0;
         public frmFacturaMostrar()
         {
             InitializeComponent();
@@ -71,6 +72,12 @@ namespace ProyectoMain.Fractura.Forms
                 factura.Codigofactura = lblCodigoFactura.Text;
                 _negocioFactura.PagoRealizado(factura);
                 MessageBox.Show("¡Pago Realizado!", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //frmpago.frmMenuPago frmMenuPago = new frmpago.frmMenuPago();
+                //frmMenuPago.cargarFacturas();
+                if (volver != 0)
+                {
+                    ((frmpago.frmMenuPago)this.Owner).cargarFacturas();
+                }
                 this.Close();
 
             }

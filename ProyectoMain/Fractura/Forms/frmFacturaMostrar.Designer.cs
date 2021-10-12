@@ -295,7 +295,6 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.Label lblCodigoFactura;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnPagar;
         private System.Windows.Forms.Label lblTipoFactura;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
@@ -307,5 +306,6 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblfechaCreacion;
         private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Button btnPagar;
     }
 }
