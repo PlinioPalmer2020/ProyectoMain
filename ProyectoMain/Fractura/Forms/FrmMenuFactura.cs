@@ -155,11 +155,12 @@ namespace ProyectoMain.Fractura.Forms
             if (dr == DialogResult.Yes)
             {
                 DateTime hoy = DateTime.Today;
+                string codigoFactura = generarCodigo();
                 foreach (var item in _detallesfactura)
                 {
                     Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
                     Entidades.Factura factura = new Entidades.Factura();
-                    factura.Codigofactura = "CDF" + hoy.ToString("dd-MM-yyyy");
+                    factura.Codigofactura = codigoFactura;
                     factura.NameCliente = txtNombreCliente.Text;
                     factura.Cedula = txtDireccion.Text;
                     factura.Codigo = item.Codigo;
@@ -183,10 +184,29 @@ namespace ProyectoMain.Fractura.Forms
                 CargarDatos(txtBuscar.Text);
                 _detallesfactura.Clear();
                 dgvDetalles.Rows.Clear();
-
+                LimpiarForms();
                 MessageBox.Show("Factura Generada","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
+                frmFacturaMostrar.cargarDatos(codigoFactura);
+                frmFacturaMostrar.ShowDialog();
+
             }
 
+        }
+
+        private string generarCodigo()
+        {
+            DateTime fecha = DateTime.Now;
+
+            string codigo = "CDF" + fecha.ToString("dd") + fecha.ToString("MM") + fecha.ToString("yyyy") + fecha.ToString("hh") + fecha.ToString("mm") + fecha.ToString("ss") + fecha.ToString("ff");
+
+            return codigo;
+        }
+
+        private void LimpiarForms()
+        {
+            txtNombreCliente.Text = string.Empty;
+            txtDireccion.Text = string.Empty;
         }
 
         private void GenerarFactura(Entidades.Factura factura)
@@ -211,6 +231,13 @@ namespace ProyectoMain.Fractura.Forms
         {
             gridInventario.Rows.Clear();
             CargarDatos(txtBuscar.Text);
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarForms();
+            dgvDetalles.Rows.Clear();
+            _detallesfactura.Clear();
         }
     }
 }

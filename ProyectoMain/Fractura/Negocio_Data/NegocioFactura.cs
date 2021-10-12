@@ -24,5 +24,10 @@ namespace ProyectoMain.Fractura.Negocio_Data
         {
            return _dataFactura.TenerFactura(buscar);
         }
+
+        public List<Entidades.Factura> TenerFacturaEspeficico(string buscar = null)
+        {
+            return _dataFactura.TenerFacturaEspeficico(buscar);
+        }
     }
 }

@@ -140,7 +140,6 @@ namespace ProyectoMain.Inventario.data
             finally { conn.Close(); }
         }
 
-
         public void ReducirExistenciaInventario(Entidades.Inventario inventario)
         {
             try
@@ -157,6 +156,26 @@ namespace ProyectoMain.Inventario.data
                 SqlCommand command = new SqlCommand(querry, conn);
                 command.Parameters.Add(codigo);
                 command.Parameters.Add(cantidad);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { conn.Close(); }
+        }
+
+        public void EliminarInventario(string codigo)
+        {
+            try
+            {
+                conn.Open();
+                string query = @"DELETE FROM inventario WHERE codigo = @codigo";
+
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.Add(new SqlParameter("@codigo", codigo));
 
                 command.ExecuteNonQuery();
             }

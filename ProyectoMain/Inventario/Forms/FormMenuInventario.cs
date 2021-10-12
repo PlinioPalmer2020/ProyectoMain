@@ -95,6 +95,19 @@ namespace ProyectoMain.Inventario.Forms
                     agregarProducto.btnAgregar.Text = "Añadir";
                     agregarProducto.ShowDialog(this);
                 }
+                else if (cell.Value.ToString() == "Eliminar")
+                {
+                    DialogResult dr = MessageBox.Show("¿Seguro de Eliminar este producto del Inventario?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+                    if (dr == DialogResult.Yes)
+                    {
+                        Entidades.Inventario inventario = new Entidades.Inventario();
+                        inventario.Codigo = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        _inventarioNegocio.EliminarInventario(inventario.Codigo);
+                        cargardatosdgv(txtBuscar.Text);
+                    }
+
+                }
 
             }
             catch (Exception)
@@ -104,11 +117,7 @@ namespace ProyectoMain.Inventario.Forms
             }
         }
 
-        public void cargar()
-        {
-            //this.inventarioTableAdapter.Fill(this.ferreteriaDataSet.inventario);
 
-        }
 
         public void cargardatosdgv(string buscar)
         {

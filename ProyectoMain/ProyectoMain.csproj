@@ -61,8 +61,13 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\Extensiones\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -96,6 +101,12 @@
     </Compile>
     <Compile Include="Fractura\Forms\frmdetallesfactura.Designer.cs">
       <DependentUpon>frmdetallesfactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fractura\Forms\frmFacturaMostrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fractura\Forms\frmFacturaMostrar.Designer.cs">
+      <DependentUpon>frmFacturaMostrar.cs</DependentUpon>
     </Compile>
     <Compile Include="Fractura\Forms\FrmMenuFactura.cs">
       <SubType>Form</SubType>
@@ -138,6 +149,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Fractura\Forms\frmdetallesfactura.resx">
       <DependentUpon>frmdetallesfactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fractura\Forms\frmFacturaMostrar.resx">
+      <DependentUpon>frmFacturaMostrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fractura\Forms\FrmMenuFactura.resx">
       <DependentUpon>FrmMenuFactura.cs</DependentUpon>

@@ -38,5 +38,10 @@ namespace ProyectoMain.Inventario.Negocio
         {
             _inventarioData.ReducirExistenciaInventario(inventario);
         }
+
+        public void EliminarInventario(string codigo)
+        {
+            _inventarioData.EliminarInventario(codigo);
+        }
     }
 }

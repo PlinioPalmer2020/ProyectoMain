@@ -107,6 +107,8 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             // 
             // dgvFacturas
             // 
+            this.dgvFacturas.AllowUserToAddRows = false;
+            this.dgvFacturas.AllowUserToDeleteRows = false;
             this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFacturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodigoFactura,
@@ -122,70 +124,84 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Pago,
             this.RealizarPago,
             this.Desactivar});
-            this.dgvFacturas.Location = new System.Drawing.Point(12, 146);
+            this.dgvFacturas.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvFacturas.Location = new System.Drawing.Point(0, 99);
             this.dgvFacturas.Name = "dgvFacturas";
-            this.dgvFacturas.Size = new System.Drawing.Size(1313, 308);
+            this.dgvFacturas.ReadOnly = true;
+            this.dgvFacturas.Size = new System.Drawing.Size(1337, 431);
             this.dgvFacturas.TabIndex = 6;
             // 
             // CodigoFactura
             // 
             this.CodigoFactura.HeaderText = "Codigo Factura";
             this.CodigoFactura.Name = "CodigoFactura";
+            this.CodigoFactura.ReadOnly = true;
             // 
             // NameCliente
             // 
             this.NameCliente.HeaderText = "Nombre del Cliente";
             this.NameCliente.Name = "NameCliente";
+            this.NameCliente.ReadOnly = true;
             // 
             // Cedula
             // 
-            this.Cedula.HeaderText = "Cedula";
+            this.Cedula.HeaderText = "Direccion";
             this.Cedula.Name = "Cedula";
+            this.Cedula.ReadOnly = true;
             // 
             // Codigo
             // 
             this.Codigo.HeaderText = "Codigo del Producto";
             this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
             // 
             // Descripcion
             // 
             this.Descripcion.HeaderText = "Descripcion";
             this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
             // 
             // Precio
             // 
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
             // 
             // Cantidad
             // 
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
             // 
             // PrecioTotal
             // 
             this.PrecioTotal.HeaderText = "Precio Total";
             this.PrecioTotal.Name = "PrecioTotal";
+            this.PrecioTotal.ReadOnly = true;
             // 
             // TipoFactura
             // 
             this.TipoFactura.HeaderText = "Tipo de Factura";
             this.TipoFactura.Name = "TipoFactura";
+            this.TipoFactura.ReadOnly = true;
             // 
             // Fecha_Crear
             // 
             this.Fecha_Crear.HeaderText = "Fechar de Creacion";
             this.Fecha_Crear.Name = "Fecha_Crear";
+            this.Fecha_Crear.ReadOnly = true;
             // 
             // Pago
             // 
             this.Pago.HeaderText = "Pago";
             this.Pago.Name = "Pago";
+            this.Pago.ReadOnly = true;
             // 
             // RealizarPago
             // 
             this.RealizarPago.HeaderText = "RealizarPago";
             this.RealizarPago.Name = "RealizarPago";
+            this.RealizarPago.ReadOnly = true;
             this.RealizarPago.Text = "Realizar Pago";
             this.RealizarPago.UseColumnTextForLinkValue = true;
             // 
@@ -193,6 +209,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             // 
             this.Desactivar.HeaderText = "Quitar";
             this.Desactivar.Name = "Desactivar";
+            this.Desactivar.ReadOnly = true;
             this.Desactivar.Text = "Quitar";
             this.Desactivar.UseColumnTextForLinkValue = true;
             // 

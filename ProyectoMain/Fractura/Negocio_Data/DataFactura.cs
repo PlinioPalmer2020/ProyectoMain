@@ -80,7 +80,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
                 if (!string.IsNullOrEmpty(buscar))
                 {
                     //cambiar despues para el filtro, no tengo ganas ahora
-                    querry += @"WHERE codigo LIKE @buscar OR nombre LIKE @buscar OR descripcion LIKE @buscar";
+                    querry += @" WHERE Codigo LIKE @buscar OR NameCliente LIKE @buscar OR Descripción LIKE @buscar OR Codigofactura LIKE @buscar";
                     command.Parameters.Add(new SqlParameter("@buscar", $"%{buscar}%"));
                 }
 
@@ -117,6 +117,66 @@ namespace ProyectoMain.Fractura.Negocio_Data
             {
 
                // throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return facturas;
+        }
+
+        public List<Entidades.Factura> TenerFacturaEspeficico(string buscar = null)
+        {
+            List<Entidades.Factura> facturas = new List<Entidades.Factura>();
+            try
+            {
+                conn.Open();
+                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Producto, Descripción, Precio, Cantidad, PrecioTotal, Tipofactura, Fecha_crear, Pago from facturas";
+
+                // SqlCommand command = new SqlCommand(querry, conn);
+                SqlCommand command = new SqlCommand();
+
+                if (!string.IsNullOrEmpty(buscar))
+                {
+                    //cambiar despues para el filtro, no tengo ganas ahora
+                    querry += @" WHERE Codigo LIKE @buscar OR NameCliente LIKE @buscar OR Descripción LIKE @buscar OR Codigofactura LIKE @buscar";
+                    command.Parameters.Add(new SqlParameter("@buscar", $"{buscar}"));
+                }
+
+                command.CommandText = querry;
+                command.Connection = conn;
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    facturas.Add(new Entidades.Factura
+                    {
+                        Codigofactura = reader["Codigofactura"].ToString(),
+                        NameCliente = reader["NameCliente"].ToString(),
+                        Cedula = reader["Cedula"].ToString(),
+                        Codigo = reader["Codigo"].ToString(),
+                        Producto = reader["Producto"].ToString(),
+                        Descripción = reader["Descripción"].ToString(),
+                        Precio = decimal.Parse(reader["Precio"].ToString()),
+                        Cantidad = int.Parse(reader["Cantidad"].ToString()),
+                        PrecioTotal = decimal.Parse(reader["PrecioTotal"].ToString()),
+                        Tipofactura = int.Parse(reader["Tipofactura"].ToString()),
+                        Fecha_crear = DateTime.Parse(reader["Fecha_crear"].ToString()),
+                        Pago = int.Parse(reader["Pago"].ToString()),
+                        // Cantidad      = int.Parse(reader["Cantidad"].ToString()),
+
+                    });
+                }
+
+
+
+            }
+            catch (Exception)
+            {
+
+                // throw;
             }
             finally
             {
