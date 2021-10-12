@@ -13,10 +13,17 @@ namespace ProyectoMain.Fractura.Forms.frmpago
     public partial class frmMenuPago : Form
     {
         private Negocio_Data.NegocioFactura _negocioFactura;
+        private List<string> lista;
         public frmMenuPago()
         {
             InitializeComponent();
             _negocioFactura = new Negocio_Data.NegocioFactura();
+
+            lista = new List<string>(){"Normal","Credito","Envio", "Pagados","Pendintes"};
+            for (int i = 0; i <= 2; i++)
+            {cbTipoPago.Items.Add(lista[i]);}
+            for (int i = 3; i <= 4; i++)
+            { cbPagoPendiente.Items.Add(lista[i]); }
         }
 
         private void button2_Click(object sender, EventArgs e)

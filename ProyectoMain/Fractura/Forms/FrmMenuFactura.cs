@@ -102,7 +102,7 @@ namespace ProyectoMain.Fractura.Forms
             DialogResult dr = MessageBox.Show("¿Estas Seguro?", "Aviso De Generar Factura", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
             if (dr == DialogResult.Yes)
             {
-                DateTime hoy = DateTime.Today;
+                DateTime hoy = DateTime.Now;
                 string codigoFactura = generarCodigo();
                 foreach (var item in _detallesfactura)
                 {
@@ -272,5 +272,12 @@ namespace ProyectoMain.Fractura.Forms
                 }
             }
         }
+
+        private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

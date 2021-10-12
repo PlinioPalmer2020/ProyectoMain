@@ -49,6 +49,8 @@ namespace ProyectoMain.Fractura.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.lblTipoFactura = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.lblfechaCreacion = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -233,11 +235,31 @@ namespace ProyectoMain.Fractura.Forms
             this.label5.TabIndex = 9;
             this.label5.Text = "Tipo de Factura:";
             // 
+            // lblfechaCreacion
+            // 
+            this.lblfechaCreacion.AutoSize = true;
+            this.lblfechaCreacion.Location = new System.Drawing.Point(470, 60);
+            this.lblfechaCreacion.Name = "lblfechaCreacion";
+            this.lblfechaCreacion.Size = new System.Drawing.Size(35, 13);
+            this.lblfechaCreacion.TabIndex = 12;
+            this.lblfechaCreacion.Text = "NULL";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(364, 60);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 13);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Fecha de Creacion:";
+            // 
             // frmFacturaMostrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 519);
+            this.Controls.Add(this.lblfechaCreacion);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.lblTipoFactura);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblCodigoFactura);
@@ -283,5 +305,7 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioTotal;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblfechaCreacion;
+        private System.Windows.Forms.Label label7;
     }
 }

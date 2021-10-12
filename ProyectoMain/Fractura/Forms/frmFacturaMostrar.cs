@@ -48,7 +48,7 @@ namespace ProyectoMain.Fractura.Forms
                                 break;
                         }
                         lblNombreCliente.Text = item.NameCliente;
-
+                        lblfechaCreacion.Text = item.Fecha_crear.ToString();
                     }
 
                     dgvFactura.Rows.Add(item.Codigo, item.Producto+" "+item.Descripción, item.Precio, item.Cantidad ,item.PrecioTotal);
@@ -75,5 +75,7 @@ namespace ProyectoMain.Fractura.Forms
 
             }
         }
+
+
     }
 }
