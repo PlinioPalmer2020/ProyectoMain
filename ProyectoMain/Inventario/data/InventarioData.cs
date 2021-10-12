@@ -10,7 +10,7 @@ namespace ProyectoMain.Inventario.data
 {
     public class InventarioData
     {
-        private SqlConnection conn = new SqlConnection("Password=123;Persist Security Info=True;User ID=usuario;Initial Catalog=Ferreteria;Data Source=10.0.0.56");
+        private SqlConnection conn = new SqlConnection("Password=123;Persist Security Info=True;User ID=usuario;Initial Catalog=Ferreteria;Data Source=179.52.129.248");
         //private SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;Data Source=DESKTOP-IV4HQSQ\\SQLEXPRESS");
 
         public List<Entidades.Inventario> TenerInventarios(string buscar = null) 

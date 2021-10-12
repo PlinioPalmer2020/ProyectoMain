@@ -23,12 +23,12 @@ namespace ProyectoMain.Fractura.Forms
             _detallesfactura = new List<Inventario.Entidades.Inventario>();
             _negocioFactura = new Negocio_Data.NegocioFactura();
 
-         
+
             cbTipoFactura.Items.Add("Normal");
-            cbTipoFactura.Items.Add("Prestame");
+            cbTipoFactura.Items.Add("Credito");
             cbTipoFactura.Items.Add("Envio");
             cbTipoFactura.SelectedIndex = 0;
-            
+
         }
 
         private void FrmMenuFactura_Load(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace ProyectoMain.Fractura.Forms
             catch (Exception)
             {
 
-                
+
             }
 
         }
@@ -51,10 +51,23 @@ namespace ProyectoMain.Fractura.Forms
         private void CargarDatos(string buscar)
         {
             // this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
+            botonValidos();
             var consulta = _inventarioNegocio.TenerInventarios(buscar);
             foreach (var item in consulta)
             {
-                gridInventario.Rows.Add(item.Codigo,item.Nombre+" "+item.descripcion,item.Precio,item.Cantidad) ;
+                gridInventario.Rows.Add(item.Codigo, item.Nombre + " " + item.descripcion, item.Precio, item.Cantidad);
+            }
+        }
+
+        private void botonValidos()
+        {
+            if (_detallesfactura.Count != 0)
+            {
+                btnGenerar.Enabled = true;
+            }
+            else
+            {
+                btnGenerar.Enabled = false;
             }
         }
 
@@ -72,6 +85,7 @@ namespace ProyectoMain.Fractura.Forms
         {
             try
             {
+
                 DataGridViewLinkCell cell = (DataGridViewLinkCell)gridInventario.Rows[e.RowIndex].Cells[e.ColumnIndex];
 
                 if (cell.Value.ToString() == "Agregar")
@@ -79,9 +93,9 @@ namespace ProyectoMain.Fractura.Forms
                     frmdetallesfactura detallesfactura = new frmdetallesfactura();
                     detallesfactura.CargarInventario(new Inventario.Entidades.Inventario
                     {
-                       // Id = int.Parse(gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString()),
+                        // Id = int.Parse(gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString()),
                         Codigo = gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                       // Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                        // Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
                         descripcion = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
                         Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString()),
                         Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString()),
@@ -99,15 +113,15 @@ namespace ProyectoMain.Fractura.Forms
             }
         }
 
-        public void cargardetalles(Inventario.Entidades.Inventario inventario) 
+        public void cargardetalles(Inventario.Entidades.Inventario inventario)
         {
             dgvDetalles.Rows.Clear();
-                _detallesfactura.Add(inventario);
-             foreach (var item in _detallesfactura)
-                {
-                    dgvDetalles.Rows.Add(item.Codigo.ToString(),item.Nombre.ToString()+" "+item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
-                }
-
+            _detallesfactura.Add(inventario);
+            foreach (var item in _detallesfactura)
+            {
+                dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString() + " " + item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
+            }
+            botonValidos();
         }
 
         private void dgvDetalles_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -123,47 +137,55 @@ namespace ProyectoMain.Fractura.Forms
                     {
                         dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
                     }
+                    botonValidos();
                 }
 
             }
             catch (Exception)
             {
 
-               // throw;
+                // throw;
             }
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-           // int a = cbTipoFactura.SelectedIndex;
-            DateTime hoy = DateTime.Today;
-            foreach (var item in _detallesfactura)
+            // int a = cbTipoFactura.SelectedIndex;
+            DialogResult dr = MessageBox.Show("¿Estas Seguro?", "Aviso De Generar Factura", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (dr == DialogResult.Yes)
             {
-                Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
-                Entidades.Factura factura = new Entidades.Factura();
-                factura.Codigofactura = "CDF" + hoy.ToString("dd-MM-yyyy");
-                factura.NameCliente = txtNombreCliente.Text;
-                factura.Cedula = txtCedula.Text;
-                factura.Codigo = item.Codigo;
-                factura.Producto = item.Nombre;
-                factura.Descripción = item.descripcion;
-                factura.Precio = decimal.Parse(item.Precio.ToString());
-                factura.Cantidad = int.Parse(item.Cantidad.ToString());
-                factura.PrecioTotal =  decimal.Parse(item.Precio.ToString()) * decimal.Parse(item.Cantidad.ToString());
-                factura.Tipofactura = cbTipoFactura.SelectedIndex;// int.Parse(cbTipoFactura.SelectedValue.ToString());
-                factura.Fecha_crear = hoy;
-                factura.Pago = 0;
+                DateTime hoy = DateTime.Today;
+                foreach (var item in _detallesfactura)
+                {
+                    Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
+                    Entidades.Factura factura = new Entidades.Factura();
+                    factura.Codigofactura = "CDF" + hoy.ToString("dd-MM-yyyy");
+                    factura.NameCliente = txtNombreCliente.Text;
+                    factura.Cedula = txtDireccion.Text;
+                    factura.Codigo = item.Codigo;
+                    factura.Producto = item.Nombre;
+                    factura.Descripción = item.descripcion;
+                    factura.Precio = decimal.Parse(item.Precio.ToString());
+                    factura.Cantidad = int.Parse(item.Cantidad.ToString());
+                    factura.PrecioTotal =  decimal.Parse(item.Precio.ToString()) * decimal.Parse(item.Cantidad.ToString());
+                    factura.Tipofactura = cbTipoFactura.SelectedIndex;// int.Parse(cbTipoFactura.SelectedValue.ToString());
+                    factura.Fecha_crear = hoy;
+                    factura.Pago = 0;
 
-                inventario.Cantidad = int.Parse(item.Cantidad.ToString());
-                inventario.Codigo = item.Codigo;
+                    inventario.Cantidad = int.Parse(item.Cantidad.ToString());
+                    inventario.Codigo = item.Codigo;
 
-                GenerarFactura(factura);
-                ReducirInventario(inventario);
+                    GenerarFactura(factura);
+                    ReducirInventario(inventario);
 
+                }
+                gridInventario.Rows.Clear() ;
+                CargarDatos(txtBuscar.Text);
+                _detallesfactura.Clear();
+                dgvDetalles.Rows.Clear();
+
+                MessageBox.Show("Factura Generada","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
-            CargarDatos(txtBuscar.Text);
-            _detallesfactura.Clear();
-            dgvDetalles.Rows.Clear();
 
         }
 
