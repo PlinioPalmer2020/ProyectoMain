@@ -29,5 +29,10 @@ namespace ProyectoMain.Fractura.Negocio_Data
         {
             return _dataFactura.TenerFacturaEspeficico(buscar);
         }
+
+        public void PagoRealizado(Entidades.Factura factura)
+        {
+            _dataFactura.PagoRealizado(factura);
+        }
     }
 }

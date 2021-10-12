@@ -53,6 +53,7 @@ namespace ProyectoMain.Fractura.Forms
             // this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
             botonValidos();
             var consulta = _inventarioNegocio.TenerInventarios(buscar);
+            //var aux = consulta.Where( c=> c.Cantidad != 0 ).ToList();
             foreach (var item in consulta)
             {
                 gridInventario.Rows.Add(item.Codigo, item.Nombre + " " + item.descripcion, item.Precio, item.Cantidad);
@@ -64,14 +65,14 @@ namespace ProyectoMain.Fractura.Forms
             if (_detallesfactura.Count != 0)
             {
                 btnGenerar.Enabled = true;
+                btnLimpiar.Enabled = true;
             }
             else
             {
                 btnGenerar.Enabled = false;
+                btnLimpiar.Enabled = false;
             }
         }
-
-
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -80,73 +81,20 @@ namespace ProyectoMain.Fractura.Forms
         }
 
 
-
-        private void gridInventario_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-
-                DataGridViewLinkCell cell = (DataGridViewLinkCell)gridInventario.Rows[e.RowIndex].Cells[e.ColumnIndex];
-
-                if (cell.Value.ToString() == "Agregar")
-                {
-                    frmdetallesfactura detallesfactura = new frmdetallesfactura();
-                    detallesfactura.CargarInventario(new Inventario.Entidades.Inventario
-                    {
-                        // Id = int.Parse(gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString()),
-                        Codigo = gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                        // Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                        descripcion = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                        Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString()),
-                        Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString()),
-
-                    });
-
-                    detallesfactura.ShowDialog(this);
-                }
-
-            }
-            catch (Exception)
-            {
-
-                //throw;
-            }
-        }
-
         public void cargardetalles(Inventario.Entidades.Inventario inventario)
         {
             dgvDetalles.Rows.Clear();
             _detallesfactura.Add(inventario);
+            decimal total = 0;
             foreach (var item in _detallesfactura)
             {
                 dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString() + " " + item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
+                total += item.Precio * item.Cantidad;
+                lblTotal.Text = total.ToString();
             }
             botonValidos();
         }
 
-        private void dgvDetalles_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                DataGridViewLinkCell cell = (DataGridViewLinkCell)dgvDetalles.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (cell.Value.ToString() == "Quitar")
-                {
-                    _detallesfactura.RemoveAt(e.RowIndex);
-                    dgvDetalles.Rows.Clear();
-                    foreach (var item in _detallesfactura)
-                    {
-                        dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
-                    }
-                    botonValidos();
-                }
-
-            }
-            catch (Exception)
-            {
-
-                // throw;
-            }
-        }
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
@@ -238,6 +186,91 @@ namespace ProyectoMain.Fractura.Forms
             LimpiarForms();
             dgvDetalles.Rows.Clear();
             _detallesfactura.Clear();
+        }
+
+        private void gridInventario_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                DataGridViewLinkCell cell = (DataGridViewLinkCell)gridInventario.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                if (cell.Value.ToString() == "Agregar")
+                {
+                    if (Convert.ToString(gridInventario.Rows[e.RowIndex].Cells[3].Value) == "0")
+                    {
+                        MessageBox.Show("¡No queda en el Inventario!","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        frmdetallesfactura detallesfactura = new frmdetallesfactura();
+                        detallesfactura.CargarInventario(new Inventario.Entidades.Inventario
+                        {
+                            // Id = int.Parse(gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString()),
+                            Codigo = gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                            // Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                            descripcion = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                            Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString()),
+                            Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString()),
+
+                        });
+
+                        detallesfactura.ShowDialog(this);
+
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+
+                //throw;
+            }
+        }
+        private void dgvDetalles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewLinkCell cell = (DataGridViewLinkCell)dgvDetalles.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value.ToString() == "Quitar")
+                {
+                    _detallesfactura.RemoveAt(e.RowIndex);
+                    dgvDetalles.Rows.Clear();
+                    foreach (var item in _detallesfactura)
+                    {
+                        dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
+                    }
+                    botonValidos();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                // throw;
+            }
+        }
+        private void gridInventario_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            string v = this.gridInventario.Columns[e.ColumnIndex].Name;
+            if (this.gridInventario.Columns[e.ColumnIndex].Name == "Canti")
+            {
+                if (Convert.ToInt32(e.Value) <= 10)
+                {
+                    e.CellStyle.ForeColor = Color.Black;
+                    e.CellStyle.BackColor = Color.FromArgb(249, 65, 68);
+                }
+                if (Convert.ToInt32(e.Value) <= 20 && Convert.ToInt32(e.Value) > 10)
+                {
+                    e.CellStyle.ForeColor = Color.Black;
+                    e.CellStyle.BackColor = Color.FromArgb(249, 199, 79);
+                }
+                if (Convert.ToInt32(e.Value) >= 21)
+                {
+                    e.CellStyle.ForeColor = Color.Black;
+                    e.CellStyle.BackColor = Color.FromArgb(67, 170, 139);
+                }
+            }
         }
     }
 }

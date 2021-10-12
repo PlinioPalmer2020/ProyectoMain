@@ -49,6 +49,7 @@ namespace ProyectoMain.Fractura.Forms
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.dgvDetalles = new System.Windows.Forms.DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,12 +59,15 @@ namespace ProyectoMain.Fractura.Forms
             this.PrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quitar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.panelAgregar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).BeginInit();
             this.panelFactura.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -130,6 +134,7 @@ namespace ProyectoMain.Fractura.Forms
             this.gridInventario.Size = new System.Drawing.Size(657, 391);
             this.gridInventario.TabIndex = 8;
             this.gridInventario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridInventario_CellContentClick_1);
+            this.gridInventario.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridInventario_CellFormatting);
             // 
             // Codi
             // 
@@ -243,6 +248,7 @@ namespace ProyectoMain.Fractura.Forms
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.btnLimpiar);
             this.panel1.Controls.Add(this.btnGenerar);
             this.panel1.Controls.Add(this.dgvDetalles);
@@ -251,6 +257,16 @@ namespace ProyectoMain.Fractura.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(647, 588);
             this.panel1.TabIndex = 8;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(460, 26);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 3;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnGenerar
             // 
@@ -274,11 +290,10 @@ namespace ProyectoMain.Fractura.Forms
             this.Cantidad,
             this.PrecioTotal,
             this.Quitar});
-            this.dgvDetalles.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvDetalles.Location = new System.Drawing.Point(0, 83);
             this.dgvDetalles.Name = "dgvDetalles";
             this.dgvDetalles.ReadOnly = true;
-            this.dgvDetalles.Size = new System.Drawing.Size(647, 505);
+            this.dgvDetalles.Size = new System.Drawing.Size(647, 471);
             this.dgvDetalles.TabIndex = 1;
             this.dgvDetalles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalles_CellContentClick);
             // 
@@ -329,15 +344,34 @@ namespace ProyectoMain.Fractura.Forms
             this.label4.TabIndex = 0;
             this.label4.Text = "Productos Agregados";
             // 
-            // btnLimpiar
+            // panel2
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(460, 26);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 3;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            this.panel2.Controls.Add(this.lblTotal);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 556);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(647, 32);
+            this.panel2.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(549, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "TOTAL:";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotal.Location = new System.Drawing.Point(600, 10);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(25, 15);
+            this.lblTotal.TabIndex = 1;
+            this.lblTotal.Text = "null";
             // 
             // FrmMenuFactura
             // 
@@ -358,6 +392,8 @@ namespace ProyectoMain.Fractura.Forms
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -393,5 +429,8 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Canti;
         private System.Windows.Forms.DataGridViewLinkColumn Agregar;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label label6;
     }
 }

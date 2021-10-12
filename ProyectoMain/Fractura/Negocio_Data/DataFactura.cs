@@ -185,5 +185,28 @@ namespace ProyectoMain.Fractura.Negocio_Data
 
             return facturas;
         }
+
+        public void PagoRealizado(Entidades.Factura factura)
+        {
+            try
+            {
+                conn.Open();
+                String querry = @"update facturas set Pago = 1 WHERE Codigofactura = @Codigofactura";
+
+                SqlParameter codigo = new SqlParameter("@Codigofactura", factura.Codigofactura);
+
+                SqlCommand command = new SqlCommand(querry, conn);
+
+                command.Parameters.Add(codigo);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { conn.Close(); }
+        }
     }
 }

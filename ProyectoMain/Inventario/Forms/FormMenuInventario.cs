@@ -143,6 +143,26 @@ namespace ProyectoMain.Inventario.Forms
             cargardatosdgv(txtBuscar.Text);
         }
 
-
+        private void gridInventario_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (this.gridInventario.Columns[e.ColumnIndex].Name == "cantidadDataGridViewTextBoxColumn")
+            {
+                if (Convert.ToInt32(e.Value) <= 10)
+                {
+                    e.CellStyle.ForeColor = Color.Black;
+                    e.CellStyle.BackColor = Color.FromArgb(249, 65, 68);
+                }
+                if (Convert.ToInt32(e.Value) <= 20 && Convert.ToInt32(e.Value) > 10)
+                {
+                    e.CellStyle.ForeColor = Color.Black;
+                    e.CellStyle.BackColor = Color.FromArgb(249, 199, 79);
+                }
+                if (Convert.ToInt32(e.Value) >= 21)
+                {
+                    e.CellStyle.ForeColor = Color.Black;
+                    e.CellStyle.BackColor = Color.FromArgb(67, 170, 139);
+                }
+            }
+        }
     }
 }

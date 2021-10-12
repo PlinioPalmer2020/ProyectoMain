@@ -61,5 +61,19 @@ namespace ProyectoMain.Fractura.Forms
         {
             this.Close();
         }
+
+        private void btnPagar_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("¿Seguro?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                Entidades.Factura factura = new Entidades.Factura();
+                factura.Codigofactura = lblCodigoFactura.Text;
+                _negocioFactura.PagoRealizado(factura);
+                MessageBox.Show("¡Pago Realizado!", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+
+            }
+        }
     }
 }

@@ -79,6 +79,7 @@ namespace ProyectoMain.Inventario.Forms
             this.gridInventario.Size = new System.Drawing.Size(951, 315);
             this.gridInventario.TabIndex = 0;
             this.gridInventario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridInventario_CellContentClick);
+            this.gridInventario.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridInventario_CellFormatting);
             // 
             // idDataGridViewTextBoxColumn
             // 

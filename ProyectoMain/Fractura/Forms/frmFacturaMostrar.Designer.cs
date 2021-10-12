@@ -159,6 +159,7 @@ namespace ProyectoMain.Fractura.Forms
             this.btnPagar.TabIndex = 0;
             this.btnPagar.Text = "Realizar Pago";
             this.btnPagar.UseVisualStyleBackColor = true;
+            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
             // 
             // panel2
             // 
@@ -249,6 +250,7 @@ namespace ProyectoMain.Fractura.Forms
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.Name = "frmFacturaMostrar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmFacturaMostrar";
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).EndInit();
             this.panel1.ResumeLayout(false);
