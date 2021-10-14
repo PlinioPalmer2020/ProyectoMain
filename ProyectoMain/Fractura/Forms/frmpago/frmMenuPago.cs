@@ -73,10 +73,17 @@ namespace ProyectoMain.Fractura.Forms.frmpago
                 }
                 else if (cell.Value.ToString() == "Realizar Pago")
                 {
-                    frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
-                    frmFacturaMostrar.cargarDatos(dgvFacturas.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    frmFacturaMostrar.volver = 1;
-                    frmFacturaMostrar.ShowDialog(this);
+                    if (Convert.ToInt32(dgvFacturas.Rows[e.RowIndex].Cells[4].Value.ToString()) != 1)
+                    {
+                        frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
+                        frmFacturaMostrar.cargarDatos(dgvFacturas.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        frmFacturaMostrar.volver = 1;
+                        frmFacturaMostrar.ShowDialog(this);
+                    }
+                    else
+                    {
+                        MessageBox.Show("¡Esta Factura ha sido Pagada!","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    }
                 }
             }
             catch (Exception)
