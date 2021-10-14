@@ -19,11 +19,16 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             InitializeComponent();
             _negocioFactura = new Negocio_Data.NegocioFactura();
 
-            lista = new List<string>(){"Normal","Credito","Envio", "Pagados","Pendintes"};
+            lista = new List<string>(){"Normal","Credito","Envio", "Pendintes", "Pagados" };
             for (int i = 0; i <= 2; i++)
             {cbTipoPago.Items.Add(lista[i]);}
             for (int i = 3; i <= 4; i++)
             { cbPagoPendiente.Items.Add(lista[i]); }
+            cbPagoPendiente.Items.Add("Todos");
+            cbTipoPago.Items.Add("Todos");
+
+            cbTipoPago.SelectedIndex = 3;
+            cbPagoPendiente.SelectedIndex = 2;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -39,6 +44,45 @@ namespace ProyectoMain.Fractura.Forms.frmpago
 
             dgvFacturas.Rows.Clear();
             factura = _negocioFactura.TenerFactura();
+            string aux = string.Empty;
+
+            dgvFacturas.Rows.Clear();
+            foreach (var item in factura)
+            {
+                if (aux != item.Codigofactura)
+                {
+                    dgvFacturas.Rows.Add(item.Codigofactura, item.NameCliente, item.Tipofactura, item.Fecha_crear, item.Pago);
+
+                    aux = item.Codigofactura;
+                }
+            }
+        }
+
+        public void cargarFacturas(int x, int y)
+        {
+            List<Entidades.Factura> factura = new List<Entidades.Factura>();
+
+            dgvFacturas.Rows.Clear();
+            var factura1 = _negocioFactura.TenerFactura();
+
+           /* if (x == 3 && y == 2)
+            {
+                cargarFacturas();
+            }*/
+          //  else
+            if(x != 3 && y == 2) // sale  los tipo de los pagos que espesificas y salen todos los pagados y pediente
+            {
+                factura = factura1.Where(f => f.Tipofactura == x ).ToList();
+            }
+            else if (x == 3 && y != 2) // sale los pagados y pendiente que espesificas y sales todos los tipos 
+            {
+                factura = factura1.Where(f => f.Pago == y).ToList();
+
+            }
+            else
+            {
+                factura = factura1.Where(f => f.Tipofactura == x && f.Pago == y).ToList();
+            }
             string aux = string.Empty;
 
             dgvFacturas.Rows.Clear();
@@ -119,6 +163,18 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             {
                 e.Value =  Convert.ToInt32(e.Value) == 0 ?  "Sin Pagar" : "Pagado";
                 
+            }
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            if (cbTipoPago.SelectedIndex == 3 && cbPagoPendiente.SelectedIndex == 2 )
+            {
+                cargarFacturas();
+            }
+            else
+            {
+                cargarFacturas(cbTipoPago.SelectedIndex,cbPagoPendiente.SelectedIndex);
             }
         }
     }

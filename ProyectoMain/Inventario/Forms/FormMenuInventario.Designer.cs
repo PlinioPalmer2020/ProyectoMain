@@ -222,7 +222,7 @@ namespace ProyectoMain.Inventario.Forms
             this.btnPagos.Name = "btnPagos";
             this.btnPagos.Size = new System.Drawing.Size(126, 23);
             this.btnPagos.TabIndex = 7;
-            this.btnPagos.Text = "Pagos";
+            this.btnPagos.Text = "Fracturas";
             this.btnPagos.UseVisualStyleBackColor = true;
             this.btnPagos.Click += new System.EventHandler(this.btnPagos_Click);
             // 

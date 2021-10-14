@@ -49,16 +49,17 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(371, 45);
+            this.btnFiltrar.Location = new System.Drawing.Point(329, 43);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrar.Size = new System.Drawing.Size(169, 23);
             this.btnFiltrar.TabIndex = 0;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(488, 45);
+            this.button2.Location = new System.Drawing.Point(756, 43);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
