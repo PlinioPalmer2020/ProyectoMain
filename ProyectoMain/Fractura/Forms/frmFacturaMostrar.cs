@@ -13,11 +13,17 @@ namespace ProyectoMain.Fractura.Forms
     public partial class frmFacturaMostrar : Form
     {
         private Negocio_Data.NegocioFactura _negocioFactura;
+        private Inventario.Negocio.InventarioNegocio _inventarioNegocio;
+        private List<Inventario.Entidades.Inventario> _inventarios;
+        //private List<string> _inventarios;
         public int volver = 0;
         public frmFacturaMostrar()
         {
             InitializeComponent();
             _negocioFactura = new Negocio_Data.NegocioFactura();
+            _inventarioNegocio = new Inventario.Negocio.InventarioNegocio();
+            _inventarios = new List<Inventario.Entidades.Inventario>();
+            //_inventarios = new List<string>();
         }
 
         public void cargarDatos(string codigo) 
@@ -53,6 +59,8 @@ namespace ProyectoMain.Fractura.Forms
                     }
 
                     dgvFactura.Rows.Add(item.Codigo, item.Producto+" "+item.Descripción, item.Precio, item.Cantidad ,item.PrecioTotal);
+                    Inventario.Entidades.Inventario auxInventario = new Inventario.Entidades.Inventario() { Codigo = item.Codigo, Cantidad = item.Cantidad };
+                    _inventarios.Add(auxInventario);
                     lblTotal.Text = (total += item.PrecioTotal).ToString();
                 }
             }
@@ -70,17 +78,27 @@ namespace ProyectoMain.Fractura.Forms
             {
                 Entidades.Factura factura = new Entidades.Factura();
                 factura.Codigofactura = lblCodigoFactura.Text;
+                foreach (var item in _inventarios)
+                {
+                    Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Cantidad = item.Cantidad , Codigo = item.Codigo };;
+                    ReducirInventario(inventario);
+                }
                 _negocioFactura.PagoRealizado(factura);
                 MessageBox.Show("¡Pago Realizado!", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //frmpago.frmMenuPago frmMenuPago = new frmpago.frmMenuPago();
-                //frmMenuPago.cargarFacturas();
-                if (volver != 0)
+
+                if (volver == 1)
                 {
                     ((frmpago.frmMenuPago)this.Owner).cargarFacturas();
                 }
+
                 this.Close();
 
             }
+        }
+
+        public void ReducirInventario(Inventario.Entidades.Inventario inventario)
+        {
+            _inventarioNegocio.ReducirExistenciaInventario(inventario);
         }
 
 

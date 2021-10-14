@@ -48,7 +48,7 @@ namespace ProyectoMain.Fractura.Forms
 
         }
 
-        private void CargarDatos(string buscar)
+        public void CargarDatos(string buscar)
         {
             // this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
             botonValidos();
@@ -104,10 +104,10 @@ namespace ProyectoMain.Fractura.Forms
             {
                 DateTime hoy = DateTime.Now;
                 string codigoFactura = generarCodigo();
+                Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
+                Entidades.Factura factura = new Entidades.Factura();
                 foreach (var item in _detallesfactura)
                 {
-                    Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
-                    Entidades.Factura factura = new Entidades.Factura();
                     factura.Codigofactura = codigoFactura;
                     factura.NameCliente = txtNombreCliente.Text;
                     factura.Cedula = txtDireccion.Text;
@@ -125,18 +125,19 @@ namespace ProyectoMain.Fractura.Forms
                     inventario.Codigo = item.Codigo;
 
                     GenerarFactura(factura);
-                    ReducirInventario(inventario);
+                   // ReducirInventario(inventario);
 
                 }
-                gridInventario.Rows.Clear() ;
-                CargarDatos(txtBuscar.Text);
-                _detallesfactura.Clear();
-                dgvDetalles.Rows.Clear();
                 LimpiarForms();
                 MessageBox.Show("Factura Generada","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
+               // frmFacturaMostrar.ReducirInventario(inventario);
                 frmFacturaMostrar.cargarDatos(codigoFactura);
-                frmFacturaMostrar.ShowDialog();
+                frmFacturaMostrar.ShowDialog(this);
+                dgvDetalles.Rows.Clear();
+                _detallesfactura.Clear();
+                gridInventario.Rows.Clear();
+                CargarDatos(txtBuscar.Text);
 
             }
 
@@ -155,6 +156,7 @@ namespace ProyectoMain.Fractura.Forms
         {
             txtNombreCliente.Text = string.Empty;
             txtDireccion.Text = string.Empty;
+            btnGenerar.Enabled = false;
         }
 
         private void GenerarFactura(Entidades.Factura factura)
@@ -163,10 +165,6 @@ namespace ProyectoMain.Fractura.Forms
 
         }
 
-        private void ReducirInventario(Inventario.Entidades.Inventario inventario)
-        {
-            _inventarioNegocio.ReducirExistenciaInventario(inventario);
-        }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
