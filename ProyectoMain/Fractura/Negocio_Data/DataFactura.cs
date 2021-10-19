@@ -9,8 +9,9 @@ namespace ProyectoMain.Fractura.Negocio_Data
 {
     public class DataFactura
     {
-        private SqlConnection conn = new SqlConnection("Password=123;Persist Security Info=True;User ID=usuario;Initial Catalog=Ferreteria;Data Source=152.0.96.70");
+        //private SqlConnection conn = new SqlConnection("Password=123;Persist Security Info=True;User ID=usuario;Initial Catalog=Ferreteria;Data Source=152.0.96.70");
         //private SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;Data Source=DESKTOP-IV4HQSQ\\SQLEXPRESS");
+        private SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;Data Source=DESKTOP-1935SQ4\\SQLEXPRESS");
 
         public void InsentarFactura(Entidades.Factura factura)
         {

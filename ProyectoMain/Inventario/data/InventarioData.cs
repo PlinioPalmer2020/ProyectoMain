@@ -10,16 +10,17 @@ namespace ProyectoMain.Inventario.data
 {
     public class InventarioData
     {
-        private SqlConnection conn = new SqlConnection("Password=123;Persist Security Info=True;User ID=usuario;Initial Catalog=Ferreteria;Data Source=152.0.96.70");
+        //private SqlConnection conn = new SqlConnection("Password=123;Persist Security Info=True;User ID=usuario;Initial Catalog=Ferreteria;Data Source=152.0.96.70");
         //private SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;Data Source=DESKTOP-IV4HQSQ\\SQLEXPRESS");
-
+        private SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;Data Source=DESKTOP-1935SQ4\\SQLEXPRESS");
+        
         public List<Entidades.Inventario> TenerInventarios(string buscar = null) 
         {
             List<Entidades.Inventario> inventarios = new List<Entidades.Inventario>();
             try
             {
                 conn.Open();
-                string querry = @"select id, codigo, nombre, descripcion, precio, cantidad from inventario ";
+                string querry = @"select id, codigo, nombre, descripcion, precioVendido, cantidad from inventario ";
 
                 // SqlCommand command = new SqlCommand(querry, conn);
                 SqlCommand command = new SqlCommand();
@@ -43,7 +44,7 @@ namespace ProyectoMain.Inventario.data
                         Codigo = reader["codigo"].ToString(),
                         Nombre = reader["nombre"].ToString(),
                         descripcion = reader["descripcion"].ToString(),
-                        Precio = decimal.Parse(reader["precio"].ToString()),
+                        precioVendido = decimal.Parse(reader["precioVendido"].ToString()),
                         Cantidad = int.Parse(reader["cantidad"].ToString())
                     });
                 }
@@ -78,7 +79,7 @@ namespace ProyectoMain.Inventario.data
 
                 SqlParameter nombre = new SqlParameter("@nombre", inventario.Nombre);
                 SqlParameter descripcion = new SqlParameter("@descripcion", inventario.descripcion);
-                SqlParameter precio = new SqlParameter("@precio", inventario.Precio);
+                SqlParameter precio = new SqlParameter("@precio", inventario.precioVendido);
                 SqlParameter cantidad = new SqlParameter("@cantidad", inventario.Cantidad);
 
                 SqlCommand command = new SqlCommand(query, conn);
@@ -119,7 +120,7 @@ namespace ProyectoMain.Inventario.data
                 SqlParameter codigo = new SqlParameter("@codigo", inventario.Codigo);
                 SqlParameter nombre = new SqlParameter("@nombre", inventario.Nombre);
                 SqlParameter descripcion = new SqlParameter("@descripcion", inventario.descripcion);
-                SqlParameter precio = new SqlParameter("@precio", inventario.Precio);
+                SqlParameter precio = new SqlParameter("@precio", inventario.precioVendido);
                 SqlParameter cantidad = new SqlParameter("@cantidad", inventario.Cantidad);
 
                 SqlCommand command = new SqlCommand(querry, conn);

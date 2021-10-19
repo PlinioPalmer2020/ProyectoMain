@@ -9,20 +9,31 @@ namespace ProyectoMain.Inventario.Entidades
     public class Inventario
     {
         /*
-         id int identity(1,1),
+        id int identity(1,1),
         codigo varchar(100) not null,
+        tipoProducto int not null,
         nombre varchar(100) not null,
         descripcion varchar(100) not null,
-        precio decimal(6,2) not null,
+        precioComprado decimal(18,2) not null,
+        precioVendido decimal(18,2) not null,
+        unidad varchar(30) not null,
         cantidad int not null
         */
 
         public int Id { get; set; }
         public string Codigo { get; set; }
+        public int TipoProducto { get; set; }
         public string Nombre { get; set; }
         public string descripcion { get; set; }
-        public decimal Precio { get; set; }
-        public int Cantidad { get; set; }
+        public decimal precioComprado { get; set; }
+        public decimal precioVendido { get; set; }
+        public double Cantidad { get; set; }
+        public int UnidadCantidad { get; set; }
+
+        public double Contiene { get; set; }
+
+        public int unidadContiene { get; set; }
+
 
     }
 }

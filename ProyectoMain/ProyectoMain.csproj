@@ -58,7 +58,10 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2">
@@ -130,8 +133,12 @@
     <Compile Include="Fractura\Negocio_Data\NegocioFactura.cs" />
     <Compile Include="Inventario\data\InventarioData.cs" />
     <Compile Include="Inventario\data\RegistroData.cs" />
+    <Compile Include="Inventario\data\tiposDeProductosData.cs" />
+    <Compile Include="Inventario\data\UnidadesData.cs" />
     <Compile Include="Inventario\Entidades\Inventario.cs" />
     <Compile Include="Inventario\Entidades\Registro.cs" />
+    <Compile Include="Inventario\Entidades\tiposDeProductos.cs" />
+    <Compile Include="Inventario\Entidades\Unidades.cs" />
     <Compile Include="Inventario\Forms\FormAgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +152,8 @@
       <DependentUpon>FormMenuInventario.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventario\Negocio\InventarioNegocio.cs" />
+    <Compile Include="Inventario\Negocio\TiposDeProductosNegocio.cs" />
+    <Compile Include="Inventario\Negocio\UnidadesNegocio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Fractura\Forms\frmdetallesfactura.resx">
@@ -213,7 +222,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

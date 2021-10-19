@@ -63,7 +63,7 @@ namespace ProyectoMain.Inventario.Forms
                         Codigo = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
                         Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
                         descripcion = gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                        Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
+                        precioVendido = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
                         Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString()),
 
                     });
@@ -81,7 +81,7 @@ namespace ProyectoMain.Inventario.Forms
                         Codigo = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
                         Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
                         descripcion = gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                        Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
+                        precioVendido = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
                         Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString()),
 
                     });

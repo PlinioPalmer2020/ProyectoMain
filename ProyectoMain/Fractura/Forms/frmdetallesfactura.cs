@@ -28,7 +28,7 @@ namespace ProyectoMain.Fractura.Forms
                 inventario.Codigo = txtCodigo.Text;
                 inventario.Nombre = txtNombre.Text;
                 inventario.descripcion = txtDescripcion.Text;
-                inventario.Precio = decimal.Parse(txtPrecio.Text);
+                inventario.precioVendido = decimal.Parse(txtPrecio.Text);
                 inventario.Cantidad = int.Parse(txtCantidad.Text);
                 this.Close();
                 ((FrmMenuFactura)this.Owner).cargardetalles(inventario);
@@ -53,7 +53,7 @@ namespace ProyectoMain.Fractura.Forms
                 txtCodigo.Text = inventario.Codigo;
                 txtDescripcion.Text = inventario.descripcion;
                 txtNombre.Text = inventario.Nombre;
-                txtPrecio.Text = inventario.Precio.ToString();
+                txtPrecio.Text = inventario.precioComprado.ToString();
             }
         }
 
