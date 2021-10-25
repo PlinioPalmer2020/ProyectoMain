@@ -28,11 +28,14 @@ namespace ProyectoMain.Fractura.Entidades
         public string NameCliente { get; set; }
         public string Cedula { get; set; }
         public string Codigo { get; set; }
+        public string Tipo_De_Producto { get; set; }
         public string Producto { get; set; }
         public string Descripción { get; set; }
         public decimal Precio { get; set; }
 
-        public int Cantidad { get; set; }
+        public double Cantidad { get; set; }
+
+        public string Unidad { get; set; }
         public decimal PrecioTotal {get; set; }
         public int Tipofactura { get; set; }
         public DateTime Fecha_crear { get; set; }

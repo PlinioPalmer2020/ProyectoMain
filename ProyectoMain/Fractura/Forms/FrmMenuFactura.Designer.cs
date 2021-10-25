@@ -39,6 +39,8 @@ namespace ProyectoMain.Fractura.Forms
             this.Descri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Preci = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Canti = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Agregar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panelFactura = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -55,13 +57,15 @@ namespace ProyectoMain.Fractura.Forms
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.dgvDetalles = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unidad1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoProductoDetalles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quitar = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.label4 = new System.Windows.Forms.Label();
             this.panelAgregar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).BeginInit();
             this.panelFactura.SuspendLayout();
@@ -130,6 +134,8 @@ namespace ProyectoMain.Fractura.Forms
             this.Descri,
             this.Preci,
             this.Canti,
+            this.Unidad,
+            this.tipoProducto,
             this.Agregar});
             this.gridInventario.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gridInventario.Location = new System.Drawing.Point(0, 197);
@@ -163,6 +169,19 @@ namespace ProyectoMain.Fractura.Forms
             this.Canti.HeaderText = "Cantidad";
             this.Canti.Name = "Canti";
             this.Canti.ReadOnly = true;
+            // 
+            // Unidad
+            // 
+            this.Unidad.HeaderText = "Unidad";
+            this.Unidad.Name = "Unidad";
+            this.Unidad.ReadOnly = true;
+            // 
+            // tipoProducto
+            // 
+            this.tipoProducto.HeaderText = "Tipo De Producto";
+            this.tipoProducto.Name = "tipoProducto";
+            this.tipoProducto.ReadOnly = true;
+            this.tipoProducto.Visible = false;
             // 
             // Agregar
             // 
@@ -257,7 +276,7 @@ namespace ProyectoMain.Fractura.Forms
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(666, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(647, 588);
+            this.panel1.Size = new System.Drawing.Size(684, 588);
             this.panel1.TabIndex = 8;
             // 
             // panel2
@@ -267,7 +286,7 @@ namespace ProyectoMain.Fractura.Forms
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 556);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(647, 32);
+            this.panel2.Size = new System.Drawing.Size(684, 32);
             this.panel2.TabIndex = 4;
             // 
             // lblTotal
@@ -319,14 +338,25 @@ namespace ProyectoMain.Fractura.Forms
             this.Descripcion,
             this.Precio,
             this.Cantidad,
+            this.Unidad1,
             this.PrecioTotal,
+            this.tipoProductoDetalles,
             this.Quitar});
             this.dgvDetalles.Location = new System.Drawing.Point(0, 83);
             this.dgvDetalles.Name = "dgvDetalles";
             this.dgvDetalles.ReadOnly = true;
-            this.dgvDetalles.Size = new System.Drawing.Size(647, 471);
+            this.dgvDetalles.Size = new System.Drawing.Size(681, 471);
             this.dgvDetalles.TabIndex = 1;
             this.dgvDetalles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalles_CellContentClick);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(30, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(109, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Productos Agregados";
             // 
             // Codigo
             // 
@@ -352,11 +382,24 @@ namespace ProyectoMain.Fractura.Forms
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
             // 
+            // Unidad1
+            // 
+            this.Unidad1.HeaderText = "Unidad";
+            this.Unidad1.Name = "Unidad1";
+            this.Unidad1.ReadOnly = true;
+            // 
             // PrecioTotal
             // 
             this.PrecioTotal.HeaderText = "Precio Total";
             this.PrecioTotal.Name = "PrecioTotal";
             this.PrecioTotal.ReadOnly = true;
+            // 
+            // tipoProductoDetalles
+            // 
+            this.tipoProductoDetalles.HeaderText = "Tipo de Producto";
+            this.tipoProductoDetalles.Name = "tipoProductoDetalles";
+            this.tipoProductoDetalles.ReadOnly = true;
+            this.tipoProductoDetalles.Visible = false;
             // 
             // Quitar
             // 
@@ -366,20 +409,11 @@ namespace ProyectoMain.Fractura.Forms
             this.Quitar.Text = "Quitar";
             this.Quitar.UseColumnTextForLinkValue = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Productos Agregados";
-            // 
             // FrmMenuFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1322, 603);
+            this.ClientSize = new System.Drawing.Size(1353, 603);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelAgregar);
@@ -419,21 +453,25 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioTotal;
-        private System.Windows.Forms.DataGridViewLinkColumn Quitar;
         private System.Windows.Forms.DataGridView gridInventario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descri;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Preci;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Canti;
-        private System.Windows.Forms.DataGridViewLinkColumn Agregar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descri;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Preci;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Canti;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoProducto;
+        private System.Windows.Forms.DataGridViewLinkColumn Agregar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unidad1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoProductoDetalles;
+        private System.Windows.Forms.DataGridViewLinkColumn Quitar;
     }
 }

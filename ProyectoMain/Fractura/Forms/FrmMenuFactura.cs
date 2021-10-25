@@ -56,7 +56,7 @@ namespace ProyectoMain.Fractura.Forms
             //var aux = consulta.Where( c=> c.Cantidad != 0 ).ToList();
             foreach (var item in consulta)
             {
-                gridInventario.Rows.Add(item.Codigo, item.Nombre + " " + item.descripcion, item.Precio, item.Cantidad);
+                gridInventario.Rows.Add(item.Codigo, item.Nombre + " " + item.descripcion, item.Precio, item.Cantidad, item.unidad, item.Tipo_de_producto);
             }
         }
 
@@ -88,8 +88,8 @@ namespace ProyectoMain.Fractura.Forms
             decimal total = 0;
             foreach (var item in _detallesfactura)
             {
-                dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString() + " " + item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
-                total += item.Precio * item.Cantidad;
+                dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString() + " " + item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(),item.unidad, (Convert.ToDouble(item.Precio) * item.Cantidad).ToString(), item.Tipo_de_producto);
+                total += (item.Precio * Convert.ToDecimal(item.Cantidad));
                 lblTotal.Text = total.ToString();
             }
             botonValidos();
@@ -112,16 +112,18 @@ namespace ProyectoMain.Fractura.Forms
                     factura.NameCliente = txtNombreCliente.Text;
                     factura.Cedula = txtDireccion.Text;
                     factura.Codigo = item.Codigo;
+                    factura.Tipo_De_Producto = item.Tipo_de_producto;
                     factura.Producto = item.Nombre;
                     factura.Descripción = item.descripcion;
                     factura.Precio = decimal.Parse(item.Precio.ToString());
-                    factura.Cantidad = int.Parse(item.Cantidad.ToString());
+                    factura.Cantidad = double.Parse(item.Cantidad.ToString());
+                    factura.Unidad = item.unidad;
                     factura.PrecioTotal =  decimal.Parse(item.Precio.ToString()) * decimal.Parse(item.Cantidad.ToString());
                     factura.Tipofactura = cbTipoFactura.SelectedIndex;// int.Parse(cbTipoFactura.SelectedValue.ToString());
                     factura.Fecha_crear = hoy;
                     factura.Pago = 0;
 
-                    inventario.Cantidad = int.Parse(item.Cantidad.ToString());
+                    inventario.Cantidad = double.Parse(item.Cantidad.ToString());
                     inventario.Codigo = item.Codigo;
 
                     GenerarFactura(factura);
@@ -209,10 +211,12 @@ namespace ProyectoMain.Fractura.Forms
                             // Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
                             descripcion = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
                             Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString()),
-                            Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString()),
-
+                            Cantidad = double.Parse(gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString()),
+                            unidad = gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                            Tipo_de_producto = gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString()
                         });
 
+                       // detallesfactura.tipoProducto = gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString();
                         detallesfactura.ShowDialog(this);
 
                     }
@@ -236,7 +240,7 @@ namespace ProyectoMain.Fractura.Forms
                     dgvDetalles.Rows.Clear();
                     foreach (var item in _detallesfactura)
                     {
-                        dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (item.Precio * item.Cantidad).ToString());
+                        dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (Convert.ToDouble(item.Precio) * item.Cantidad).ToString());
                     }
                     botonValidos();
                 }

@@ -58,8 +58,8 @@ namespace ProyectoMain.Fractura.Forms
                         lblfechaCreacion.Text = item.Fecha_crear.ToString();
                     }
 
-                    dgvFactura.Rows.Add(item.Codigo, item.Producto+" "+item.Descripción, item.Precio, item.Cantidad ,item.PrecioTotal);
-                    Inventario.Entidades.Inventario auxInventario = new Inventario.Entidades.Inventario() { Codigo = item.Codigo, Cantidad = item.Cantidad };
+                    dgvFactura.Rows.Add(item.Codigo, item.Producto+" "+item.Descripción, item.Precio, item.Cantidad, item.Unidad ,item.PrecioTotal);
+                    Inventario.Entidades.Inventario auxInventario = new Inventario.Entidades.Inventario() { Codigo = item.Codigo, Cantidad = item.Cantidad, Tipo_de_producto = item.Tipo_De_Producto, unidad = item.Unidad };
                     _inventarios.Add(auxInventario);
                     lblTotal.Text = (total += item.PrecioTotal).ToString();
                 }

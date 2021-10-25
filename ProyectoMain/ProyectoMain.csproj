@@ -144,6 +144,12 @@
     <Compile Include="Inventario\Forms\FormMenuInventario.Designer.cs">
       <DependentUpon>FormMenuInventario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventario\Forms\frmMenuAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\Forms\frmMenuAgregar.Designer.cs">
+      <DependentUpon>frmMenuAgregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventario\Negocio\InventarioNegocio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\Forms\FormMenuInventario.resx">
       <DependentUpon>FormMenuInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\Forms\frmMenuAgregar.resx">
+      <DependentUpon>frmMenuAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

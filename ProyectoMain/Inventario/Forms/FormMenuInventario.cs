@@ -24,6 +24,8 @@ namespace ProyectoMain.Inventario.Forms
         {
             FormAgregarProducto formAgregar = new FormAgregarProducto();
             formAgregar.ShowDialog(this);
+            //frmMenuAgregar frmMenuAgregar = new frmMenuAgregar();
+            //frmMenuAgregar.ShowDialog(this);
         }
 
         private void FormMenuInventario_Load(object sender, EventArgs e)
@@ -82,17 +84,23 @@ namespace ProyectoMain.Inventario.Forms
                         Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
                         descripcion = gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString(),
                         Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
-                        Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString()),
+                        Cantidad = 0,
 
                     });
 
                     agregarProducto.txtCantidad.Enabled = true;
                     agregarProducto.txtNombre.Enabled = false;
                     agregarProducto.txtPrecio.Enabled = false;
+                    agregarProducto.txtComprado.Enabled = false;
                     agregarProducto.txtDescripcion.Enabled = false;
                     agregarProducto.txtCantidad.Enabled = true;
 
                     agregarProducto.btnAgregar.Text = "Añadir";
+                    agregarProducto.cbTipoProducto.Enabled = false;
+                    agregarProducto.txtComprado.Text = "0";
+                    agregarProducto.tipoproducto = gridInventario.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    agregarProducto.estado = "Añadir";
+
                     agregarProducto.ShowDialog(this);
                 }
                 else if (cell.Value.ToString() == "Eliminar")
@@ -114,6 +122,7 @@ namespace ProyectoMain.Inventario.Forms
             {
 
                 //throw;
+                MessageBox.Show("algo fallo");
             }
         }
 

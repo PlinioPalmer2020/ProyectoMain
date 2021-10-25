@@ -41,11 +41,12 @@ namespace ProyectoMain.Fractura.Forms
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.cbUnidad = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(116, 334);
+            this.btnCancelar.Location = new System.Drawing.Point(183, 334);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 22;
@@ -149,11 +150,20 @@ namespace ProyectoMain.Fractura.Forms
             this.label1.TabIndex = 23;
             this.label1.Text = "Codigo";
             // 
+            // cbUnidad
+            // 
+            this.cbUnidad.FormattingEnabled = true;
+            this.cbUnidad.Location = new System.Drawing.Point(198, 186);
+            this.cbUnidad.Name = "cbUnidad";
+            this.cbUnidad.Size = new System.Drawing.Size(101, 21);
+            this.cbUnidad.TabIndex = 24;
+            // 
             // frmdetallesfactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(223, 380);
+            this.ClientSize = new System.Drawing.Size(311, 380);
+            this.Controls.Add(this.cbUnidad);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtCantidad);
@@ -190,5 +200,6 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbUnidad;
     }
 }
