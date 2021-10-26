@@ -38,7 +38,7 @@ namespace ProyectoMain.Inventario.Forms
             cbTipoProducto.Items.Add("Alimentos");
             cbTipoProducto.Items.Add("Herramientas o otros productos");
 
-            if (estado == "Añadir")
+            if (estado == "Añadir" || estado == "Modificar")
             {
                 cbTipoProducto.SelectedItem = tipoproducto;
             }
@@ -89,6 +89,7 @@ namespace ProyectoMain.Inventario.Forms
                 txtDescripcion.Text = inventario.descripcion;
                 txtNombre.Text = inventario.Nombre;
                 txtPrecio.Text = inventario.Precio.ToString();
+                txtComprado.Text = inventario.comprado.ToString();
             }
         }
         private void guardarInventario()
@@ -169,7 +170,10 @@ namespace ProyectoMain.Inventario.Forms
                     cbUnidad.Enabled = false;
                     break;
             }
-            cbUnidad.Enabled = true;
+            if (estado == "Añadir" || estado == null)
+            {
+                cbUnidad.Enabled = true;
+            }
             cbUnidad.SelectedIndex = 0;
 
         }

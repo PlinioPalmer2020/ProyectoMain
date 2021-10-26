@@ -161,6 +161,10 @@ namespace ProyectoMain.Fractura.Forms
                 e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Direccion: "+item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
                 e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                e.Graphics.DrawString("Fecha de creacion: " + item.Fecha_crear, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
+                e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                e.Graphics.DrawString("Fecha de Impresion: " + DateTime.Now, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
+                e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 //aqui va un switch para el nombre del tipo de factura
                 switch (item.Tipofactura)
                 {
@@ -189,10 +193,10 @@ namespace ProyectoMain.Fractura.Forms
 
 
 
-            e.Graphics.DrawString("DESCRIPCION", font, Brushes.Black, new RectangleF(0, 295, 150, 20));
-            e.Graphics.DrawString("CANTIDAD", font, Brushes.Black, new RectangleF(100, 295, 150, 20));
-            e.Graphics.DrawString("PRECIO", font, Brushes.Black, new RectangleF(175, 295, 150, 20));
-            e.Graphics.DrawString("TOTAL", font, Brushes.Black, new RectangleF(250, 295, 150, 20));
+            e.Graphics.DrawString("DESCRIPCION", font, Brushes.Black, new RectangleF(0, y, 150, 20));
+            e.Graphics.DrawString("CANTIDAD", font, Brushes.Black, new RectangleF(100, y, 150, 20));
+            e.Graphics.DrawString("PRECIO", font, Brushes.Black, new RectangleF(175, y, 150, 20));
+            e.Graphics.DrawString("TOTAL", font, Brushes.Black, new RectangleF(250, y, 150, 20));
 
             foreach (var item in _imprimir)
             {

@@ -192,7 +192,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Controls.Add(this.btnFiltrar);
             this.Name = "frmMenuPago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMenuPago";
+            this.Text = "Menu de Facturas";
             this.Load += new System.EventHandler(this.frmMenuPago_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.ResumeLayout(false);

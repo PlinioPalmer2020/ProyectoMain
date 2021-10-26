@@ -19,7 +19,7 @@ namespace ProyectoMain.Inventario.data
             try
             {
                 conn.Open();
-                string querry = @"select id, codigo, nombre, descripcion, precio, cantidad, unidad, tipo_de_producto from inventario ";
+                string querry = @"select id, codigo, nombre, descripcion, precio, cantidad, unidad, tipo_de_producto,comprado from inventario ";
 
                 // SqlCommand command = new SqlCommand(querry, conn);
                 SqlCommand command = new SqlCommand();
@@ -46,7 +46,8 @@ namespace ProyectoMain.Inventario.data
                         Precio = decimal.Parse(reader["precio"].ToString()),
                         Cantidad = double.Parse(reader["cantidad"].ToString()),
                         unidad = reader["unidad"].ToString(),
-                        Tipo_de_producto = reader["tipo_de_producto"].ToString()
+                        Tipo_de_producto = reader["tipo_de_producto"].ToString(),
+                        comprado = decimal.Parse(reader["comprado"].ToString())
                     });
                 }
 

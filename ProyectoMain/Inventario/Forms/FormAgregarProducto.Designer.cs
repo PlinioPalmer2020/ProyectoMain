@@ -240,9 +240,9 @@ namespace ProyectoMain.Inventario.Forms
         public System.Windows.Forms.TextBox txtDescripcion;
         public System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbUnidad;
         public System.Windows.Forms.TextBox txtComprado;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.ComboBox cbTipoProducto;
+        public System.Windows.Forms.ComboBox cbUnidad;
     }
 }

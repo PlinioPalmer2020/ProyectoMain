@@ -57,7 +57,6 @@ namespace ProyectoMain.Fractura.Forms
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.dgvDetalles = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +65,7 @@ namespace ProyectoMain.Fractura.Forms
             this.PrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoProductoDetalles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quitar = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.label4 = new System.Windows.Forms.Label();
             this.panelAgregar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).BeginInit();
             this.panelFactura.SuspendLayout();
@@ -151,6 +151,7 @@ namespace ProyectoMain.Fractura.Forms
             this.Codi.HeaderText = "Codigo";
             this.Codi.Name = "Codi";
             this.Codi.ReadOnly = true;
+            this.Codi.Visible = false;
             // 
             // Descri
             // 
@@ -349,20 +350,12 @@ namespace ProyectoMain.Fractura.Forms
             this.dgvDetalles.TabIndex = 1;
             this.dgvDetalles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalles_CellContentClick);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Productos Agregados";
-            // 
             // Codigo
             // 
             this.Codigo.HeaderText = "Codigo";
             this.Codigo.Name = "Codigo";
             this.Codigo.ReadOnly = true;
+            this.Codigo.Visible = false;
             // 
             // Descripcion
             // 
@@ -409,6 +402,15 @@ namespace ProyectoMain.Fractura.Forms
             this.Quitar.Text = "Quitar";
             this.Quitar.UseColumnTextForLinkValue = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(30, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(109, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Productos Agregados";
+            // 
             // FrmMenuFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -419,7 +421,7 @@ namespace ProyectoMain.Fractura.Forms
             this.Controls.Add(this.panelAgregar);
             this.Name = "FrmMenuFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmMenuFactura";
+            this.Text = "Menu de Factura";
             this.Load += new System.EventHandler(this.FrmMenuFactura_Load);
             this.panelAgregar.ResumeLayout(false);
             this.panelAgregar.PerformLayout();

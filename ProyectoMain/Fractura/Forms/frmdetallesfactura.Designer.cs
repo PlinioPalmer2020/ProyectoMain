@@ -180,7 +180,7 @@ namespace ProyectoMain.Fractura.Forms
             this.MaximizeBox = false;
             this.Name = "frmdetallesfactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmdetallesfactura";
+            this.Text = "Agregar Producto";
             this.ResumeLayout(false);
             this.PerformLayout();
 

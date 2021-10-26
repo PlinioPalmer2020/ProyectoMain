@@ -48,6 +48,7 @@ namespace ProyectoMain.Inventario.Forms
             this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comprado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Añadir = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Modificar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -70,6 +71,7 @@ namespace ProyectoMain.Inventario.Forms
             this.precioDataGridViewTextBoxColumn,
             this.cantidadDataGridViewTextBoxColumn,
             this.tipoProducto,
+            this.Comprado,
             this.Añadir,
             this.Modificar,
             this.Eliminar});
@@ -175,6 +177,7 @@ namespace ProyectoMain.Inventario.Forms
             this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codigoDataGridViewTextBoxColumn.Visible = false;
             // 
             // nombreDataGridViewTextBoxColumn
             // 
@@ -211,6 +214,14 @@ namespace ProyectoMain.Inventario.Forms
             this.tipoProducto.Name = "tipoProducto";
             this.tipoProducto.ReadOnly = true;
             this.tipoProducto.Visible = false;
+            // 
+            // Comprado
+            // 
+            this.Comprado.DataPropertyName = "comprado";
+            this.Comprado.HeaderText = "Comprado";
+            this.Comprado.Name = "Comprado";
+            this.Comprado.ReadOnly = true;
+            this.Comprado.Visible = false;
             // 
             // Añadir
             // 
@@ -283,6 +294,7 @@ namespace ProyectoMain.Inventario.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comprado;
         private System.Windows.Forms.DataGridViewLinkColumn Añadir;
         private System.Windows.Forms.DataGridViewLinkColumn Modificar;
         private System.Windows.Forms.DataGridViewLinkColumn Eliminar;
