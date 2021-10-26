@@ -29,6 +29,11 @@ namespace ProyectoMain.Fractura.Forms
             //_inventarios = new List<string>();
         }
 
+
+
+
+
+        #region Funciones
         public void cargarDatos(string codigo) 
         {
 
@@ -68,12 +73,23 @@ namespace ProyectoMain.Fractura.Forms
                 }
             }
         }
-
-        private void btnSalir_Click(object sender, EventArgs e)
+        public void ReducirInventario(Inventario.Entidades.Inventario inventario)
         {
-            this.Close();
+            _inventarioNegocio.ReducirExistenciaInventario(inventario);
         }
+        #endregion
 
+        #region Botones
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            printDocument1 = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            printDocument1.PrinterSettings = ps;
+            printDocument1.PrintPage += imprimir;
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();
+            //printDocument1.Print();
+        }
         private void btnPagar_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("¿Seguro?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
@@ -83,7 +99,25 @@ namespace ProyectoMain.Fractura.Forms
                 factura.Codigofactura = lblCodigoFactura.Text;
                 foreach (var item in _inventarios)
                 {
-                    Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Cantidad = item.Cantidad , Codigo = item.Codigo };;
+                    Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Tipo_de_producto = item.Tipo_de_producto ,Cantidad = item.Cantidad , Codigo = item.Codigo, unidad = item.unidad };
+
+                    switch (inventario.Tipo_de_producto)
+                    {
+                        case"Arenas":
+                            if (inventario.unidad == "Sacos")
+                            {
+                                inventario.Cantidad = inventario.Cantidad / 8;
+                            }
+                            break;
+                        case "Cemento":
+                            if (inventario.unidad == "Libra")
+                            {
+                                inventario.Cantidad = inventario.Cantidad / 98;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
                     ReducirInventario(inventario);
                 }
                 _negocioFactura.PagoRealizado(factura);
@@ -98,23 +132,15 @@ namespace ProyectoMain.Fractura.Forms
 
             }
         }
-
-        public void ReducirInventario(Inventario.Entidades.Inventario inventario)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-            _inventarioNegocio.ReducirExistenciaInventario(inventario);
+            this.Close();
         }
 
-        private void btnImprimir_Click(object sender, EventArgs e)
-        {
-            printDocument1 = new PrintDocument();
-            PrinterSettings ps = new PrinterSettings();
-            printDocument1.PrinterSettings = ps;
-            printDocument1.PrintPage += imprimir;
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.ShowDialog();
-            //printDocument1.Print();
-        }
+        #endregion
 
+
+        #region funcion encargado de imprimir ticket
         private void imprimir(object sender, PrintPageEventArgs e)
         {
             Font font = new Font("Arial",8,FontStyle.Regular,GraphicsUnit.Point);
@@ -171,7 +197,7 @@ namespace ProyectoMain.Fractura.Forms
             foreach (var item in _imprimir)
             {
 
-                      e.Graphics.DrawString(item.Descripción, font, Brushes.Black, new RectangleF(0, y+=20, 100, 20));
+                      e.Graphics.DrawString(item.Descripción, font, Brushes.Black, new RectangleF(0, y+=20, 100, 100));
                       e.Graphics.DrawString(item.Cantidad.ToString()+" "+item.Unidad, font, Brushes.Black, new RectangleF(100, y, 100, 20));
                       e.Graphics.DrawString(item.Precio.ToString(), font, Brushes.Black, new RectangleF(175, y, 100, 20));
                       e.Graphics.DrawString(item.PrecioTotal.ToString(), font, Brushes.Black, new RectangleF(250, y, 100, 20));
@@ -187,6 +213,8 @@ namespace ProyectoMain.Fractura.Forms
             e.Graphics.DrawString("-------------------------FINAL DE LA FACTURA---------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
 
         }
+
+        #endregion
 
     }
 }

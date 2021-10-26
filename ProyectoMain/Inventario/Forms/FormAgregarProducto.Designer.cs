@@ -174,7 +174,6 @@ namespace ProyectoMain.Inventario.Forms
             this.txtComprado.Name = "txtComprado";
             this.txtComprado.Size = new System.Drawing.Size(148, 20);
             this.txtComprado.TabIndex = 16;
-            this.txtComprado.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label7
             // 

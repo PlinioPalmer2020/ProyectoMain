@@ -47,7 +47,13 @@ namespace ProyectoMain.Fractura.Forms
             }
 
         }
+        private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
+
+
+        #region Funciones
         public void CargarDatos(string buscar)
         {
             // this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
@@ -59,7 +65,6 @@ namespace ProyectoMain.Fractura.Forms
                 gridInventario.Rows.Add(item.Codigo, item.Nombre + " " + item.descripcion, item.Precio, item.Cantidad, item.unidad, item.Tipo_de_producto);
             }
         }
-
         private void botonValidos()
         {
             if (_detallesfactura.Count != 0)
@@ -73,14 +78,6 @@ namespace ProyectoMain.Fractura.Forms
                 btnLimpiar.Enabled = false;
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-            //((FormMenuInventario)this.Owner).Close();
-        }
-
-
         public void cargardetalles(Inventario.Entidades.Inventario inventario)
         {
             dgvDetalles.Rows.Clear();
@@ -94,8 +91,28 @@ namespace ProyectoMain.Fractura.Forms
             }
             botonValidos();
         }
+        private string generarCodigo()
+        {
+            DateTime fecha = DateTime.Now;
 
+            string codigo = "CDF" + fecha.ToString("dd") + fecha.ToString("MM") + fecha.ToString("yyyy") + fecha.ToString("hh") + fecha.ToString("mm") + fecha.ToString("ss") + fecha.ToString("ff");
 
+            return codigo;
+        }
+        private void LimpiarForms()
+        {
+            txtNombreCliente.Text = string.Empty;
+            txtDireccion.Text = string.Empty;
+            btnGenerar.Enabled = false;
+        }
+        private void GenerarFactura(Entidades.Factura factura)
+        {
+            _negocioFactura.InsentarFactura(factura);
+
+        }
+        #endregion
+
+        #region Botones
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             // int a = cbTipoFactura.SelectedIndex;
@@ -144,50 +161,54 @@ namespace ProyectoMain.Fractura.Forms
             }
 
         }
-
-        private string generarCodigo()
-        {
-            DateTime fecha = DateTime.Now;
-
-            string codigo = "CDF" + fecha.ToString("dd") + fecha.ToString("MM") + fecha.ToString("yyyy") + fecha.ToString("hh") + fecha.ToString("mm") + fecha.ToString("ss") + fecha.ToString("ff");
-
-            return codigo;
-        }
-
-        private void LimpiarForms()
-        {
-            txtNombreCliente.Text = string.Empty;
-            txtDireccion.Text = string.Empty;
-            btnGenerar.Enabled = false;
-        }
-
-        private void GenerarFactura(Entidades.Factura factura)
-        {
-            _negocioFactura.InsentarFactura(factura);
-
-        }
-
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Inventario.Forms.FormMenuInventario formMenuInventario = new FormMenuInventario();
             formMenuInventario.Show();
             this.Close();
         }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             gridInventario.Rows.Clear();
             CargarDatos(txtBuscar.Text);
         }
-
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarForms();
             dgvDetalles.Rows.Clear();
             _detallesfactura.Clear();
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+            //((FormMenuInventario)this.Owner).Close();
+        }
+        #endregion
 
+        #region DataGridViews
+        private void dgvDetalles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewLinkCell cell = (DataGridViewLinkCell)dgvDetalles.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value.ToString() == "Quitar")
+                {
+                    _detallesfactura.RemoveAt(e.RowIndex);
+                    dgvDetalles.Rows.Clear();
+                    foreach (var item in _detallesfactura)
+                    {
+                        dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (Convert.ToDouble(item.Precio) * item.Cantidad).ToString());
+                    }
+                    botonValidos();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                // throw;
+            }
+        }
         private void gridInventario_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -229,29 +250,6 @@ namespace ProyectoMain.Fractura.Forms
                 //throw;
             }
         }
-        private void dgvDetalles_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                DataGridViewLinkCell cell = (DataGridViewLinkCell)dgvDetalles.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (cell.Value.ToString() == "Quitar")
-                {
-                    _detallesfactura.RemoveAt(e.RowIndex);
-                    dgvDetalles.Rows.Clear();
-                    foreach (var item in _detallesfactura)
-                    {
-                        dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (Convert.ToDouble(item.Precio) * item.Cantidad).ToString());
-                    }
-                    botonValidos();
-                }
-
-            }
-            catch (Exception)
-            {
-
-                // throw;
-            }
-        }
         private void gridInventario_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             //string v = this.gridInventario.Columns[e.ColumnIndex].Name;
@@ -274,12 +272,7 @@ namespace ProyectoMain.Fractura.Forms
                 }
             }
         }
-
-        private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        #endregion
 
     }
 }
