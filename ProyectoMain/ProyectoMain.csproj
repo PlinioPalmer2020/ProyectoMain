@@ -150,7 +150,14 @@
     <Compile Include="Inventario\Forms\frmMenuAgregar.Designer.cs">
       <DependentUpon>frmMenuAgregar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventario\Forms\Registro\frmMenuRegistroEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\Forms\Registro\frmMenuRegistroEntrada.Designer.cs">
+      <DependentUpon>frmMenuRegistroEntrada.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventario\Negocio\InventarioNegocio.cs" />
+    <Compile Include="Inventario\Negocio\RegistroNegocio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Fractura\Forms\frmdetallesfactura.resx">
@@ -173,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\Forms\frmMenuAgregar.resx">
       <DependentUpon>frmMenuAgregar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\Forms\Registro\frmMenuRegistroEntrada.resx">
+      <DependentUpon>frmMenuRegistroEntrada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -231,8 +241,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Inventario\Forms\Registro\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

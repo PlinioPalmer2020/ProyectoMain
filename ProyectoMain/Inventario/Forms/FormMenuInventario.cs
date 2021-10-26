@@ -163,5 +163,12 @@ namespace ProyectoMain.Inventario.Forms
                 }
             }
         }
+
+        private void btnHistoria_Click(object sender, EventArgs e)
+        {
+            Registro.frmMenuRegistroEntrada frmMenuRegistroEntrada = new Registro.frmMenuRegistroEntrada();
+            frmMenuRegistroEntrada.Show();
+            this.Hide();
+        }
     }
 }

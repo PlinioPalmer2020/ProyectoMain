@@ -75,6 +75,7 @@ namespace ProyectoMain.Fractura.Forms
             // 
             this.dgvFactura.AllowUserToAddRows = false;
             this.dgvFactura.AllowUserToDeleteRows = false;
+            this.dgvFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,

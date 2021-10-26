@@ -128,6 +128,7 @@ namespace ProyectoMain.Fractura.Forms
             // 
             this.gridInventario.AllowUserToAddRows = false;
             this.gridInventario.AllowUserToDeleteRows = false;
+            this.gridInventario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridInventario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codi,
@@ -333,6 +334,7 @@ namespace ProyectoMain.Fractura.Forms
             // 
             this.dgvDetalles.AllowUserToAddRows = false;
             this.dgvDetalles.AllowUserToDeleteRows = false;
+            this.dgvDetalles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetalles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
