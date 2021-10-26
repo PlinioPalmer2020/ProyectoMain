@@ -41,28 +41,30 @@ namespace ProyectoMain.Fractura.Forms
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.cbUnidad = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(294, 89);
+            this.btnCancelar.Location = new System.Drawing.Point(183, 334);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 22;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(24, 228);
+            this.txtCantidad.Location = new System.Drawing.Point(24, 186);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(100, 20);
+            this.txtCantidad.Size = new System.Drawing.Size(167, 20);
             this.txtCantidad.TabIndex = 21;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 211);
+            this.label5.Location = new System.Drawing.Point(21, 169);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 20;
@@ -71,15 +73,15 @@ namespace ProyectoMain.Fractura.Forms
             // txtPrecio
             // 
             this.txtPrecio.Enabled = false;
-            this.txtPrecio.Location = new System.Drawing.Point(24, 170);
+            this.txtPrecio.Location = new System.Drawing.Point(24, 128);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(100, 20);
+            this.txtPrecio.Size = new System.Drawing.Size(167, 20);
             this.txtPrecio.TabIndex = 19;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 153);
+            this.label4.Location = new System.Drawing.Point(21, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 18;
@@ -88,15 +90,15 @@ namespace ProyectoMain.Fractura.Forms
             // txtDescripcion
             // 
             this.txtDescripcion.Enabled = false;
-            this.txtDescripcion.Location = new System.Drawing.Point(24, 129);
+            this.txtDescripcion.Location = new System.Drawing.Point(24, 87);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(167, 20);
             this.txtDescripcion.TabIndex = 17;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 112);
+            this.label3.Location = new System.Drawing.Point(21, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 16;
@@ -105,31 +107,33 @@ namespace ProyectoMain.Fractura.Forms
             // txtNombre
             // 
             this.txtNombre.Enabled = false;
-            this.txtNombre.Location = new System.Drawing.Point(24, 89);
+            this.txtNombre.Location = new System.Drawing.Point(24, 236);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.Size = new System.Drawing.Size(167, 20);
             this.txtNombre.TabIndex = 15;
+            this.txtNombre.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 72);
+            this.label2.Location = new System.Drawing.Point(21, 219);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = "Nombre";
+            this.label2.Visible = false;
             // 
             // txtCodigo
             // 
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Location = new System.Drawing.Point(24, 47);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(100, 20);
+            this.txtCodigo.Size = new System.Drawing.Size(167, 20);
             this.txtCodigo.TabIndex = 13;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(172, 86);
+            this.btnAgregar.Location = new System.Drawing.Point(24, 334);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 12;
@@ -146,11 +150,20 @@ namespace ProyectoMain.Fractura.Forms
             this.label1.TabIndex = 23;
             this.label1.Text = "Codigo";
             // 
+            // cbUnidad
+            // 
+            this.cbUnidad.FormattingEnabled = true;
+            this.cbUnidad.Location = new System.Drawing.Point(198, 186);
+            this.cbUnidad.Name = "cbUnidad";
+            this.cbUnidad.Size = new System.Drawing.Size(101, 21);
+            this.cbUnidad.TabIndex = 24;
+            // 
             // frmdetallesfactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 450);
+            this.ClientSize = new System.Drawing.Size(311, 380);
+            this.Controls.Add(this.cbUnidad);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtCantidad);
@@ -163,7 +176,10 @@ namespace ProyectoMain.Fractura.Forms
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btnAgregar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmdetallesfactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmdetallesfactura";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -184,5 +200,6 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbUnidad;
     }
 }

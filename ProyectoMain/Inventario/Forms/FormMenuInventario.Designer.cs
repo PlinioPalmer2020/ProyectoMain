@@ -31,15 +31,6 @@ namespace ProyectoMain.Inventario.Forms
         {
             this.components = new System.ComponentModel.Container();
             this.gridInventario = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Añadir = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Modificar = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.inventarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ferreteriaDataSet = new ProyectoMain.FerreteriaDataSet();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -50,6 +41,16 @@ namespace ProyectoMain.Inventario.Forms
             this.inventarioTableAdapter = new ProyectoMain.FerreteriaDataSetTableAdapters.inventarioTableAdapter();
             this.btnFacturacion = new System.Windows.Forms.Button();
             this.btnPagos = new System.Windows.Forms.Button();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Añadir = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Modificar = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewLinkColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet)).BeginInit();
@@ -57,6 +58,8 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // gridInventario
             // 
+            this.gridInventario.AllowUserToAddRows = false;
+            this.gridInventario.AllowUserToDeleteRows = false;
             this.gridInventario.AutoGenerateColumns = false;
             this.gridInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridInventario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -66,73 +69,19 @@ namespace ProyectoMain.Inventario.Forms
             this.descripcionDataGridViewTextBoxColumn,
             this.precioDataGridViewTextBoxColumn,
             this.cantidadDataGridViewTextBoxColumn,
+            this.tipoProducto,
             this.Añadir,
             this.Modificar,
             this.Eliminar});
             this.gridInventario.DataSource = this.inventarioBindingSource;
-            this.gridInventario.Location = new System.Drawing.Point(24, 105);
+            this.gridInventario.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridInventario.Location = new System.Drawing.Point(0, 135);
             this.gridInventario.Name = "gridInventario";
-            this.gridInventario.Size = new System.Drawing.Size(915, 274);
+            this.gridInventario.ReadOnly = true;
+            this.gridInventario.Size = new System.Drawing.Size(951, 315);
             this.gridInventario.TabIndex = 0;
             this.gridInventario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridInventario_CellContentClick);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "nombre";
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "descripcion";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            // 
-            // precioDataGridViewTextBoxColumn
-            // 
-            this.precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
-            this.precioDataGridViewTextBoxColumn.HeaderText = "precio";
-            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
-            // 
-            // cantidadDataGridViewTextBoxColumn
-            // 
-            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "cantidad";
-            this.cantidadDataGridViewTextBoxColumn.HeaderText = "cantidad";
-            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
-            // 
-            // Añadir
-            // 
-            this.Añadir.HeaderText = "Añadir";
-            this.Añadir.Name = "Añadir";
-            this.Añadir.Text = "Añadir";
-            this.Añadir.UseColumnTextForLinkValue = true;
-            // 
-            // Modificar
-            // 
-            this.Modificar.HeaderText = "Modificar";
-            this.Modificar.Name = "Modificar";
-            this.Modificar.Text = "Modificar";
-            this.Modificar.UseColumnTextForLinkValue = true;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Text = "Eliminar";
-            this.Eliminar.UseColumnTextForLinkValue = true;
+            this.gridInventario.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridInventario_CellFormatting);
             // 
             // inventarioBindingSource
             // 
@@ -146,7 +95,7 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(379, 63);
+            this.btnBuscar.Location = new System.Drawing.Point(368, 92);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 1;
@@ -156,9 +105,9 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(527, 31);
+            this.btnAgregar.Location = new System.Drawing.Point(449, 92);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(83, 55);
+            this.btnAgregar.Size = new System.Drawing.Size(148, 23);
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar nuevo producto";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -166,9 +115,9 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnHistoria
             // 
-            this.btnHistoria.Location = new System.Drawing.Point(627, 31);
+            this.btnHistoria.Location = new System.Drawing.Point(785, 65);
             this.btnHistoria.Name = "btnHistoria";
-            this.btnHistoria.Size = new System.Drawing.Size(59, 55);
+            this.btnHistoria.Size = new System.Drawing.Size(126, 20);
             this.btnHistoria.TabIndex = 3;
             this.btnHistoria.Text = "Historial de Entrada";
             this.btnHistoria.UseVisualStyleBackColor = true;
@@ -176,7 +125,7 @@ namespace ProyectoMain.Inventario.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 73);
+            this.label1.Location = new System.Drawing.Point(10, 96);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 4;
@@ -184,7 +133,7 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(67, 66);
+            this.txtBuscar.Location = new System.Drawing.Point(56, 92);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(306, 20);
             this.txtBuscar.TabIndex = 5;
@@ -195,9 +144,9 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnFacturacion
             // 
-            this.btnFacturacion.Location = new System.Drawing.Point(721, 42);
+            this.btnFacturacion.Location = new System.Drawing.Point(785, 36);
             this.btnFacturacion.Name = "btnFacturacion";
-            this.btnFacturacion.Size = new System.Drawing.Size(75, 23);
+            this.btnFacturacion.Size = new System.Drawing.Size(126, 23);
             this.btnFacturacion.TabIndex = 6;
             this.btnFacturacion.Text = "Facturacion";
             this.btnFacturacion.UseVisualStyleBackColor = true;
@@ -205,13 +154,87 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnPagos
             // 
-            this.btnPagos.Location = new System.Drawing.Point(803, 41);
+            this.btnPagos.Location = new System.Drawing.Point(785, 91);
             this.btnPagos.Name = "btnPagos";
-            this.btnPagos.Size = new System.Drawing.Size(75, 23);
+            this.btnPagos.Size = new System.Drawing.Size(126, 23);
             this.btnPagos.TabIndex = 7;
-            this.btnPagos.Text = "Pagos";
+            this.btnPagos.Text = "Fracturas";
             this.btnPagos.UseVisualStyleBackColor = true;
             this.btnPagos.Click += new System.EventHandler(this.btnPagos_Click);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "codigo";
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "nombre";
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "descripcion";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // precioDataGridViewTextBoxColumn
+            // 
+            this.precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
+            this.precioDataGridViewTextBoxColumn.HeaderText = "precio";
+            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            this.precioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cantidadDataGridViewTextBoxColumn
+            // 
+            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "cantidad";
+            this.cantidadDataGridViewTextBoxColumn.HeaderText = "cantidad";
+            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
+            this.cantidadDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tipoProducto
+            // 
+            this.tipoProducto.DataPropertyName = "tipo_de_producto";
+            this.tipoProducto.HeaderText = "Tipo De Producto";
+            this.tipoProducto.Name = "tipoProducto";
+            this.tipoProducto.ReadOnly = true;
+            this.tipoProducto.Visible = false;
+            // 
+            // Añadir
+            // 
+            this.Añadir.HeaderText = "Añadir";
+            this.Añadir.Name = "Añadir";
+            this.Añadir.ReadOnly = true;
+            this.Añadir.Text = "Añadir";
+            this.Añadir.UseColumnTextForLinkValue = true;
+            // 
+            // Modificar
+            // 
+            this.Modificar.HeaderText = "Modificar";
+            this.Modificar.Name = "Modificar";
+            this.Modificar.ReadOnly = true;
+            this.Modificar.Text = "Modificar";
+            this.Modificar.UseColumnTextForLinkValue = true;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Text = "Eliminar";
+            this.Eliminar.UseColumnTextForLinkValue = true;
             // 
             // FormMenuInventario
             // 
@@ -226,7 +249,10 @@ namespace ProyectoMain.Inventario.Forms
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.gridInventario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormMenuInventario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventario";
             this.Load += new System.EventHandler(this.FormMenuInventario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).EndInit();
@@ -248,16 +274,17 @@ namespace ProyectoMain.Inventario.Forms
         private FerreteriaDataSet ferreteriaDataSet;
         private System.Windows.Forms.BindingSource inventarioBindingSource;
         private FerreteriaDataSetTableAdapters.inventarioTableAdapter inventarioTableAdapter;
+        private System.Windows.Forms.Button btnFacturacion;
+        private System.Windows.Forms.Button btnPagos;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoProducto;
         private System.Windows.Forms.DataGridViewLinkColumn Añadir;
         private System.Windows.Forms.DataGridViewLinkColumn Modificar;
         private System.Windows.Forms.DataGridViewLinkColumn Eliminar;
-        private System.Windows.Forms.Button btnFacturacion;
-        private System.Windows.Forms.Button btnPagos;
     }
 }

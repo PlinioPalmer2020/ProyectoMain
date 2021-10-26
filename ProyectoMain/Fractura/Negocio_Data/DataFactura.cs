@@ -9,6 +9,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
 {
     public class DataFactura
     {
+        //private SqlConnection conn = new SqlConnection("Password=123;Persist Security Info=True;User ID=usuario;Initial Catalog=Ferreteria;Data Source=152.0.96.70");
         private SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;Data Source=DESKTOP-IV4HQSQ\\SQLEXPRESS");
 
         public void InsentarFactura(Entidades.Factura factura)
@@ -16,16 +17,19 @@ namespace ProyectoMain.Fractura.Negocio_Data
             try
             {
                 conn.Open();
-                string query = @" insert into facturas(Codigofactura, NameCliente, Cedula, Codigo, Producto, Descripción, Precio, Cantidad, PrecioTotal, Tipofactura, Fecha_crear, Pago) 
-                                                        values(@Codigofactura,@NameCliente,@Cedula,@Codigo,@Producto,@Descripción,@Precio,@Cantidad,@PrecioTotal,@Tipofactura,@Fecha_crear,@Pago) ";
+                string query = @" insert into facturas(Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto, Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago) 
+                                                        values(@Codigofactura,@NameCliente,@Cedula,@Codigo,@Tipo_De_Producto,@Producto,@Descripción,@Precio,@Cantidad,@unidad,@PrecioTotal,@Tipofactura,@Fecha_crear,@Pago) ";
 
                
                 
                 SqlParameter codigo = new SqlParameter("@Codigo", factura.Codigo);
+                SqlParameter Tipo_De_Producto = new SqlParameter("@Tipo_De_Producto", factura.Tipo_De_Producto);
                 SqlParameter nombre = new SqlParameter("@Producto", factura.Producto);
                 SqlParameter descripcion = new SqlParameter("@Descripción", factura.Descripción);
                 SqlParameter precio = new SqlParameter("@Precio", factura.Precio);
                 SqlParameter cantidad = new SqlParameter("@Cantidad", factura.Cantidad);
+                SqlParameter unidad = new SqlParameter("@unidad", factura.Unidad);
+
 
                 SqlParameter nameCliente = new SqlParameter("@NameCliente", factura.NameCliente);
                 SqlParameter cedula = new SqlParameter("@Cedula", factura.Cedula);
@@ -37,10 +41,12 @@ namespace ProyectoMain.Fractura.Negocio_Data
 
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.Add(codigo);
+                command.Parameters.Add(Tipo_De_Producto);
                 command.Parameters.Add(nombre);
                 command.Parameters.Add(descripcion);
                 command.Parameters.Add(precio);
                 command.Parameters.Add(cantidad);
+                command.Parameters.Add(unidad);
 
                 command.Parameters.Add(nameCliente);
                 command.Parameters.Add(cedula);
@@ -79,7 +85,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
                 if (!string.IsNullOrEmpty(buscar))
                 {
                     //cambiar despues para el filtro, no tengo ganas ahora
-                    querry += @"WHERE codigo LIKE @buscar OR nombre LIKE @buscar OR descripcion LIKE @buscar";
+                    querry += @" WHERE Codigo LIKE @buscar OR NameCliente LIKE @buscar OR Descripción LIKE @buscar OR Codigofactura LIKE @buscar";
                     command.Parameters.Add(new SqlParameter("@buscar", $"%{buscar}%"));
                 }
 
@@ -116,6 +122,151 @@ namespace ProyectoMain.Fractura.Negocio_Data
             {
 
                // throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return facturas;
+        }
+
+        public List<Entidades.Factura> TenerFacturaEspeficico(string buscar = null)
+        {
+            List<Entidades.Factura> facturas = new List<Entidades.Factura>();
+            try
+            {
+                conn.Open();
+                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto ,Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago from facturas";
+
+                // SqlCommand command = new SqlCommand(querry, conn);
+                SqlCommand command = new SqlCommand();
+
+                if (!string.IsNullOrEmpty(buscar))
+                {
+                    //cambiar despues para el filtro, no tengo ganas ahora
+                    querry += @" WHERE Codigo LIKE @buscar OR NameCliente LIKE @buscar OR Descripción LIKE @buscar OR Codigofactura LIKE @buscar";
+                    command.Parameters.Add(new SqlParameter("@buscar", $"{buscar}"));
+                }
+
+                command.CommandText = querry;
+                command.Connection = conn;
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    facturas.Add(new Entidades.Factura
+                    {
+                        Codigofactura = reader["Codigofactura"].ToString(),
+                        NameCliente = reader["NameCliente"].ToString(),
+                        Cedula = reader["Cedula"].ToString(),
+                        Codigo = reader["Codigo"].ToString(),
+                        Tipo_De_Producto = reader["Tipo_De_Producto"].ToString(),
+                        Producto = reader["Producto"].ToString(),
+                        Descripción = reader["Descripción"].ToString(),
+                        Precio = decimal.Parse(reader["Precio"].ToString()),
+                        Cantidad = int.Parse(reader["Cantidad"].ToString()),
+                        Unidad = reader["unidad"].ToString(),
+                        PrecioTotal = decimal.Parse(reader["PrecioTotal"].ToString()),
+                        Tipofactura = int.Parse(reader["Tipofactura"].ToString()),
+                        Fecha_crear = DateTime.Parse(reader["Fecha_crear"].ToString()),
+                        Pago = int.Parse(reader["Pago"].ToString()),
+                        // Cantidad      = int.Parse(reader["Cantidad"].ToString()),
+
+                    });
+                }
+
+
+
+            }
+            catch (Exception)
+            {
+
+                // throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return facturas;
+        }
+
+        public void PagoRealizado(Entidades.Factura factura)
+        {
+            try
+            {
+                conn.Open();
+                String querry = @"update facturas set Pago = 1 WHERE Codigofactura = @Codigofactura";
+
+                SqlParameter codigo = new SqlParameter("@Codigofactura", factura.Codigofactura);
+
+                SqlCommand command = new SqlCommand(querry, conn);
+
+                command.Parameters.Add(codigo);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { conn.Close(); }
+        }
+
+        public List<Entidades.Factura> TenerFacturafiltro(string buscar = null)
+        {
+            List<Entidades.Factura> facturas = new List<Entidades.Factura>();
+            try
+            {
+                conn.Open();
+                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Producto, Descripción, Precio, Cantidad, PrecioTotal, Tipofactura, Fecha_crear, Pago from facturas";
+
+                // SqlCommand command = new SqlCommand(querry, conn);
+                SqlCommand command = new SqlCommand();
+
+                if (!string.IsNullOrEmpty(buscar))
+                {
+                    //cambiar despues para el filtro, no tengo ganas ahora
+                    querry += @" WHERE Codigo LIKE @buscar OR NameCliente LIKE @buscar OR Descripción LIKE @buscar OR Codigofactura LIKE @buscar";
+                    command.Parameters.Add(new SqlParameter("@buscar", $"{buscar}"));
+                }
+
+                command.CommandText = querry;
+                command.Connection = conn;
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    facturas.Add(new Entidades.Factura
+                    {
+                        Codigofactura = reader["Codigofactura"].ToString(),
+                        NameCliente = reader["NameCliente"].ToString(),
+                        Cedula = reader["Cedula"].ToString(),
+                        Codigo = reader["Codigo"].ToString(),
+                        Producto = reader["Producto"].ToString(),
+                        Descripción = reader["Descripción"].ToString(),
+                        Precio = decimal.Parse(reader["Precio"].ToString()),
+                        Cantidad = int.Parse(reader["Cantidad"].ToString()),
+                        PrecioTotal = decimal.Parse(reader["PrecioTotal"].ToString()),
+                        Tipofactura = int.Parse(reader["Tipofactura"].ToString()),
+                        Fecha_crear = DateTime.Parse(reader["Fecha_crear"].ToString()),
+                        Pago = int.Parse(reader["Pago"].ToString()),
+                        // Cantidad      = int.Parse(reader["Cantidad"].ToString()),
+
+                    });
+                }
+
+
+
+            }
+            catch (Exception)
+            {
+
+                // throw;
             }
             finally
             {

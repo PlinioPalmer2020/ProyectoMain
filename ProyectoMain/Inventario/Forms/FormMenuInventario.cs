@@ -24,6 +24,8 @@ namespace ProyectoMain.Inventario.Forms
         {
             FormAgregarProducto formAgregar = new FormAgregarProducto();
             formAgregar.ShowDialog(this);
+            //frmMenuAgregar frmMenuAgregar = new frmMenuAgregar();
+            //frmMenuAgregar.ShowDialog(this);
         }
 
         private void FormMenuInventario_Load(object sender, EventArgs e)
@@ -32,60 +34,99 @@ namespace ProyectoMain.Inventario.Forms
 
             cargardatosdgv(txtBuscar.Text);
 
+            //foreach (Control item in gridInventario.Controls)
+            //{
+            //    if (item is Button)
+            //    {
+            //        item.Click += eventoboton;
+            //    }
+            //}
+
         }
+
+        //private void eventoboton(object sender, EventArgs e)
+        //{
+        //    Button button = (Button)sender;
+        //    MessageBox.Show(button.Name);
+        //}
 
         private void gridInventario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewLinkCell cell = (DataGridViewLinkCell)gridInventario.Rows[e.RowIndex].Cells[e.ColumnIndex];
-
-            if (cell.Value.ToString() == "Modificar")
+            try
             {
-                FormAgregarProducto agregarProducto = new FormAgregarProducto();
-                agregarProducto.CargarInventario(new Entidades.Inventario
+                DataGridViewLinkCell cell = (DataGridViewLinkCell)gridInventario.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                if (cell.Value.ToString() == "Modificar")
                 {
-                    Id = int.Parse(gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString()),
-                    Codigo = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                    Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                    descripcion = gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                    Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
-                    Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString()),
+                    FormAgregarProducto agregarProducto = new FormAgregarProducto();
+                    agregarProducto.CargarInventario(new Entidades.Inventario
+                    {
+                        Id = int.Parse(gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString()),
+                        Codigo = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                        Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                        descripcion = gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                        Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
+                        Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString()),
 
-                });
+                    });
 
-                agregarProducto.txtCantidad.Enabled = false;
-                agregarProducto.btnAgregar.Text = "Modificar";
-                agregarProducto.ShowDialog(this);
+                    agregarProducto.txtCantidad.Enabled = false;
+                    agregarProducto.btnAgregar.Text = "Modificar";
+                    agregarProducto.ShowDialog(this);
+                }
+                else if (cell.Value.ToString() == "Añadir")
+                {
+                    FormAgregarProducto agregarProducto = new FormAgregarProducto();
+                    agregarProducto.CargarInventario(new Entidades.Inventario
+                    {
+                        Id = int.Parse(gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString()),
+                        Codigo = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                        Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                        descripcion = gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                        Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
+                        Cantidad = 0,
+
+                    });
+
+                    agregarProducto.txtCantidad.Enabled = true;
+                    agregarProducto.txtNombre.Enabled = false;
+                    agregarProducto.txtPrecio.Enabled = false;
+                    agregarProducto.txtComprado.Enabled = false;
+                    agregarProducto.txtDescripcion.Enabled = false;
+                    agregarProducto.txtCantidad.Enabled = true;
+
+                    agregarProducto.btnAgregar.Text = "Añadir";
+                    agregarProducto.cbTipoProducto.Enabled = false;
+                    agregarProducto.txtComprado.Text = "0";
+                    agregarProducto.tipoproducto = gridInventario.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    agregarProducto.estado = "Añadir";
+
+                    agregarProducto.ShowDialog(this);
+                }
+                else if (cell.Value.ToString() == "Eliminar")
+                {
+                    DialogResult dr = MessageBox.Show("¿Seguro de Eliminar este producto del Inventario?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+                    if (dr == DialogResult.Yes)
+                    {
+                        Entidades.Inventario inventario = new Entidades.Inventario();
+                        inventario.Codigo = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        _inventarioNegocio.EliminarInventario(inventario.Codigo);
+                        cargardatosdgv(txtBuscar.Text);
+                    }
+
+                }
+
             }
-            else if (cell.Value.ToString() == "Añadir")
+            catch (Exception)
             {
-                FormAgregarProducto agregarProducto = new FormAgregarProducto();
-                agregarProducto.CargarInventario(new Entidades.Inventario
-                {
-                    Id = int.Parse(gridInventario.Rows[e.RowIndex].Cells[0].Value.ToString()),
-                    Codigo = gridInventario.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                    Nombre = gridInventario.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                    descripcion = gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                    Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
-                    Cantidad = int.Parse(gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString()),
 
-                });
-
-                agregarProducto.txtCantidad.Enabled = true;
-                agregarProducto.txtNombre.Enabled = false;
-                agregarProducto.txtPrecio.Enabled = false;
-                agregarProducto.txtDescripcion.Enabled = false;
-                agregarProducto.txtCantidad.Enabled = true;
-
-                agregarProducto.btnAgregar.Text = "Añadir";
-                agregarProducto.ShowDialog(this);
+                //throw;
+                MessageBox.Show("algo fallo");
             }
         }
 
-        public void cargar()
-        {
-            //this.inventarioTableAdapter.Fill(this.ferreteriaDataSet.inventario);
 
-        }
 
         public void cargardatosdgv(string buscar)
         {
@@ -109,6 +150,28 @@ namespace ProyectoMain.Inventario.Forms
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             cargardatosdgv(txtBuscar.Text);
+        }
+
+        private void gridInventario_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (this.gridInventario.Columns[e.ColumnIndex].Name == "cantidadDataGridViewTextBoxColumn")
+            {
+                if (Convert.ToInt32(e.Value) <= 10)
+                {
+                    e.CellStyle.ForeColor = Color.Black;
+                    e.CellStyle.BackColor = Color.FromArgb(249, 65, 68);
+                }
+                if (Convert.ToInt32(e.Value) <= 20 && Convert.ToInt32(e.Value) > 10)
+                {
+                    e.CellStyle.ForeColor = Color.Black;
+                    e.CellStyle.BackColor = Color.FromArgb(249, 199, 79);
+                }
+                if (Convert.ToInt32(e.Value) >= 21)
+                {
+                    e.CellStyle.ForeColor = Color.Black;
+                    e.CellStyle.BackColor = Color.FromArgb(67, 170, 139);
+                }
+            }
         }
     }
 }

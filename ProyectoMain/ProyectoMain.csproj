@@ -12,7 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <PublishUrl>C:\Users\plini\Desktop\proyectoFerreteria\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\plini\Desktop\public\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,10 +23,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -62,8 +61,13 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\Extensiones\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -97,6 +101,12 @@
     </Compile>
     <Compile Include="Fractura\Forms\frmdetallesfactura.Designer.cs">
       <DependentUpon>frmdetallesfactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fractura\Forms\frmFacturaMostrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fractura\Forms\frmFacturaMostrar.Designer.cs">
+      <DependentUpon>frmFacturaMostrar.cs</DependentUpon>
     </Compile>
     <Compile Include="Fractura\Forms\FrmMenuFactura.cs">
       <SubType>Form</SubType>
@@ -134,11 +144,20 @@
     <Compile Include="Inventario\Forms\FormMenuInventario.Designer.cs">
       <DependentUpon>FormMenuInventario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventario\Forms\frmMenuAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\Forms\frmMenuAgregar.Designer.cs">
+      <DependentUpon>frmMenuAgregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventario\Negocio\InventarioNegocio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Fractura\Forms\frmdetallesfactura.resx">
       <DependentUpon>frmdetallesfactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fractura\Forms\frmFacturaMostrar.resx">
+      <DependentUpon>frmFacturaMostrar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fractura\Forms\FrmMenuFactura.resx">
       <DependentUpon>FrmMenuFactura.cs</DependentUpon>
@@ -151,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\Forms\FormMenuInventario.resx">
       <DependentUpon>FormMenuInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\Forms\frmMenuAgregar.resx">
+      <DependentUpon>frmMenuAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

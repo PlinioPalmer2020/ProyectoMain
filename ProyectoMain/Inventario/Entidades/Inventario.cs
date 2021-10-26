@@ -19,10 +19,13 @@ namespace ProyectoMain.Inventario.Entidades
 
         public int Id { get; set; }
         public string Codigo { get; set; }
+        public string Tipo_de_producto { get; set; }
         public string Nombre { get; set; }
         public string descripcion { get; set; }
+        public decimal comprado { get; set; }
         public decimal Precio { get; set; }
-        public int Cantidad { get; set; }
+        public double Cantidad { get; set; }
+        public string unidad { get; set; }
 
     }
 }

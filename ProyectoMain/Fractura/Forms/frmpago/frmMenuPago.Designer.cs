@@ -38,36 +38,32 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.CodigoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_Crear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RealizarPago = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Detalles = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Desactivar = new System.Windows.Forms.DataGridViewLinkColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(371, 45);
+            this.btnFiltrar.Location = new System.Drawing.Point(329, 43);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrar.Size = new System.Drawing.Size(169, 23);
             this.btnFiltrar.TabIndex = 0;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(488, 45);
+            this.button2.Location = new System.Drawing.Point(756, 43);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Salir";
+            this.button2.Text = "Volver";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -107,92 +103,78 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             // 
             // dgvFacturas
             // 
+            this.dgvFacturas.AllowUserToAddRows = false;
+            this.dgvFacturas.AllowUserToDeleteRows = false;
             this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFacturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodigoFactura,
             this.NameCliente,
-            this.Cedula,
-            this.Codigo,
-            this.Descripcion,
-            this.Precio,
-            this.Cantidad,
-            this.PrecioTotal,
             this.TipoFactura,
             this.Fecha_Crear,
             this.Pago,
             this.RealizarPago,
+            this.Detalles,
             this.Desactivar});
-            this.dgvFacturas.Location = new System.Drawing.Point(12, 146);
+            this.dgvFacturas.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvFacturas.Location = new System.Drawing.Point(0, 99);
             this.dgvFacturas.Name = "dgvFacturas";
-            this.dgvFacturas.Size = new System.Drawing.Size(1313, 308);
+            this.dgvFacturas.ReadOnly = true;
+            this.dgvFacturas.Size = new System.Drawing.Size(854, 431);
             this.dgvFacturas.TabIndex = 6;
+            this.dgvFacturas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellContentClick);
+            this.dgvFacturas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvFacturas_CellFormatting);
             // 
             // CodigoFactura
             // 
             this.CodigoFactura.HeaderText = "Codigo Factura";
             this.CodigoFactura.Name = "CodigoFactura";
+            this.CodigoFactura.ReadOnly = true;
             // 
             // NameCliente
             // 
             this.NameCliente.HeaderText = "Nombre del Cliente";
             this.NameCliente.Name = "NameCliente";
-            // 
-            // Cedula
-            // 
-            this.Cedula.HeaderText = "Cedula";
-            this.Cedula.Name = "Cedula";
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Codigo del Producto";
-            this.Codigo.Name = "Codigo";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // PrecioTotal
-            // 
-            this.PrecioTotal.HeaderText = "Precio Total";
-            this.PrecioTotal.Name = "PrecioTotal";
+            this.NameCliente.ReadOnly = true;
             // 
             // TipoFactura
             // 
             this.TipoFactura.HeaderText = "Tipo de Factura";
             this.TipoFactura.Name = "TipoFactura";
+            this.TipoFactura.ReadOnly = true;
             // 
             // Fecha_Crear
             // 
-            this.Fecha_Crear.HeaderText = "Fechar de Creacion";
+            this.Fecha_Crear.HeaderText = "Fecha de Creacion";
             this.Fecha_Crear.Name = "Fecha_Crear";
+            this.Fecha_Crear.ReadOnly = true;
             // 
             // Pago
             // 
             this.Pago.HeaderText = "Pago";
             this.Pago.Name = "Pago";
+            this.Pago.ReadOnly = true;
             // 
             // RealizarPago
             // 
-            this.RealizarPago.HeaderText = "RealizarPago";
+            this.RealizarPago.HeaderText = "Realizar Pago";
             this.RealizarPago.Name = "RealizarPago";
+            this.RealizarPago.ReadOnly = true;
             this.RealizarPago.Text = "Realizar Pago";
             this.RealizarPago.UseColumnTextForLinkValue = true;
+            // 
+            // Detalles
+            // 
+            this.Detalles.HeaderText = "Detalles";
+            this.Detalles.Name = "Detalles";
+            this.Detalles.ReadOnly = true;
+            this.Detalles.Text = "Detalles";
+            this.Detalles.UseColumnTextForLinkValue = true;
             // 
             // Desactivar
             // 
             this.Desactivar.HeaderText = "Quitar";
             this.Desactivar.Name = "Desactivar";
+            this.Desactivar.ReadOnly = true;
             this.Desactivar.Text = "Quitar";
             this.Desactivar.UseColumnTextForLinkValue = true;
             // 
@@ -200,7 +182,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1337, 530);
+            this.ClientSize = new System.Drawing.Size(854, 530);
             this.Controls.Add(this.dgvFacturas);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -209,6 +191,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnFiltrar);
             this.Name = "frmMenuPago";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenuPago";
             this.Load += new System.EventHandler(this.frmMenuPago_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
@@ -228,16 +211,11 @@ namespace ProyectoMain.Fractura.Forms.frmpago
         private System.Windows.Forms.DataGridView dgvFacturas;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Crear;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pago;
         private System.Windows.Forms.DataGridViewLinkColumn RealizarPago;
+        private System.Windows.Forms.DataGridViewLinkColumn Detalles;
         private System.Windows.Forms.DataGridViewLinkColumn Desactivar;
     }
 }

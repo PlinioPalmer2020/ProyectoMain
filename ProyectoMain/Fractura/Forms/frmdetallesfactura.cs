@@ -14,6 +14,7 @@ namespace ProyectoMain.Fractura.Forms
     {
 
         private Inventario.Entidades.Inventario _inventario;
+       // public string tipoProducto = string.Empty;
         public frmdetallesfactura()
         {
             InitializeComponent();
@@ -21,14 +22,25 @@ namespace ProyectoMain.Fractura.Forms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
-            inventario.Codigo = txtCodigo.Text;
-            inventario.Nombre = txtNombre.Text;
-            inventario.descripcion = txtDescripcion.Text;
-            inventario.Precio = decimal.Parse(txtPrecio.Text);
-            inventario.Cantidad = int.Parse(txtCantidad.Text);
-            this.Close();
-            ((FrmMenuFactura)this.Owner).cargardetalles(inventario);
+
+            if (_inventario.Cantidad >= int.Parse(txtCantidad.Text))
+            {
+                Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
+                inventario.Codigo = txtCodigo.Text;
+                inventario.Nombre = txtNombre.Text;
+                inventario.descripcion = txtDescripcion.Text;
+                inventario.Precio = decimal.Parse(txtPrecio.Text);
+                inventario.Cantidad = int.Parse(txtCantidad.Text);
+                inventario.unidad = cbUnidad.SelectedItem.ToString();
+                inventario.Tipo_de_producto = _inventario.Tipo_de_producto;
+                this.Close();
+                ((FrmMenuFactura)this.Owner).cargardetalles(inventario);
+
+            }
+            else
+            {
+               MessageBox.Show("Usted no puede agregar mas que no hay en el inventario");
+            }
 
         }
 
@@ -45,6 +57,16 @@ namespace ProyectoMain.Fractura.Forms
                 txtDescripcion.Text = inventario.descripcion;
                 txtNombre.Text = inventario.Nombre;
                 txtPrecio.Text = inventario.Precio.ToString();
+                switch (inventario.Tipo_de_producto)
+                {
+                    case "Arenas":
+                        cbUnidad.Items.Add("Metros");
+                        cbUnidad.Items.Add("Sacos");
+                        cbUnidad.SelectedItem = inventario.unidad;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -55,6 +77,11 @@ namespace ProyectoMain.Fractura.Forms
             txtDescripcion.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtPrecio.Text = string.Empty;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

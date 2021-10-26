@@ -34,9 +34,18 @@ namespace ProyectoMain.Inventario.Negocio
             return inventario;
         }
 
+        public void AñadirInventario(Entidades.Inventario inventario)
+        {
+            _inventarioData.AñadirInventario(inventario);
+        }
         public void ReducirExistenciaInventario(Entidades.Inventario inventario)
         {
             _inventarioData.ReducirExistenciaInventario(inventario);
+        }
+
+        public void EliminarInventario(string codigo)
+        {
+            _inventarioData.EliminarInventario(codigo);
         }
     }
 }
