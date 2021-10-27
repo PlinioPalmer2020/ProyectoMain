@@ -34,7 +34,7 @@ namespace ProyectoMain.Fractura.Forms
 
         private void FrmMenuFactura_Load(object sender, EventArgs e)
         {
-
+            txtNombreCliente.Focus();
             CargarDatos(txtBuscar.Text);
             if (Login == "factura")
             {

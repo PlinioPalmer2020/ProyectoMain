@@ -124,6 +124,7 @@ namespace ProyectoMain.Inventario.Forms
                 default:
                     break;
             }
+
             if (estado != "Añadir")
             {
                 _inventarioNegocio.InsentarInventario(inventario);
@@ -176,6 +177,30 @@ namespace ProyectoMain.Inventario.Forms
             }
             cbUnidad.SelectedIndex = 0;
 
+        }
+
+        #endregion
+
+        #region Validación de solo numero los precio, compra y cantidad 
+        private void txtComprado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Funciones_de_Validaciones.Validacion validacion = new Funciones_de_Validaciones.Validacion();
+
+            e.KeyChar = Convert.ToChar(validacion.SoloNumero(e.KeyChar));
+        }
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Funciones_de_Validaciones.Validacion validacion = new Funciones_de_Validaciones.Validacion();
+
+            e.KeyChar = Convert.ToChar(validacion.SoloNumero(e.KeyChar));
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Funciones_de_Validaciones.Validacion validacion = new Funciones_de_Validaciones.Validacion();
+
+            e.KeyChar = Convert.ToChar(validacion.SoloNumero(e.KeyChar));
         }
 
         #endregion

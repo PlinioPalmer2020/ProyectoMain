@@ -21,7 +21,12 @@ namespace ProyectoMain
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            var login = _loginNegocio.isLogin(txtUsuario.Text,txtContraseña.Text);
+            IsLogin();
+        }
+
+        private void IsLogin()
+        {
+            var login = _loginNegocio.isLogin(txtUsuario.Text, txtContraseña.Text);
 
             if (login.Count != 0)
             {
@@ -47,24 +52,48 @@ namespace ProyectoMain
                             frmMenuPago.Show();
                             this.Hide();
                             break;
-                        
+
                     }
                 }
             }
             else
             {
-                MessageBox.Show("El Usuario o Contraseña esta incorrecta","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("El Usuario o Contraseña esta incorrecta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            txtUsuario.Focus();
+        }
+        #region Fuciones para salir de la aplicacion
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
+        #endregion
+
+        #region KeyPress
+        private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Enter)
+            {
+                IsLogin();
+            }
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Enter)
+            {
+                IsLogin();
+            }
+        }
+
+        #endregion
+
     }
 }

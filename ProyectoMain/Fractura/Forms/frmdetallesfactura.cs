@@ -14,6 +14,7 @@ namespace ProyectoMain.Fractura.Forms
     {
 
         private Inventario.Entidades.Inventario _inventario;
+        private decimal aux = 0;
        // public string tipoProducto = string.Empty;
         public frmdetallesfactura()
         {
@@ -104,5 +105,36 @@ namespace ProyectoMain.Fractura.Forms
         }
 
         #endregion
+
+        private void cbUnidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (_inventario.Tipo_de_producto)
+            {
+                case "Arenas":
+                    switch (cbUnidad.SelectedItem.ToString())
+                    {
+                        case "Sacos":
+                            aux = decimal.Parse(txtPrecio.Text);
+                            txtPrecio.Text = (aux / 8).ToString();
+                            break;
+                        case "Metros":
+                            txtPrecio.Text = _inventario.Precio.ToString();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Funciones_de_Validaciones.Validacion validacion = new Funciones_de_Validaciones.Validacion();
+
+            e.KeyChar = Convert.ToChar(validacion.SoloNumero(e.KeyChar));
+        }
     }
 }
