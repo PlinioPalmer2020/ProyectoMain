@@ -114,12 +114,6 @@
     <Compile Include="Fractura\Forms\FrmMenuFactura.Designer.cs">
       <DependentUpon>FrmMenuFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fractura\Forms\frmpago\frmDetallesPago.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Fractura\Forms\frmpago\frmDetallesPago.Designer.cs">
-      <DependentUpon>frmDetallesPago.cs</DependentUpon>
-    </Compile>
     <Compile Include="Fractura\Forms\frmpago\frmMenuPago.cs">
       <SubType>Form</SubType>
     </Compile>

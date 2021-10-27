@@ -170,5 +170,18 @@ namespace ProyectoMain.Inventario.Forms
             frmMenuRegistroEntrada.Show();
             this.Hide();
         }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            form.Show();
+            //this.Login = string.Empty;
+            this.Close();
+        }
+
+        private void FormMenuInventario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

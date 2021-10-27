@@ -16,6 +16,7 @@ namespace ProyectoMain.Fractura.Forms
         Inventario.Negocio.InventarioNegocio _inventarioNegocio;
         Negocio_Data.NegocioFactura _negocioFactura;
         List<Inventario.Entidades.Inventario> _detallesfactura;
+        public string Login = string.Empty; 
         public FrmMenuFactura()
         {
             InitializeComponent();
@@ -33,19 +34,13 @@ namespace ProyectoMain.Fractura.Forms
 
         private void FrmMenuFactura_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'ferreteriaDataSet1.inventario' Puede moverla o quitarla según sea necesario.
 
-            try
+            CargarDatos(txtBuscar.Text);
+            if (Login == "factura")
             {
-                //  this.inventarioTableAdapter.Fill(this.ferreteriaDataSet1.inventario);
-                CargarDatos(txtBuscar.Text);
+                btnSalir.Visible = false;
+                btnCaja.Visible = false;
             }
-            catch (Exception)
-            {
-
-
-            }
-
         }
         private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -149,10 +144,10 @@ namespace ProyectoMain.Fractura.Forms
                 }
                 LimpiarForms();
                 MessageBox.Show("Factura Generada","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
+               // frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
                // frmFacturaMostrar.ReducirInventario(inventario);
-                frmFacturaMostrar.cargarDatos(codigoFactura);
-                frmFacturaMostrar.ShowDialog(this);
+               // frmFacturaMostrar.cargarDatos(codigoFactura);
+               // frmFacturaMostrar.ShowDialog(this);
                 dgvDetalles.Rows.Clear();
                 _detallesfactura.Clear();
                 gridInventario.Rows.Clear();
@@ -274,5 +269,19 @@ namespace ProyectoMain.Fractura.Forms
         }
         #endregion
 
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            form.Show();
+            this.Login = string.Empty;
+            this.Close();
+        }
+
+        private void btnCaja_Click(object sender, EventArgs e)
+        {
+            frmpago.frmMenuPago frmMenuPago = new frmpago.frmMenuPago();
+            frmMenuPago.Show();
+            this.Hide();
+        }
     }
 }

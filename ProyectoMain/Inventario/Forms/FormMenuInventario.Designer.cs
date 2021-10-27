@@ -52,6 +52,7 @@ namespace ProyectoMain.Inventario.Forms
             this.inventarioTableAdapter = new ProyectoMain.FerreteriaDataSetTableAdapters.inventarioTableAdapter();
             this.btnFacturacion = new System.Windows.Forms.Button();
             this.btnPagos = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet)).BeginInit();
@@ -201,7 +202,7 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnHistoria
             // 
-            this.btnHistoria.Location = new System.Drawing.Point(785, 65);
+            this.btnHistoria.Location = new System.Drawing.Point(680, 65);
             this.btnHistoria.Name = "btnHistoria";
             this.btnHistoria.Size = new System.Drawing.Size(126, 20);
             this.btnHistoria.TabIndex = 3;
@@ -231,7 +232,7 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnFacturacion
             // 
-            this.btnFacturacion.Location = new System.Drawing.Point(785, 36);
+            this.btnFacturacion.Location = new System.Drawing.Point(680, 36);
             this.btnFacturacion.Name = "btnFacturacion";
             this.btnFacturacion.Size = new System.Drawing.Size(126, 23);
             this.btnFacturacion.TabIndex = 6;
@@ -241,19 +242,30 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnPagos
             // 
-            this.btnPagos.Location = new System.Drawing.Point(785, 91);
+            this.btnPagos.Location = new System.Drawing.Point(680, 91);
             this.btnPagos.Name = "btnPagos";
             this.btnPagos.Size = new System.Drawing.Size(126, 23);
             this.btnPagos.TabIndex = 7;
-            this.btnPagos.Text = "Fracturas";
+            this.btnPagos.Text = "Caja";
             this.btnPagos.UseVisualStyleBackColor = true;
             this.btnPagos.Click += new System.EventHandler(this.btnPagos_Click);
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Location = new System.Drawing.Point(813, 36);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(126, 23);
+            this.btnCerrarSesion.TabIndex = 8;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // FormMenuInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(951, 450);
+            this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.btnPagos);
             this.Controls.Add(this.btnFacturacion);
             this.Controls.Add(this.txtBuscar);
@@ -267,6 +279,7 @@ namespace ProyectoMain.Inventario.Forms
             this.Name = "FormMenuInventario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMenuInventario_FormClosing);
             this.Load += new System.EventHandler(this.FormMenuInventario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioBindingSource)).EndInit();
@@ -300,5 +313,6 @@ namespace ProyectoMain.Inventario.Forms
         private System.Windows.Forms.DataGridViewLinkColumn Añadir;
         private System.Windows.Forms.DataGridViewLinkColumn Modificar;
         private System.Windows.Forms.DataGridViewLinkColumn Eliminar;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }

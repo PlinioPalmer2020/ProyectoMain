@@ -44,6 +44,8 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.RealizarPago = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Detalles = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Desactivar = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.btnVolverFactura = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,11 +61,11 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(756, 43);
+            this.button2.Location = new System.Drawing.Point(720, 26);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(106, 23);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Volver";
+            this.button2.Text = "Volver al Inventario";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -179,11 +181,33 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Desactivar.Text = "Quitar";
             this.Desactivar.UseColumnTextForLinkValue = true;
             // 
+            // btnVolverFactura
+            // 
+            this.btnVolverFactura.Location = new System.Drawing.Point(720, 60);
+            this.btnVolverFactura.Name = "btnVolverFactura";
+            this.btnVolverFactura.Size = new System.Drawing.Size(106, 23);
+            this.btnVolverFactura.TabIndex = 7;
+            this.btnVolverFactura.Text = "Volver A Factura";
+            this.btnVolverFactura.UseVisualStyleBackColor = true;
+            this.btnVolverFactura.Click += new System.EventHandler(this.btnVolverFactura_Click);
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Location = new System.Drawing.Point(574, 25);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(107, 23);
+            this.btnCerrarSesion.TabIndex = 8;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // frmMenuPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(854, 530);
+            this.Controls.Add(this.btnCerrarSesion);
+            this.Controls.Add(this.btnVolverFactura);
             this.Controls.Add(this.dgvFacturas);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -191,9 +215,11 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Controls.Add(this.cbTipoPago);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnFiltrar);
+            this.MaximizeBox = false;
             this.Name = "frmMenuPago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu de Facturas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenuPago_FormClosing);
             this.Load += new System.EventHandler(this.frmMenuPago_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.ResumeLayout(false);
@@ -218,5 +244,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
         private System.Windows.Forms.DataGridViewLinkColumn RealizarPago;
         private System.Windows.Forms.DataGridViewLinkColumn Detalles;
         private System.Windows.Forms.DataGridViewLinkColumn Desactivar;
+        private System.Windows.Forms.Button btnVolverFactura;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }

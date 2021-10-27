@@ -36,12 +36,14 @@ namespace ProyectoMain
                             break;
                         case "factura":
                             Fractura.Forms.FrmMenuFactura frmMenuFactura = new Fractura.Forms.FrmMenuFactura();
+                            frmMenuFactura.Login = item.rol;
                             frmMenuFactura.Show();
                             this.Hide();
                             break;
 
                         case "caja":
                             Fractura.Forms.frmpago.frmMenuPago frmMenuPago = new Fractura.Forms.frmpago.frmMenuPago();
+                            frmMenuPago.login = item.rol;
                             frmMenuPago.Show();
                             this.Hide();
                             break;
@@ -56,6 +58,11 @@ namespace ProyectoMain
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
