@@ -16,7 +16,7 @@ namespace ProyectoMain
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Inventario.Forms.FormMenuInventario());
+            Application.Run(new Form1());
         }
     }
 }
