@@ -113,12 +113,24 @@ namespace ProyectoMain.Inventario.Forms
                     if (inventario.unidad == "Sacos")
                     {
                         inventario.Cantidad = inventario.Cantidad / 8;
+                        //inventario.unidad = "Sacos";
                     }
                     break;
                 case "Cemento":
                     if (inventario.unidad == "Libra")
                     {
                         inventario.Cantidad = inventario.Cantidad / 98;
+                    }
+                    break;
+                case "Alimentos":
+                    if(inventario.unidad == "Libra")
+                    {
+                        inventario.Cantidad = inventario.Cantidad / 100;
+
+                    }
+                    else if(inventario.unidad == "Medi Saco")
+                    {
+                        inventario.Cantidad = inventario.Cantidad / 50;
                     }
                     break;
                 default:

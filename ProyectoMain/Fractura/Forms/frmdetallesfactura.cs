@@ -124,6 +124,40 @@ namespace ProyectoMain.Fractura.Forms
                             break;
                     }
                     break;
+
+                case "Cemento":
+                    switch (cbUnidad.SelectedItem.ToString())
+                    {
+                        case "Libra":
+                            aux = decimal.Parse(txtPrecio.Text);
+                            txtPrecio.Text = (aux / 98).ToString();
+                            break;
+                        case "Funda":
+                            txtPrecio.Text = _inventario.Precio.ToString();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+
+                case "Alimentos":
+                    switch (cbUnidad.SelectedItem.ToString())
+                    {
+                        case "Libra":
+                            aux = decimal.Parse(txtPrecio.Text);
+                            txtPrecio.Text = (aux / 100).ToString();
+                            break;
+                        case "Medi Saco":
+                            aux = decimal.Parse(txtPrecio.Text);
+                            txtPrecio.Text = (aux / 2).ToString();
+                            break;
+                        case "Saco":
+                            txtPrecio.Text = _inventario.Precio.ToString();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
                 default:
                     break;
             }

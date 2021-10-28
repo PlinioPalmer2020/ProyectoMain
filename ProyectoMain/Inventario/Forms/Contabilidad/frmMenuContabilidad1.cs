@@ -134,17 +134,49 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
         private void CalcularVendaHoy()
         {
             decimal total = 0;
-            var aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy")).ToList();
+            List<Fractura.Entidades.Factura> aux = new List<Fractura.Entidades.Factura>();
+            if (rbTodos.Checked == true)
+            {
+                 aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy")).ToList();
+            }
+            else if (rbPagados.Checked == true)
+            {
+                 aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy") && f.Pago == 1).ToList();
+            }
+            else
+            {
+                 aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy") && f.Pago == 0).ToList();
+            }
             foreach (var item in aux)
             {
                 total += item.PrecioTotal;
             }
-            MessageBox.Show("El total de la venta de Hoy Pagadas Son: RD$" + total.ToString("##,#.##") + " Pesos" ,"Información",MessageBoxButtons.OK,MessageBoxIcon.Information);;
+            if (total == 0)
+            {
+                MessageBox.Show("El total de la venta de Hoy Pagadas Son: RD$" + total.ToString() + " Pesos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+            }
+            else
+            {
+                MessageBox.Show("El total de la venta de Hoy Pagadas Son: RD$" + total.ToString("##,#.##") + " Pesos" ,"Información",MessageBoxButtons.OK,MessageBoxIcon.Information);;
+            }
         }
         private void CalcularVendaAyer()
         {
             decimal total = 0;
-            var aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy") ).ToList();
+            List<Fractura.Entidades.Factura> aux = new List<Fractura.Entidades.Factura>();
+
+            if (rbTodos.Checked == true)
+            {
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy") ).ToList();
+            }
+            else if (rbPagados.Checked == true)
+            {
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy") && f.Pago == 1).ToList();
+            }
+            else
+            {
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy") && f.Pago == 0).ToList();
+            }
             foreach (var item in aux)
             {
                 total += item.PrecioTotal;
@@ -155,7 +187,20 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
         private void CalcularVendaMes()
         {
             decimal total = 0;
-            var aux = _facturas.Where(f => f.Fecha_crear.ToString("MM/yyyy") == DateTime.Now.ToString("MM/yyyy")).ToList();
+            List<Fractura.Entidades.Factura> aux = new List<Fractura.Entidades.Factura>();
+
+            if (rbTodos.Checked == true)
+            {
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("MM/yyyy") == DateTime.Now.ToString("MM/yyyy")).ToList();
+            }
+            else if (rbPagados.Checked == true)
+            {
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("MM/yyyy") == DateTime.Now.ToString("MM/yyyy") && f.Pago == 1).ToList();
+            }
+            else
+            {
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("MM/yyyy") == DateTime.Now.ToString("MM/yyyy") && f.Pago == 0).ToList();
+            }
             foreach (var item in aux)
             {
                 total += item.PrecioTotal;
@@ -181,6 +226,9 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             {
                 CalcularVendaMes();
             }
+
+
+
 
         #endregion
 

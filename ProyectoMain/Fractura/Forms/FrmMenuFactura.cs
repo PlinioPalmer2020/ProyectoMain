@@ -80,9 +80,9 @@ namespace ProyectoMain.Fractura.Forms
             decimal total = 0;
             foreach (var item in _detallesfactura)
             {
-                dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString() + " " + item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(),item.unidad, (Convert.ToDouble(item.Precio) * item.Cantidad).ToString(), item.Tipo_de_producto);
+                dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString() + " " + item.descripcion.ToString(), item.Precio.ToString("##,#.##"), item.Cantidad.ToString(),item.unidad, (Convert.ToDouble(item.Precio) * item.Cantidad).ToString("##,#.##"), item.Tipo_de_producto);
                 total += (item.Precio * Convert.ToDecimal(item.Cantidad));
-                lblTotal.Text = total.ToString();
+                lblTotal.Text = total.ToString("##,#.##");
             }
             botonValidos();
         }
@@ -192,15 +192,15 @@ namespace ProyectoMain.Fractura.Forms
                     dgvDetalles.Rows.Clear();
                     foreach (var item in _detallesfactura)
                     {
-                        dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString(), item.Cantidad.ToString(), (Convert.ToDouble(item.Precio) * item.Cantidad).ToString());
+                        dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString("##,#.##"), item.Cantidad.ToString(), (Convert.ToDouble(item.Precio) * item.Cantidad).ToString()).ToString("##,#.##");
                     }
                     botonValidos();
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
                 // throw;
             }
         }

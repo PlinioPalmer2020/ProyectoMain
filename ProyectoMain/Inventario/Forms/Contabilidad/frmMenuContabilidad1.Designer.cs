@@ -30,9 +30,20 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
         private void InitializeComponent()
         {
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
+            this.contador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbSinPagar = new System.Windows.Forms.RadioButton();
+            this.rbPagados = new System.Windows.Forms.RadioButton();
+            this.rbTodos = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnMes = new System.Windows.Forms.Button();
@@ -46,15 +57,9 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             this.label6 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnBuscarFecha = new System.Windows.Forms.Button();
-            this.contador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvFacturas
@@ -79,6 +84,54 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             this.dgvFacturas.TabIndex = 0;
             this.dgvFacturas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvFacturas_CellFormatting);
             // 
+            // contador
+            // 
+            this.contador.FillWeight = 15.22843F;
+            this.contador.HeaderText = "#";
+            this.contador.Name = "contador";
+            this.contador.ReadOnly = true;
+            // 
+            // CodigoFactura
+            // 
+            this.CodigoFactura.FillWeight = 116.9543F;
+            this.CodigoFactura.HeaderText = "Codigo Factura";
+            this.CodigoFactura.Name = "CodigoFactura";
+            this.CodigoFactura.ReadOnly = true;
+            // 
+            // NombreCliente
+            // 
+            this.NombreCliente.FillWeight = 116.9543F;
+            this.NombreCliente.HeaderText = "Nombre Del Cliente";
+            this.NombreCliente.Name = "NombreCliente";
+            this.NombreCliente.ReadOnly = true;
+            // 
+            // TipoFactura
+            // 
+            this.TipoFactura.FillWeight = 116.9543F;
+            this.TipoFactura.HeaderText = "Tipo De Factura";
+            this.TipoFactura.Name = "TipoFactura";
+            this.TipoFactura.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            this.Fecha.FillWeight = 116.9543F;
+            this.Fecha.HeaderText = "Fecha de Creacion";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // Pago
+            // 
+            this.Pago.FillWeight = 116.9543F;
+            this.Pago.HeaderText = "Pago";
+            this.Pago.Name = "Pago";
+            this.Pago.ReadOnly = true;
+            // 
             // dtpFechaInicio
             // 
             this.dtpFechaInicio.Location = new System.Drawing.Point(12, 44);
@@ -96,16 +149,60 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnMes);
             this.panel1.Controls.Add(this.btnHoy);
             this.panel1.Controls.Add(this.btnAyer);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(734, 0);
+            this.panel1.Location = new System.Drawing.Point(723, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(285, 174);
+            this.panel1.Size = new System.Drawing.Size(296, 174);
             this.panel1.TabIndex = 3;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbSinPagar);
+            this.groupBox1.Controls.Add(this.rbPagados);
+            this.groupBox1.Controls.Add(this.rbTodos);
+            this.groupBox1.Location = new System.Drawing.Point(6, 65);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(300, 35);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            // 
+            // rbSinPagar
+            // 
+            this.rbSinPagar.AutoSize = true;
+            this.rbSinPagar.Location = new System.Drawing.Point(204, 10);
+            this.rbSinPagar.Name = "rbSinPagar";
+            this.rbSinPagar.Size = new System.Drawing.Size(71, 17);
+            this.rbSinPagar.TabIndex = 2;
+            this.rbSinPagar.Text = "Sin Pagar";
+            this.rbSinPagar.UseVisualStyleBackColor = true;
+            // 
+            // rbPagados
+            // 
+            this.rbPagados.AutoSize = true;
+            this.rbPagados.Location = new System.Drawing.Point(113, 10);
+            this.rbPagados.Name = "rbPagados";
+            this.rbPagados.Size = new System.Drawing.Size(67, 17);
+            this.rbPagados.TabIndex = 1;
+            this.rbPagados.Text = "Pagados";
+            this.rbPagados.UseVisualStyleBackColor = true;
+            // 
+            // rbTodos
+            // 
+            this.rbTodos.AutoSize = true;
+            this.rbTodos.Checked = true;
+            this.rbTodos.Location = new System.Drawing.Point(7, 10);
+            this.rbTodos.Name = "rbTodos";
+            this.rbTodos.Size = new System.Drawing.Size(55, 17);
+            this.rbTodos.TabIndex = 0;
+            this.rbTodos.TabStop = true;
+            this.rbTodos.Text = "Todos";
+            this.rbTodos.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -129,7 +226,7 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // 
             // btnMes
             // 
-            this.btnMes.Location = new System.Drawing.Point(199, 79);
+            this.btnMes.Location = new System.Drawing.Point(199, 119);
             this.btnMes.Name = "btnMes";
             this.btnMes.Size = new System.Drawing.Size(83, 23);
             this.btnMes.TabIndex = 2;
@@ -139,7 +236,7 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // 
             // btnHoy
             // 
-            this.btnHoy.Location = new System.Drawing.Point(107, 79);
+            this.btnHoy.Location = new System.Drawing.Point(107, 119);
             this.btnHoy.Name = "btnHoy";
             this.btnHoy.Size = new System.Drawing.Size(75, 23);
             this.btnHoy.TabIndex = 1;
@@ -149,7 +246,7 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // 
             // btnAyer
             // 
-            this.btnAyer.Location = new System.Drawing.Point(6, 79);
+            this.btnAyer.Location = new System.Drawing.Point(6, 119);
             this.btnAyer.Name = "btnAyer";
             this.btnAyer.Size = new System.Drawing.Size(75, 23);
             this.btnAyer.TabIndex = 0;
@@ -213,7 +310,7 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(599, 2);
+            this.btnVolver.Location = new System.Drawing.Point(576, 1);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(129, 23);
             this.btnVolver.TabIndex = 10;
@@ -229,54 +326,6 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             this.btnBuscarFecha.TabIndex = 11;
             this.btnBuscarFecha.Text = "BUSCAR";
             this.btnBuscarFecha.UseVisualStyleBackColor = true;
-            // 
-            // contador
-            // 
-            this.contador.FillWeight = 15.22843F;
-            this.contador.HeaderText = "#";
-            this.contador.Name = "contador";
-            this.contador.ReadOnly = true;
-            // 
-            // CodigoFactura
-            // 
-            this.CodigoFactura.FillWeight = 116.9543F;
-            this.CodigoFactura.HeaderText = "Codigo Factura";
-            this.CodigoFactura.Name = "CodigoFactura";
-            this.CodigoFactura.ReadOnly = true;
-            // 
-            // NombreCliente
-            // 
-            this.NombreCliente.FillWeight = 116.9543F;
-            this.NombreCliente.HeaderText = "Nombre Del Cliente";
-            this.NombreCliente.Name = "NombreCliente";
-            this.NombreCliente.ReadOnly = true;
-            // 
-            // TipoFactura
-            // 
-            this.TipoFactura.FillWeight = 116.9543F;
-            this.TipoFactura.HeaderText = "Tipo De Factura";
-            this.TipoFactura.Name = "TipoFactura";
-            this.TipoFactura.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            this.Fecha.FillWeight = 116.9543F;
-            this.Fecha.HeaderText = "Fecha de Creacion";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
-            // Pago
-            // 
-            this.Pago.FillWeight = 116.9543F;
-            this.Pago.HeaderText = "Pago";
-            this.Pago.Name = "Pago";
-            this.Pago.ReadOnly = true;
             // 
             // frmMenuContabilidad1
             // 
@@ -305,6 +354,8 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,5 +387,9 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pago;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbSinPagar;
+        private System.Windows.Forms.RadioButton rbPagados;
+        private System.Windows.Forms.RadioButton rbTodos;
     }
 }
