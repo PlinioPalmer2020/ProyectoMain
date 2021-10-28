@@ -183,5 +183,12 @@ namespace ProyectoMain.Inventario.Forms
         {
             Application.Exit();
         }
+
+        private void btnContabidad_Click(object sender, EventArgs e)
+        {
+            Contabilidad.frmMenuContabilidad1 frmMenuContabilidad1 = new Contabilidad.frmMenuContabilidad1();
+            frmMenuContabilidad1.Show();
+            this.Hide();
+        }
     }
 }

@@ -53,6 +53,7 @@ namespace ProyectoMain.Inventario.Forms
             this.btnFacturacion = new System.Windows.Forms.Button();
             this.btnPagos = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.btnContabidad = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ferreteriaDataSet)).BeginInit();
@@ -252,7 +253,7 @@ namespace ProyectoMain.Inventario.Forms
             // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(813, 36);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(812, 90);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(126, 23);
             this.btnCerrarSesion.TabIndex = 8;
@@ -260,11 +261,22 @@ namespace ProyectoMain.Inventario.Forms
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
+            // btnContabidad
+            // 
+            this.btnContabidad.Location = new System.Drawing.Point(812, 36);
+            this.btnContabidad.Name = "btnContabidad";
+            this.btnContabidad.Size = new System.Drawing.Size(126, 48);
+            this.btnContabidad.TabIndex = 9;
+            this.btnContabidad.Text = "Contabilidad y Reportes";
+            this.btnContabidad.UseVisualStyleBackColor = true;
+            this.btnContabidad.Click += new System.EventHandler(this.btnContabidad_Click);
+            // 
             // FormMenuInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(951, 450);
+            this.Controls.Add(this.btnContabidad);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.btnPagos);
             this.Controls.Add(this.btnFacturacion);
@@ -314,5 +326,6 @@ namespace ProyectoMain.Inventario.Forms
         private System.Windows.Forms.DataGridViewLinkColumn Modificar;
         private System.Windows.Forms.DataGridViewLinkColumn Eliminar;
         private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Button btnContabidad;
     }
 }

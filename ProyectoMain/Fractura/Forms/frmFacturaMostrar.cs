@@ -86,9 +86,9 @@ namespace ProyectoMain.Fractura.Forms
             PrinterSettings ps = new PrinterSettings();
             printDocument1.PrinterSettings = ps;
             printDocument1.PrintPage += imprimir;
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.ShowDialog();
-            //printDocument1.Print();
+            //printPreviewDialog1.Document = printDocument1;
+          //  printPreviewDialog1.ShowDialog();
+            printDocument1.Print();
         }
         private void btnPagar_Click(object sender, EventArgs e)
         {
@@ -128,7 +128,17 @@ namespace ProyectoMain.Fractura.Forms
                     ((frmpago.frmMenuPago)this.Owner).cargarFacturas();
                 }
 
-                this.Close();
+                DialogResult dw = MessageBox.Show("¿Quieres Imprimir la Factura?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dw == DialogResult.Yes)
+                {
+                    btnImprimir.PerformClick();
+                    this.Close();
+
+                }
+                else
+                {
+                    this.Close();
+                }
 
             }
         }
@@ -143,15 +153,17 @@ namespace ProyectoMain.Fractura.Forms
         #region funcion encargado de imprimir ticket
         private void imprimir(object sender, PrintPageEventArgs e)
         {
-            Font font = new Font("Arial",8,FontStyle.Regular,GraphicsUnit.Point);
+            Font font = new Font("Arial",8,FontStyle.Bold,GraphicsUnit.Point);
+            Font fonttitulo = new Font("Arial",15,FontStyle.Bold,GraphicsUnit.Point);
 
             int y = 20;
         
 
             // cabezado
 
-            e.Graphics.DrawString("Agro Ferreteria J.S", font, Brushes.Black, new RectangleF(100, y, 150, 20));
-            e.Graphics.DrawString("Direccion", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("Agro Ferreteria J.S", fonttitulo, Brushes.Black, new RectangleF(95, y, 150, 50));
+           // e.Graphics.DrawString("Direccion", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             foreach (var item in _imprimir)
             {

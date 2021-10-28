@@ -36,6 +36,8 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
+            this.btnVolverFactura = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.CodigoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,8 +46,6 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.RealizarPago = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Detalles = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Desactivar = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.btnVolverFactura = new System.Windows.Forms.Button();
-            this.btnCerrarSesion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,6 +127,26 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.dgvFacturas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellContentClick);
             this.dgvFacturas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvFacturas_CellFormatting);
             // 
+            // btnVolverFactura
+            // 
+            this.btnVolverFactura.Location = new System.Drawing.Point(720, 60);
+            this.btnVolverFactura.Name = "btnVolverFactura";
+            this.btnVolverFactura.Size = new System.Drawing.Size(106, 23);
+            this.btnVolverFactura.TabIndex = 7;
+            this.btnVolverFactura.Text = "Volver A Factura";
+            this.btnVolverFactura.UseVisualStyleBackColor = true;
+            this.btnVolverFactura.Click += new System.EventHandler(this.btnVolverFactura_Click);
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Location = new System.Drawing.Point(574, 25);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(107, 23);
+            this.btnCerrarSesion.TabIndex = 8;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // CodigoFactura
             // 
             this.CodigoFactura.HeaderText = "Codigo Factura";
@@ -180,26 +200,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Desactivar.ReadOnly = true;
             this.Desactivar.Text = "Quitar";
             this.Desactivar.UseColumnTextForLinkValue = true;
-            // 
-            // btnVolverFactura
-            // 
-            this.btnVolverFactura.Location = new System.Drawing.Point(720, 60);
-            this.btnVolverFactura.Name = "btnVolverFactura";
-            this.btnVolverFactura.Size = new System.Drawing.Size(106, 23);
-            this.btnVolverFactura.TabIndex = 7;
-            this.btnVolverFactura.Text = "Volver A Factura";
-            this.btnVolverFactura.UseVisualStyleBackColor = true;
-            this.btnVolverFactura.Click += new System.EventHandler(this.btnVolverFactura_Click);
-            // 
-            // btnCerrarSesion
-            // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(574, 25);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(107, 23);
-            this.btnCerrarSesion.TabIndex = 8;
-            this.btnCerrarSesion.Text = "Cerrar Sesión";
-            this.btnCerrarSesion.UseVisualStyleBackColor = true;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            this.Desactivar.Visible = false;
             // 
             // frmMenuPago
             // 
@@ -215,6 +216,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Controls.Add(this.cbTipoPago);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnFiltrar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "frmMenuPago";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -236,6 +238,8 @@ namespace ProyectoMain.Fractura.Forms.frmpago
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvFacturas;
+        private System.Windows.Forms.Button btnVolverFactura;
+        private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoFactura;
@@ -244,7 +248,5 @@ namespace ProyectoMain.Fractura.Forms.frmpago
         private System.Windows.Forms.DataGridViewLinkColumn RealizarPago;
         private System.Windows.Forms.DataGridViewLinkColumn Detalles;
         private System.Windows.Forms.DataGridViewLinkColumn Desactivar;
-        private System.Windows.Forms.Button btnVolverFactura;
-        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }

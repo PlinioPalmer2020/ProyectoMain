@@ -127,6 +127,12 @@
     <Compile Include="Inventario\data\RegistroData.cs" />
     <Compile Include="Inventario\Entidades\Inventario.cs" />
     <Compile Include="Inventario\Entidades\Registro.cs" />
+    <Compile Include="Inventario\Forms\Contabilidad\frmMenuContabilidad1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\Forms\Contabilidad\frmMenuContabilidad1.Designer.cs">
+      <DependentUpon>frmMenuContabilidad1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventario\Forms\FormAgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fractura\Forms\frmpago\frmMenuPago.resx">
       <DependentUpon>frmMenuPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\Forms\Contabilidad\frmMenuContabilidad1.resx">
+      <DependentUpon>frmMenuContabilidad1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\Forms\FormAgregarProducto.resx">
       <DependentUpon>FormAgregarProducto.cs</DependentUpon>
