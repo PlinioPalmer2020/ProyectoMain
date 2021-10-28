@@ -130,7 +130,7 @@ namespace ProyectoMain.Inventario.Forms
                     }
                     else if(inventario.unidad == "Medi Saco")
                     {
-                        inventario.Cantidad = inventario.Cantidad / 50;
+                        inventario.Cantidad = inventario.Cantidad / 2;
                     }
                     break;
                 default:
