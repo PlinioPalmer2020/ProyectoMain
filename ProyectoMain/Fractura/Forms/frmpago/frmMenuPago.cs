@@ -14,6 +14,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
     {
         private Negocio_Data.NegocioFactura _negocioFactura;
         private List<string> lista;
+        public string login = string.Empty;
         public frmMenuPago()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
         {
             Inventario.Forms.FormMenuInventario formMenuInventario = new Inventario.Forms.FormMenuInventario();
             formMenuInventario.Show();
-            this.Close();
+            this.Hide();
         }
 
         public void cargarFacturas()
@@ -99,6 +100,16 @@ namespace ProyectoMain.Fractura.Forms.frmpago
 
         private void frmMenuPago_Load(object sender, EventArgs e)
         {
+            if (login == "caja" || login == "factura")
+            {
+                btnVolverFactura.Visible = false;
+                button2.Visible = false;
+            }
+            else if(login == "mixto")
+            {
+                btnVolverFactura.Visible = true;
+                button2.Visible = false;
+            }
             cargarFacturas();
         }
 
@@ -176,6 +187,30 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             {
                 cargarFacturas(cbTipoPago.SelectedIndex,cbPagoPendiente.SelectedIndex);
             }
+        }
+
+        private void frmMenuPago_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnVolverFactura_Click(object sender, EventArgs e)
+        {
+            FrmMenuFactura frmMenuFactura = new FrmMenuFactura();
+            if (login == "mixto")
+            {
+                frmMenuFactura.Login = "mixto";
+            }
+            frmMenuFactura.Show();
+            this.Show();
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            form.Show();
+            this.login = string.Empty;
+            this.Hide();
         }
     }
 }

@@ -114,6 +114,7 @@ namespace ProyectoMain.Inventario.Forms
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(148, 20);
             this.txtPrecio.TabIndex = 8;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // label4
             // 
@@ -130,6 +131,7 @@ namespace ProyectoMain.Inventario.Forms
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(148, 20);
             this.txtCantidad.TabIndex = 10;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // label5
             // 
@@ -174,7 +176,7 @@ namespace ProyectoMain.Inventario.Forms
             this.txtComprado.Name = "txtComprado";
             this.txtComprado.Size = new System.Drawing.Size(148, 20);
             this.txtComprado.TabIndex = 16;
-            this.txtComprado.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtComprado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComprado_KeyPress);
             // 
             // label7
             // 
@@ -241,9 +243,9 @@ namespace ProyectoMain.Inventario.Forms
         public System.Windows.Forms.TextBox txtDescripcion;
         public System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbUnidad;
         public System.Windows.Forms.TextBox txtComprado;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.ComboBox cbTipoProducto;
+        public System.Windows.Forms.ComboBox cbUnidad;
     }
 }

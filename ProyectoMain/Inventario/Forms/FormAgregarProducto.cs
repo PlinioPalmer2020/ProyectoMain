@@ -23,11 +23,75 @@ namespace ProyectoMain.Inventario.Forms
             _inventarioNegocio = new Negocio.InventarioNegocio();
         }
 
+
+        private void FormAgregarProducto_Load(object sender, EventArgs e)
+        {
+            txtCodigo.Enabled = false;
+           // txtTipoDeProducto.Text = tipoDeProducto;
+           // txtCantidad.Enabled = false;
+            txtCodigo.Text = generarCodigo();
+
+            cbTipoProducto.Items.Add("Arenas");
+            cbTipoProducto.Items.Add("Medicamentos");
+            cbTipoProducto.Items.Add("Tubos");
+            cbTipoProducto.Items.Add("Cemento");
+            cbTipoProducto.Items.Add("Alimentos");
+            cbTipoProducto.Items.Add("Herramientas o otros productos");
+
+            if (estado == "Añadir" || estado == "Modificar")
+            {
+                cbTipoProducto.SelectedItem = tipoproducto;
+            }
+        }
+
+
+        #region Botones
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            guardarInventario();
+            //txtCantidad.Enabled = true; 
+            this.Close();
+            ((FormMenuInventario)this.Owner).cargardatosdgv(null);
+        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        #endregion
+
+        #region Funciones
+        private string generarCodigo()
+        {
+            DateTime fecha = DateTime.Now;
+
+            string codigo = "CPN" + fecha.ToString("dd") + fecha.ToString("MM") + fecha.ToString("yyyy") + fecha.ToString("hh") + fecha.ToString("mm") + fecha.ToString("ss") + fecha.ToString("ff");
+ 
+            return codigo;
+        }
+        private void limpiarForm()
+        {
+            txtCantidad.Text = string.Empty;
+            txtCodigo.Text = string.Empty;
+            txtDescripcion.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtPrecio.Text = string.Empty;
+        }
+        public void CargarInventario(Entidades.Inventario inventario) 
+        {
+            _inventario = inventario;
+            if (inventario != null)
+            {
+                limpiarForm();
+
+                txtCantidad.Text = inventario.Cantidad.ToString();
+                txtCodigo.Text = inventario.Codigo;
+                txtDescripcion.Text = inventario.descripcion;
+                txtNombre.Text = inventario.Nombre;
+                txtPrecio.Text = inventario.Precio.ToString();
+                txtComprado.Text = inventario.comprado.ToString();
+            }
+        }
         private void guardarInventario()
         {
             Entidades.Inventario inventario = new Entidades.Inventario();
@@ -42,17 +106,37 @@ namespace ProyectoMain.Inventario.Forms
 
             inventario.Id = _inventario != null ? _inventario.Id : 0;
 
+
             switch (cbTipoProducto.SelectedItem)
             {
                 case "Arenas":
                     if (inventario.unidad == "Sacos")
                     {
                         inventario.Cantidad = inventario.Cantidad / 8;
+                        //inventario.unidad = "Sacos";
+                    }
+                    break;
+                case "Cemento":
+                    if (inventario.unidad == "Libra")
+                    {
+                        inventario.Cantidad = inventario.Cantidad / 98;
+                    }
+                    break;
+                case "Alimentos":
+                    if(inventario.unidad == "Libra")
+                    {
+                        inventario.Cantidad = inventario.Cantidad / 100;
+
+                    }
+                    else if(inventario.unidad == "Medi Saco")
+                    {
+                        inventario.Cantidad = inventario.Cantidad / 2;
                     }
                     break;
                 default:
                     break;
             }
+
             if (estado != "Añadir")
             {
                 _inventarioNegocio.InsentarInventario(inventario);
@@ -63,83 +147,74 @@ namespace ProyectoMain.Inventario.Forms
             }
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            guardarInventario();
-            //txtCantidad.Enabled = true; 
-            this.Close();
-            ((FormMenuInventario)this.Owner).cargardatosdgv(null);
-        }
+        #endregion
 
-        public void CargarInventario(Entidades.Inventario inventario) 
-        {
-            _inventario = inventario;
-            if (inventario != null)
-            {
-                limpiarForm();
-
-                txtCantidad.Text = inventario.Cantidad.ToString();
-                txtCodigo.Text = inventario.Codigo;
-                txtDescripcion.Text = inventario.descripcion;
-                txtNombre.Text = inventario.Nombre;
-                txtPrecio.Text = inventario.Precio.ToString();
-            }
-        }
-
-        private void limpiarForm()
-        {
-            txtCantidad.Text = string.Empty;
-            txtCodigo.Text = string.Empty;
-            txtDescripcion.Text = string.Empty;
-            txtNombre.Text = string.Empty;
-            txtPrecio.Text = string.Empty;
-        }
-
-        private void FormAgregarProducto_Load(object sender, EventArgs e)
-        {
-            txtCodigo.Enabled = false;
-           // txtTipoDeProducto.Text = tipoDeProducto;
-           // txtCantidad.Enabled = false;
-            txtCodigo.Text = generarCodigo();
-
-            cbTipoProducto.Items.Add("Arenas");
-            cbTipoProducto.Items.Add("Medicamentos");
-            if (estado == "Añadir")
-            {
-                cbTipoProducto.SelectedItem = tipoproducto;
-            }
-        }
-
-        private string generarCodigo()
-        {
-            DateTime fecha = DateTime.Now;
-
-            string codigo = "CPN" + fecha.ToString("dd") + fecha.ToString("MM") + fecha.ToString("yyyy") + fecha.ToString("hh") + fecha.ToString("mm") + fecha.ToString("ss") + fecha.ToString("ff");
- 
-            return codigo;
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        #region Eventos
         private void cbTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            cbUnidad.Items.Clear();
+            cbUnidad.Text = string.Empty;
             switch (cbTipoProducto.SelectedItem)
             {
                 case "Arenas":
-                    cbUnidad.Enabled = true;
                     cbUnidad.Items.Add("Metros");
                     cbUnidad.Items.Add("Sacos");
-                    cbUnidad.SelectedIndex = 0;
+                    break;
+                case "Cemento":
+                    cbUnidad.Items.Add("Funda");
+                    cbUnidad.Items.Add("Libra");
+                    break;
+                case "Tubos":
+                    cbUnidad.Items.Add("Pie");
+                    break;
+                case "Medicamentos":
+                    cbUnidad.Items.Add("CC");
+                    break;
+                case "Alimentos":
+                    cbUnidad.Items.Add("Saco");
+                    cbUnidad.Items.Add("Medi Saco");
+                    cbUnidad.Items.Add("Libra");
+                    break;
+                case "Herramientas o otros productos":
+                    cbUnidad.Items.Add("Unidad");
                     break;
                 default:
-                    cbUnidad.Items.Clear();
                     cbUnidad.Enabled = false;
                     break;
             }
+            if (estado == "Añadir" || estado == null)
+            {
+                cbUnidad.Enabled = true;
+            }
+            cbUnidad.SelectedIndex = 0;
+
         }
+
+        #endregion
+
+        #region Validación de solo numero los precio, compra y cantidad 
+        private void txtComprado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Funciones_de_Validaciones.Validacion validacion = new Funciones_de_Validaciones.Validacion();
+
+            e.KeyChar = Convert.ToChar(validacion.SoloNumero(e.KeyChar));
+        }
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Funciones_de_Validaciones.Validacion validacion = new Funciones_de_Validaciones.Validacion();
+
+            e.KeyChar = Convert.ToChar(validacion.SoloNumero(e.KeyChar));
+        }
+
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Funciones_de_Validaciones.Validacion validacion = new Funciones_de_Validaciones.Validacion();
+
+            e.KeyChar = Convert.ToChar(validacion.SoloNumero(e.KeyChar));
+        }
+
+        #endregion
     }
 }

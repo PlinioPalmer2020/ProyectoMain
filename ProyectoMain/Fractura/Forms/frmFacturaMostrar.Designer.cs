@@ -40,6 +40,7 @@ namespace ProyectoMain.Fractura.Forms
             this.PrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoproducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@ namespace ProyectoMain.Fractura.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.lblfechaCreacion = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnImprimir = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
@@ -75,6 +75,7 @@ namespace ProyectoMain.Fractura.Forms
             // 
             this.dgvFactura.AllowUserToAddRows = false;
             this.dgvFactura.AllowUserToDeleteRows = false;
+            this.dgvFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
@@ -96,6 +97,7 @@ namespace ProyectoMain.Fractura.Forms
             this.Codigo.HeaderText = "Codigo";
             this.Codigo.Name = "Codigo";
             this.Codigo.ReadOnly = true;
+            this.Codigo.Visible = false;
             // 
             // Descripcion
             // 
@@ -146,6 +148,16 @@ namespace ProyectoMain.Fractura.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(695, 88);
             this.panel1.TabIndex = 2;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(310, 53);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(82, 23);
+            this.btnImprimir.TabIndex = 13;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // lblTotal
             // 
@@ -275,16 +287,6 @@ namespace ProyectoMain.Fractura.Forms
             this.label7.TabIndex = 11;
             this.label7.Text = "Fecha de Creacion:";
             // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Location = new System.Drawing.Point(310, 53);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(82, 23);
-            this.btnImprimir.TabIndex = 13;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
             // printPreviewDialog1
             // 
             this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -315,7 +317,7 @@ namespace ProyectoMain.Fractura.Forms
             this.MaximizeBox = false;
             this.Name = "frmFacturaMostrar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmFacturaMostrar";
+            this.Text = "Factura Generada";
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -344,6 +346,9 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.Label lblfechaCreacion;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.Button btnPagar;
+        private System.Windows.Forms.Button btnImprimir;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
@@ -351,8 +356,5 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoproducto;
-        private System.Windows.Forms.Button btnImprimir;
-        private System.Drawing.Printing.PrintDocument printDocument1;
-        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

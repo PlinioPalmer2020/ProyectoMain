@@ -60,6 +60,7 @@ namespace ProyectoMain.Fractura.Forms
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(167, 20);
             this.txtCantidad.TabIndex = 21;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // label5
             // 
@@ -157,6 +158,7 @@ namespace ProyectoMain.Fractura.Forms
             this.cbUnidad.Name = "cbUnidad";
             this.cbUnidad.Size = new System.Drawing.Size(101, 21);
             this.cbUnidad.TabIndex = 24;
+            this.cbUnidad.SelectedIndexChanged += new System.EventHandler(this.cbUnidad_SelectedIndexChanged);
             // 
             // frmdetallesfactura
             // 
@@ -180,7 +182,8 @@ namespace ProyectoMain.Fractura.Forms
             this.MaximizeBox = false;
             this.Name = "frmdetallesfactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmdetallesfactura";
+            this.Text = "Agregar Producto";
+            this.Load += new System.EventHandler(this.frmdetallesfactura_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

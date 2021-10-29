@@ -10,21 +10,27 @@ namespace ProyectoMain.Inventario.Entidades
     {
 
         /*
-         id int identity(1,1),
-        codigo varchar(100) not null,
-        nombre varchar(100) not null,
-        descripcion varchar(100) not null,
-        precio decimal(6,2) not null,
-        cantidad int not null,
-        fecha_entrada Datetime not null,
+         * id int identity(1,1),
+            codigo varchar(100) not null,
+            tipo_de_producto varchar(30) not null,
+            nombre varchar(100) not null,
+            descripcion varchar(100) not null,
+            precio decimal(18,2) not null,
+            comprado decimal(18,2) not null,
+            cantidad real not null,
+            unidad varchar(30) not null,
+            fecha_entrada Datetime not null,
          */
 
-        public int Id { get; set; }
-        public string Codigo { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public decimal Precio { get; set; }
-        public int Cantidad { get; set; }
-        public DateTime FechaEntrada { get; set; }
+        public int id { get; set; }
+        public string codigo { get; set; }
+        public string tipo_de_producto { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
+        public decimal precio { get; set; }
+        public decimal comprado { get; set; }
+        public double cantidad { get; set; }
+        public string unidad { get; set; }
+        public DateTime fecha_entrada { get; set; }
     }
 }
