@@ -87,7 +87,7 @@ namespace ProyectoMain.Fractura.Forms
             printDocument1.PrinterSettings = ps;
             printDocument1.PrintPage += imprimir;
             //printPreviewDialog1.Document = printDocument1;
-          //  printPreviewDialog1.ShowDialog();
+            //printPreviewDialog1.ShowDialog();
             printDocument1.Print();
         }
         private void btnPagar_Click(object sender, EventArgs e)
@@ -113,6 +113,17 @@ namespace ProyectoMain.Fractura.Forms
                             if (inventario.unidad == "Libra")
                             {
                                 inventario.Cantidad = inventario.Cantidad / 98;
+                            }
+                            break;
+                        case "Alimentos":
+                            if (inventario.unidad == "Libra")
+                            {
+                                inventario.Cantidad = inventario.Cantidad / 100;
+
+                            }
+                            else if (inventario.unidad == "Medi Saco")
+                            {
+                                inventario.Cantidad = inventario.Cantidad / 2;
                             }
                             break;
                         default:
@@ -161,21 +172,26 @@ namespace ProyectoMain.Fractura.Forms
 
             // cabezado
 
-            e.Graphics.DrawString("Agro Ferreteria J.S", fonttitulo, Brushes.Black, new RectangleF(95, y, 150, 50));
-           // e.Graphics.DrawString("Direccion", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("Agro Ferreteria J.S", fonttitulo, Brushes.Black, new RectangleF(70, y, 250, 50));
+            e.Graphics.DrawString("Carr. Haras Nacionales", font, Brushes.Black, new RectangleF(90, y += 25, 150, 20));
+            e.Graphics.DrawString("(El Jobo)  Sto. Dgo. Norte, R.D", font, Brushes.Black, new RectangleF(90, y += 15, 200, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("Tel.:809-368-9406", font, Brushes.Black, new RectangleF(0, y += 15, 200, 20));
+            e.Graphics.DrawString("Cel.:809-782-5547", font, Brushes.Black, new RectangleF(0, y += 15, 200, 20));
+            e.Graphics.DrawString("        809-838-6999", font, Brushes.Black, new RectangleF(0, y += 15, 200, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             foreach (var item in _imprimir)
             {
                 e.Graphics.DrawString("Codigo: "+item.Codigofactura, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
-                e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+               // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Cliente: " +item.NameCliente, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
-                e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+               // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Direccion: "+item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
-                e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+               // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Fecha de creacion: " + item.Fecha_crear, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
-                e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
-                e.Graphics.DrawString("Fecha de Impresion: " + DateTime.Now, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
+                //e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+               // e.Graphics.DrawString("Fecha de Impresion: " + DateTime.Now, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
                 e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 //aqui va un switch para el nombre del tipo de factura
                 switch (item.Tipofactura)
@@ -226,7 +242,7 @@ namespace ProyectoMain.Fractura.Forms
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
-            e.Graphics.DrawString("-------------------------FINAL DE LA FACTURA---------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
+            //e.Graphics.DrawString("-------------------------FINAL DE LA FACTURA---------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
 
         }
 

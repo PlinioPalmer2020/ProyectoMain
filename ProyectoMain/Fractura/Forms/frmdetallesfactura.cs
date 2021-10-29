@@ -15,6 +15,7 @@ namespace ProyectoMain.Fractura.Forms
 
         private Inventario.Entidades.Inventario _inventario;
         private decimal aux = 0;
+        public string genero = string.Empty;
        // public string tipoProducto = string.Empty;
         public frmdetallesfactura()
         {
@@ -78,8 +79,21 @@ namespace ProyectoMain.Fractura.Forms
         #region Botones
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (genero == "generico")
+            {
+                Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
+                inventario.Codigo = txtCodigo.Text;
+                inventario.Nombre = txtNombre.Text;
+                inventario.descripcion = txtDescripcion.Text;
+                inventario.Precio = decimal.Parse(txtPrecio.Text);
+                inventario.Cantidad = int.Parse(txtCantidad.Text);
+                inventario.unidad = cbUnidad.Text;
+                inventario.Tipo_de_producto = "Generico";
+                this.Close();
+                ((FrmMenuFactura)this.Owner).cargardetalles(inventario);
+            }
 
-            if (_inventario.Cantidad >= int.Parse(txtCantidad.Text))
+            else if (_inventario.Cantidad >= int.Parse(txtCantidad.Text))
             {
                 Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
                 inventario.Codigo = txtCodigo.Text;
@@ -169,6 +183,26 @@ namespace ProyectoMain.Fractura.Forms
             Funciones_de_Validaciones.Validacion validacion = new Funciones_de_Validaciones.Validacion();
 
             e.KeyChar = Convert.ToChar(validacion.SoloNumero(e.KeyChar));
+        }
+
+        private void frmdetallesfactura_Load(object sender, EventArgs e)
+        {
+            if (genero == "generico")
+            {
+                txtCodigo.Text = generarCodigo();
+                txtDescripcion.Enabled = true;
+                txtPrecio.Enabled = true;
+                txtCantidad.Enabled = true;
+            }
+        }
+
+        private string generarCodigo()
+        {
+            DateTime fecha = DateTime.Now;
+
+            string codigo = "CPN" + fecha.ToString("dd") + fecha.ToString("MM") + fecha.ToString("yyyy") + fecha.ToString("hh") + fecha.ToString("mm") + fecha.ToString("ss") + fecha.ToString("ff");
+
+            return codigo;
         }
     }
 }

@@ -176,7 +176,7 @@ namespace ProyectoMain.Inventario.Forms
             Form1 form = new Form1();
             form.Show();
             //this.Login = string.Empty;
-            this.Close();
+            this.Hide();
         }
 
         private void FormMenuInventario_FormClosing(object sender, FormClosingEventArgs e)

@@ -10,8 +10,11 @@ namespace ProyectoMain.Inventario.data
 {
     public class InventarioData
     {
-        //private SqlConnection conn = new SqlConnection("Password=123;Persist Security Info=True;User ID=usuario;Initial Catalog=Ferreteria;Data Source=152.0.96.70");
-        private SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;Data Source=DESKTOP-IV4HQSQ\\SQLEXPRESS");
+        //conexion mi casa
+        //private SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;Data Source=DESKTOP-IV4HQSQ\\SQLEXPRESS");
+
+        //Conexion del negocio
+        private SqlConnection conn = new SqlConnection("Password=sinergit;Persist Security Info=True;User ID=sa;Initial Catalog=Ferreteria;Data Source=192.168.1.113");
 
         public List<Entidades.Inventario> TenerInventarios(string buscar = null) 
         {
@@ -122,7 +125,8 @@ namespace ProyectoMain.Inventario.data
                                        nombre = @nombre, 
                                        descripcion  = @descripcion,
                                        precio = @precio,
-                                       cantidad = @cantidad
+                                       cantidad = @cantidad,
+                                       comprado = @comprado
                                        where id = @id";
 
                 SqlParameter Id = new SqlParameter("@id", inventario.Id);
@@ -131,6 +135,7 @@ namespace ProyectoMain.Inventario.data
                 SqlParameter descripcion = new SqlParameter("@descripcion", inventario.descripcion);
                 SqlParameter precio = new SqlParameter("@precio", inventario.Precio);
                 SqlParameter cantidad = new SqlParameter("@cantidad", inventario.Cantidad);
+                SqlParameter comprado = new SqlParameter("@comprado", inventario.comprado);
 
                 SqlCommand command = new SqlCommand(querry, conn);
                 command.Parameters.Add(Id);
@@ -139,6 +144,7 @@ namespace ProyectoMain.Inventario.data
                 command.Parameters.Add(descripcion);
                 command.Parameters.Add(precio);
                 command.Parameters.Add(cantidad);
+                command.Parameters.Add(comprado);
 
                 command.ExecuteNonQuery();
             }

@@ -53,6 +53,14 @@ namespace ProyectoMain
                             this.Hide();
                             break;
 
+                        case "mixto":
+                            Fractura.Forms.FrmMenuFactura frmMenu = new Fractura.Forms.FrmMenuFactura();
+                            frmMenu.Login = item.rol;
+                            frmMenu.Show();
+                            this.Hide();
+
+                            break;
+
                     }
                 }
             }

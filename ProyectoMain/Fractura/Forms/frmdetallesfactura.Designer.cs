@@ -183,6 +183,7 @@ namespace ProyectoMain.Fractura.Forms
             this.Name = "frmdetallesfactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Producto";
+            this.Load += new System.EventHandler(this.frmdetallesfactura_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

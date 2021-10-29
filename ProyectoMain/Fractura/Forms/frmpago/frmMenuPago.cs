@@ -105,6 +105,11 @@ namespace ProyectoMain.Fractura.Forms.frmpago
                 btnVolverFactura.Visible = false;
                 button2.Visible = false;
             }
+            else if(login == "mixto")
+            {
+                btnVolverFactura.Visible = true;
+                button2.Visible = false;
+            }
             cargarFacturas();
         }
 
@@ -192,6 +197,10 @@ namespace ProyectoMain.Fractura.Forms.frmpago
         private void btnVolverFactura_Click(object sender, EventArgs e)
         {
             FrmMenuFactura frmMenuFactura = new FrmMenuFactura();
+            if (login == "mixto")
+            {
+                frmMenuFactura.Login = "mixto";
+            }
             frmMenuFactura.Show();
             this.Show();
         }

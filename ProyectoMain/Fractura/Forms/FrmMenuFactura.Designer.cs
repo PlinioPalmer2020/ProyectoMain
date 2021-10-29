@@ -43,6 +43,8 @@ namespace ProyectoMain.Fractura.Forms
             this.tipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Agregar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panelFactura = new System.Windows.Forms.Panel();
+            this.btnCaja = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.cbTipoFactura = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -66,8 +68,7 @@ namespace ProyectoMain.Fractura.Forms
             this.tipoProductoDetalles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quitar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnCerrarSesion = new System.Windows.Forms.Button();
-            this.btnCaja = new System.Windows.Forms.Button();
+            this.btnAgregarProductoNuevo = new System.Windows.Forms.Button();
             this.panelAgregar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).BeginInit();
             this.panelFactura.SuspendLayout();
@@ -213,6 +214,26 @@ namespace ProyectoMain.Fractura.Forms
             this.panelFactura.Size = new System.Drawing.Size(645, 125);
             this.panelFactura.TabIndex = 7;
             // 
+            // btnCaja
+            // 
+            this.btnCaja.Location = new System.Drawing.Point(391, 91);
+            this.btnCaja.Name = "btnCaja";
+            this.btnCaja.Size = new System.Drawing.Size(121, 23);
+            this.btnCaja.TabIndex = 11;
+            this.btnCaja.Text = "Caja";
+            this.btnCaja.UseVisualStyleBackColor = true;
+            this.btnCaja.Click += new System.EventHandler(this.btnCaja_Click);
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Location = new System.Drawing.Point(518, 41);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(121, 23);
+            this.btnCerrarSesion.TabIndex = 10;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(518, 91);
@@ -275,6 +296,7 @@ namespace ProyectoMain.Fractura.Forms
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnAgregarProductoNuevo);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.btnLimpiar);
             this.panel1.Controls.Add(this.btnGenerar);
@@ -417,25 +439,15 @@ namespace ProyectoMain.Fractura.Forms
             this.label4.TabIndex = 0;
             this.label4.Text = "Productos Agregados";
             // 
-            // btnCerrarSesion
+            // btnAgregarProductoNuevo
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(518, 41);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(121, 23);
-            this.btnCerrarSesion.TabIndex = 10;
-            this.btnCerrarSesion.Text = "Cerrar Sesión";
-            this.btnCerrarSesion.UseVisualStyleBackColor = true;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
-            // 
-            // btnCaja
-            // 
-            this.btnCaja.Location = new System.Drawing.Point(391, 91);
-            this.btnCaja.Name = "btnCaja";
-            this.btnCaja.Size = new System.Drawing.Size(121, 23);
-            this.btnCaja.TabIndex = 11;
-            this.btnCaja.Text = "Caja";
-            this.btnCaja.UseVisualStyleBackColor = true;
-            this.btnCaja.Click += new System.EventHandler(this.btnCaja_Click);
+            this.btnAgregarProductoNuevo.Location = new System.Drawing.Point(186, 56);
+            this.btnAgregarProductoNuevo.Name = "btnAgregarProductoNuevo";
+            this.btnAgregarProductoNuevo.Size = new System.Drawing.Size(157, 23);
+            this.btnAgregarProductoNuevo.TabIndex = 5;
+            this.btnAgregarProductoNuevo.Text = "Agregar Producto Generico";
+            this.btnAgregarProductoNuevo.UseVisualStyleBackColor = true;
+            this.btnAgregarProductoNuevo.Click += new System.EventHandler(this.btnAgregarProductoNuevo_Click);
             // 
             // FrmMenuFactura
             // 
@@ -503,5 +515,6 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.DataGridViewLinkColumn Quitar;
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button btnCaja;
+        private System.Windows.Forms.Button btnAgregarProductoNuevo;
     }
 }

@@ -41,6 +41,11 @@ namespace ProyectoMain.Fractura.Forms
                 btnSalir.Visible = false;
                 btnCaja.Visible = false;
             }
+            else if(Login == "mixto")
+            {
+                btnSalir.Visible = false;
+                btnCaja.Visible = true;
+            }
         }
         private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -280,8 +285,19 @@ namespace ProyectoMain.Fractura.Forms
         private void btnCaja_Click(object sender, EventArgs e)
         {
             frmpago.frmMenuPago frmMenuPago = new frmpago.frmMenuPago();
+            if (Login == "mixto")
+            {
+                frmMenuPago.login = "mixto";
+            }
             frmMenuPago.Show();
             this.Hide();
+        }
+
+        private void btnAgregarProductoNuevo_Click(object sender, EventArgs e)
+        {
+            frmdetallesfactura frmdetallesfactura = new frmdetallesfactura();
+            frmdetallesfactura.genero = "generico";
+            frmdetallesfactura.ShowDialog(this);
         }
     }
 }
