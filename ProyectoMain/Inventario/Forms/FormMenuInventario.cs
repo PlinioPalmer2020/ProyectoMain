@@ -55,8 +55,8 @@ namespace ProyectoMain.Inventario.Forms
 
                     });
 
-                    agregarProducto.cbTipoProducto.Enabled = false;
-                    agregarProducto.cbUnidad.Enabled = false;
+                    //agregarProducto.cbTipoProducto.Enabled = false;
+                    //agregarProducto.cbUnidad.Enabled = false;
                     agregarProducto.estado = "Modificar";
                     agregarProducto.tipoproducto = gridInventario.Rows[e.RowIndex].Cells[6].Value.ToString();
                     agregarProducto.txtCantidad.Enabled = false;

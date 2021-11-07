@@ -14,9 +14,11 @@ namespace ProyectoMain.Inventario.Forms
     public partial class FormAgregarProducto : Form
     {
         private Negocio.InventarioNegocio _inventarioNegocio;
-        private Entidades.Inventario _inventario;
         private Negocio.CategoriaNegocio _categoriaNegocio;
         private Negocio.UnidadNegocio _unidadNegocio;
+        private Negocio.Diferente_precioNegocio _Diferente_PrecioNegocio;
+
+        private Entidades.Inventario _inventario;
         private List<Entidades.Diferente_precio> _diferente_Precios;
         public string estado = string.Empty;
         public string tipoproducto = string.Empty;
@@ -29,6 +31,7 @@ namespace ProyectoMain.Inventario.Forms
             _categoriaNegocio = new Negocio.CategoriaNegocio();
             _unidadNegocio = new Negocio.UnidadNegocio();
             _diferente_Precios = new List<Entidades.Diferente_precio>();
+            _Diferente_PrecioNegocio = new Negocio.Diferente_precioNegocio();
         }
 
 
@@ -102,8 +105,15 @@ namespace ProyectoMain.Inventario.Forms
                 txtCodigo.Text = inventario.Codigo;
                 txtDescripcion.Text = inventario.descripcion;
                 txtNombre.Text = inventario.Nombre;
-                txtPrecio.Text = inventario.Precio.ToString();
+               // txtPrecio.Text = inventario.Precio.ToString();
                 txtComprado.Text = inventario.comprado.ToString();
+
+                var aux = _Diferente_PrecioNegocio.TenerDiferente_precio(inventario.Codigo);
+
+                foreach (var item in aux)
+                {
+                    dgvDiferente.Rows.Add(item.unidad_diferente,item.precio);
+                }
             }
         }
         private void guardarInventario()
@@ -112,48 +122,31 @@ namespace ProyectoMain.Inventario.Forms
             inventario.Codigo = txtCodigo.Text;
             inventario.Nombre = txtNombre.Text;
             inventario.descripcion = txtDescripcion.Text;
-            inventario.Precio = decimal.Parse(txtPrecio.Text);
             inventario.Cantidad = double.Parse(txtCantidad.Text);
             inventario.Tipo_de_producto = cbTipoProducto.SelectedItem.ToString();
-            inventario.unidad = cbUnidad.SelectedItem.ToString();
             inventario.comprado = decimal.Parse(txtComprado.Text);
+
+            foreach (var item in _diferente_Precios)
+            {
+                inventario.Precio = item.precio;
+                inventario.unidad = item.unidad_diferente;
+                break;
+            }
 
             inventario.Id = _inventario != null ? _inventario.Id : 0;
 
 
-            switch (cbTipoProducto.SelectedItem)
-            {
-                case "Arenas":
-                    if (inventario.unidad == "Sacos")
-                    {
-                        inventario.Cantidad = inventario.Cantidad / 8;
-                        //inventario.unidad = "Sacos";
-                    }
-                    break;
-                case "Cemento":
-                    if (inventario.unidad == "Libra")
-                    {
-                        inventario.Cantidad = inventario.Cantidad / 98;
-                    }
-                    break;
-                case "Alimentos":
-                    if(inventario.unidad == "Libra")
-                    {
-                        inventario.Cantidad = inventario.Cantidad / 100;
-
-                    }
-                    else if(inventario.unidad == "Medi Saco")
-                    {
-                        inventario.Cantidad = inventario.Cantidad / 2;
-                    }
-                    break;
-                default:
-                    break;
-            }
-
             if (estado != "Añadir")
             {
                 _inventarioNegocio.InsentarInventario(inventario);
+                foreach (var item in _diferente_Precios)
+                {
+                    Entidades.Diferente_precio diferente_Precio = new Entidades.Diferente_precio();
+                    diferente_Precio.codigo_producto_diferente = item.codigo_producto_diferente;
+                    diferente_Precio.unidad_diferente = item.unidad_diferente;
+                    diferente_Precio.precio = item.precio;
+                    _Diferente_PrecioNegocio.InsentarDiferente_precio(diferente_Precio);
+                }
             }
             else
             {

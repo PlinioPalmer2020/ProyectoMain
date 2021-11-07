@@ -127,6 +127,7 @@
     <Compile Include="Fractura\Negocio_Data\NegocioFactura.cs" />
     <Compile Include="Funciones_de_Validaciones\Validacion.cs" />
     <Compile Include="Inventario\data\CategoriaData.cs" />
+    <Compile Include="Inventario\data\diferente_precioData.cs" />
     <Compile Include="Inventario\data\InventarioData.cs" />
     <Compile Include="Inventario\data\RegistroData.cs" />
     <Compile Include="Inventario\data\UnidadData.cs" />
@@ -166,6 +167,7 @@
       <DependentUpon>frmMenuRegistroEntrada.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventario\Negocio\CategoriaNegocio.cs" />
+    <Compile Include="Inventario\Negocio\Diferente_precioNegocio.cs" />
     <Compile Include="Inventario\Negocio\InventarioNegocio.cs" />
     <Compile Include="Inventario\Negocio\RegistroNegocio.cs" />
     <Compile Include="Inventario\Negocio\UnidadNegocio.cs" />
