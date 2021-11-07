@@ -123,7 +123,14 @@ namespace ProyectoMain.Fractura.Forms
 
                     foreach (var fac in _imprimir)
                     {
-                        inventario.Cantidad = (double)fac.PrecioTotal / (double)precioMaximo;
+                        if (item.unidad == "Detallado")
+                        {
+                            inventario.Cantidad = inventario.Cantidad / (double)precioMaximo;
+                        }
+                        else
+                        {
+                            inventario.Cantidad = (double)fac.PrecioTotal / (double)precioMaximo;
+                        }
                         break;
                     }
                     ReducirInventario(inventario);
