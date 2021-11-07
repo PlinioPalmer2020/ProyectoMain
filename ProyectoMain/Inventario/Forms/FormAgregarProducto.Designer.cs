@@ -48,11 +48,12 @@ namespace ProyectoMain.Inventario.Forms
             this.cbTipoProducto = new System.Windows.Forms.ComboBox();
             this.dgvDiferente = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnAñadir = new System.Windows.Forms.Button();
             this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quitar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Modificar = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.btnAñadir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiferente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -213,6 +214,7 @@ namespace ProyectoMain.Inventario.Forms
             this.dgvDiferente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Unidad,
             this.Precio,
+            this.id,
             this.Quitar,
             this.Modificar});
             this.dgvDiferente.Location = new System.Drawing.Point(50, 384);
@@ -231,6 +233,16 @@ namespace ProyectoMain.Inventario.Forms
             this.label8.TabIndex = 19;
             this.label8.Text = "Unidad";
             // 
+            // btnAñadir
+            // 
+            this.btnAñadir.Location = new System.Drawing.Point(309, 345);
+            this.btnAñadir.Name = "btnAñadir";
+            this.btnAñadir.Size = new System.Drawing.Size(99, 23);
+            this.btnAñadir.TabIndex = 20;
+            this.btnAñadir.Text = "Añadir Precio";
+            this.btnAñadir.UseVisualStyleBackColor = true;
+            this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
+            // 
             // Unidad
             // 
             this.Unidad.HeaderText = "Unidad";
@@ -242,6 +254,13 @@ namespace ProyectoMain.Inventario.Forms
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
             // Quitar
             // 
@@ -258,16 +277,6 @@ namespace ProyectoMain.Inventario.Forms
             this.Modificar.ReadOnly = true;
             this.Modificar.Text = "Modificar";
             this.Modificar.UseColumnTextForLinkValue = true;
-            // 
-            // btnAñadir
-            // 
-            this.btnAñadir.Location = new System.Drawing.Point(309, 345);
-            this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.Size = new System.Drawing.Size(99, 23);
-            this.btnAñadir.TabIndex = 20;
-            this.btnAñadir.Text = "Añadir Precio";
-            this.btnAñadir.UseVisualStyleBackColor = true;
-            this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
             // 
             // FormAgregarProducto
             // 
@@ -325,11 +334,12 @@ namespace ProyectoMain.Inventario.Forms
         public System.Windows.Forms.ComboBox cbTipoProducto;
         public System.Windows.Forms.ComboBox cbUnidad;
         private System.Windows.Forms.DataGridView dgvDiferente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewLinkColumn Quitar;
-        private System.Windows.Forms.DataGridViewLinkColumn Modificar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnAñadir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewLinkColumn Quitar;
+        private System.Windows.Forms.DataGridViewLinkColumn Modificar;
     }
 }

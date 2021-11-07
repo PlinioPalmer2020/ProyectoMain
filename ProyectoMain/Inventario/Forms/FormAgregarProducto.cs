@@ -23,6 +23,7 @@ namespace ProyectoMain.Inventario.Forms
         public string estado = string.Empty;
         public string tipoproducto = string.Empty;
         private int indice = 0;
+        private int auxid = 0;
         // public string tipoDeProducto = string.Empty;
         public FormAgregarProducto()
         {
@@ -38,9 +39,12 @@ namespace ProyectoMain.Inventario.Forms
     private void FormAgregarProducto_Load(object sender, EventArgs e)
         {
             txtCodigo.Enabled = false;
-           // txtTipoDeProducto.Text = tipoDeProducto;
-           // txtCantidad.Enabled = false;
-            txtCodigo.Text = generarCodigo();
+            // txtTipoDeProducto.Text = tipoDeProducto;
+            // txtCantidad.Enabled = false;
+            if (estado == "crear" )
+            {
+                txtCodigo.Text = generarCodigo();
+            }
 
             var categorias = _categoriaNegocio.TenerCategoria(null);
             var unidades = _unidadNegocio.TenerUnidad(null);
@@ -108,16 +112,18 @@ namespace ProyectoMain.Inventario.Forms
                // txtPrecio.Text = inventario.Precio.ToString();
                 txtComprado.Text = inventario.comprado.ToString();
 
-                var aux = _Diferente_PrecioNegocio.TenerDiferente_precio(inventario.Codigo);
+                _diferente_Precios = _Diferente_PrecioNegocio.TenerDiferente_precio(inventario.Codigo);
 
-                foreach (var item in aux)
+                foreach (var item in _diferente_Precios)
                 {
-                    dgvDiferente.Rows.Add(item.unidad_diferente,item.precio);
+                    dgvDiferente.Rows.Add(item.unidad_diferente,item.precio,item.id_diferente);
                 }
             }
         }
         private void guardarInventario()
         {
+            //txtCodigo.Text = generarCodigo();
+
             Entidades.Inventario inventario = new Entidades.Inventario();
             inventario.Codigo = txtCodigo.Text;
             inventario.Nombre = txtNombre.Text;
@@ -142,6 +148,7 @@ namespace ProyectoMain.Inventario.Forms
                 foreach (var item in _diferente_Precios)
                 {
                     Entidades.Diferente_precio diferente_Precio = new Entidades.Diferente_precio();
+                    diferente_Precio.id_diferente = item.id_diferente;
                     diferente_Precio.codigo_producto_diferente = item.codigo_producto_diferente;
                     diferente_Precio.unidad_diferente = item.unidad_diferente;
                     diferente_Precio.precio = item.precio;
@@ -228,6 +235,7 @@ namespace ProyectoMain.Inventario.Forms
         {
             dgvDiferente.Rows.Clear();
             Entidades.Diferente_precio diferente_Precio = new Entidades.Diferente_precio();
+            diferente_Precio.id_diferente = auxid;
             diferente_Precio.codigo_producto_diferente = txtCodigo.Text;
             diferente_Precio.unidad_diferente = cbUnidad.SelectedItem.ToString();
             diferente_Precio.precio = decimal.Parse(txtPrecio.Text);
@@ -246,7 +254,7 @@ namespace ProyectoMain.Inventario.Forms
             }
             foreach (var item in _diferente_Precios)
             {
-                dgvDiferente.Rows.Add(item.unidad_diferente,item.precio);
+                dgvDiferente.Rows.Add(item.unidad_diferente,item.precio, item.id_diferente);
             }
             txtPrecio.Text = string.Empty;
         }
@@ -262,7 +270,7 @@ namespace ProyectoMain.Inventario.Forms
                     dgvDiferente.Rows.Clear();
                     foreach (var item in _diferente_Precios)
                     {
-                        dgvDiferente.Rows.Add(item.unidad_diferente,item.precio);
+                        dgvDiferente.Rows.Add(item.unidad_diferente,item.precio, item.id_diferente);
                     }
                 }
                 else
@@ -270,6 +278,7 @@ namespace ProyectoMain.Inventario.Forms
                     btnAñadir.Text = "Actualizar";
                     txtPrecio.Text = dgvDiferente.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
                     cbUnidad.SelectedItem = dgvDiferente.Rows[e.RowIndex].Cells["Unidad"].Value.ToString();
+                    auxid = int.Parse(dgvDiferente.Rows[e.RowIndex].Cells["id"].Value.ToString());
                     indice = e.RowIndex;
                 }
 

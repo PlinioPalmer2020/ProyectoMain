@@ -23,6 +23,7 @@ namespace ProyectoMain.Inventario.Forms
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             FormAgregarProducto formAgregar = new FormAgregarProducto();
+            formAgregar.estado = "crear";
             formAgregar.ShowDialog(this);
             //frmMenuAgregar frmMenuAgregar = new frmMenuAgregar();
             //frmMenuAgregar.ShowDialog(this);

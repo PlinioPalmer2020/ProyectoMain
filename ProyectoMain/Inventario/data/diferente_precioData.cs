@@ -96,6 +96,38 @@ namespace ProyectoMain.Inventario.data
             return diferentes_precios;
         }
 
+        public void ModificarDiferente_precio(Entidades.Diferente_precio diferente_Precio)
+        {
+            try
+            {
+                conn.Open();
+                String querry = @"update diferente_precio 
+                                  set codigo_producto_diferente = @codigo_producto_diferente, 
+                                  unidad_diferente = @unidad_diferente, 
+                                  precio = @precio 
+                                  Where id_diferente = @id_diferente";
+
+                SqlParameter @id_diferente = new SqlParameter("@id_diferente", diferente_Precio.id_diferente);
+                SqlParameter codigo_producto_diferente = new SqlParameter("@codigo_producto_diferente", diferente_Precio.codigo_producto_diferente);
+                SqlParameter unidad_diferente = new SqlParameter("@unidad_diferente", diferente_Precio.unidad_diferente);
+                SqlParameter precio = new SqlParameter("@precio", diferente_Precio.precio);
+
+
+                SqlCommand command = new SqlCommand(querry, conn);
+                command.Parameters.Add(@id_diferente);
+                command.Parameters.Add(codigo_producto_diferente);
+                command.Parameters.Add(unidad_diferente);
+                command.Parameters.Add(precio);
+
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+        }
 
     }
 }
