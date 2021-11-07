@@ -47,33 +47,7 @@ namespace ProyectoMain.Fractura.Forms
                 {
                     cbUnidad.Items.Add(item.unidad_diferente);
                 }
-               /* switch (inventario.Tipo_de_producto)
-                {
-                    case "Arenas":
-                        cbUnidad.Items.Add("Metros");
-                        cbUnidad.Items.Add("Sacos");
-                        break;
-                    case "Cemento":
-                        cbUnidad.Items.Add("Funda");
-                        cbUnidad.Items.Add("Libra");
-                        break;
-                    case "Tubos":
-                        cbUnidad.Items.Add("Pie");
-                        break;
-                    case "Medicamentos":
-                        cbUnidad.Items.Add("CC");
-                        break;
-                    case "Alimentos":
-                        cbUnidad.Items.Add("Saco");
-                        cbUnidad.Items.Add("Medi Saco");
-                        cbUnidad.Items.Add("Libra");
-                        break;
-                    case "Herramientas o otros productos":
-                        cbUnidad.Items.Add("Unidad");
-                        break;
-                    default:
-                        break;
-                }*/
+               
                 cbUnidad.SelectedItem = inventario.unidad;
             }
         }
@@ -133,60 +107,14 @@ namespace ProyectoMain.Fractura.Forms
 
         private void cbUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (_inventario.Tipo_de_producto)
+            foreach (var item in diferente_Precios)
             {
-                case "Arenas":
-                    switch (cbUnidad.SelectedItem.ToString())
-                    {
-                        case "Sacos":
-                            aux = decimal.Parse(txtPrecio.Text);
-                            txtPrecio.Text = (aux / 8).ToString();
-                            break;
-                        case "Metros":
-                            txtPrecio.Text = _inventario.Precio.ToString();
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-
-                case "Cemento":
-                    switch (cbUnidad.SelectedItem.ToString())
-                    {
-                        case "Libra":
-                            aux = decimal.Parse(txtPrecio.Text);
-                            txtPrecio.Text = (aux / 98).ToString();
-                            break;
-                        case "Funda":
-                            txtPrecio.Text = _inventario.Precio.ToString();
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-
-                case "Alimentos":
-                    switch (cbUnidad.SelectedItem.ToString())
-                    {
-                        case "Libra":
-                            aux = decimal.Parse(txtPrecio.Text);
-                            txtPrecio.Text = (aux / 100).ToString();
-                            break;
-                        case "Medi Saco":
-                            aux = decimal.Parse(txtPrecio.Text);
-                            txtPrecio.Text = (aux / 2).ToString();
-                            break;
-                        case "Saco":
-                            txtPrecio.Text = _inventario.Precio.ToString();
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-                default:
-                    break;
+                if (item.unidad_diferente == cbUnidad.SelectedItem.ToString() )
+                {
+                    txtPrecio.Text = item.precio.ToString();
+                }
             }
-
+          
         }
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)

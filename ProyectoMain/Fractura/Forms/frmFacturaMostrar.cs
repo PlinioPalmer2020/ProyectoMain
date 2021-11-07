@@ -101,7 +101,7 @@ namespace ProyectoMain.Fractura.Forms
                 {
                     Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Tipo_de_producto = item.Tipo_de_producto ,Cantidad = item.Cantidad , Codigo = item.Codigo, unidad = item.unidad };
 
-                    switch (inventario.Tipo_de_producto)
+                    /*switch (inventario.Tipo_de_producto)
                     {
                         case"Arenas":
                             if (inventario.unidad == "Sacos")
@@ -128,7 +128,7 @@ namespace ProyectoMain.Fractura.Forms
                             break;
                         default:
                             break;
-                    }
+                    }*/
                     ReducirInventario(inventario);
                 }
                 _negocioFactura.PagoRealizado(factura);
