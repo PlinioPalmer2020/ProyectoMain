@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace ProyectoMain.Inventario.Forms
 {
     public partial class FormAgregarProducto : Form
     {
         private Negocio.InventarioNegocio _inventarioNegocio;
         private Entidades.Inventario _inventario;
+        private Negocio.CategoriaNegocio _categoriaNegocio;
+        private Negocio.UnidadNegocio _unidadNegocio;
         public string estado = string.Empty;
         public string tipoproducto = string.Empty;
         // public string tipoDeProducto = string.Empty;
@@ -21,22 +24,32 @@ namespace ProyectoMain.Inventario.Forms
         {
             InitializeComponent();
             _inventarioNegocio = new Negocio.InventarioNegocio();
-        }
+            _categoriaNegocio = new Negocio.CategoriaNegocio();
+            _unidadNegocio = new Negocio.UnidadNegocio();
 
 
-        private void FormAgregarProducto_Load(object sender, EventArgs e)
+    }
+
+
+    private void FormAgregarProducto_Load(object sender, EventArgs e)
         {
             txtCodigo.Enabled = false;
            // txtTipoDeProducto.Text = tipoDeProducto;
            // txtCantidad.Enabled = false;
             txtCodigo.Text = generarCodigo();
 
-            cbTipoProducto.Items.Add("Arenas");
-            cbTipoProducto.Items.Add("Medicamentos");
-            cbTipoProducto.Items.Add("Tubos");
-            cbTipoProducto.Items.Add("Cemento");
-            cbTipoProducto.Items.Add("Alimentos");
-            cbTipoProducto.Items.Add("Herramientas o otros productos");
+            var categorias = _categoriaNegocio.TenerCategoria(null);
+            var unidades = _unidadNegocio.TenerUnidad(null);
+
+            foreach (var item in categorias)
+            {
+                cbTipoProducto.Items.Add(item.familia_categoria);
+            }
+
+            foreach (var item in unidades)
+            {
+                cbUnidad.Items.Add(item.nombre_unidad);
+            }
 
             if (estado == "Añadir" || estado == "Modificar")
             {
@@ -152,7 +165,7 @@ namespace ProyectoMain.Inventario.Forms
         #region Eventos
         private void cbTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            /*
             cbUnidad.Items.Clear();
             cbUnidad.Text = string.Empty;
             switch (cbTipoProducto.SelectedItem)
@@ -182,12 +195,12 @@ namespace ProyectoMain.Inventario.Forms
                 default:
                     cbUnidad.Enabled = false;
                     break;
-            }
+            }*/
             if (estado == "Añadir" || estado == null)
             {
                 cbUnidad.Enabled = true;
             }
-            cbUnidad.SelectedIndex = 0;
+            //cbUnidad.SelectedIndex = 0;
 
         }
 

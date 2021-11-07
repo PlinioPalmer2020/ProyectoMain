@@ -126,10 +126,14 @@
     <Compile Include="Fractura\Negocio_Data\DataFactura.cs" />
     <Compile Include="Fractura\Negocio_Data\NegocioFactura.cs" />
     <Compile Include="Funciones_de_Validaciones\Validacion.cs" />
+    <Compile Include="Inventario\data\CategoriaData.cs" />
     <Compile Include="Inventario\data\InventarioData.cs" />
     <Compile Include="Inventario\data\RegistroData.cs" />
+    <Compile Include="Inventario\data\UnidadData.cs" />
+    <Compile Include="Inventario\Entidades\Categoria.cs" />
     <Compile Include="Inventario\Entidades\Inventario.cs" />
     <Compile Include="Inventario\Entidades\Registro.cs" />
+    <Compile Include="Inventario\Entidades\Unidad.cs" />
     <Compile Include="Inventario\Forms\Contabilidad\frmMenuContabilidad1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,8 +164,10 @@
     <Compile Include="Inventario\Forms\Registro\frmMenuRegistroEntrada.Designer.cs">
       <DependentUpon>frmMenuRegistroEntrada.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventario\Negocio\CategoriaNegocio.cs" />
     <Compile Include="Inventario\Negocio\InventarioNegocio.cs" />
     <Compile Include="Inventario\Negocio\RegistroNegocio.cs" />
+    <Compile Include="Inventario\Negocio\UnidadNegocio.cs" />
     <Compile Include="Login\Data\LoginData.cs" />
     <Compile Include="Login\Entidad\Login.cs" />
     <Compile Include="Login\Negocio\LoginNegocio.cs" />
