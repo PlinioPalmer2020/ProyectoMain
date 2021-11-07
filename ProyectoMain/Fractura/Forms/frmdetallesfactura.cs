@@ -14,17 +14,21 @@ namespace ProyectoMain.Fractura.Forms
     {
 
         private Inventario.Entidades.Inventario _inventario;
+        private Inventario.Negocio.Diferente_precioNegocio _diferente_PrecioNegocio;
+        private List<Inventario.Entidades.Diferente_precio> diferente_Precios;
         private decimal aux = 0;
         public string genero = string.Empty;
        // public string tipoProducto = string.Empty;
         public frmdetallesfactura()
         {
             InitializeComponent();
+            _diferente_PrecioNegocio = new Inventario.Negocio.Diferente_precioNegocio();
+            diferente_Precios = new List<Inventario.Entidades.Diferente_precio>();
         }
 
 
-        #region Funciones
-        public void CargarInventario(Inventario.Entidades.Inventario inventario)
+    #region Funciones
+    public void CargarInventario(Inventario.Entidades.Inventario inventario)
         {
             _inventario = inventario;
             if (inventario != null)
@@ -36,7 +40,14 @@ namespace ProyectoMain.Fractura.Forms
                 txtDescripcion.Text = inventario.descripcion;
                 txtNombre.Text = inventario.Nombre;
                 txtPrecio.Text = inventario.Precio.ToString();
-                switch (inventario.Tipo_de_producto)
+
+                diferente_Precios = _diferente_PrecioNegocio.TenerDiferente_precio(inventario.Codigo);
+
+                foreach (var item in diferente_Precios)
+                {
+                    cbUnidad.Items.Add(item.unidad_diferente);
+                }
+               /* switch (inventario.Tipo_de_producto)
                 {
                     case "Arenas":
                         cbUnidad.Items.Add("Metros");
@@ -62,7 +73,7 @@ namespace ProyectoMain.Fractura.Forms
                         break;
                     default:
                         break;
-                }
+                }*/
                 cbUnidad.SelectedItem = inventario.unidad;
             }
         }

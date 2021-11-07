@@ -126,7 +126,8 @@ namespace ProyectoMain.Inventario.data
                                        descripcion  = @descripcion,
                                        precio = @precio,
                                        cantidad = @cantidad,
-                                       comprado = @comprado
+                                       comprado = @comprado,
+                                       unidad   = @unidad
                                        where id = @id";
 
                 SqlParameter Id = new SqlParameter("@id", inventario.Id);
@@ -136,6 +137,7 @@ namespace ProyectoMain.Inventario.data
                 SqlParameter precio = new SqlParameter("@precio", inventario.Precio);
                 SqlParameter cantidad = new SqlParameter("@cantidad", inventario.Cantidad);
                 SqlParameter comprado = new SqlParameter("@comprado", inventario.comprado);
+                SqlParameter unidad = new SqlParameter("@unidad", inventario.unidad);
 
                 SqlCommand command = new SqlCommand(querry, conn);
                 command.Parameters.Add(Id);
@@ -145,13 +147,14 @@ namespace ProyectoMain.Inventario.data
                 command.Parameters.Add(precio);
                 command.Parameters.Add(cantidad);
                 command.Parameters.Add(comprado);
+                command.Parameters.Add(unidad);
 
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
             finally { conn.Close(); }
         }
