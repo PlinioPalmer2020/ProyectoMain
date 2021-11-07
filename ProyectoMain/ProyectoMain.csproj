@@ -131,6 +131,7 @@
     <Compile Include="Inventario\data\RegistroData.cs" />
     <Compile Include="Inventario\data\UnidadData.cs" />
     <Compile Include="Inventario\Entidades\Categoria.cs" />
+    <Compile Include="Inventario\Entidades\Diferente_precio.cs" />
     <Compile Include="Inventario\Entidades\Inventario.cs" />
     <Compile Include="Inventario\Entidades\Registro.cs" />
     <Compile Include="Inventario\Entidades\Unidad.cs" />

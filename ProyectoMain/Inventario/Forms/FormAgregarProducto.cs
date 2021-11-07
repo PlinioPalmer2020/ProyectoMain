@@ -17,8 +17,10 @@ namespace ProyectoMain.Inventario.Forms
         private Entidades.Inventario _inventario;
         private Negocio.CategoriaNegocio _categoriaNegocio;
         private Negocio.UnidadNegocio _unidadNegocio;
+        private List<Entidades.Diferente_precio> _diferente_Precios;
         public string estado = string.Empty;
         public string tipoproducto = string.Empty;
+        private int indice = 0;
         // public string tipoDeProducto = string.Empty;
         public FormAgregarProducto()
         {
@@ -26,9 +28,8 @@ namespace ProyectoMain.Inventario.Forms
             _inventarioNegocio = new Negocio.InventarioNegocio();
             _categoriaNegocio = new Negocio.CategoriaNegocio();
             _unidadNegocio = new Negocio.UnidadNegocio();
-
-
-    }
+            _diferente_Precios = new List<Entidades.Diferente_precio>();
+        }
 
 
     private void FormAgregarProducto_Load(object sender, EventArgs e)
@@ -229,5 +230,62 @@ namespace ProyectoMain.Inventario.Forms
         }
 
         #endregion
+
+        private void btnAñadir_Click(object sender, EventArgs e)
+        {
+            dgvDiferente.Rows.Clear();
+            Entidades.Diferente_precio diferente_Precio = new Entidades.Diferente_precio();
+            diferente_Precio.codigo_producto_diferente = txtCodigo.Text;
+            diferente_Precio.unidad_diferente = cbUnidad.SelectedItem.ToString();
+            diferente_Precio.precio = decimal.Parse(txtPrecio.Text);
+
+            if (btnAñadir.Text == "Añadir Precio")
+            {
+                _diferente_Precios.Add(diferente_Precio);
+
+            }
+            else
+            {
+                _diferente_Precios.RemoveAt(indice);
+                _diferente_Precios.Insert(indice,diferente_Precio);
+                btnAñadir.Text = "Añadir Precio";
+
+            }
+            foreach (var item in _diferente_Precios)
+            {
+                dgvDiferente.Rows.Add(item.unidad_diferente,item.precio);
+            }
+            txtPrecio.Text = string.Empty;
+        }
+
+        private void dgvDiferente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewLinkCell cell = (DataGridViewLinkCell)dgvDiferente.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                if (cell.Value.ToString() == "Quitar")
+                {
+                    _diferente_Precios.RemoveAt(e.RowIndex);
+                    dgvDiferente.Rows.Clear();
+                    foreach (var item in _diferente_Precios)
+                    {
+                        dgvDiferente.Rows.Add(item.unidad_diferente,item.precio);
+                    }
+                }
+                else
+                {
+                    btnAñadir.Text = "Actualizar";
+                    txtPrecio.Text = dgvDiferente.Rows[e.RowIndex].Cells["Precio"].Value.ToString();
+                    cbUnidad.SelectedItem = dgvDiferente.Rows[e.RowIndex].Cells["Unidad"].Value.ToString();
+                    indice = e.RowIndex;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                // throw;
+            }
+        }
     }
 }
