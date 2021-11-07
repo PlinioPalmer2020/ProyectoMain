@@ -13,28 +13,42 @@ namespace ProyectoMain.Fractura.Forms
 {
     public partial class frmFacturaMostrar : Form
     {
+        //capa de negocios
         private Negocio_Data.NegocioFactura _negocioFactura;
         private Inventario.Negocio.InventarioNegocio _inventarioNegocio;
+        private Inventario.Negocio.Diferente_precioNegocio _diferente_PrecioNegocio;
+
+        //Listas
         private List<Inventario.Entidades.Inventario> _inventarios;
         private List<Entidades.Factura> _imprimir;
+        private List<Inventario.Entidades.Diferente_precio> diferente_Precios;
         //private List<string> _inventarios;
         public int volver = 0;
+
+        private decimal precioMaximo = 0;
         public frmFacturaMostrar()
         {
             InitializeComponent();
+            // Capa de negocios
             _negocioFactura = new Negocio_Data.NegocioFactura();
             _inventarioNegocio = new Inventario.Negocio.InventarioNegocio();
+            _diferente_PrecioNegocio = new Inventario.Negocio.Diferente_precioNegocio();
+
+
+        // List
             _inventarios = new List<Inventario.Entidades.Inventario>();
             _imprimir = new List<Entidades.Factura>();
-            //_inventarios = new List<string>();
-        }
+            diferente_Precios = new List<Inventario.Entidades.Diferente_precio>();
+
+        //_inventarios = new List<string>();
+    }
 
 
 
 
 
-        #region Funciones
-        public void cargarDatos(string codigo) 
+    #region Funciones
+    public void cargarDatos(string codigo) 
         {
 
             List<Entidades.Factura> factura = new List<Entidades.Factura>();
@@ -100,35 +114,18 @@ namespace ProyectoMain.Fractura.Forms
                 foreach (var item in _inventarios)
                 {
                     Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Tipo_de_producto = item.Tipo_de_producto ,Cantidad = item.Cantidad , Codigo = item.Codigo, unidad = item.unidad };
-
-                    /*switch (inventario.Tipo_de_producto)
+                    var a = _diferente_PrecioNegocio.TenerDiferente_precio(item.Codigo);
+                    foreach (var item2 in a)
                     {
-                        case"Arenas":
-                            if (inventario.unidad == "Sacos")
-                            {
-                                inventario.Cantidad = inventario.Cantidad / 8;
-                            }
-                            break;
-                        case "Cemento":
-                            if (inventario.unidad == "Libra")
-                            {
-                                inventario.Cantidad = inventario.Cantidad / 98;
-                            }
-                            break;
-                        case "Alimentos":
-                            if (inventario.unidad == "Libra")
-                            {
-                                inventario.Cantidad = inventario.Cantidad / 100;
+                        precioMaximo = item2.precio;
+                        break;
+                    }
 
-                            }
-                            else if (inventario.unidad == "Medi Saco")
-                            {
-                                inventario.Cantidad = inventario.Cantidad / 2;
-                            }
-                            break;
-                        default:
-                            break;
-                    }*/
+                    foreach (var fac in _imprimir)
+                    {
+                        inventario.Cantidad = (double)fac.PrecioTotal / (double)precioMaximo;
+                        break;
+                    }
                     ReducirInventario(inventario);
                 }
                 _negocioFactura.PagoRealizado(factura);
@@ -247,6 +244,7 @@ namespace ProyectoMain.Fractura.Forms
         }
 
         #endregion
+
 
     }
 }
