@@ -33,5 +33,27 @@ namespace ProyectoMain.Properties {
                 return ((string)(this["FerreteriaConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Password=sinergit;Persist Security Info=True;User ID=sa;Initial Catalog=Ferreteri" +
+            "a;Data Source=192.168.1.113")]
+        public string Conecion1 {
+            get {
+                return ((string)(this["Conecion1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;D" +
+            "ata Source=DESKTOP-IV4HQSQ\\\\SQLEXPRESS")]
+        public string Conecion2 {
+            get {
+                return ((string)(this["Conecion2"]));
+            }
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace ProyectoMain
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,11 +40,14 @@ namespace ProyectoMain
             // 
             // btnIniciarSesion
             // 
+            this.btnIniciarSesion.Image = ((System.Drawing.Image)(resources.GetObject("btnIniciarSesion.Image")));
+            this.btnIniciarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIniciarSesion.Location = new System.Drawing.Point(36, 181);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(100, 23);
             this.btnIniciarSesion.TabIndex = 0;
             this.btnIniciarSesion.Text = "Iniciar Sesion";
+            this.btnIniciarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
             this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
             // 

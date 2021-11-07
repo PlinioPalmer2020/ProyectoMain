@@ -259,7 +259,7 @@
     <Content Include="icons8_toolbox_1.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="imagenes\" />
+    <Folder Include="Iconos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
