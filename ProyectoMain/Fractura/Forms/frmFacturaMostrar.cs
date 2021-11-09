@@ -23,9 +23,11 @@ namespace ProyectoMain.Fractura.Forms
         private List<Entidades.Factura> _imprimir;
         private List<Inventario.Entidades.Diferente_precio> diferente_Precios;
         //private List<string> _inventarios;
-        public int volver = 0;
 
+        // Variables
+        public int volver = 0;
         private decimal precioMaximo = 0;
+        private string RNC = string.Empty;
         public frmFacturaMostrar()
         {
             InitializeComponent();
@@ -96,13 +98,16 @@ namespace ProyectoMain.Fractura.Forms
         #region Botones
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            DialogResult dr = MessageBox.Show("¿Incluir RNC?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            RNC = dr == DialogResult.Yes ? "00445516156" : string.Empty;
+
             printDocument1 = new PrintDocument();
             PrinterSettings ps = new PrinterSettings();
             printDocument1.PrinterSettings = ps;
             printDocument1.PrintPage += imprimir;
-            //printPreviewDialog1.Document = printDocument1;
-            //printPreviewDialog1.ShowDialog();
-            printDocument1.Print();
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();
+            //printDocument1.Print();
         }
         private void btnPagar_Click(object sender, EventArgs e)
         {
@@ -198,8 +203,8 @@ namespace ProyectoMain.Fractura.Forms
                 e.Graphics.DrawString("Direccion: "+item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
                // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Fecha de creacion: " + item.Fecha_crear, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
-                //e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
-               // e.Graphics.DrawString("Fecha de Impresion: " + DateTime.Now, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
+                e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                e.Graphics.DrawString("RNC: "+ RNC, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
                 e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 //aqui va un switch para el nombre del tipo de factura
                 switch (item.Tipofactura)
