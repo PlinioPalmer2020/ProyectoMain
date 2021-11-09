@@ -181,8 +181,23 @@ namespace ProyectoMain.Fractura.Forms.frmpago
 
             if (this.dgvFacturas.Columns[e.ColumnIndex].Name == "Pago" )
             {
-                e.Value =  Convert.ToInt32(e.Value) == 0 ?  "Sin Pagar" : "Pagado";
-                
+               // e.Value =  Convert.ToInt32(e.Value) == 0 ?  "Sin Pagar" : "Pagado";
+
+                switch (Convert.ToInt32(e.Value))
+                {
+                    case 0:
+                        e.Value = "Sin Pagar";
+                        break;
+                    case 1:
+                        e.Value = "Pagado";
+                        break;
+                    case 2:
+                        e.Value = "Devuelto";
+                        break;
+                    default:
+                        break;
+                }
+
             }
         }
 
