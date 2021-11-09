@@ -105,9 +105,9 @@ namespace ProyectoMain.Fractura.Forms
             PrinterSettings ps = new PrinterSettings();
             printDocument1.PrinterSettings = ps;
             printDocument1.PrintPage += imprimir;
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.ShowDialog();
-            //printDocument1.Print();
+            //printPreviewDialog1.Document = printDocument1;
+            //printPreviewDialog1.ShowDialog();
+            printDocument1.Print();
         }
         private void btnPagar_Click(object sender, EventArgs e)
         {

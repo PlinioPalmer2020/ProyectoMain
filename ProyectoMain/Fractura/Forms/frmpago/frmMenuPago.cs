@@ -12,12 +12,19 @@ namespace ProyectoMain.Fractura.Forms.frmpago
 {
     public partial class frmMenuPago : Form
     {
+        // capa negocio
         private Negocio_Data.NegocioFactura _negocioFactura;
+
+        //Listas
+        private List<Entidades.Factura> globalfacturas;
+        //Variables
         private List<string> lista;
         public string login = string.Empty;
+
         public frmMenuPago()
         {
             InitializeComponent();
+            globalfacturas = new List<Entidades.Factura>();
             _negocioFactura = new Negocio_Data.NegocioFactura();
 
             lista = new List<string>(){"Normal","Credito","Envio", "Pendintes", "Pagados" };
@@ -46,7 +53,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             dgvFacturas.Rows.Clear();
             factura = _negocioFactura.TenerFactura();
             string aux = string.Empty;
-
+            globalfacturas = factura;
             factura = factura.OrderByDescending(f => f.Fecha_crear).ToList();
 
             dgvFacturas.Rows.Clear();
@@ -213,6 +220,36 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             form.Show();
             this.login = string.Empty;
             this.Hide();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            var factura = globalfacturas;
+
+            factura = factura.Where(f => f.NameCliente.ToLower().Contains(txtBuscar.Text.ToLower()) || f.Codigofactura.ToLower().Contains(txtBuscar.Text.ToLower()) ).OrderByDescending(f => f.Fecha_crear).ToList();
+
+            string aux = string.Empty;
+
+            dgvFacturas.Rows.Clear();
+            if (txtBuscar.Text == string.Empty)
+            {
+                factura = globalfacturas;
+            }
+
+            foreach (var item in factura)
+            {
+                if (aux != item.Codigofactura)
+                {
+                    dgvFacturas.Rows.Add(item.Codigofactura, item.NameCliente, item.Tipofactura, item.Fecha_crear, item.Pago);
+
+                    aux = item.Codigofactura;
+                }
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            btnBuscar.PerformClick();
         }
     }
 }

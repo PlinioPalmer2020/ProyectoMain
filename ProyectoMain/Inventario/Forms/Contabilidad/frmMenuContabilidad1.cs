@@ -70,7 +70,7 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             }
             else
             {
-                var aux2 = _facturas.Where(f => f.Codigofactura.ToLower().Contains(Buscar) || f.NameCliente.ToLower().Contains(Buscar)).ToList() ;
+                var aux2 = _facturas.Where(f => f.Codigofactura.ToLower().Contains(Buscar.ToLower()) || f.NameCliente.ToLower().Contains(Buscar.ToLower())).ToList() ;
                 //var aux2 = _facturas.Where(f => f.Codigofactura.ToUpper() == Buscar.ToUpper()).ToList();
                 string aux = string.Empty;
                 int i = 1;

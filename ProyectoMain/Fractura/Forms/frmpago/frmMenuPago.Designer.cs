@@ -29,6 +29,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPago));
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.cbTipoPago = new System.Windows.Forms.ComboBox();
@@ -36,8 +37,6 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
-            this.btnVolverFactura = new System.Windows.Forms.Button();
-            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.CodigoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,12 +45,19 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.RealizarPago = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Detalles = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Desactivar = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.btnVolverFactura = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.panelFiltros = new System.Windows.Forms.Panel();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
+            this.panelFiltros.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(329, 43);
+            this.btnFiltrar.Location = new System.Drawing.Point(300, 42);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(169, 23);
             this.btnFiltrar.TabIndex = 0;
@@ -72,7 +78,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             // cbTipoPago
             // 
             this.cbTipoPago.FormattingEnabled = true;
-            this.cbTipoPago.Location = new System.Drawing.Point(55, 45);
+            this.cbTipoPago.Location = new System.Drawing.Point(26, 44);
             this.cbTipoPago.Name = "cbTipoPago";
             this.cbTipoPago.Size = new System.Drawing.Size(121, 21);
             this.cbTipoPago.TabIndex = 2;
@@ -80,7 +86,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             // cbPagoPendiente
             // 
             this.cbPagoPendiente.FormattingEnabled = true;
-            this.cbPagoPendiente.Location = new System.Drawing.Point(202, 45);
+            this.cbPagoPendiente.Location = new System.Drawing.Point(173, 44);
             this.cbPagoPendiente.Name = "cbPagoPendiente";
             this.cbPagoPendiente.Size = new System.Drawing.Size(121, 21);
             this.cbPagoPendiente.TabIndex = 3;
@@ -88,7 +94,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 26);
+            this.label1.Location = new System.Drawing.Point(36, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 4;
@@ -97,7 +103,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(202, 26);
+            this.label2.Location = new System.Drawing.Point(173, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(108, 13);
             this.label2.TabIndex = 5;
@@ -119,33 +125,13 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Detalles,
             this.Desactivar});
             this.dgvFacturas.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvFacturas.Location = new System.Drawing.Point(0, 99);
+            this.dgvFacturas.Location = new System.Drawing.Point(0, 149);
             this.dgvFacturas.Name = "dgvFacturas";
             this.dgvFacturas.ReadOnly = true;
-            this.dgvFacturas.Size = new System.Drawing.Size(854, 431);
+            this.dgvFacturas.Size = new System.Drawing.Size(854, 381);
             this.dgvFacturas.TabIndex = 6;
             this.dgvFacturas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellContentClick);
             this.dgvFacturas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvFacturas_CellFormatting);
-            // 
-            // btnVolverFactura
-            // 
-            this.btnVolverFactura.Location = new System.Drawing.Point(720, 60);
-            this.btnVolverFactura.Name = "btnVolverFactura";
-            this.btnVolverFactura.Size = new System.Drawing.Size(106, 23);
-            this.btnVolverFactura.TabIndex = 7;
-            this.btnVolverFactura.Text = "Volver A Factura";
-            this.btnVolverFactura.UseVisualStyleBackColor = true;
-            this.btnVolverFactura.Click += new System.EventHandler(this.btnVolverFactura_Click);
-            // 
-            // btnCerrarSesion
-            // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(574, 25);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(107, 23);
-            this.btnCerrarSesion.TabIndex = 8;
-            this.btnCerrarSesion.Text = "Cerrar Sesión";
-            this.btnCerrarSesion.UseVisualStyleBackColor = true;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // CodigoFactura
             // 
@@ -202,20 +188,85 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Desactivar.UseColumnTextForLinkValue = true;
             this.Desactivar.Visible = false;
             // 
+            // btnVolverFactura
+            // 
+            this.btnVolverFactura.Location = new System.Drawing.Point(720, 60);
+            this.btnVolverFactura.Name = "btnVolverFactura";
+            this.btnVolverFactura.Size = new System.Drawing.Size(106, 23);
+            this.btnVolverFactura.TabIndex = 7;
+            this.btnVolverFactura.Text = "Volver A Factura";
+            this.btnVolverFactura.UseVisualStyleBackColor = true;
+            this.btnVolverFactura.Click += new System.EventHandler(this.btnVolverFactura_Click);
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Location = new System.Drawing.Point(574, 25);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(107, 23);
+            this.btnCerrarSesion.TabIndex = 8;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
+            // panelFiltros
+            // 
+            this.panelFiltros.Controls.Add(this.label3);
+            this.panelFiltros.Controls.Add(this.btnBuscar);
+            this.panelFiltros.Controls.Add(this.txtBuscar);
+            this.panelFiltros.Controls.Add(this.label1);
+            this.panelFiltros.Controls.Add(this.btnFiltrar);
+            this.panelFiltros.Controls.Add(this.cbTipoPago);
+            this.panelFiltros.Controls.Add(this.cbPagoPendiente);
+            this.panelFiltros.Controls.Add(this.label2);
+            this.panelFiltros.Location = new System.Drawing.Point(0, 0);
+            this.panelFiltros.Name = "panelFiltros";
+            this.panelFiltros.Size = new System.Drawing.Size(568, 143);
+            this.panelFiltros.TabIndex = 9;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(89, 119);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(292, 20);
+            this.txtBuscar.TabIndex = 6;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscar.Location = new System.Drawing.Point(387, 116);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(82, 23);
+            this.btnBuscar.TabIndex = 7;
+            this.btnBuscar.Text = "  Buscar";
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.Location = new System.Drawing.Point(23, 120);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 16);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Buscar:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmMenuPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(854, 530);
+            this.Controls.Add(this.panelFiltros);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.btnVolverFactura);
             this.Controls.Add(this.dgvFacturas);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbPagoPendiente);
-            this.Controls.Add(this.cbTipoPago);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnFiltrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "frmMenuPago";
@@ -224,8 +275,9 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenuPago_FormClosing);
             this.Load += new System.EventHandler(this.frmMenuPago_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
+            this.panelFiltros.ResumeLayout(false);
+            this.panelFiltros.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -248,5 +300,9 @@ namespace ProyectoMain.Fractura.Forms.frmpago
         private System.Windows.Forms.DataGridViewLinkColumn RealizarPago;
         private System.Windows.Forms.DataGridViewLinkColumn Detalles;
         private System.Windows.Forms.DataGridViewLinkColumn Desactivar;
+        private System.Windows.Forms.Panel panelFiltros;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtBuscar;
     }
 }
