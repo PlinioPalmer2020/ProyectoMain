@@ -35,13 +35,6 @@ namespace ProyectoMain.Fractura.Forms
             this.button2 = new System.Windows.Forms.Button();
             this.panelAgregar = new System.Windows.Forms.Panel();
             this.gridInventario = new System.Windows.Forms.DataGridView();
-            this.Codi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descri = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preci = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Canti = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Agregar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panelFactura = new System.Windows.Forms.Panel();
             this.btnCaja = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
@@ -69,6 +62,13 @@ namespace ProyectoMain.Fractura.Forms
             this.tipoProductoDetalles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quitar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.label4 = new System.Windows.Forms.Label();
+            this.Codi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preci = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Canti = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Agregar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.panelAgregar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).BeginInit();
             this.panelFactura.SuspendLayout();
@@ -154,52 +154,6 @@ namespace ProyectoMain.Fractura.Forms
             this.gridInventario.TabIndex = 8;
             this.gridInventario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridInventario_CellContentClick_1);
             this.gridInventario.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridInventario_CellFormatting);
-            // 
-            // Codi
-            // 
-            this.Codi.HeaderText = "Codigo";
-            this.Codi.Name = "Codi";
-            this.Codi.ReadOnly = true;
-            this.Codi.Visible = false;
-            // 
-            // Descri
-            // 
-            this.Descri.HeaderText = "Descripcion";
-            this.Descri.Name = "Descri";
-            this.Descri.ReadOnly = true;
-            // 
-            // Preci
-            // 
-            this.Preci.HeaderText = "Precio";
-            this.Preci.Name = "Preci";
-            this.Preci.ReadOnly = true;
-            // 
-            // Canti
-            // 
-            this.Canti.HeaderText = "Cantidad";
-            this.Canti.Name = "Canti";
-            this.Canti.ReadOnly = true;
-            // 
-            // Unidad
-            // 
-            this.Unidad.HeaderText = "Unidad";
-            this.Unidad.Name = "Unidad";
-            this.Unidad.ReadOnly = true;
-            // 
-            // tipoProducto
-            // 
-            this.tipoProducto.HeaderText = "Tipo De Producto";
-            this.tipoProducto.Name = "tipoProducto";
-            this.tipoProducto.ReadOnly = true;
-            this.tipoProducto.Visible = false;
-            // 
-            // Agregar
-            // 
-            this.Agregar.HeaderText = "Agregar";
-            this.Agregar.Name = "Agregar";
-            this.Agregar.ReadOnly = true;
-            this.Agregar.Text = "Agregar";
-            this.Agregar.UseColumnTextForLinkValue = true;
             // 
             // panelFactura
             // 
@@ -467,6 +421,52 @@ namespace ProyectoMain.Fractura.Forms
             this.label4.TabIndex = 0;
             this.label4.Text = "Productos Agregados";
             // 
+            // Codi
+            // 
+            this.Codi.HeaderText = "Codigo";
+            this.Codi.Name = "Codi";
+            this.Codi.ReadOnly = true;
+            this.Codi.Visible = false;
+            // 
+            // Descri
+            // 
+            this.Descri.HeaderText = "Descripcion";
+            this.Descri.Name = "Descri";
+            this.Descri.ReadOnly = true;
+            // 
+            // Preci
+            // 
+            this.Preci.HeaderText = "Precio";
+            this.Preci.Name = "Preci";
+            this.Preci.ReadOnly = true;
+            // 
+            // Canti
+            // 
+            this.Canti.HeaderText = "Existencia";
+            this.Canti.Name = "Canti";
+            this.Canti.ReadOnly = true;
+            // 
+            // Unidad
+            // 
+            this.Unidad.HeaderText = "Unidad";
+            this.Unidad.Name = "Unidad";
+            this.Unidad.ReadOnly = true;
+            // 
+            // tipoProducto
+            // 
+            this.tipoProducto.HeaderText = "Tipo De Producto";
+            this.tipoProducto.Name = "tipoProducto";
+            this.tipoProducto.ReadOnly = true;
+            this.tipoProducto.Visible = false;
+            // 
+            // Agregar
+            // 
+            this.Agregar.HeaderText = "Agregar";
+            this.Agregar.Name = "Agregar";
+            this.Agregar.ReadOnly = true;
+            this.Agregar.Text = "Agregar";
+            this.Agregar.UseColumnTextForLinkValue = true;
+            // 
             // FrmMenuFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -516,13 +516,6 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descri;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Preci;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Canti;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoProducto;
-        private System.Windows.Forms.DataGridViewLinkColumn Agregar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
@@ -534,5 +527,12 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.Button btnCerrarSesion;
         private System.Windows.Forms.Button btnCaja;
         private System.Windows.Forms.Button btnAgregarProductoNuevo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descri;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Preci;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Canti;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoProducto;
+        private System.Windows.Forms.DataGridViewLinkColumn Agregar;
     }
 }
