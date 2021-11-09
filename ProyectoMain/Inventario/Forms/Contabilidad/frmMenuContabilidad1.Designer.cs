@@ -134,14 +134,16 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // 
             // dtpFechaInicio
             // 
-            this.dtpFechaInicio.Location = new System.Drawing.Point(12, 44);
+            this.dtpFechaInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaInicio.Location = new System.Drawing.Point(11, 84);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaInicio.TabIndex = 1;
             // 
             // dtpFechaFinal
             // 
-            this.dtpFechaFinal.Location = new System.Drawing.Point(263, 44);
+            this.dtpFechaFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaFinal.Location = new System.Drawing.Point(262, 84);
             this.dtpFechaFinal.Name = "dtpFechaFinal";
             this.dtpFechaFinal.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaFinal.TabIndex = 2;
@@ -226,6 +228,7 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // 
             // btnMes
             // 
+            this.btnMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMes.Location = new System.Drawing.Point(199, 119);
             this.btnMes.Name = "btnMes";
             this.btnMes.Size = new System.Drawing.Size(83, 23);
@@ -236,6 +239,7 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // 
             // btnHoy
             // 
+            this.btnHoy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHoy.Location = new System.Drawing.Point(107, 119);
             this.btnHoy.Name = "btnHoy";
             this.btnHoy.Size = new System.Drawing.Size(75, 23);
@@ -246,6 +250,7 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // 
             // btnAyer
             // 
+            this.btnAyer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAyer.Location = new System.Drawing.Point(6, 119);
             this.btnAyer.Name = "btnAyer";
             this.btnAyer.Size = new System.Drawing.Size(75, 23);
@@ -257,31 +262,36 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 27);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 67);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Fecha Inicial";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(-3, 158);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(10, 155);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "BUSCAR:";
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(52, 152);
+            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Location = new System.Drawing.Point(73, 152);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(314, 20);
             this.txtBuscar.TabIndex = 6;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(372, 149);
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(395, 149);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(77, 23);
             this.btnBuscar.TabIndex = 7;
@@ -292,27 +302,29 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(218, 46);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(217, 86);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 16);
+            this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Entre";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(260, 27);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(259, 67);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.Size = new System.Drawing.Size(73, 13);
             this.label6.TabIndex = 9;
             this.label6.Text = "Fecha Final";
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(576, 1);
+            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.Location = new System.Drawing.Point(586, 12);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(129, 23);
+            this.btnVolver.Size = new System.Drawing.Size(131, 31);
             this.btnVolver.TabIndex = 10;
             this.btnVolver.Text = "Volver Al Inventario";
             this.btnVolver.UseVisualStyleBackColor = true;
@@ -320,12 +332,14 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             // 
             // btnBuscarFecha
             // 
-            this.btnBuscarFecha.Location = new System.Drawing.Point(469, 44);
+            this.btnBuscarFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarFecha.Location = new System.Drawing.Point(468, 84);
             this.btnBuscarFecha.Name = "btnBuscarFecha";
             this.btnBuscarFecha.Size = new System.Drawing.Size(77, 23);
             this.btnBuscarFecha.TabIndex = 11;
             this.btnBuscarFecha.Text = "BUSCAR";
             this.btnBuscarFecha.UseVisualStyleBackColor = true;
+            this.btnBuscarFecha.Click += new System.EventHandler(this.btnBuscarFecha_Click);
             // 
             // frmMenuContabilidad1
             // 

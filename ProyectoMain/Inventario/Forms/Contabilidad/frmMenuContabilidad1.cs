@@ -80,7 +80,10 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
                 {
                     if (aux != item.Codigofactura)
                     {
-                        dgvFacturas.Rows.Add(i, item.Codigofactura, item.NameCliente, item.Tipofactura, item.Fecha_crear, item.Pago);
+                        var lista = aux2.Where(f => f.Codigofactura == item.Codigofactura).ToList();
+                        var total = lista.Sum(l => l.PrecioTotal);
+                        //dgvFacturas.Rows.Add(i, item.Codigofactura, item.NameCliente, item.Tipofactura, item.Fecha_crear, item.Pago);
+                        dgvFacturas.Rows.Add(i, item.Codigofactura, item.NameCliente, item.Tipofactura, item.Fecha_crear, total.ToString("##,#.##"), item.Pago);
                         i++;
                         aux = item.Codigofactura;
                     }
@@ -230,8 +233,35 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
 
 
 
+
         #endregion
 
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            btnBuscar.PerformClick();
+        }
 
+        private void btnBuscarFecha_Click(object sender, EventArgs e)
+        {
+            var aux2 = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy").Contains(dtpFechaInicio.Value.ToString("dd/MM/yyyy")) || f.Fecha_crear.ToString("dd/MM/yyyy").Contains(dtpFechaFinal.Value.ToString("dd/MM/yyyy"))).ToList();
+            //&& f.Fecha_crear.ToString("dd/MM/yyyy") == dtpFechaFinal.Value.ToString("dd/MM/yyyy")
+            string aux = string.Empty;
+            int i = 1;
+            dgvFacturas.Rows.Clear();
+
+            foreach (var item in aux2)
+            {
+                if (aux != item.Codigofactura)
+                {
+                    var lista = aux2.Where(f => f.Codigofactura == item.Codigofactura).ToList();
+                    var total = lista.Sum(l => l.PrecioTotal);
+                    dgvFacturas.Rows.Add(i, item.Codigofactura, item.NameCliente, item.Tipofactura, item.Fecha_crear, total.ToString("##,#.##"), item.Pago);
+
+                    //dgvFacturas.Rows.Add(i, item.Codigofactura, item.NameCliente, item.Tipofactura, item.Fecha_crear, item.Pago);
+                    i++;
+                    aux = item.Codigofactura;
+                }
+            }
+        }
     }
 }
