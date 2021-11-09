@@ -226,7 +226,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
         {
             var factura = globalfacturas;
 
-            factura = factura.Where(f => f.NameCliente.ToLower().Contains(txtBuscar.Text.ToLower()) || f.Codigofactura.ToLower().Contains(txtBuscar.Text.ToLower()) ).OrderByDescending(f => f.Fecha_crear).ToList();
+            factura = factura.Where(f => f.NameCliente.ToLower().Contains(txtBuscar.Text.ToLower()) || f.Fecha_crear.ToString("dd/MM/yyyy").Contains(txtBuscar.Text) || f.Codigofactura.ToLower().Contains(txtBuscar.Text.ToLower())).OrderByDescending(f => f.Fecha_crear).ToList();
 
             string aux = string.Empty;
 
