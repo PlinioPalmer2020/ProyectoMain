@@ -154,12 +154,6 @@
     <Compile Include="Inventario\Forms\FormMenuInventario.Designer.cs">
       <DependentUpon>FormMenuInventario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventario\Forms\frmMenuAgregar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inventario\Forms\frmMenuAgregar.Designer.cs">
-      <DependentUpon>frmMenuAgregar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Inventario\Forms\Registro\frmMenuRegistroEntrada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,9 +193,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\Forms\FormMenuInventario.resx">
       <DependentUpon>FormMenuInventario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Inventario\Forms\frmMenuAgregar.resx">
-      <DependentUpon>frmMenuAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\Forms\Registro\frmMenuRegistroEntrada.resx">
       <DependentUpon>frmMenuRegistroEntrada.cs</DependentUpon>

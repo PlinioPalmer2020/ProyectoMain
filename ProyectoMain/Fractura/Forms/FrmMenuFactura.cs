@@ -95,7 +95,8 @@ namespace ProyectoMain.Fractura.Forms
         {
             DateTime fecha = DateTime.Now;
 
-            string codigo = "CDF" + fecha.ToString("dd") + fecha.ToString("MM") + fecha.ToString("yyyy") + fecha.ToString("hh") + fecha.ToString("mm") + fecha.ToString("ss") + fecha.ToString("ff");
+            //string codigo = "CDF" + fecha.ToString("dd") + fecha.ToString("MM") + fecha.ToString("yyyy") + fecha.ToString("hh") + fecha.ToString("mm") + fecha.ToString("ss") + fecha.ToString("ff");
+            string codigo = "CDF" + fecha.ToString("yyyy") + fecha.ToString("hh") + fecha.ToString("mm") + fecha.ToString("ss");
 
             return codigo;
         }
@@ -104,6 +105,7 @@ namespace ProyectoMain.Fractura.Forms
             txtNombreCliente.Text = string.Empty;
             txtDireccion.Text = string.Empty;
             btnGenerar.Enabled = false;
+            lblTotal.Text = string.Empty;
         }
         private void GenerarFactura(Entidades.Factura factura)
         {
@@ -298,6 +300,11 @@ namespace ProyectoMain.Fractura.Forms
             frmdetallesfactura frmdetallesfactura = new frmdetallesfactura();
             frmdetallesfactura.genero = "generico";
             frmdetallesfactura.ShowDialog(this);
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            btnBuscar.PerformClick();
         }
     }
 }

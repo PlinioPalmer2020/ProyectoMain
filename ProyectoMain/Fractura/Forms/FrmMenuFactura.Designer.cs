@@ -53,6 +53,7 @@ namespace ProyectoMain.Fractura.Forms
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAgregarProductoNuevo = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@ namespace ProyectoMain.Fractura.Forms
             this.tipoProductoDetalles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quitar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnAgregarProductoNuevo = new System.Windows.Forms.Button();
             this.panelAgregar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventario)).BeginInit();
             this.panelFactura.SuspendLayout();
@@ -93,6 +93,7 @@ namespace ProyectoMain.Fractura.Forms
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(428, 20);
             this.txtBuscar.TabIndex = 4;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // btnBuscar
             // 
@@ -307,6 +308,16 @@ namespace ProyectoMain.Fractura.Forms
             this.panel1.Size = new System.Drawing.Size(684, 588);
             this.panel1.TabIndex = 8;
             // 
+            // btnAgregarProductoNuevo
+            // 
+            this.btnAgregarProductoNuevo.Location = new System.Drawing.Point(186, 56);
+            this.btnAgregarProductoNuevo.Name = "btnAgregarProductoNuevo";
+            this.btnAgregarProductoNuevo.Size = new System.Drawing.Size(157, 23);
+            this.btnAgregarProductoNuevo.TabIndex = 5;
+            this.btnAgregarProductoNuevo.Text = "Agregar Producto Generico";
+            this.btnAgregarProductoNuevo.UseVisualStyleBackColor = true;
+            this.btnAgregarProductoNuevo.Click += new System.EventHandler(this.btnAgregarProductoNuevo_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.lblTotal);
@@ -438,16 +449,6 @@ namespace ProyectoMain.Fractura.Forms
             this.label4.Size = new System.Drawing.Size(109, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "Productos Agregados";
-            // 
-            // btnAgregarProductoNuevo
-            // 
-            this.btnAgregarProductoNuevo.Location = new System.Drawing.Point(186, 56);
-            this.btnAgregarProductoNuevo.Name = "btnAgregarProductoNuevo";
-            this.btnAgregarProductoNuevo.Size = new System.Drawing.Size(157, 23);
-            this.btnAgregarProductoNuevo.TabIndex = 5;
-            this.btnAgregarProductoNuevo.Text = "Agregar Producto Generico";
-            this.btnAgregarProductoNuevo.UseVisualStyleBackColor = true;
-            this.btnAgregarProductoNuevo.Click += new System.EventHandler(this.btnAgregarProductoNuevo_Click);
             // 
             // FrmMenuFactura
             // 

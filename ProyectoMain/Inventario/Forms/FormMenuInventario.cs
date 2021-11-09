@@ -191,5 +191,10 @@ namespace ProyectoMain.Inventario.Forms
             frmMenuContabilidad1.Show();
             this.Hide();
         }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            btnBuscar.PerformClick();
+        }
     }
 }
