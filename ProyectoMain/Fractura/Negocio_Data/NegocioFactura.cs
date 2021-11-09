@@ -34,5 +34,11 @@ namespace ProyectoMain.Fractura.Negocio_Data
         {
             _dataFactura.PagoRealizado(factura);
         }
+
+        public void ModificarDevolucion(Entidades.Factura factura)
+        {
+            _dataFactura.ModificarDevolucion(factura);
+        }
+
     }
 }

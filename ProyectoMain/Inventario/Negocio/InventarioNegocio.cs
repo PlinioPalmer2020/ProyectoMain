@@ -43,6 +43,12 @@ namespace ProyectoMain.Inventario.Negocio
             _inventarioData.ReducirExistenciaInventario(inventario);
         }
 
+        public void AumentarExistenciaInventario(Entidades.Inventario inventario)
+        {
+            _inventarioData.AumentarExistenciaInventario(inventario);
+        }
+        
+
         public void EliminarInventario(string codigo)
         {
             _inventarioData.EliminarInventario(codigo);

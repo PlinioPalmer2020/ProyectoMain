@@ -20,8 +20,10 @@ namespace ProyectoMain.Fractura.Forms
 
         //Listas
         private List<Inventario.Entidades.Inventario> _inventarios;
+        private List<Inventario.Entidades.Inventario> _inventariosAunmentar;
         private List<Entidades.Factura> _imprimir;
         private List<Inventario.Entidades.Diferente_precio> diferente_Precios;
+        private List<Entidades.Factura> Devolucionfacturas;
         //private List<string> _inventarios;
 
         // Variables
@@ -29,6 +31,7 @@ namespace ProyectoMain.Fractura.Forms
         private decimal precioMaximo = 0;
         private string RNC = string.Empty;
         public string estado = string.Empty;
+        private string pass = "1234";
         public frmFacturaMostrar()
         {
             InitializeComponent();
@@ -37,9 +40,13 @@ namespace ProyectoMain.Fractura.Forms
             _inventarioNegocio = new Inventario.Negocio.InventarioNegocio();
             _diferente_PrecioNegocio = new Inventario.Negocio.Diferente_precioNegocio();
 
+            Devolucionfacturas = new List<Entidades.Factura>();
+            _inventariosAunmentar = new List<Inventario.Entidades.Inventario>();
+
+
 
         // List
-            _inventarios = new List<Inventario.Entidades.Inventario>();
+        _inventarios = new List<Inventario.Entidades.Inventario>();
             _imprimir = new List<Entidades.Factura>();
             diferente_Precios = new List<Inventario.Entidades.Diferente_precio>();
 
@@ -56,6 +63,7 @@ namespace ProyectoMain.Fractura.Forms
 
             List<Entidades.Factura> factura = new List<Entidades.Factura>();
             factura = _negocioFactura.TenerFacturaEspeficico(codigo);
+            factura = factura.Where(f => f.Estado == 1 || f.Estado == 0).ToList();
             _imprimir = factura;
             if (factura != null)
             {
@@ -92,7 +100,12 @@ namespace ProyectoMain.Fractura.Forms
         }
         public void ReducirInventario(Inventario.Entidades.Inventario inventario)
         {
-            _inventarioNegocio.ReducirExistenciaInventario(inventario);
+            _inventarioNegocio.ReducirExistenciaInventario(inventario); 
+        }
+
+        public void AumentarInventario(Inventario.Entidades.Inventario inventario)
+        {
+            _inventarioNegocio.AumentarExistenciaInventario(inventario); 
         }
         #endregion
 
@@ -112,59 +125,109 @@ namespace ProyectoMain.Fractura.Forms
         }
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("¿Seguro?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if (dr == DialogResult.Yes)
+            if (estado == "devolucion")
             {
-                Entidades.Factura factura = new Entidades.Factura();
-                factura.Codigofactura = lblCodigoFactura.Text;
-                foreach (var item in _inventarios)
+                DialogResult dr = MessageBox.Show("¿Seguro?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
                 {
-                    Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Tipo_de_producto = item.Tipo_de_producto ,Cantidad = item.Cantidad , Codigo = item.Codigo, unidad = item.unidad };
-                    var a = _diferente_PrecioNegocio.TenerDiferente_precio(item.Codigo);
-                    precioMaximo = 1;
-                    foreach (var item2 in a)
+                    foreach (var item3 in Devolucionfacturas)
                     {
-                        precioMaximo = a.Count() == 0 ? 1 : item2.precio;
-                        break;
+                        _negocioFactura.ModificarDevolucion(item3);
                     }
 
-                    foreach (var fac in _imprimir)
+                    foreach (var item in _inventariosAunmentar)
                     {
-                        if (item.unidad == "Detallado")
+                        Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Tipo_de_producto = item.Tipo_de_producto, Cantidad = item.Cantidad, Codigo = item.Codigo, unidad = item.unidad };
+                        var a = _diferente_PrecioNegocio.TenerDiferente_precio(item.Codigo);
+                        precioMaximo = 1;
+                        foreach (var item2 in a)
                         {
-                            inventario.Cantidad = inventario.Cantidad / (double)precioMaximo;
+                            precioMaximo = a.Count() == 0 ? 1 : item2.precio;
+                            break;
                         }
-                        else
+
+                        foreach (var fac in _imprimir)
                         {
-                            inventario.Cantidad = (double)fac.PrecioTotal / (double)precioMaximo;
+                            if (item.unidad == "Detallado")
+                            {
+                                inventario.Cantidad = inventario.Cantidad / (double)precioMaximo;
+                            }
+                            else
+                            {
+                                inventario.Cantidad = (double)fac.PrecioTotal / (double)precioMaximo;
+                            }
+                            break;
                         }
-                        break;
+                        if (a.Count != 0)
+                        {
+                            AumentarInventario(inventario);
+                        }
                     }
-                    if (a.Count != 0)
+
+                    MessageBox.Show("Realizado");
+                    if (volver == 1)
                     {
-                        ReducirInventario(inventario);
+                        ((frmpago.frmMenuPago)this.Owner).cargarFacturas();
                     }
-                }
-                _negocioFactura.PagoRealizado(factura);
-                MessageBox.Show("¡Pago Realizado!", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                if (volver == 1)
-                {
-                    ((frmpago.frmMenuPago)this.Owner).cargarFacturas();
-                }
-
-                DialogResult dw = MessageBox.Show("¿Quieres Imprimir la Factura?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dw == DialogResult.Yes)
-                {
-                    btnImprimir.PerformClick();
-                    this.Close();
-
-                }
-                else
-                {
                     this.Close();
                 }
+            }
+            else
+            {
+                DialogResult dr = MessageBox.Show("¿Seguro?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    Entidades.Factura factura = new Entidades.Factura();
+                    factura.Codigofactura = lblCodigoFactura.Text;
+                    foreach (var item in _inventarios)
+                    {
+                        Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Tipo_de_producto = item.Tipo_de_producto ,Cantidad = item.Cantidad , Codigo = item.Codigo, unidad = item.unidad };
+                        var a = _diferente_PrecioNegocio.TenerDiferente_precio(item.Codigo);
+                        precioMaximo = 1;
+                        foreach (var item2 in a)
+                        {
+                            precioMaximo = a.Count() == 0 ? 1 : item2.precio;
+                            break;
+                        }
 
+                        foreach (var fac in _imprimir)
+                        {
+                            if (item.unidad == "Detallado")
+                            {
+                                inventario.Cantidad = inventario.Cantidad / (double)precioMaximo;
+                            }
+                            else
+                            {
+                                inventario.Cantidad = (double)fac.PrecioTotal / (double)precioMaximo;
+                            }
+                            break;
+                        }
+                        if (a.Count != 0)
+                        {
+                            ReducirInventario(inventario);
+                        }
+                    }
+                    _negocioFactura.PagoRealizado(factura);
+                    MessageBox.Show("¡Pago Realizado!", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (volver == 1)
+                    {
+                        ((frmpago.frmMenuPago)this.Owner).cargarFacturas();
+                    }
+
+                    DialogResult dw = MessageBox.Show("¿Quieres Imprimir la Factura?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dw == DialogResult.Yes)
+                    {
+                        btnImprimir.PerformClick();
+                        this.Close();
+
+                    }
+                    else
+                    {
+                        this.Close();
+                    }
+
+                }
             }
         }
         private void btnSalir_Click(object sender, EventArgs e)
@@ -277,6 +340,38 @@ namespace ProyectoMain.Fractura.Forms
                 devolver.Width = 100;
                 dgvFactura.Columns.Add(devolver);
 
+                btnPagar.Text = "Confirmar Devolucion";
+                btnPagar.Enabled = true;
+
+            }
+        }
+
+        private void dgvFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewLinkCell cell = (DataGridViewLinkCell)dgvFactura.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                if (cell.Value.ToString() == "devolución")
+                {
+                    var devolver = _imprimir.Where(d => d.Codigo == dgvFactura.Rows[e.RowIndex].Cells[0].Value.ToString()).ToList();
+                    foreach (var item in devolver)
+                    {
+                        Devolucionfacturas.Add(item);
+                        dgvFactura.CurrentRow.Cells["Descripcion"].Style.BackColor = Color.Red;
+                        var Aunmentar = _inventarios.Where(i => i.Codigo == item.Codigo).ToList();
+                        foreach (var item2 in Aunmentar)
+                        {
+                            _inventariosAunmentar.Add(item2);
+                        }
+                        // dgvFactura.Rows[e.RowIndex].Cells[0].Style.BackColor = Color.Red;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                //throw;
             }
         }
     }

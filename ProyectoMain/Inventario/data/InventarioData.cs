@@ -212,6 +212,34 @@ namespace ProyectoMain.Inventario.data
             finally { conn.Close(); }
         }
 
+        public void AumentarExistenciaInventario(Entidades.Inventario inventario)
+        {
+            try
+            {
+                conn.Open();
+                String querry = @"update inventario 
+                                  set  cantidad = cantidad + @cantidad
+                                       where codigo = @codigo";
+
+
+                SqlParameter codigo = new SqlParameter("@codigo", inventario.Codigo);
+                SqlParameter cantidad = new SqlParameter("@cantidad", inventario.Cantidad);
+
+                SqlCommand command = new SqlCommand(querry, conn);
+                command.Parameters.Add(codigo);
+                command.Parameters.Add(cantidad);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { conn.Close(); }
+        }
+
+
         public void EliminarInventario(string codigo)
         {
             try

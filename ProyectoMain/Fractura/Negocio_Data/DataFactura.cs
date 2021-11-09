@@ -143,7 +143,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
             try
             {
                 conn.Open();
-                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto ,Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago from facturas";
+                string querry = @"select Id, Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto ,Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago, Estado from facturas";
 
                 // SqlCommand command = new SqlCommand(querry, conn);
                 SqlCommand command = new SqlCommand();
@@ -164,6 +164,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
                 {
                     facturas.Add(new Entidades.Factura
                     {
+                        Id = int.Parse(reader["Id"].ToString()),
                         Codigofactura = reader["Codigofactura"].ToString(),
                         NameCliente = reader["NameCliente"].ToString(),
                         Cedula = reader["Cedula"].ToString(),
@@ -178,6 +179,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
                         Tipofactura = int.Parse(reader["Tipofactura"].ToString()),
                         Fecha_crear = DateTime.Parse(reader["Fecha_crear"].ToString()),
                         Pago = int.Parse(reader["Pago"].ToString()),
+                        Estado = int.Parse(reader["Estado"].ToString())
                         // Cantidad      = int.Parse(reader["Cantidad"].ToString()),
 
                     });
@@ -281,5 +283,33 @@ namespace ProyectoMain.Fractura.Negocio_Data
 
             return facturas;
         }
+
+        public void ModificarDevolucion(Entidades.Factura factura)
+        {
+            try
+            {
+                conn.Open();
+                String querry = @"update facturas 
+                                  set Estado = 2
+                                  Where Id = @Id";
+
+                SqlParameter Id = new SqlParameter("@Id", factura.Id);
+                //SqlParameter Estado = new SqlParameter("@estado", factura.Estado);
+;
+
+
+                SqlCommand command = new SqlCommand(querry, conn);
+                command.Parameters.Add(Id);
+               // command.Parameters.Add(Estado);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+        }
+
     }
 }
