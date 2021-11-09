@@ -32,6 +32,7 @@ namespace ProyectoMain.Inventario.Forms
         private void FormMenuInventario_Load(object sender, EventArgs e)
         {
             cargardatosdgv(txtBuscar.Text);
+            btnHistoria.Visible = false;
         }
 
 

@@ -47,10 +47,7 @@ namespace ProyectoMain.Fractura.Forms
                 btnCaja.Visible = true;
             }
         }
-        private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
 
         #region Funciones
@@ -105,7 +102,7 @@ namespace ProyectoMain.Fractura.Forms
             txtNombreCliente.Text = string.Empty;
             txtDireccion.Text = string.Empty;
             btnGenerar.Enabled = false;
-            lblTotal.Text = string.Empty;
+            lblTotal.Text = "0";
         }
         private void GenerarFactura(Entidades.Factura factura)
         {
@@ -306,5 +303,7 @@ namespace ProyectoMain.Fractura.Forms
         {
             btnBuscar.PerformClick();
         }
+
+
     }
 }

@@ -81,25 +81,28 @@ namespace ProyectoMain.Fractura.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(6, 174);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(66, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Buscar:";
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(48, 171);
+            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Location = new System.Drawing.Point(69, 171);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(428, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(428, 24);
             this.txtBuscar.TabIndex = 4;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(482, 168);
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(503, 168);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(84, 27);
             this.btnBuscar.TabIndex = 5;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -107,9 +110,10 @@ namespace ProyectoMain.Fractura.Forms
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(518, 12);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(507, 8);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 23);
+            this.button2.Size = new System.Drawing.Size(166, 27);
             this.button2.TabIndex = 6;
             this.button2.Text = "Salir del programa";
             this.button2.UseVisualStyleBackColor = true;
@@ -125,7 +129,7 @@ namespace ProyectoMain.Fractura.Forms
             this.panelAgregar.Controls.Add(this.label1);
             this.panelAgregar.Location = new System.Drawing.Point(3, 3);
             this.panelAgregar.Name = "panelAgregar";
-            this.panelAgregar.Size = new System.Drawing.Size(657, 588);
+            this.panelAgregar.Size = new System.Drawing.Size(691, 588);
             this.panelAgregar.TabIndex = 7;
             // 
             // gridInventario
@@ -146,7 +150,7 @@ namespace ProyectoMain.Fractura.Forms
             this.gridInventario.Location = new System.Drawing.Point(0, 197);
             this.gridInventario.Name = "gridInventario";
             this.gridInventario.ReadOnly = true;
-            this.gridInventario.Size = new System.Drawing.Size(657, 391);
+            this.gridInventario.Size = new System.Drawing.Size(691, 391);
             this.gridInventario.TabIndex = 8;
             this.gridInventario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridInventario_CellContentClick_1);
             this.gridInventario.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gridInventario_CellFormatting);
@@ -212,14 +216,15 @@ namespace ProyectoMain.Fractura.Forms
             this.panelFactura.Controls.Add(this.txtNombreCliente);
             this.panelFactura.Location = new System.Drawing.Point(9, 31);
             this.panelFactura.Name = "panelFactura";
-            this.panelFactura.Size = new System.Drawing.Size(645, 125);
+            this.panelFactura.Size = new System.Drawing.Size(679, 125);
             this.panelFactura.TabIndex = 7;
             // 
             // btnCaja
             // 
-            this.btnCaja.Location = new System.Drawing.Point(391, 91);
+            this.btnCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCaja.Location = new System.Drawing.Point(380, 87);
             this.btnCaja.Name = "btnCaja";
-            this.btnCaja.Size = new System.Drawing.Size(121, 23);
+            this.btnCaja.Size = new System.Drawing.Size(121, 29);
             this.btnCaja.TabIndex = 11;
             this.btnCaja.Text = "Caja";
             this.btnCaja.UseVisualStyleBackColor = true;
@@ -227,9 +232,10 @@ namespace ProyectoMain.Fractura.Forms
             // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(518, 41);
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.Location = new System.Drawing.Point(507, 37);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(121, 23);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(166, 39);
             this.btnCerrarSesion.TabIndex = 10;
             this.btnCerrarSesion.Text = "Cerrar Sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
@@ -237,9 +243,10 @@ namespace ProyectoMain.Fractura.Forms
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(518, 91);
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Location = new System.Drawing.Point(507, 87);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(121, 23);
+            this.btnSalir.Size = new System.Drawing.Size(166, 29);
             this.btnSalir.TabIndex = 9;
             this.btnSalir.Text = "Volver al Inventario";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -248,51 +255,55 @@ namespace ProyectoMain.Fractura.Forms
             // cbTipoFactura
             // 
             this.cbTipoFactura.FormattingEnabled = true;
-            this.cbTipoFactura.Location = new System.Drawing.Point(106, 99);
+            this.cbTipoFactura.Location = new System.Drawing.Point(162, 87);
             this.cbTipoFactura.Name = "cbTipoFactura";
             this.cbTipoFactura.Size = new System.Drawing.Size(121, 21);
             this.cbTipoFactura.TabIndex = 8;
-            this.cbTipoFactura.SelectedIndexChanged += new System.EventHandler(this.cbTipoFactura_SelectedIndexChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 102);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(14, 87);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 13);
+            this.label5.Size = new System.Drawing.Size(135, 18);
             this.label5.TabIndex = 7;
             this.label5.Text = "Tipos de Factura";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 62);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(69, 51);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.Size = new System.Drawing.Size(80, 18);
             this.label3.TabIndex = 4;
             this.label3.Text = "Direccion";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(4, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.Size = new System.Drawing.Size(152, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "Nombre del Cliente";
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(106, 59);
+            this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDireccion.Location = new System.Drawing.Point(162, 48);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(225, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(225, 24);
             this.txtDireccion.TabIndex = 1;
             // 
             // txtNombreCliente
             // 
-            this.txtNombreCliente.Location = new System.Drawing.Point(106, 14);
+            this.txtNombreCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreCliente.Location = new System.Drawing.Point(162, 13);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(225, 20);
+            this.txtNombreCliente.Size = new System.Drawing.Size(225, 24);
             this.txtNombreCliente.TabIndex = 0;
             // 
             // panel1
@@ -303,16 +314,17 @@ namespace ProyectoMain.Fractura.Forms
             this.panel1.Controls.Add(this.btnGenerar);
             this.panel1.Controls.Add(this.dgvDetalles);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(666, 3);
+            this.panel1.Location = new System.Drawing.Point(710, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(684, 588);
+            this.panel1.Size = new System.Drawing.Size(482, 588);
             this.panel1.TabIndex = 8;
             // 
             // btnAgregarProductoNuevo
             // 
-            this.btnAgregarProductoNuevo.Location = new System.Drawing.Point(186, 56);
+            this.btnAgregarProductoNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarProductoNuevo.Location = new System.Drawing.Point(186, 42);
             this.btnAgregarProductoNuevo.Name = "btnAgregarProductoNuevo";
-            this.btnAgregarProductoNuevo.Size = new System.Drawing.Size(157, 23);
+            this.btnAgregarProductoNuevo.Size = new System.Drawing.Size(157, 28);
             this.btnAgregarProductoNuevo.TabIndex = 5;
             this.btnAgregarProductoNuevo.Text = "Agregar Producto Generico";
             this.btnAgregarProductoNuevo.UseVisualStyleBackColor = true;
@@ -325,33 +337,36 @@ namespace ProyectoMain.Fractura.Forms
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 556);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(684, 32);
+            this.panel2.Size = new System.Drawing.Size(482, 32);
             this.panel2.TabIndex = 4;
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblTotal.Location = new System.Drawing.Point(600, 10);
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(406, 8);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(25, 15);
+            this.lblTotal.Size = new System.Drawing.Size(19, 20);
             this.lblTotal.TabIndex = 1;
-            this.lblTotal.Text = "null";
+            this.lblTotal.Text = "0";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(549, 10);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(341, 10);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.Size = new System.Drawing.Size(65, 18);
             this.label6.TabIndex = 0;
             this.label6.Text = "TOTAL:";
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(460, 26);
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(377, 26);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 40);
             this.btnLimpiar.TabIndex = 3;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -359,9 +374,10 @@ namespace ProyectoMain.Fractura.Forms
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(186, 26);
+            this.btnGenerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerar.Location = new System.Drawing.Point(186, 9);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(157, 23);
+            this.btnGenerar.Size = new System.Drawing.Size(157, 27);
             this.btnGenerar.TabIndex = 2;
             this.btnGenerar.Text = "Generar Facturar";
             this.btnGenerar.UseVisualStyleBackColor = true;
@@ -385,7 +401,7 @@ namespace ProyectoMain.Fractura.Forms
             this.dgvDetalles.Location = new System.Drawing.Point(0, 83);
             this.dgvDetalles.Name = "dgvDetalles";
             this.dgvDetalles.ReadOnly = true;
-            this.dgvDetalles.Size = new System.Drawing.Size(681, 471);
+            this.dgvDetalles.Size = new System.Drawing.Size(479, 471);
             this.dgvDetalles.TabIndex = 1;
             this.dgvDetalles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalles_CellContentClick);
             // 
@@ -444,9 +460,10 @@ namespace ProyectoMain.Fractura.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 31);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(7, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 13);
+            this.label4.Size = new System.Drawing.Size(171, 18);
             this.label4.TabIndex = 0;
             this.label4.Text = "Productos Agregados";
             // 
@@ -454,7 +471,7 @@ namespace ProyectoMain.Fractura.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1353, 603);
+            this.ClientSize = new System.Drawing.Size(1212, 603);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelAgregar);

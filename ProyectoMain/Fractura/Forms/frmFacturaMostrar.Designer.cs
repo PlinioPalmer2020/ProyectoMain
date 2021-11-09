@@ -65,9 +65,10 @@ namespace ProyectoMain.Fractura.Forms
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(21, 74);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 13);
+            this.label1.Size = new System.Drawing.Size(118, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre del Cliente:";
             // 
@@ -162,9 +163,10 @@ namespace ProyectoMain.Fractura.Forms
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(584, 3);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(35, 13);
+            this.lblTotal.Size = new System.Drawing.Size(41, 13);
             this.lblTotal.TabIndex = 12;
             this.lblTotal.Text = "label2";
             // 
@@ -181,9 +183,10 @@ namespace ProyectoMain.Fractura.Forms
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(533, 3);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.Size = new System.Drawing.Size(51, 13);
             this.label6.TabIndex = 11;
             this.label6.Text = "TOTAL:";
             // 
@@ -209,81 +212,90 @@ namespace ProyectoMain.Fractura.Forms
             // lblNombreCliente
             // 
             this.lblNombreCliente.AutoSize = true;
-            this.lblNombreCliente.Location = new System.Drawing.Point(117, 74);
+            this.lblNombreCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreCliente.Location = new System.Drawing.Point(149, 74);
             this.lblNombreCliente.Name = "lblNombreCliente";
-            this.lblNombreCliente.Size = new System.Drawing.Size(35, 13);
+            this.lblNombreCliente.Size = new System.Drawing.Size(39, 13);
             this.lblNombreCliente.TabIndex = 4;
             this.lblNombreCliente.Text = "NULL";
             // 
             // lblDireccion
             // 
             this.lblDireccion.AutoSize = true;
-            this.lblDireccion.Location = new System.Drawing.Point(117, 105);
+            this.lblDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccion.Location = new System.Drawing.Point(147, 105);
             this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(35, 13);
+            this.lblDireccion.Size = new System.Drawing.Size(39, 13);
             this.lblDireccion.TabIndex = 6;
             this.lblDireccion.Text = "NULL";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(65, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Direccion:";
             // 
             // lblCodigoFactura
             // 
             this.lblCodigoFactura.AutoSize = true;
-            this.lblCodigoFactura.Location = new System.Drawing.Point(117, 35);
+            this.lblCodigoFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoFactura.Location = new System.Drawing.Point(147, 35);
             this.lblCodigoFactura.Name = "lblCodigoFactura";
-            this.lblCodigoFactura.Size = new System.Drawing.Size(35, 13);
+            this.lblCodigoFactura.Size = new System.Drawing.Size(41, 13);
             this.lblCodigoFactura.TabIndex = 8;
             this.lblCodigoFactura.Text = "label2";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 13);
+            this.label4.Size = new System.Drawing.Size(129, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "Codigo de la Factura:";
             // 
             // lblTipoFactura
             // 
             this.lblTipoFactura.AutoSize = true;
-            this.lblTipoFactura.Location = new System.Drawing.Point(467, 35);
+            this.lblTipoFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoFactura.Location = new System.Drawing.Point(483, 35);
             this.lblTipoFactura.Name = "lblTipoFactura";
-            this.lblTipoFactura.Size = new System.Drawing.Size(19, 13);
+            this.lblTipoFactura.Size = new System.Drawing.Size(21, 13);
             this.lblTipoFactura.TabIndex = 10;
             this.lblTipoFactura.Text = "ok";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(376, 35);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 13);
+            this.label5.Size = new System.Drawing.Size(101, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Tipo de Factura:";
             // 
             // lblfechaCreacion
             // 
             this.lblfechaCreacion.AutoSize = true;
-            this.lblfechaCreacion.Location = new System.Drawing.Point(470, 60);
+            this.lblfechaCreacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfechaCreacion.Location = new System.Drawing.Point(488, 60);
             this.lblfechaCreacion.Name = "lblfechaCreacion";
-            this.lblfechaCreacion.Size = new System.Drawing.Size(35, 13);
+            this.lblfechaCreacion.Size = new System.Drawing.Size(39, 13);
             this.lblfechaCreacion.TabIndex = 12;
             this.lblfechaCreacion.Text = "NULL";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(364, 60);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 13);
+            this.label7.Size = new System.Drawing.Size(118, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "Fecha de Creacion:";
             // 
