@@ -83,7 +83,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
             try
             {
                 conn.Open();
-                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Producto, Descripción, Precio, Cantidad, PrecioTotal, Tipofactura, Fecha_crear, Pago from facturas";
+                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Producto, Descripción, Precio, Cantidad, PrecioTotal, Tipofactura, Fecha_crear, Pago from facturas ";
 
                 // SqlCommand command = new SqlCommand(querry, conn);
                 SqlCommand command = new SqlCommand();

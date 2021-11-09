@@ -57,6 +57,7 @@ namespace ProyectoMain.Fractura.Forms
             this.label7 = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.btnDevolvertodo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -309,11 +310,24 @@ namespace ProyectoMain.Fractura.Forms
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // btnDevolvertodo
+            // 
+            this.btnDevolvertodo.Enabled = false;
+            this.btnDevolvertodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDevolvertodo.Location = new System.Drawing.Point(576, 106);
+            this.btnDevolvertodo.Name = "btnDevolvertodo";
+            this.btnDevolvertodo.Size = new System.Drawing.Size(107, 23);
+            this.btnDevolvertodo.TabIndex = 13;
+            this.btnDevolvertodo.Text = "Delvolver todo";
+            this.btnDevolvertodo.UseVisualStyleBackColor = true;
+            this.btnDevolvertodo.Visible = false;
+            // 
             // frmFacturaMostrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 519);
+            this.Controls.Add(this.btnDevolvertodo);
             this.Controls.Add(this.lblfechaCreacion);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblTipoFactura);
@@ -330,6 +344,7 @@ namespace ProyectoMain.Fractura.Forms
             this.Name = "frmFacturaMostrar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Factura Generada";
+            this.Load += new System.EventHandler(this.frmFacturaMostrar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -368,5 +383,6 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoproducto;
+        public System.Windows.Forms.Button btnDevolvertodo;
     }
 }

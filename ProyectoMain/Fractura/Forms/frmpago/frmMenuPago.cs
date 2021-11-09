@@ -149,6 +149,17 @@ namespace ProyectoMain.Fractura.Forms.frmpago
                         MessageBox.Show("¡Esta Factura ha sido Pagada!","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     }
                 }
+                else if (cell.Value.ToString() == "Devolución") 
+                {
+                    frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
+                    frmFacturaMostrar.cargarDatos(dgvFacturas.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    frmFacturaMostrar.estado = "devolucion";
+                    frmFacturaMostrar.btnPagar.Enabled = false;
+                    frmFacturaMostrar.btnDevolvertodo.Enabled = true;
+                    frmFacturaMostrar.btnDevolvertodo.Visible = true;
+                    frmFacturaMostrar.ShowDialog();
+                }
+
             }
             catch (Exception)
             {

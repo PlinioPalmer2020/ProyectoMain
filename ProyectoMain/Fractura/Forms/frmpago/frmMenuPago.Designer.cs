@@ -50,7 +50,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RealizarPago = new System.Windows.Forms.DataGridViewLinkColumn();
             this.Detalles = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Desactivar = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.devolucion = new System.Windows.Forms.DataGridViewLinkColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.panelFiltros.SuspendLayout();
             this.SuspendLayout();
@@ -123,7 +123,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Pago,
             this.RealizarPago,
             this.Detalles,
-            this.Desactivar});
+            this.devolucion});
             this.dgvFacturas.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvFacturas.Location = new System.Drawing.Point(0, 149);
             this.dgvFacturas.Name = "dgvFacturas";
@@ -248,14 +248,13 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.Detalles.Text = "Detalles";
             this.Detalles.UseColumnTextForLinkValue = true;
             // 
-            // Desactivar
+            // devolucion
             // 
-            this.Desactivar.HeaderText = "Quitar";
-            this.Desactivar.Name = "Desactivar";
-            this.Desactivar.ReadOnly = true;
-            this.Desactivar.Text = "Quitar";
-            this.Desactivar.UseColumnTextForLinkValue = true;
-            this.Desactivar.Visible = false;
+            this.devolucion.HeaderText = "Devolución";
+            this.devolucion.Name = "devolucion";
+            this.devolucion.ReadOnly = true;
+            this.devolucion.Text = "Devolución";
+            this.devolucion.UseColumnTextForLinkValue = true;
             // 
             // frmMenuPago
             // 
@@ -303,6 +302,6 @@ namespace ProyectoMain.Fractura.Forms.frmpago
         private System.Windows.Forms.DataGridViewTextBoxColumn Pago;
         private System.Windows.Forms.DataGridViewLinkColumn RealizarPago;
         private System.Windows.Forms.DataGridViewLinkColumn Detalles;
-        private System.Windows.Forms.DataGridViewLinkColumn Desactivar;
+        private System.Windows.Forms.DataGridViewLinkColumn devolucion;
     }
 }

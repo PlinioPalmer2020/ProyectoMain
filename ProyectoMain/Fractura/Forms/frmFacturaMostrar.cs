@@ -28,6 +28,7 @@ namespace ProyectoMain.Fractura.Forms
         public int volver = 0;
         private decimal precioMaximo = 0;
         private string RNC = string.Empty;
+        public string estado = string.Empty;
         public frmFacturaMostrar()
         {
             InitializeComponent();
@@ -259,8 +260,24 @@ namespace ProyectoMain.Fractura.Forms
 
         }
 
+
+
+
         #endregion
 
+        private void frmFacturaMostrar_Load(object sender, EventArgs e)
+        {
+            if (estado == "devolucion")
+            {
+                DataGridViewLinkColumn devolver = new DataGridViewLinkColumn();
+                devolver.HeaderText = "devolución";
+                devolver.Name = "devolucion";
+                devolver.Text = "devolución";
+                devolver.UseColumnTextForLinkValue = true;
+                devolver.Width = 100;
+                dgvFactura.Columns.Add(devolver);
 
+            }
+        }
     }
 }
