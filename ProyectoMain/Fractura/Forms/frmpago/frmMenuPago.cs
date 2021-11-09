@@ -47,6 +47,8 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             factura = _negocioFactura.TenerFactura();
             string aux = string.Empty;
 
+            factura = factura.OrderByDescending(f => f.Fecha_crear).ToList();
+
             dgvFacturas.Rows.Clear();
             foreach (var item in factura)
             {
@@ -73,16 +75,16 @@ namespace ProyectoMain.Fractura.Forms.frmpago
           //  else
             if(x != 3 && y == 2) // sale  los tipo de los pagos que espesificas y salen todos los pagados y pediente
             {
-                factura = factura1.Where(f => f.Tipofactura == x ).ToList();
+                factura = factura1.Where(f => f.Tipofactura == x ).OrderByDescending(f => f.Fecha_crear).ToList();
             }
             else if (x == 3 && y != 2) // sale los pagados y pendiente que espesificas y sales todos los tipos 
             {
-                factura = factura1.Where(f => f.Pago == y).ToList();
+                factura = factura1.Where(f => f.Pago == y).OrderByDescending(f => f.Fecha_crear).ToList();
 
             }
             else
             {
-                factura = factura1.Where(f => f.Tipofactura == x && f.Pago == y).ToList();
+                factura = factura1.Where(f => f.Tipofactura == x && f.Pago == y).OrderByDescending(f => f.Fecha_crear).ToList();
             }
             string aux = string.Empty;
 

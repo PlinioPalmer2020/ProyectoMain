@@ -12,10 +12,17 @@ namespace ProyectoMain.Fractura.Forms
 {
     public partial class frmdetallesfactura : Form
     {
-
-        private Inventario.Entidades.Inventario _inventario;
+        // capa de negpcio
         private Inventario.Negocio.Diferente_precioNegocio _diferente_PrecioNegocio;
+        private Inventario.Negocio.UnidadNegocio _unidadNegocio;
+
+        // capa entidades
+        private Inventario.Entidades.Inventario _inventario;
+
+        // listas 
         private List<Inventario.Entidades.Diferente_precio> diferente_Precios;
+
+        //algunas variables
         private decimal aux = 0;
         public string genero = string.Empty;
        // public string tipoProducto = string.Empty;
@@ -24,6 +31,7 @@ namespace ProyectoMain.Fractura.Forms
             InitializeComponent();
             _diferente_PrecioNegocio = new Inventario.Negocio.Diferente_precioNegocio();
             diferente_Precios = new List<Inventario.Entidades.Diferente_precio>();
+            _unidadNegocio = new Inventario.Negocio.UnidadNegocio();
         }
 
 
@@ -67,6 +75,8 @@ namespace ProyectoMain.Fractura.Forms
             if (genero == "generico")
             {
                 Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
+
+                
                 inventario.Codigo = txtCodigo.Text;
                 inventario.Nombre = txtNombre.Text;
                 inventario.descripcion = txtDescripcion.Text;
@@ -132,6 +142,14 @@ namespace ProyectoMain.Fractura.Forms
                 txtDescripcion.Enabled = true;
                 txtPrecio.Enabled = true;
                 txtCantidad.Enabled = true;
+                List<Inventario.Entidades.Unidad> unidads = new List<Inventario.Entidades.Unidad>();
+
+                unidads = _unidadNegocio.TenerUnidad();
+
+                foreach (var item in unidads)
+                {
+                    cbUnidad.Items.Add(item.nombre_unidad);
+                }
             }
         }
 

@@ -115,9 +115,10 @@ namespace ProyectoMain.Fractura.Forms
                 {
                     Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Tipo_de_producto = item.Tipo_de_producto ,Cantidad = item.Cantidad , Codigo = item.Codigo, unidad = item.unidad };
                     var a = _diferente_PrecioNegocio.TenerDiferente_precio(item.Codigo);
+                    precioMaximo = 1;
                     foreach (var item2 in a)
                     {
-                        precioMaximo = item2.precio;
+                        precioMaximo = a.Count() == 0 ? 1 : item2.precio;
                         break;
                     }
 
@@ -133,7 +134,10 @@ namespace ProyectoMain.Fractura.Forms
                         }
                         break;
                     }
-                    ReducirInventario(inventario);
+                    if (a.Count != 0)
+                    {
+                        ReducirInventario(inventario);
+                    }
                 }
                 _negocioFactura.PagoRealizado(factura);
                 MessageBox.Show("¡Pago Realizado!", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
