@@ -151,14 +151,21 @@ namespace ProyectoMain.Fractura.Forms.frmpago
                 }
                 else if (cell.Value.ToString() == "Devolución") 
                 {
-                    frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
-                    frmFacturaMostrar.cargarDatos(dgvFacturas.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    frmFacturaMostrar.estado = "devolucion";
-                    frmFacturaMostrar.btnPagar.Enabled = false;
-                    frmFacturaMostrar.btnDevolvertodo.Enabled = true;
-                    frmFacturaMostrar.btnDevolvertodo.Visible = true;
-                    frmFacturaMostrar.btnImprimir.Visible = false;
-                    frmFacturaMostrar.ShowDialog();
+                    if (Convert.ToInt32(dgvFacturas.Rows[e.RowIndex].Cells[4].Value.ToString()) == 1) 
+                    {
+                        frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
+                        frmFacturaMostrar.cargarDatos(dgvFacturas.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        frmFacturaMostrar.estado = "devolucion";
+                        frmFacturaMostrar.btnPagar.Enabled = false;
+                        frmFacturaMostrar.btnDevolvertodo.Enabled = true;
+                        frmFacturaMostrar.btnDevolvertodo.Visible = true;
+                        frmFacturaMostrar.btnImprimir.Visible = false;
+                        frmFacturaMostrar.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("¡Debe Realizar el Pago Primero!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
 
             }

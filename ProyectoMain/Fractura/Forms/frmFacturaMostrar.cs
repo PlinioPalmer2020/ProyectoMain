@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace ProyectoMain.Fractura.Forms
 {
@@ -128,8 +129,13 @@ namespace ProyectoMain.Fractura.Forms
             if (estado == "devolucion")
             {
                 DialogResult dr = MessageBox.Show("¿Seguro?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.Yes)
-                {
+                if (dr == DialogResult.Yes )
+                {//--------------
+                    var contra = Interaction.InputBox("Ingrese Contraseña","","Contraseña",100,0);
+                    if (contra == pass)
+                    {
+
+                    
                     foreach (var item3 in Devolucionfacturas)
                     {
                         _negocioFactura.ModificarDevolucion(item3);
@@ -170,7 +176,12 @@ namespace ProyectoMain.Fractura.Forms
                         ((frmpago.frmMenuPago)this.Owner).cargarFacturas();
                     }
                     this.Close();
-                }
+                    }
+                    else 
+                    {
+                        MessageBox.Show("Error Contraseña Incorrecta","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    }
+                }//--------------
             }
             else
             {
