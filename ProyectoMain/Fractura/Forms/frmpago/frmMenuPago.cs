@@ -245,7 +245,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
                 frmMenuFactura.Login = "mixto";
             }
             frmMenuFactura.Show();
-            this.Show();
+            this.Hide();
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -284,6 +284,12 @@ namespace ProyectoMain.Fractura.Forms.frmpago
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             btnBuscar.PerformClick();
+        }
+
+        private void btnRecargar_Click(object sender, EventArgs e)
+        {
+            cargarFacturas();
+
         }
     }
 }

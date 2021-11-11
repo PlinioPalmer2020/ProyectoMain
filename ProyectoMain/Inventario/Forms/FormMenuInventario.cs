@@ -197,5 +197,10 @@ namespace ProyectoMain.Inventario.Forms
         {
             btnBuscar.PerformClick();
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            cargardatosdgv(txtBuscar.Text);
+        }
     }
 }

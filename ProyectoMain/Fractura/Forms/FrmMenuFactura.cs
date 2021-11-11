@@ -311,6 +311,10 @@ namespace ProyectoMain.Fractura.Forms
             btnBuscar.PerformClick();
         }
 
-
+        private void btnRecargar_Click(object sender, EventArgs e)
+        {
+            gridInventario.Rows.Clear();
+            CargarDatos(txtBuscar.Text);
+        }
     }
 }

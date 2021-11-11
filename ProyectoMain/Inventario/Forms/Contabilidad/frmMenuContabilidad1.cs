@@ -263,5 +263,10 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
                 }
             }
         }
+
+        private void btnRecargar_Click(object sender, EventArgs e)
+        {
+            cargarFacturas();
+        }
     }
 }

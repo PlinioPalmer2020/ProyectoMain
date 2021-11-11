@@ -57,6 +57,7 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             this.label6 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnBuscarFecha = new System.Windows.Forms.Button();
+            this.btnRecargar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -341,11 +342,23 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             this.btnBuscarFecha.UseVisualStyleBackColor = true;
             this.btnBuscarFecha.Click += new System.EventHandler(this.btnBuscarFecha_Click);
             // 
+            // btnRecargar
+            // 
+            this.btnRecargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecargar.Location = new System.Drawing.Point(478, 149);
+            this.btnRecargar.Name = "btnRecargar";
+            this.btnRecargar.Size = new System.Drawing.Size(75, 23);
+            this.btnRecargar.TabIndex = 12;
+            this.btnRecargar.Text = "Recargar";
+            this.btnRecargar.UseVisualStyleBackColor = true;
+            this.btnRecargar.Click += new System.EventHandler(this.btnRecargar_Click);
+            // 
             // frmMenuContabilidad1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 501);
+            this.Controls.Add(this.btnRecargar);
             this.Controls.Add(this.btnBuscarFecha);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label6);
@@ -405,5 +418,6 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
         private System.Windows.Forms.RadioButton rbSinPagar;
         private System.Windows.Forms.RadioButton rbPagados;
         private System.Windows.Forms.RadioButton rbTodos;
+        private System.Windows.Forms.Button btnRecargar;
     }
 }
