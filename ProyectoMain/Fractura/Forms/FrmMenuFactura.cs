@@ -250,10 +250,10 @@ namespace ProyectoMain.Fractura.Forms
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                //throw;
+                MessageBox.Show(ex.Message);
             }
         }
         private void gridInventario_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

@@ -120,9 +120,9 @@ namespace ProyectoMain.Fractura.Forms
             PrinterSettings ps = new PrinterSettings();
             printDocument1.PrinterSettings = ps;
             printDocument1.PrintPage += imprimir;
-            //printPreviewDialog1.Document = printDocument1;
-            //printPreviewDialog1.ShowDialog();
-            printDocument1.Print();
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();
+            //printDocument1.Print();
         }
         private void btnPagar_Click(object sender, EventArgs e)
         {
@@ -253,11 +253,11 @@ namespace ProyectoMain.Fractura.Forms
         #region funcion encargado de imprimir ticket
         private void imprimir(object sender, PrintPageEventArgs e)
         {
-            Font font = new Font("Arial",8,FontStyle.Bold,GraphicsUnit.Point);
+            Font font = new Font("Arial",5,FontStyle.Bold,GraphicsUnit.Point);
             Font fonttitulo = new Font("Arial",15,FontStyle.Bold,GraphicsUnit.Point);
 
             int y = 20;
-        
+            int aux5 = 0;
 
             // cabezado
 
@@ -277,23 +277,26 @@ namespace ProyectoMain.Fractura.Forms
                 e.Graphics.DrawString("Cliente: " +item.NameCliente, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
                // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Direccion: "+item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
-               // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+               // e.Graphics.DrawString("Telefono: "+item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
+                // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Fecha de creacion: " + item.Fecha_crear, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
-                e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                //e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("RNC: "+ RNC, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
                 e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 //aqui va un switch para el nombre del tipo de factura
                 switch (item.Tipofactura)
                 {
                     case 0:
-                        e.Graphics.DrawString("Tipo de Factura: Normal", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                        e.Graphics.DrawString("Tipo de Factura: Descontado", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                        aux5 = 0;
                         break;
                     case 1:
-                        e.Graphics.DrawString("Tipo de Factura: Credito", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                        e.Graphics.DrawString("Tipo de Factura: Crédito", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                        aux5 = 1;
                         break;
-                    case 2:
+                   /* case 2:
                         e.Graphics.DrawString("Tipo de Factura: Envio", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
-                        break;
+                        break;*/
                     default:
                         break;
                 }
@@ -302,32 +305,43 @@ namespace ProyectoMain.Fractura.Forms
 
             // Cuerpo
 
-            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
-            e.Graphics.DrawString("-----------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 200));
+            e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
             e.Graphics.DrawString("FACTURA", font, Brushes.Black, new RectangleF(130, y += 20, 150, 20));
-            e.Graphics.DrawString("-----------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
+            e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
 
 
-
-            e.Graphics.DrawString("DESCRIPCION", font, Brushes.Black, new RectangleF(0, y, 150, 20));
-            e.Graphics.DrawString("CANTIDAD", font, Brushes.Black, new RectangleF(100, y, 150, 20));
-            e.Graphics.DrawString("PRECIO", font, Brushes.Black, new RectangleF(175, y, 150, 20));
+            e.Graphics.DrawString("CODIGO", font, Brushes.Black, new RectangleF(0, y, 150, 20));
+            e.Graphics.DrawString("DESCRIPCION", font, Brushes.Black, new RectangleF(75, y, 150, 20));
+            e.Graphics.DrawString("CANTIDAD", font, Brushes.Black, new RectangleF(150, y, 150, 20));
+            e.Graphics.DrawString("PRECIO", font, Brushes.Black, new RectangleF(200, y, 150, 20));
             e.Graphics.DrawString("TOTAL", font, Brushes.Black, new RectangleF(250, y, 150, 20));
 
             foreach (var item in _imprimir)
             {
-
-                      e.Graphics.DrawString(item.Descripción, font, Brushes.Black, new RectangleF(0, y+=20, 100, 100));
-                      e.Graphics.DrawString(item.Cantidad.ToString()+" "+item.Unidad, font, Brushes.Black, new RectangleF(100, y, 100, 20));
-                      e.Graphics.DrawString(item.Precio.ToString(), font, Brushes.Black, new RectangleF(175, y, 100, 20));
-                      e.Graphics.DrawString(item.PrecioTotal.ToString(), font, Brushes.Black, new RectangleF(250, y, 100, 20));
-                      e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                      e.Graphics.DrawString(item.Codigo, font, Brushes.Black, new RectangleF(0, y+=20, 50, 50));
+                      e.Graphics.DrawString(item.Descripción, font, Brushes.Black, new RectangleF(75, y, 100, 100));
+                      e.Graphics.DrawString(item.Cantidad.ToString()+" "+item.Unidad, font, Brushes.Black, new RectangleF(150, y, 100, 20));
+                    e.Graphics.DrawString(item.Precio.ToString(), font, Brushes.Black, new RectangleF(200, y, 100, 20));
+                    e.Graphics.DrawString(item.PrecioTotal.ToString(), font, Brushes.Black, new RectangleF(250, y, 100, 20));
+                e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             }
-            e.Graphics.DrawString("-----------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
-            e.Graphics.DrawString("Precio Total: " + lblTotal.Text, font, Brushes.Black, new RectangleF(180, y += 20, 400, 20));
-            e.Graphics.DrawString("-----------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
+            e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
+            e.Graphics.DrawString("Precio Total: " + lblTotal.Text, font, Brushes.Black, new RectangleF(250, y += 20, 400, 20));
+            e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
 
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            if (aux5 == 1)
+            {
+                e.Graphics.DrawString("Entregado por", font, Brushes.Black, new RectangleF(50, y , 150, 20));
+                e.Graphics.DrawString("-----------------", font, Brushes.Black, new RectangleF(50, y += 20 , 150, 20));
+                e.Graphics.DrawString("Recibido Por", font, Brushes.Black, new RectangleF(220, y -=20 , 150, 20));
+                e.Graphics.DrawString("-----------------", font, Brushes.Black, new RectangleF(220, y +=20 , 150, 20));
+            }
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));

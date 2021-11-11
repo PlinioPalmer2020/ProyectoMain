@@ -85,7 +85,7 @@ namespace ProyectoMain.Fractura.Forms
                 inventario.Nombre = txtNombre.Text;
                 inventario.descripcion = txtDescripcion.Text;
                 inventario.Precio = decimal.Parse(txtPrecio.Text);
-                inventario.Cantidad = int.Parse(txtCantidad.Text);
+                inventario.Cantidad = double.Parse(txtCantidad.Text);
                 inventario.unidad = cbUnidad.Text;
                 inventario.Tipo_de_producto = "Generico";
                 this.Close();
@@ -105,7 +105,7 @@ namespace ProyectoMain.Fractura.Forms
                 inventario.Nombre = txtNombre.Text;
                 inventario.descripcion = txtDescripcion.Text;
                 inventario.Precio = decimal.Parse(txtPrecio.Text);
-                inventario.Cantidad = int.Parse(txtCantidad.Text);
+                inventario.Cantidad = double.Parse(txtCantidad.Text);
                 inventario.unidad = cbUnidad.SelectedItem.ToString();
                 inventario.Tipo_de_producto = _inventario.Tipo_de_producto;
                 this.Close();
@@ -119,7 +119,7 @@ namespace ProyectoMain.Fractura.Forms
                 inventario.Nombre = txtNombre.Text;
                 inventario.descripcion = txtDescripcion.Text;
                 inventario.Precio = decimal.Parse(txtPrecio.Text);
-                inventario.Cantidad = int.Parse(txtCantidad.Text);
+                inventario.Cantidad = double.Parse(txtCantidad.Text);
                 inventario.unidad = cbUnidad.SelectedItem.ToString();
                 inventario.Tipo_de_producto = _inventario.Tipo_de_producto;
                 this.Close();
