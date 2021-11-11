@@ -112,7 +112,7 @@ namespace ProyectoMain.Fractura.Forms
                 ((FrmMenuFactura)this.Owner).cargardetalles(inventario);
 
             }
-            else if (_inventario.Cantidad >= int.Parse(txtCantidad.Text))
+            else if (_inventario.Cantidad >= double.Parse(txtCantidad.Text))
             {
                 Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
                 inventario.Codigo = txtCodigo.Text;

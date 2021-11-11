@@ -53,14 +53,14 @@ namespace ProyectoMain.Inventario.Forms
                         descripcion = gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString(),
                         Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
                         Cantidad = double.Parse(gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString()),
-                        comprado = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[7].Value.ToString())
+                        comprado = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[8].Value.ToString())
 
                     });
 
                     //agregarProducto.cbTipoProducto.Enabled = false;
                     //agregarProducto.cbUnidad.Enabled = false;
                     agregarProducto.estado = "Modificar";
-                    agregarProducto.tipoproducto = gridInventario.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    agregarProducto.tipoproducto = gridInventario.Rows[e.RowIndex].Cells[7].Value.ToString();
                     agregarProducto.txtCantidad.Enabled = false;
                     agregarProducto.btnAgregar.Text = "Modificar";
                     agregarProducto.ShowDialog(this);
@@ -76,7 +76,7 @@ namespace ProyectoMain.Inventario.Forms
                         descripcion = gridInventario.Rows[e.RowIndex].Cells[3].Value.ToString(),
                         Precio = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[4].Value.ToString()),
                         Cantidad = 0,
-                        comprado = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[7].Value.ToString())
+                        comprado = decimal.Parse(gridInventario.Rows[e.RowIndex].Cells[8].Value.ToString())
 
                     });
 
@@ -90,7 +90,7 @@ namespace ProyectoMain.Inventario.Forms
                     agregarProducto.btnAgregar.Text = "Añadir";
                     agregarProducto.cbTipoProducto.Enabled = false;
                     //agregarProducto.txtComprado.Text = "0";
-                    agregarProducto.tipoproducto = gridInventario.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    agregarProducto.tipoproducto = gridInventario.Rows[e.RowIndex].Cells[7].Value.ToString();
                     agregarProducto.estado = "Añadir";
 
                     agregarProducto.ShowDialog(this);

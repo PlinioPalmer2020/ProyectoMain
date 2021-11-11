@@ -79,14 +79,14 @@ namespace ProyectoMain.Fractura.Forms
                         switch (item.Tipofactura)
                         {
                             case 0:
-                                lblTipoFactura.Text = "Normal";
+                                lblTipoFactura.Text = "Descontado";
                                 break;
                             case 1:
-                                lblTipoFactura.Text = "Credito";
+                                lblTipoFactura.Text = "Crédito";
                                 break;
-                            case 2:
+                            /*case 2:
                                 lblTipoFactura.Text = "Envio";
-                                break;
+                                break;*/
                         }
                         lblNombreCliente.Text = item.NameCliente;
                         lblfechaCreacion.Text = item.Fecha_crear.ToString();

@@ -114,7 +114,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
                         Producto      = reader["Producto"].ToString(),
                         Descripción   = reader["Descripción"].ToString(),
                         Precio        = decimal.Parse(reader["Precio"].ToString()),
-                        Cantidad      = int.Parse(reader["Cantidad"].ToString()),
+                        Cantidad      = double.Parse(reader["Cantidad"].ToString()),
                         PrecioTotal   = decimal.Parse(reader["PrecioTotal"].ToString()),
                         Tipofactura   = int.Parse(reader["Tipofactura"].ToString()),
                         Fecha_crear   = DateTime.Parse(reader["Fecha_crear"].ToString()),
@@ -128,10 +128,10 @@ namespace ProyectoMain.Fractura.Negocio_Data
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-               // throw;
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -177,7 +177,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
                         Producto = reader["Producto"].ToString(),
                         Descripción = reader["Descripción"].ToString(),
                         Precio = decimal.Parse(reader["Precio"].ToString()),
-                        Cantidad = int.Parse(reader["Cantidad"].ToString()),
+                        Cantidad = double.Parse(reader["Cantidad"].ToString()),
                         Unidad = reader["unidad"].ToString(),
                         PrecioTotal = decimal.Parse(reader["PrecioTotal"].ToString()),
                         Tipofactura = int.Parse(reader["Tipofactura"].ToString()),
@@ -262,7 +262,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
                         Producto = reader["Producto"].ToString(),
                         Descripción = reader["Descripción"].ToString(),
                         Precio = decimal.Parse(reader["Precio"].ToString()),
-                        Cantidad = int.Parse(reader["Cantidad"].ToString()),
+                        Cantidad = double.Parse(reader["Cantidad"].ToString()),
                         PrecioTotal = decimal.Parse(reader["PrecioTotal"].ToString()),
                         Tipofactura = int.Parse(reader["Tipofactura"].ToString()),
                         Fecha_crear = DateTime.Parse(reader["Fecha_crear"].ToString()),
