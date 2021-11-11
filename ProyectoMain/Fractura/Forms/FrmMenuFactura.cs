@@ -194,9 +194,16 @@ namespace ProyectoMain.Fractura.Forms
                 {
                     _detallesfactura.RemoveAt(e.RowIndex);
                     dgvDetalles.Rows.Clear();
+                    decimal total = 0;
                     foreach (var item in _detallesfactura)
                     {
                         dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString(), item.descripcion.ToString(), item.Precio.ToString("##,#.##"), item.Cantidad.ToString(), (Convert.ToDouble(item.Precio) * item.Cantidad).ToString()).ToString("##,#.##");
+                        total += (item.Precio * Convert.ToDecimal(item.Cantidad));
+                        lblTotal.Text = total.ToString("##,#.##");
+                    }
+                    if (_detallesfactura.Count == 0)
+                    {
+                        lblTotal.Text = "0";
                     }
                     botonValidos();
                 }

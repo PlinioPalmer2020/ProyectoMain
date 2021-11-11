@@ -51,7 +51,7 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             int i = 1;
             foreach (var item in factura)
             {
-                if (aux != item.Codigofactura)
+                if (aux != item.Codigofactura && item.Estado != 2)
                 {
                     var lista = _facturas.Where(f => f.Codigofactura == item.Codigofactura).ToList();
                     var total = lista.Sum(l => l.PrecioTotal);
@@ -140,15 +140,15 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
             List<Fractura.Entidades.Factura> aux = new List<Fractura.Entidades.Factura>();
             if (rbTodos.Checked == true)
             {
-                 aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy")).ToList();
+                 aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy") && f.Estado != 2).ToList();
             }
             else if (rbPagados.Checked == true)
             {
-                 aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy") && f.Pago == 1).ToList();
+                 aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy") && f.Pago == 1 && f.Estado != 2).ToList();
             }
             else
             {
-                 aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy") && f.Pago == 0).ToList();
+                 aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.ToString("dd/MM/yyyy") && f.Pago == 0 && f.Estado != 2).ToList();
             }
             foreach (var item in aux)
             {
@@ -170,15 +170,15 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
 
             if (rbTodos.Checked == true)
             {
-                aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy") ).ToList();
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy") && f.Estado != 2 ).ToList();
             }
             else if (rbPagados.Checked == true)
             {
-                aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy") && f.Pago == 1).ToList();
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy") && f.Pago == 1 && f.Estado != 2).ToList();
             }
             else
             {
-                aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy") && f.Pago == 0).ToList();
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("dd/MM/yyyy") == DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy") && f.Pago == 0 && f.Estado != 2).ToList();
             }
             foreach (var item in aux)
             {
@@ -194,15 +194,15 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
 
             if (rbTodos.Checked == true)
             {
-                aux = _facturas.Where(f => f.Fecha_crear.ToString("MM/yyyy") == DateTime.Now.ToString("MM/yyyy")).ToList();
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("MM/yyyy") == DateTime.Now.ToString("MM/yyyy") && f.Estado != 2).ToList();
             }
             else if (rbPagados.Checked == true)
             {
-                aux = _facturas.Where(f => f.Fecha_crear.ToString("MM/yyyy") == DateTime.Now.ToString("MM/yyyy") && f.Pago == 1).ToList();
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("MM/yyyy") == DateTime.Now.ToString("MM/yyyy") && f.Pago == 1 && f.Estado != 2).ToList();
             }
             else
             {
-                aux = _facturas.Where(f => f.Fecha_crear.ToString("MM/yyyy") == DateTime.Now.ToString("MM/yyyy") && f.Pago == 0).ToList();
+                aux = _facturas.Where(f => f.Fecha_crear.ToString("MM/yyyy") == DateTime.Now.ToString("MM/yyyy") && f.Pago == 0 && f.Estado != 2).ToList();
             }
             foreach (var item in aux)
             {
@@ -251,7 +251,7 @@ namespace ProyectoMain.Inventario.Forms.Contabilidad
 
             foreach (var item in aux2)
             {
-                if (aux != item.Codigofactura)
+                if (aux != item.Codigofactura && item.Estado != 2)
                 {
                     var lista = aux2.Where(f => f.Codigofactura == item.Codigofactura).ToList();
                     var total = lista.Sum(l => l.PrecioTotal);

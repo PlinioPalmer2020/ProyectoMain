@@ -113,8 +113,8 @@ namespace ProyectoMain.Fractura.Forms
         #region Botones
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("¿Incluir RNC?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            RNC = dr == DialogResult.Yes ? "00445516156" : string.Empty;
+            //DialogResult dr = MessageBox.Show("¿Incluir RNC?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            //RNC = dr == DialogResult.Yes ? "00445516156" : string.Empty;
 
             printDocument1 = new PrintDocument();
             PrinterSettings ps = new PrinterSettings();
@@ -131,7 +131,8 @@ namespace ProyectoMain.Fractura.Forms
                 DialogResult dr = MessageBox.Show("¿Seguro?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes )
                 {//--------------
-                    var contra = Interaction.InputBox("Ingrese Contraseña","","Contraseña",100,0);
+                    
+                    var contra = Interaction.InputBox("Ingrese Contraseña","Devolucion","*",100,0);
                     if (contra == pass)
                     {
 

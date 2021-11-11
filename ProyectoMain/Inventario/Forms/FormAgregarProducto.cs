@@ -166,37 +166,20 @@ namespace ProyectoMain.Inventario.Forms
         #region Eventos
         private void cbTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
-            cbUnidad.Items.Clear();
-            cbUnidad.Text = string.Empty;
-            switch (cbTipoProducto.SelectedItem)
+
+
+            if (cbTipoProducto.SelectedItem.ToString() == "Medicamentos")
             {
-                case "Arenas":
-                    cbUnidad.Items.Add("Metros");
-                    cbUnidad.Items.Add("Sacos");
-                    break;
-                case "Cemento":
-                    cbUnidad.Items.Add("Funda");
-                    cbUnidad.Items.Add("Libra");
-                    break;
-                case "Tubos":
-                    cbUnidad.Items.Add("Pie");
-                    break;
-                case "Medicamentos":
-                    cbUnidad.Items.Add("CC");
-                    break;
-                case "Alimentos":
-                    cbUnidad.Items.Add("Saco");
-                    cbUnidad.Items.Add("Medi Saco");
-                    cbUnidad.Items.Add("Libra");
-                    break;
-                case "Herramientas o otros productos":
-                    cbUnidad.Items.Add("Unidad");
-                    break;
-                default:
-                    cbUnidad.Enabled = false;
-                    break;
-            }*/
+                if (lblContieneOExistencia.Text == "Existencia / Contiene")
+                {
+                    lblContieneOExistencia.Text = "Existencia";
+                }
+                else
+                {
+                    lblContieneOExistencia.Text += " / Contiene";
+                }
+            }
+
             if (estado == "Añadir" || estado == null)
             {
                 cbUnidad.Enabled = true;

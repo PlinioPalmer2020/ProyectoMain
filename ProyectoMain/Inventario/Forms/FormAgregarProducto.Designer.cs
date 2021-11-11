@@ -39,7 +39,7 @@ namespace ProyectoMain.Inventario.Forms
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblContieneOExistencia = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cbUnidad = new System.Windows.Forms.ComboBox();
@@ -142,14 +142,14 @@ namespace ProyectoMain.Inventario.Forms
             this.txtCantidad.TabIndex = 6;
             this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
-            // label5
+            // lblContieneOExistencia
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(47, 274);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Existencia";
+            this.lblContieneOExistencia.AutoSize = true;
+            this.lblContieneOExistencia.Location = new System.Drawing.Point(47, 274);
+            this.lblContieneOExistencia.Name = "lblContieneOExistencia";
+            this.lblContieneOExistencia.Size = new System.Drawing.Size(55, 13);
+            this.lblContieneOExistencia.TabIndex = 11;
+            this.lblContieneOExistencia.Text = "Existencia";
             // 
             // btnCancelar
             // 
@@ -293,7 +293,7 @@ namespace ProyectoMain.Inventario.Forms
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtCantidad);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblContieneOExistencia);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtDescripcion);
@@ -321,7 +321,7 @@ namespace ProyectoMain.Inventario.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblContieneOExistencia;
         private System.Windows.Forms.Button btnCancelar;
         public System.Windows.Forms.TextBox txtCantidad;
         public System.Windows.Forms.Button btnAgregar;

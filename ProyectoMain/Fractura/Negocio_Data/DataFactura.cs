@@ -10,11 +10,14 @@ namespace ProyectoMain.Fractura.Negocio_Data
 {
     public class DataFactura
     {
+        // conexion de la laptop 
+        //private SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;Data Source=DESKTOP-J8KTPBL\\SQLEXPRESS");
+
         //conexion mi casa
-        private SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;Data Source=DESKTOP-IV4HQSQ\\SQLEXPRESS");
+        //private SqlConnection conn = new SqlConnection("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Ferreteria;Data Source=DESKTOP-IV4HQSQ\\SQLEXPRESS");
 
         //Conexion del negocio
-        // private SqlConnection conn = new SqlConnection("Password=sinergit;Persist Security Info=True;User ID=sa;Initial Catalog=Ferreteria;Data Source=192.168.1.113");
+          private SqlConnection conn = new SqlConnection("Password=sinergit;Persist Security Info=True;User ID=sa;Initial Catalog=Ferreteria;Data Source=192.168.1.113");
 
         //private SqlConnection conn = new SqlConnection("Password=sinergit;Persist Security Info=True;User ID=sa;Initial Catalog=Ferreteria;Data Source=192.168.1.113");
 
@@ -83,7 +86,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
             try
             {
                 conn.Open();
-                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Producto, Descripción, Precio, Cantidad, PrecioTotal, Tipofactura, Fecha_crear, Pago from facturas ";
+                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Producto, Descripción, Precio, Cantidad, PrecioTotal, Tipofactura, Fecha_crear, Pago, Estado from facturas ";
 
                 // SqlCommand command = new SqlCommand(querry, conn);
                 SqlCommand command = new SqlCommand();
@@ -116,6 +119,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
                         Tipofactura   = int.Parse(reader["Tipofactura"].ToString()),
                         Fecha_crear   = DateTime.Parse(reader["Fecha_crear"].ToString()),
                         Pago          = int.Parse(reader["Pago"].ToString()),
+                        Estado        = int.Parse(reader["Estado"].ToString())
                        // Cantidad      = int.Parse(reader["Cantidad"].ToString()),
 
                     });

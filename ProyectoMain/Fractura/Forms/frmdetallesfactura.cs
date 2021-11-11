@@ -23,9 +23,11 @@ namespace ProyectoMain.Fractura.Forms
         private List<Inventario.Entidades.Diferente_precio> diferente_Precios;
 
         //algunas variables
-        private decimal aux = 0;
+        private string unidadPrincipal = string.Empty;
+        private decimal precioMaximo = 0;
         public string genero = string.Empty;
-       // public string tipoProducto = string.Empty;
+        private int i = 0;
+        // public string tipoProducto = string.Empty;
         public frmdetallesfactura()
         {
             InitializeComponent();
@@ -57,6 +59,8 @@ namespace ProyectoMain.Fractura.Forms
                 }
                
                 cbUnidad.SelectedItem = inventario.unidad;
+
+                unidadPrincipal = inventario.unidad;
             }
         }
         private void limpiarForm()
@@ -87,7 +91,27 @@ namespace ProyectoMain.Fractura.Forms
                 this.Close();
                 ((FrmMenuFactura)this.Owner).cargardetalles(inventario);
             }
+            else if (cbUnidad.SelectedItem.ToString() != unidadPrincipal)
+            {
+                decimal preciofull = decimal.Parse(txtCantidad.Text) *  decimal.Parse(txtPrecio.Text);
+                double validacion = double.Parse(preciofull.ToString()) / double.Parse(precioMaximo.ToString());
+                if (validacion > _inventario.Cantidad )
+                {
+                    MessageBox.Show("¡Usted no puede agregar mas que no hay en el inventario!");
+                    return;
+                }
+                Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
+                inventario.Codigo = txtCodigo.Text;
+                inventario.Nombre = txtNombre.Text;
+                inventario.descripcion = txtDescripcion.Text;
+                inventario.Precio = decimal.Parse(txtPrecio.Text);
+                inventario.Cantidad = int.Parse(txtCantidad.Text);
+                inventario.unidad = cbUnidad.SelectedItem.ToString();
+                inventario.Tipo_de_producto = _inventario.Tipo_de_producto;
+                this.Close();
+                ((FrmMenuFactura)this.Owner).cargardetalles(inventario);
 
+            }
             else if (_inventario.Cantidad >= int.Parse(txtCantidad.Text))
             {
                 Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
@@ -117,10 +141,16 @@ namespace ProyectoMain.Fractura.Forms
 
         private void cbUnidad_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             foreach (var item in diferente_Precios)
             {
                 if (item.unidad_diferente == cbUnidad.SelectedItem.ToString() )
                 {
+                    if (i == 0)
+                    {
+                        precioMaximo = item.precio;
+                        i++;
+                    }
                     txtPrecio.Text = item.precio.ToString();
                 }
             }

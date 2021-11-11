@@ -59,7 +59,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             dgvFacturas.Rows.Clear();
             foreach (var item in factura)
             {
-                if (aux != item.Codigofactura)
+                if (aux != item.Codigofactura && item.Estado != 2)
                 {
                     dgvFacturas.Rows.Add(item.Codigofactura, item.NameCliente, item.Tipofactura, item.Fecha_crear, item.Pago);
 
