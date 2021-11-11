@@ -287,11 +287,11 @@ namespace ProyectoMain.Fractura.Forms
                 switch (item.Tipofactura)
                 {
                     case 0:
-                        e.Graphics.DrawString("Tipo de Factura: Descontado", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                      //  e.Graphics.DrawString("Tipo de Factura: Descontado", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
                         aux5 = 0;
                         break;
                     case 1:
-                        e.Graphics.DrawString("Tipo de Factura: Crédito", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                      //  e.Graphics.DrawString("Tipo de Factura: Crédito", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
                         aux5 = 1;
                         break;
                    /* case 2:
@@ -303,11 +303,12 @@ namespace ProyectoMain.Fractura.Forms
                 break;
             }
 
+            var tipo = aux5 == 0 ? "DESCONTADO" : "CRÉDITO";
             // Cuerpo
 
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 200));
             e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
-            e.Graphics.DrawString("FACTURA", font, Brushes.Black, new RectangleF(130, y += 20, 150, 20));
+            e.Graphics.DrawString("FACTURA "+tipo, font, Brushes.Black, new RectangleF(115, y += 20, 150, 20));
             e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
 
