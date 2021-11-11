@@ -20,6 +20,7 @@ namespace ProyectoMain.Inventario.Forms
 
         private Entidades.Inventario _inventario;
         private List<Entidades.Diferente_precio> _diferente_Precios;
+        private List<Entidades.Unidad> _unidads;
         public string estado = string.Empty;
         public string tipoproducto = string.Empty;
         private int indice = 0;
@@ -33,6 +34,7 @@ namespace ProyectoMain.Inventario.Forms
             _unidadNegocio = new Negocio.UnidadNegocio();
             _diferente_Precios = new List<Entidades.Diferente_precio>();
             _Diferente_PrecioNegocio = new Negocio.Diferente_precioNegocio();
+            _unidads = new List<Entidades.Unidad>(); ;
         }
 
 
@@ -48,6 +50,7 @@ namespace ProyectoMain.Inventario.Forms
 
             var categorias = _categoriaNegocio.TenerCategoria(null);
             var unidades = _unidadNegocio.TenerUnidad(null);
+
 
             foreach (var item in categorias)
             {
@@ -278,6 +281,17 @@ namespace ProyectoMain.Inventario.Forms
             {
                 MessageBox.Show(ex.Message);
                 // throw;
+            }
+        }
+
+        private void cbUnidad_DropDown(object sender, EventArgs e)
+        {
+            cbUnidad.Items.Clear();
+            cbUnidad.Text = string.Empty;
+            _unidads = _unidadNegocio.TenerUnidad(null);
+            foreach (var item in _unidads)
+            {
+                cbUnidad.Items.Add(item.nombre_unidad);
             }
         }
     }

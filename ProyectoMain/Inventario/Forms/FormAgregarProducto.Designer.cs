@@ -179,6 +179,7 @@ namespace ProyectoMain.Inventario.Forms
             this.cbUnidad.Name = "cbUnidad";
             this.cbUnidad.Size = new System.Drawing.Size(86, 21);
             this.cbUnidad.TabIndex = 9;
+            this.cbUnidad.DropDown += new System.EventHandler(this.cbUnidad_DropDown);
             // 
             // txtComprado
             // 
