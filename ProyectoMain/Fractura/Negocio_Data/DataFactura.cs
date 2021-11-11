@@ -27,7 +27,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
             {
                 conn.Open();
                 string query = @" insert into facturas(Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto, Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago) 
-                                                        values(@Codigofactura,@NameCliente,@Cedula,@Codigo,@Tipo_De_Producto,@Producto,@Descripción,@Precio,@Cantidad,@unidad,@PrecioTotal,@Tipofactura,@Fecha_crear,@Pago) ";
+                                                        values(NEXT VALUE FOR codigoFactura,@NameCliente,@Cedula,@Codigo,@Tipo_De_Producto,@Producto,@Descripción,@Precio,@Cantidad,@unidad,@PrecioTotal,@Tipofactura,@Fecha_crear,@Pago) ";
 
                
                 
@@ -42,7 +42,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
 
                 SqlParameter nameCliente = new SqlParameter("@NameCliente", factura.NameCliente);
                 SqlParameter cedula = new SqlParameter("@Cedula", factura.Cedula);
-                SqlParameter codigofactura = new SqlParameter("@Codigofactura", factura.Codigofactura);
+               // SqlParameter codigofactura = new SqlParameter("@Codigofactura", factura.Codigofactura);
                 SqlParameter preciototal = new SqlParameter("@PrecioTotal", factura.PrecioTotal);
                 SqlParameter tipofactura = new SqlParameter("@Tipofactura", factura.Tipofactura);
                 SqlParameter fechaCrear = new SqlParameter("@Fecha_crear", factura.Fecha_crear);
@@ -59,7 +59,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
 
                 command.Parameters.Add(nameCliente);
                 command.Parameters.Add(cedula);
-                command.Parameters.Add(codigofactura);
+                //command.Parameters.Add(codigofactura);
                 command.Parameters.Add(preciototal);
                 command.Parameters.Add(tipofactura);
                 command.Parameters.Add(fechaCrear);

@@ -119,12 +119,12 @@ namespace ProyectoMain.Fractura.Forms
             if (dr == DialogResult.Yes)
             {
                 DateTime hoy = DateTime.Now;
-                string codigoFactura = generarCodigo();
+                //string codigoFactura = generarCodigo();
                 Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
                 Entidades.Factura factura = new Entidades.Factura();
                 foreach (var item in _detallesfactura)
                 {
-                    factura.Codigofactura = codigoFactura;
+                    //factura.Codigofactura = codigoFactura;
                     factura.NameCliente = txtNombreCliente.Text;
                     factura.Cedula = txtDireccion.Text;
                     factura.Codigo = item.Codigo;
