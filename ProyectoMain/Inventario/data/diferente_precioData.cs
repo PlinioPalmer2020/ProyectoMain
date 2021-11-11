@@ -23,16 +23,16 @@ namespace ProyectoMain.Inventario.data
             try
             {
                 conn.Open();
-                string query = @" Insert into diferente_precio(codigo_producto_diferente, unidad_diferente, precio) values(@codigo_producto_diferente,@unidad_diferente,@precio) ";
+                string query = @" Insert into diferente_precio(codigo_producto_diferente, unidad_diferente, precio) values(NEXT VALUE FOR codigoPrecioDiferente,@unidad_diferente,@precio) ";
 
-                SqlParameter codigo_producto_diferente = new SqlParameter("@codigo_producto_diferente", diferente_Precio.codigo_producto_diferente);
+                //SqlParameter codigo_producto_diferente = new SqlParameter("@codigo_producto_diferente", diferente_Precio.codigo_producto_diferente);
                 SqlParameter unidad_diferente = new SqlParameter("@unidad_diferente", diferente_Precio.unidad_diferente);
                 SqlParameter precio = new SqlParameter("@precio", diferente_Precio.precio);
 
 
 
                 SqlCommand command = new SqlCommand(query, conn);
-                command.Parameters.Add(codigo_producto_diferente);
+                //command.Parameters.Add(codigo_producto_diferente);
                 command.Parameters.Add(unidad_diferente);
                 command.Parameters.Add(precio);
 

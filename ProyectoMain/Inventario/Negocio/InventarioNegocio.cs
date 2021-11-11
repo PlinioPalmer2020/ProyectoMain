@@ -53,5 +53,10 @@ namespace ProyectoMain.Inventario.Negocio
         {
             _inventarioData.EliminarInventario(codigo);
         }
+
+        public List<Entidades.Inventario> TenerCodigoInventario()
+        {
+            return _inventarioData.TenerCodigoInventario();
+        }
     }
 }

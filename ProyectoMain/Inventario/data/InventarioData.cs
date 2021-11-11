@@ -78,9 +78,9 @@ namespace ProyectoMain.Inventario.data
             {
                 conn.Open();
                 string query = @" insert into inventario(codigo, tipo_de_producto, nombre, descripcion, comprado, precio, cantidad, unidad) 
-                                                        values(@codigo,@tipo_de_producto,@nombre,@descripcion,@comprado,@precio,@cantidad,@unidad) ";
+                                                        values(NEXT VALUE FOR codigoInventario,@tipo_de_producto,@nombre,@descripcion,@comprado,@precio,@cantidad,@unidad) ";
 
-                SqlParameter codigo = new SqlParameter("@codigo",inventario.Codigo);
+                //SqlParameter codigo = new SqlParameter("@codigo",inventario.Codigo);
                /* firstName.ParameterName = "@FirstName";
                 firstName.Value = contact.FirstName;
                 firstName.DbType = System.Data.DbType.String;*/
@@ -95,7 +95,7 @@ namespace ProyectoMain.Inventario.data
 
 
                 SqlCommand command = new SqlCommand(query, conn);
-                command.Parameters.Add(codigo);
+                //command.Parameters.Add(codigo);
                 command.Parameters.Add(nombre);
                 command.Parameters.Add(descripcion);
                 command.Parameters.Add(precio);
@@ -242,7 +242,6 @@ namespace ProyectoMain.Inventario.data
             finally { conn.Close(); }
         }
 
-
         public void EliminarInventario(string codigo)
         {
             try
@@ -262,6 +261,47 @@ namespace ProyectoMain.Inventario.data
             }
             finally { conn.Close(); }
         }
+
+        public List<Entidades.Inventario> TenerCodigoInventario()
+        {
+            List<Entidades.Inventario> inventarios = new List<Entidades.Inventario>();
+            try
+            {
+                conn.Open();
+                string querry = @"select codigo from inventario where id=(SELECT max(id) FROM inventario)";
+
+                // SqlCommand command = new SqlCommand(querry, conn);
+                SqlCommand command = new SqlCommand();
+
+                command.CommandText = querry;
+                command.Connection = conn;
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    inventarios.Add(new Entidades.Inventario
+                    {
+                        Codigo = reader["codigo"].ToString()
+                    });
+                }
+
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return inventarios;
+        }
+
     }
 
 }

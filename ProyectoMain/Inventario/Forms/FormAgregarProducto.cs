@@ -43,10 +43,10 @@ namespace ProyectoMain.Inventario.Forms
             txtCodigo.Enabled = false;
             // txtTipoDeProducto.Text = tipoDeProducto;
             // txtCantidad.Enabled = false;
-            if (estado == "crear" )
+           /* if (estado == "crear" )
             {
                 txtCodigo.Text = generarCodigo();
-            }
+            }*/
 
             var categorias = _categoriaNegocio.TenerCategoria(null);
             var unidades = _unidadNegocio.TenerUnidad(null);
@@ -94,10 +94,30 @@ namespace ProyectoMain.Inventario.Forms
         #region Funciones
         private string generarCodigo()
         {
-            DateTime fecha = DateTime.Now;
+            // DateTime fecha = DateTime.Now;
 
-            string codigo = "CPN" + fecha.ToString("dd") + fecha.ToString("MM") + fecha.ToString("yyyy") + fecha.ToString("hh") + fecha.ToString("mm") + fecha.ToString("ss") + fecha.ToString("ff");
- 
+            //string codigo = "CPN" + fecha.ToString("dd") + fecha.ToString("MM") + fecha.ToString("yyyy") + fecha.ToString("hh") + fecha.ToString("mm") + fecha.ToString("ss") + fecha.ToString("ff");
+
+            string codigo = string.Empty;
+            var c = _inventarioNegocio.TenerCodigoInventario();
+
+            if (c.Count != 0 )
+            {
+                foreach (var item in c)
+                {
+
+                    int aux = int.Parse(item.Codigo) + 1;
+                    codigo = aux.ToString();
+
+                }
+            }
+            else
+            {
+                codigo = "1";
+            }
+
+
+
             return codigo;
         }
         private void limpiarForm()
