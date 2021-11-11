@@ -25,9 +25,9 @@ namespace ProyectoMain.Fractura.Forms
             _negocioFactura = new Negocio_Data.NegocioFactura();
 
 
-            cbTipoFactura.Items.Add("Normal");
-            cbTipoFactura.Items.Add("Credito");
-            cbTipoFactura.Items.Add("Envio");
+            cbTipoFactura.Items.Add("Descontado");
+            cbTipoFactura.Items.Add("Crédito");
+            cbTipoFactura.Items.Add("Cotización");
             cbTipoFactura.SelectedIndex = 0;
 
         }

@@ -27,15 +27,15 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             globalfacturas = new List<Entidades.Factura>();
             _negocioFactura = new Negocio_Data.NegocioFactura();
 
-            lista = new List<string>(){"Normal","Credito","Envio", "Pendintes", "Pagados" };
-            for (int i = 0; i <= 2; i++)
+            lista = new List<string>(){ "Descontado", "Crédito", "Envio", "Pendintes", "Pagados" };
+            for (int i = 0; i <= 1; i++)
             {cbTipoPago.Items.Add(lista[i]);}
             for (int i = 3; i <= 4; i++)
             { cbPagoPendiente.Items.Add(lista[i]); }
             cbPagoPendiente.Items.Add("Todos");
             cbTipoPago.Items.Add("Todos");
 
-            cbTipoPago.SelectedIndex = 3;
+            cbTipoPago.SelectedIndex = 2;
             cbPagoPendiente.SelectedIndex = 2;
         }
 
@@ -192,9 +192,9 @@ namespace ProyectoMain.Fractura.Forms.frmpago
                         e.Value = lista[1];
                         break;
 
-                    case 2:
+                   /* case 2:
                         e.Value = lista[2];
-                        break;
+                        break;*/
                 }
             }
 
