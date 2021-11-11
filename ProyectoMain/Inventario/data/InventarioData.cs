@@ -25,15 +25,19 @@ namespace ProyectoMain.Inventario.data
             try
             {
                 conn.Open();
-                string querry = @"select id, codigo, nombre, descripcion, precio, cantidad, unidad, tipo_de_producto,comprado from inventario order by nombre ASC ";
+                string querry = @"select id, codigo, nombre, descripcion, precio, cantidad, unidad, tipo_de_producto,comprado from inventario ";
 
                 // SqlCommand command = new SqlCommand(querry, conn);
                 SqlCommand command = new SqlCommand();
 
                 if (!string.IsNullOrEmpty(buscar))
                 {
-                    querry += @"WHERE codigo LIKE @buscar OR nombre LIKE @buscar OR descripcion LIKE @buscar";
+                    querry += @"WHERE codigo LIKE @buscar OR nombre LIKE @buscar OR descripcion LIKE @buscar order by nombre ASC ";
                     command.Parameters.Add(new SqlParameter("@buscar", $"%{buscar}%"));
+                }
+                else
+                {
+                    querry = @"select id, codigo, nombre, descripcion, precio, cantidad, unidad, tipo_de_producto,comprado from inventario order by nombre ASC ";
                 }
 
                 command.CommandText = querry;
@@ -60,10 +64,10 @@ namespace ProyectoMain.Inventario.data
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
             finally
             {
