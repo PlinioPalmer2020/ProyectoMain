@@ -140,6 +140,7 @@ namespace ProyectoMain.Inventario.Forms
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(358, 20);
             this.txtCantidad.TabIndex = 6;
+            this.txtCantidad.Text = "0";
             this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // lblContieneOExistencia
@@ -185,6 +186,7 @@ namespace ProyectoMain.Inventario.Forms
             this.txtComprado.Name = "txtComprado";
             this.txtComprado.Size = new System.Drawing.Size(358, 20);
             this.txtComprado.TabIndex = 5;
+            this.txtComprado.Text = "0";
             this.txtComprado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComprado_KeyPress);
             // 
             // label7

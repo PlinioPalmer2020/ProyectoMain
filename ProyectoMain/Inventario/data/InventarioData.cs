@@ -25,7 +25,7 @@ namespace ProyectoMain.Inventario.data
             try
             {
                 conn.Open();
-                string querry = @"select id, codigo, nombre, descripcion, precio, cantidad, unidad, tipo_de_producto,comprado from inventario ";
+                string querry = @"select id, codigo, nombre, descripcion, precio, cantidad, unidad, tipo_de_producto,comprado from inventario order by nombre ASC ";
 
                 // SqlCommand command = new SqlCommand(querry, conn);
                 SqlCommand command = new SqlCommand();

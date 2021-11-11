@@ -69,10 +69,17 @@ namespace ProyectoMain.Inventario.Forms
         #region Botones
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            guardarInventario();
-            //txtCantidad.Enabled = true; 
-            this.Close();
-            ((FormMenuInventario)this.Owner).cargardatosdgv(null);
+            if (_diferente_Precios.Count != 0)
+            {
+                guardarInventario();
+                //txtCantidad.Enabled = true; 
+                this.Close();
+                ((FormMenuInventario)this.Owner).cargardatosdgv(null);
+            }
+            else
+            {
+                MessageBox.Show("!DEBE AGREGARLE UN UNIDAD Y UN PRECIO PARA GUADARLO¡","AVISO",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -240,6 +247,7 @@ namespace ProyectoMain.Inventario.Forms
                 dgvDiferente.Rows.Add(item.unidad_diferente,item.precio, item.id_diferente);
             }
             txtPrecio.Text = string.Empty;
+            cbUnidad.Text = string.Empty;
         }
 
         private void dgvDiferente_CellContentClick(object sender, DataGridViewCellEventArgs e)
