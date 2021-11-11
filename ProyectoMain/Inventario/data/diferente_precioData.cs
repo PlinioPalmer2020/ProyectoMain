@@ -23,7 +23,7 @@ namespace ProyectoMain.Inventario.data
             try
             {
                 conn.Open();
-                string query = @" Insert into diferente_precio(codigo_producto_diferente, unidad_diferente, precio) values(NEXT VALUE FOR codigoPrecioDiferente,@unidad_diferente,@precio) ";
+                string query = @" Insert into diferente_precio(codigo_producto_diferente, unidad_diferente, precio) values(CONVERT(int,(SELECT current_value FROM sys.sequences WHERE name = 'codigoInventario')),@unidad_diferente,@precio) ";
 
                 //SqlParameter codigo_producto_diferente = new SqlParameter("@codigo_producto_diferente", diferente_Precio.codigo_producto_diferente);
                 SqlParameter unidad_diferente = new SqlParameter("@unidad_diferente", diferente_Precio.unidad_diferente);
