@@ -123,6 +123,12 @@
     <Compile Include="Fractura\Forms\frmpago\frmMenuPago.Designer.cs">
       <DependentUpon>frmMenuPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fractura\Forms\frmTenerPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fractura\Forms\frmTenerPass.Designer.cs">
+      <DependentUpon>frmTenerPass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fractura\Negocio_Data\DataFactura.cs" />
     <Compile Include="Fractura\Negocio_Data\NegocioFactura.cs" />
     <Compile Include="Funciones_de_Validaciones\Validacion.cs" />
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fractura\Forms\frmpago\frmMenuPago.resx">
       <DependentUpon>frmMenuPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fractura\Forms\frmTenerPass.resx">
+      <DependentUpon>frmTenerPass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\Forms\Contabilidad\frmMenuContabilidad1.resx">
       <DependentUpon>frmMenuContabilidad1.cs</DependentUpon>

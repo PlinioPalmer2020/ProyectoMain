@@ -129,9 +129,19 @@ namespace ProyectoMain.Fractura.Forms
                 DialogResult dr = MessageBox.Show("¿Seguro?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {//--------------
-
-                    var contra = Interaction.InputBox("Ingrese Contraseña", "Devolucion", "*", 100, 0);
-                    if (contra == pass)
+                    string contraseña = string.Empty;
+                    frmTenerPass frmTener = new frmTenerPass();
+                    DialogResult result = frmTener.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        contraseña = frmTener.contrase;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                    //var contra = Interaction.InputBox("Ingrese Contraseña", "Devolucion", "*", 100, 0);
+                    if (contraseña == pass)
                     {
 
 
