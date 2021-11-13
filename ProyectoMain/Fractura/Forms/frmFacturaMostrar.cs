@@ -320,7 +320,7 @@ namespace ProyectoMain.Fractura.Forms
             foreach (var item in _imprimir)
             {
                 e.Graphics.DrawString(item.Codigo, font, Brushes.Black, new RectangleF(0, y += 20, 50, 50));
-                e.Graphics.DrawString(item.Descripción, font, Brushes.Black, new RectangleF(75, y, 100, 100));
+                e.Graphics.DrawString(item.Descripción, font, Brushes.Black, new RectangleF(75, y, 50, 200));
                 e.Graphics.DrawString(item.Cantidad.ToString() + " " + item.Unidad, font, Brushes.Black, new RectangleF(150, y, 100, 20));
                 e.Graphics.DrawString(item.Precio.ToString(), font, Brushes.Black, new RectangleF(200, y, 100, 20));
                 e.Graphics.DrawString(item.PrecioTotal.ToString(), font, Brushes.Black, new RectangleF(250, y, 100, 20));
