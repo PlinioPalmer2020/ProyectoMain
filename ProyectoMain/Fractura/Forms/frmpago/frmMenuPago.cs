@@ -160,7 +160,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
                         frmFacturaMostrar.btnDevolvertodo.Enabled = true;
                         frmFacturaMostrar.btnDevolvertodo.Visible = true;
                         frmFacturaMostrar.btnImprimir.Visible = false;
-                        frmFacturaMostrar.ShowDialog();
+                        frmFacturaMostrar.ShowDialog(this);
                     }
                     else
                     {

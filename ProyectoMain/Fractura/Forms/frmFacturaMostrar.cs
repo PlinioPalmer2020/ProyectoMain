@@ -1,14 +1,11 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
 
 namespace ProyectoMain.Fractura.Forms
 {
@@ -46,20 +43,20 @@ namespace ProyectoMain.Fractura.Forms
 
 
 
-        // List
-        _inventarios = new List<Inventario.Entidades.Inventario>();
+            // List
+            _inventarios = new List<Inventario.Entidades.Inventario>();
             _imprimir = new List<Entidades.Factura>();
             diferente_Precios = new List<Inventario.Entidades.Diferente_precio>();
 
-        //_inventarios = new List<string>();
-    }
+            //_inventarios = new List<string>();
+        }
 
 
 
 
 
-    #region Funciones
-    public void cargarDatos(string codigo) 
+        #region Funciones
+        public void cargarDatos(string codigo)
         {
 
             List<Entidades.Factura> factura = new List<Entidades.Factura>();
@@ -84,15 +81,15 @@ namespace ProyectoMain.Fractura.Forms
                             case 1:
                                 lblTipoFactura.Text = "Crédito";
                                 break;
-                            /*case 2:
-                                lblTipoFactura.Text = "Envio";
-                                break;*/
+                                /*case 2:
+                                    lblTipoFactura.Text = "Envio";
+                                    break;*/
                         }
                         lblNombreCliente.Text = item.NameCliente;
                         lblfechaCreacion.Text = item.Fecha_crear.ToString();
                     }
 
-                    dgvFactura.Rows.Add(item.Codigo, item.Producto+" "+item.Descripción, item.Precio.ToString("##,#.##"), item.Cantidad, item.Unidad ,item.PrecioTotal.ToString("##,#.##"));
+                    dgvFactura.Rows.Add(item.Codigo, item.Producto + " " + item.Descripción, item.Precio.ToString("##,#.##"), item.Cantidad, item.Unidad, item.PrecioTotal.ToString("##,#.##"));
                     Inventario.Entidades.Inventario auxInventario = new Inventario.Entidades.Inventario() { Codigo = item.Codigo, Cantidad = item.Cantidad, Tipo_de_producto = item.Tipo_De_Producto, unidad = item.Unidad };
                     _inventarios.Add(auxInventario);
                     lblTotal.Text = (total += item.PrecioTotal).ToString("##,#.##");
@@ -101,12 +98,12 @@ namespace ProyectoMain.Fractura.Forms
         }
         public void ReducirInventario(Inventario.Entidades.Inventario inventario)
         {
-            _inventarioNegocio.ReducirExistenciaInventario(inventario); 
+            _inventarioNegocio.ReducirExistenciaInventario(inventario);
         }
 
         public void AumentarInventario(Inventario.Entidades.Inventario inventario)
         {
-            _inventarioNegocio.AumentarExistenciaInventario(inventario); 
+            _inventarioNegocio.AumentarExistenciaInventario(inventario);
         }
         #endregion
 
@@ -129,71 +126,71 @@ namespace ProyectoMain.Fractura.Forms
             if (estado == "devolucion")
             {
                 DialogResult dr = MessageBox.Show("¿Seguro?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.Yes )
+                if (dr == DialogResult.Yes)
                 {//--------------
-                    
-                    var contra = Interaction.InputBox("Ingrese Contraseña","Devolucion","*",100,0);
+
+                    var contra = Interaction.InputBox("Ingrese Contraseña", "Devolucion", "*", 100, 0);
                     if (contra == pass)
                     {
 
-                    
-                    foreach (var item3 in Devolucionfacturas)
-                    {
-                        _negocioFactura.ModificarDevolucion(item3);
-                    }
 
-                    foreach (var item in _inventariosAunmentar)
-                    {
-                        Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Tipo_de_producto = item.Tipo_de_producto, Cantidad = item.Cantidad, Codigo = item.Codigo, unidad = item.unidad };
-                        var a = _diferente_PrecioNegocio.TenerDiferente_precio(item.Codigo);
-                        precioMaximo = 1;
-                        foreach (var item2 in a)
+                        foreach (var item3 in Devolucionfacturas)
                         {
-                            precioMaximo = a.Count() == 0 ? 1 : item2.precio;
-                            break;
+                            _negocioFactura.ModificarDevolucion(item3);
                         }
 
-                        foreach (var fac in _imprimir)
+                        foreach (var item in _inventariosAunmentar)
                         {
-                            if (item.unidad == "Detallado")
+                            Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Tipo_de_producto = item.Tipo_de_producto, Cantidad = item.Cantidad, Codigo = item.Codigo, unidad = item.unidad };
+                            var a = _diferente_PrecioNegocio.TenerDiferente_precio(item.Codigo);
+                            precioMaximo = 1;
+                            foreach (var item2 in a)
                             {
-                                inventario.Cantidad = inventario.Cantidad / (double)precioMaximo;
+                                precioMaximo = a.Count() == 0 ? 1 : item2.precio;
+                                break;
                             }
-                            else
-                            {
-                                inventario.Cantidad = (double)fac.PrecioTotal / (double)precioMaximo;
-                            }
-                            break;
-                        }
-                        if (a.Count != 0)
-                        {
-                            AumentarInventario(inventario);
-                        }
-                    }
 
-                    MessageBox.Show("Realizado");
-                    if (volver == 1)
-                    {
+                            foreach (var fac in _imprimir)
+                            {
+                                if (item.unidad == "Detallado")
+                                {
+                                    inventario.Cantidad = inventario.Cantidad / (double)precioMaximo;
+                                }
+                                else
+                                {
+                                    inventario.Cantidad = (double)fac.PrecioTotal / (double)precioMaximo;
+                                }
+                                break;
+                            }
+                            if (a.Count != 0)
+                            {
+                                AumentarInventario(inventario);
+                            }
+                        }
+
+                        MessageBox.Show("Realizado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         ((frmpago.frmMenuPago)this.Owner).cargarFacturas();
+                            this.Close();
+                        
+
                     }
-                    this.Close();
-                    }
-                    else 
+                    else
                     {
-                        MessageBox.Show("Error Contraseña Incorrecta","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("Error Contraseña Incorrecta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }//--------------
             }
             else
             {
-                DialogResult dr = MessageBox.Show("¿Seguro?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                DialogResult dr = MessageBox.Show("¿Seguro?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
                     Entidades.Factura factura = new Entidades.Factura();
                     factura.Codigofactura = lblCodigoFactura.Text;
                     foreach (var item in _inventarios)
                     {
-                        Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Tipo_de_producto = item.Tipo_de_producto ,Cantidad = item.Cantidad , Codigo = item.Codigo, unidad = item.unidad };
+                        Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario() { Tipo_de_producto = item.Tipo_de_producto, Cantidad = item.Cantidad, Codigo = item.Codigo, unidad = item.unidad };
                         var a = _diferente_PrecioNegocio.TenerDiferente_precio(item.Codigo);
                         precioMaximo = 1;
                         foreach (var item2 in a)
@@ -253,8 +250,8 @@ namespace ProyectoMain.Fractura.Forms
         #region funcion encargado de imprimir ticket
         private void imprimir(object sender, PrintPageEventArgs e)
         {
-            Font font = new Font("Arial",5,FontStyle.Bold,GraphicsUnit.Point);
-            Font fonttitulo = new Font("Arial",15,FontStyle.Bold,GraphicsUnit.Point);
+            Font font = new Font("Arial", 5, FontStyle.Bold, GraphicsUnit.Point);
+            Font fonttitulo = new Font("Arial", 15, FontStyle.Bold, GraphicsUnit.Point);
 
             int y = 20;
             int aux5 = 0;
@@ -272,31 +269,31 @@ namespace ProyectoMain.Fractura.Forms
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             foreach (var item in _imprimir)
             {
-                e.Graphics.DrawString("Factura No.: "+item.Codigofactura, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
-               // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
-                e.Graphics.DrawString("Cliente: " +item.NameCliente, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
-               // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
-                e.Graphics.DrawString("Direccion: "+item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
-               // e.Graphics.DrawString("Telefono: "+item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
+                e.Graphics.DrawString("Factura No.: " + item.Codigofactura, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
+                // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                e.Graphics.DrawString("Cliente: " + item.NameCliente, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
+                // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                e.Graphics.DrawString("Direccion: " + item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
+                // e.Graphics.DrawString("Telefono: "+item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
                 // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Fecha de creacion: " + item.Fecha_crear, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
                 //e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
-                e.Graphics.DrawString("RNC: "+ RNC, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
+                e.Graphics.DrawString("RNC: " + RNC, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
                 e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 //aqui va un switch para el nombre del tipo de factura
                 switch (item.Tipofactura)
                 {
                     case 0:
-                      //  e.Graphics.DrawString("Tipo de Factura: Descontado", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                        //  e.Graphics.DrawString("Tipo de Factura: Descontado", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
                         aux5 = 0;
                         break;
                     case 1:
-                      //  e.Graphics.DrawString("Tipo de Factura: Crédito", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                        //  e.Graphics.DrawString("Tipo de Factura: Crédito", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
                         aux5 = 1;
                         break;
-                   /* case 2:
-                        e.Graphics.DrawString("Tipo de Factura: Envio", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
-                        break;*/
+                    /* case 2:
+                         e.Graphics.DrawString("Tipo de Factura: Envio", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                         break;*/
                     default:
                         break;
                 }
@@ -308,7 +305,7 @@ namespace ProyectoMain.Fractura.Forms
 
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 200));
             e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
-            e.Graphics.DrawString("FACTURA "+tipo, font, Brushes.Black, new RectangleF(115, y += 20, 150, 20));
+            e.Graphics.DrawString("FACTURA " + tipo, font, Brushes.Black, new RectangleF(115, y += 20, 150, 20));
             e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
 
@@ -321,11 +318,11 @@ namespace ProyectoMain.Fractura.Forms
 
             foreach (var item in _imprimir)
             {
-                      e.Graphics.DrawString(item.Codigo, font, Brushes.Black, new RectangleF(0, y+=20, 50, 50));
-                      e.Graphics.DrawString(item.Descripción, font, Brushes.Black, new RectangleF(75, y, 100, 100));
-                      e.Graphics.DrawString(item.Cantidad.ToString()+" "+item.Unidad, font, Brushes.Black, new RectangleF(150, y, 100, 20));
-                    e.Graphics.DrawString(item.Precio.ToString(), font, Brushes.Black, new RectangleF(200, y, 100, 20));
-                    e.Graphics.DrawString(item.PrecioTotal.ToString(), font, Brushes.Black, new RectangleF(250, y, 100, 20));
+                e.Graphics.DrawString(item.Codigo, font, Brushes.Black, new RectangleF(0, y += 20, 50, 50));
+                e.Graphics.DrawString(item.Descripción, font, Brushes.Black, new RectangleF(75, y, 100, 100));
+                e.Graphics.DrawString(item.Cantidad.ToString() + " " + item.Unidad, font, Brushes.Black, new RectangleF(150, y, 100, 20));
+                e.Graphics.DrawString(item.Precio.ToString(), font, Brushes.Black, new RectangleF(200, y, 100, 20));
+                e.Graphics.DrawString(item.PrecioTotal.ToString(), font, Brushes.Black, new RectangleF(250, y, 100, 20));
                 e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             }
             e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
@@ -336,10 +333,10 @@ namespace ProyectoMain.Fractura.Forms
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             if (aux5 == 1)
             {
-                e.Graphics.DrawString("Entregado por", font, Brushes.Black, new RectangleF(50, y , 150, 20));
-                e.Graphics.DrawString("-----------------", font, Brushes.Black, new RectangleF(50, y += 20 , 150, 20));
-                e.Graphics.DrawString("Recibido Por", font, Brushes.Black, new RectangleF(220, y -=20 , 150, 20));
-                e.Graphics.DrawString("-----------------", font, Brushes.Black, new RectangleF(220, y +=20 , 150, 20));
+                e.Graphics.DrawString("Entregado por", font, Brushes.Black, new RectangleF(50, y, 150, 20));
+                e.Graphics.DrawString("-----------------", font, Brushes.Black, new RectangleF(50, y += 20, 150, 20));
+                e.Graphics.DrawString("Recibido Por", font, Brushes.Black, new RectangleF(220, y -= 20, 150, 20));
+                e.Graphics.DrawString("-----------------", font, Brushes.Black, new RectangleF(220, y += 20, 150, 20));
             }
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
