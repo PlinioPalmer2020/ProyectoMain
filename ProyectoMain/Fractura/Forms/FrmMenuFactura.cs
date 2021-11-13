@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+//using System.Drawing;
+using System.Drawing.Printing;
 
 namespace ProyectoMain.Fractura.Forms
 {
@@ -11,6 +13,7 @@ namespace ProyectoMain.Fractura.Forms
         Inventario.Negocio.InventarioNegocio _inventarioNegocio;
         Negocio_Data.NegocioFactura _negocioFactura;
         List<Inventario.Entidades.Inventario> _detallesfactura;
+        private List<Entidades.Factura> _imprimir;
         public string Login = string.Empty;
         public FrmMenuFactura()
         {
@@ -18,6 +21,7 @@ namespace ProyectoMain.Fractura.Forms
             _inventarioNegocio = new Inventario.Negocio.InventarioNegocio();
             _detallesfactura = new List<Inventario.Entidades.Inventario>();
             _negocioFactura = new Negocio_Data.NegocioFactura();
+            _imprimir = new List<Entidades.Factura>();
 
 
             cbTipoFactura.Items.Add("Descontado");
@@ -98,6 +102,7 @@ namespace ProyectoMain.Fractura.Forms
             txtDireccion.Text = string.Empty;
             btnGenerar.Enabled = false;
             lblTotal.Text = "0";
+            txtTelefono.Text = string.Empty;
         }
         private void GenerarFactura(Entidades.Factura factura)
         {
@@ -109,53 +114,207 @@ namespace ProyectoMain.Fractura.Forms
         #region Botones
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            // int a = cbTipoFactura.SelectedIndex;
-            DialogResult dr = MessageBox.Show("¿Estas Seguro?", "Aviso De Generar Factura", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dr == DialogResult.Yes)
+            if (cbTipoFactura.SelectedItem.ToString() == "Cotización")
             {
-                DateTime hoy = DateTime.Now;
-                //string codigoFactura = generarCodigo();
-                Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
-                Entidades.Factura factura = new Entidades.Factura();
-                foreach (var item in _detallesfactura)
+                DialogResult dr = MessageBox.Show("¿Estas Seguro?", "Aviso De Generar Cotización", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
                 {
-                    //factura.Codigofactura = codigoFactura;
-                    factura.NameCliente = txtNombreCliente.Text;
-                    factura.Telefono = txtTelefono.Text;
-                    factura.Cedula = txtDireccion.Text;
-                    factura.Codigo = item.Codigo;
-                    factura.Tipo_De_Producto = item.Tipo_de_producto;
-                    factura.Producto = item.Nombre;
-                    factura.Descripción = item.descripcion;
-                    factura.Precio = decimal.Parse(item.Precio.ToString());
-                    factura.Cantidad = double.Parse(item.Cantidad.ToString());
-                    factura.Unidad = item.unidad;
-                    factura.PrecioTotal = decimal.Parse(item.Precio.ToString()) * decimal.Parse(item.Cantidad.ToString());
-                    factura.Tipofactura = cbTipoFactura.SelectedIndex;// int.Parse(cbTipoFactura.SelectedValue.ToString());
-                    factura.Fecha_crear = hoy;
-                    factura.Pago = 0;
+                    DateTime hoy = DateTime.Now;
+                    Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
+                    Entidades.Factura factura = new Entidades.Factura();
+                    foreach (var item in _detallesfactura)
+                    {
+                        factura.NameCliente = txtNombreCliente.Text;
+                        factura.Telefono = txtTelefono.Text;
+                        factura.Cedula = txtDireccion.Text;
+                        factura.Codigo = item.Codigo;
+                        factura.Tipo_De_Producto = item.Tipo_de_producto;
+                        factura.Producto = item.Nombre;
+                        factura.Descripción = item.descripcion;
+                        factura.Precio = decimal.Parse(item.Precio.ToString());
+                        factura.Cantidad = double.Parse(item.Cantidad.ToString());
+                        factura.Unidad = item.unidad;
+                        factura.PrecioTotal = decimal.Parse(item.Precio.ToString()) * decimal.Parse(item.Cantidad.ToString());
+                        factura.Tipofactura = cbTipoFactura.SelectedIndex;// int.Parse(cbTipoFactura.SelectedValue.ToString());
+                        factura.Fecha_crear = hoy;
+                        factura.Pago = 0;
 
-                    inventario.Cantidad = double.Parse(item.Cantidad.ToString());
-                    inventario.Codigo = item.Codigo;
+                        inventario.Cantidad = double.Parse(item.Cantidad.ToString());
+                        inventario.Codigo = item.Codigo;
 
-                    GenerarFactura(factura);
-                    // ReducirInventario(inventario);
+                        _imprimir.Add(factura);
+                    }
+
+                    MessageBox.Show("Cotización Generada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //DialogResult dr = MessageBox.Show("¿Incluir RNC?","Aviso",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                    //RNC = dr == DialogResult.Yes ? "00445516156" : string.Empty;
+
+                    printDocument1 = new PrintDocument();
+                    PrinterSettings ps = new PrinterSettings();
+                    printDocument1.PrinterSettings = ps;
+                    printDocument1.PrintPage += imprimir;
+                    printPreviewDialog1.Document = printDocument1;
+                    printPreviewDialog1.ShowDialog();
+                    //printDocument1.Print();
+
+                    LimpiarForms();
+                    dgvDetalles.Rows.Clear();
+                    _detallesfactura.Clear();
+                    gridInventario.Rows.Clear();
+                    CargarDatos(txtBuscar.Text);
 
                 }
-                LimpiarForms();
-                MessageBox.Show("Factura Generada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
-                // frmFacturaMostrar.ReducirInventario(inventario);
-                // frmFacturaMostrar.cargarDatos(codigoFactura);
-                // frmFacturaMostrar.ShowDialog(this);
-                dgvDetalles.Rows.Clear();
-                _detallesfactura.Clear();
-                gridInventario.Rows.Clear();
-                CargarDatos(txtBuscar.Text);
+            }
+            else
+            {
+                DialogResult dr = MessageBox.Show("¿Estas Seguro?", "Aviso De Generar Factura", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
+                {
+                    DateTime hoy = DateTime.Now;
+                    //string codigoFactura = generarCodigo();
+                    Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
+                    Entidades.Factura factura = new Entidades.Factura();
+                    foreach (var item in _detallesfactura)
+                    {
+                        //factura.Codigofactura = codigoFactura;
+                        factura.NameCliente = txtNombreCliente.Text;
+                        factura.Telefono = txtTelefono.Text;
+                        factura.Cedula = txtDireccion.Text;
+                        factura.Codigo = item.Codigo;
+                        factura.Tipo_De_Producto = item.Tipo_de_producto;
+                        factura.Producto = item.Nombre;
+                        factura.Descripción = item.descripcion;
+                        factura.Precio = decimal.Parse(item.Precio.ToString());
+                        factura.Cantidad = double.Parse(item.Cantidad.ToString());
+                        factura.Unidad = item.unidad;
+                        factura.PrecioTotal = decimal.Parse(item.Precio.ToString()) * decimal.Parse(item.Cantidad.ToString());
+                        factura.Tipofactura = cbTipoFactura.SelectedIndex;// int.Parse(cbTipoFactura.SelectedValue.ToString());
+                        factura.Fecha_crear = hoy;
+                        factura.Pago = 0;
 
+                        inventario.Cantidad = double.Parse(item.Cantidad.ToString());
+                        inventario.Codigo = item.Codigo;
+
+                        GenerarFactura(factura);
+                        // ReducirInventario(inventario);
+
+                    }
+                    LimpiarForms();
+                    MessageBox.Show("Factura Generada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
+                    // frmFacturaMostrar.ReducirInventario(inventario);
+                    // frmFacturaMostrar.cargarDatos(codigoFactura);
+                    // frmFacturaMostrar.ShowDialog(this);
+                    dgvDetalles.Rows.Clear();
+                    _detallesfactura.Clear();
+                    gridInventario.Rows.Clear();
+                    CargarDatos(txtBuscar.Text);
+
+                }
             }
 
         }
+
+        private void imprimir(object sender, PrintPageEventArgs e)
+        {
+            Font font = new Font("Arial", 5, FontStyle.Bold, GraphicsUnit.Point);
+            Font fonttitulo = new Font("Arial", 15, FontStyle.Bold, GraphicsUnit.Point);
+
+            int y = 20;
+            int aux5 = 0;
+
+            // cabezado
+
+            e.Graphics.DrawString("Agro Ferreteria J.S", fonttitulo, Brushes.Black, new RectangleF(70, y, 250, 50));
+            e.Graphics.DrawString("Carr. Haras Nacionales", font, Brushes.Black, new RectangleF(90, y += 25, 150, 20));
+            e.Graphics.DrawString("(El Jobo)  Sto. Dgo. Norte, R.D", font, Brushes.Black, new RectangleF(90, y += 15, 200, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("Tel.:809-368-9406", font, Brushes.Black, new RectangleF(0, y += 15, 200, 20));
+            e.Graphics.DrawString("Cel.:809-782-5547", font, Brushes.Black, new RectangleF(0, y += 15, 200, 20));
+            e.Graphics.DrawString("        809-838-6999", font, Brushes.Black, new RectangleF(0, y += 15, 200, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            foreach (var item in _imprimir)
+            {
+                e.Graphics.DrawString("Factura No.: " + item.Codigofactura, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
+                // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                e.Graphics.DrawString("Cliente: " + item.NameCliente, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
+                // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                e.Graphics.DrawString("Direccion: " + item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
+                e.Graphics.DrawString("Telefono: " + item.Telefono, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
+                // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                e.Graphics.DrawString("Fecha de creacion: " + item.Fecha_crear, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
+                //e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                //e.Graphics.DrawString("RNC: " + RNC, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
+                e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+                //aqui va un switch para el nombre del tipo de factura
+                switch (item.Tipofactura)
+                {
+                    case 0:
+                        //  e.Graphics.DrawString("Tipo de Factura: Descontado", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                        aux5 = 0;
+                        break;
+                    case 1:
+                        //  e.Graphics.DrawString("Tipo de Factura: Crédito", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                        aux5 = 1;
+                        break;
+                    /* case 2:
+                         e.Graphics.DrawString("Tipo de Factura: Envio", font, Brushes.Black, new RectangleF(0, y += 20, 150, 20));
+                         break;*/
+                    default:
+                        break;
+                }
+                break;
+            }
+
+            //var tipo = aux5 == 0 ? "DESCONTADO" : "CRÉDITO";
+            // Cuerpo
+
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 200));
+            e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
+            e.Graphics.DrawString("   COTIZACIÓN", font, Brushes.Black, new RectangleF(115, y += 20, 150, 20));
+            e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+
+
+            e.Graphics.DrawString("CODIGO", font, Brushes.Black, new RectangleF(0, y, 150, 20));
+            e.Graphics.DrawString("DESCRIPCION", font, Brushes.Black, new RectangleF(75, y, 150, 20));
+            e.Graphics.DrawString("CANTIDAD", font, Brushes.Black, new RectangleF(150, y, 150, 20));
+            e.Graphics.DrawString("PRECIO", font, Brushes.Black, new RectangleF(200, y, 150, 20));
+            e.Graphics.DrawString("TOTAL", font, Brushes.Black, new RectangleF(250, y, 150, 20));
+
+            foreach (var item in _imprimir)
+            {
+                e.Graphics.DrawString(item.Codigo, font, Brushes.Black, new RectangleF(0, y += 20, 50, 50));
+                e.Graphics.DrawString(item.Descripción, font, Brushes.Black, new RectangleF(75, y, 50, 200));
+                e.Graphics.DrawString(item.Cantidad.ToString() + " " + item.Unidad, font, Brushes.Black, new RectangleF(150, y, 100, 20));
+                e.Graphics.DrawString(item.Precio.ToString(), font, Brushes.Black, new RectangleF(200, y, 100, 20));
+                e.Graphics.DrawString(item.PrecioTotal.ToString(), font, Brushes.Black, new RectangleF(250, y, 100, 20));
+                e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            }
+            e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
+            e.Graphics.DrawString("Precio Total: " + lblTotal.Text, font, Brushes.Black, new RectangleF(250, y += 20, 400, 20));
+            e.Graphics.DrawString("---------------------------------------------------------------------------------------------------------------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
+
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            if (aux5 == 1)
+            {
+                e.Graphics.DrawString("Entregado por", font, Brushes.Black, new RectangleF(50, y, 150, 20));
+                e.Graphics.DrawString("-----------------", font, Brushes.Black, new RectangleF(50, y += 20, 150, 20));
+                e.Graphics.DrawString("Recibido Por", font, Brushes.Black, new RectangleF(220, y -= 20, 150, 20));
+                e.Graphics.DrawString("-----------------", font, Brushes.Black, new RectangleF(220, y += 20, 150, 20));
+            }
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            //e.Graphics.DrawString("-------------------------FINAL DE LA FACTURA---------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
+
+        }
+
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Inventario.Forms.FormMenuInventario formMenuInventario = new FormMenuInventario();
@@ -311,6 +470,19 @@ namespace ProyectoMain.Fractura.Forms
         {
             gridInventario.Rows.Clear();
             CargarDatos(txtBuscar.Text);
+        }
+
+        private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbTipoFactura.SelectedItem.ToString())
+            {
+                case "Cotización":
+                    btnGenerar.Text = "Generar Cotizacion";
+                    break;
+                default:
+                    btnGenerar.Text = "Generar Facturar";
+                    break;
+            }
         }
     }
 }
