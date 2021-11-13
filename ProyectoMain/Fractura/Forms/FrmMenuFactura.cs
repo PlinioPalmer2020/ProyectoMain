@@ -1,12 +1,7 @@
 ﻿using ProyectoMain.Inventario.Forms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoMain.Fractura.Forms
@@ -16,7 +11,7 @@ namespace ProyectoMain.Fractura.Forms
         Inventario.Negocio.InventarioNegocio _inventarioNegocio;
         Negocio_Data.NegocioFactura _negocioFactura;
         List<Inventario.Entidades.Inventario> _detallesfactura;
-        public string Login = string.Empty; 
+        public string Login = string.Empty;
         public FrmMenuFactura()
         {
             InitializeComponent();
@@ -41,7 +36,7 @@ namespace ProyectoMain.Fractura.Forms
                 btnSalir.Visible = false;
                 btnCaja.Visible = false;
             }
-            else if(Login == "mixto")
+            else if (Login == "mixto")
             {
                 btnSalir.Visible = false;
                 btnCaja.Visible = true;
@@ -82,7 +77,7 @@ namespace ProyectoMain.Fractura.Forms
             decimal total = 0;
             foreach (var item in _detallesfactura)
             {
-                dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString() + " " + item.descripcion.ToString(), item.Precio.ToString("##,#.##"), item.Cantidad.ToString(),item.unidad, (Convert.ToDouble(item.Precio) * item.Cantidad).ToString("##,#.##"), item.Tipo_de_producto);
+                dgvDetalles.Rows.Add(item.Codigo.ToString(), item.Nombre.ToString() + " " + item.descripcion.ToString(), item.Precio.ToString("##,#.##"), item.Cantidad.ToString(), item.unidad, (Convert.ToDouble(item.Precio) * item.Cantidad).ToString("##,#.##"), item.Tipo_de_producto);
                 total += (item.Precio * Convert.ToDecimal(item.Cantidad));
                 lblTotal.Text = total.ToString("##,#.##");
             }
@@ -115,7 +110,7 @@ namespace ProyectoMain.Fractura.Forms
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             // int a = cbTipoFactura.SelectedIndex;
-            DialogResult dr = MessageBox.Show("¿Estas Seguro?", "Aviso De Generar Factura", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            DialogResult dr = MessageBox.Show("¿Estas Seguro?", "Aviso De Generar Factura", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr == DialogResult.Yes)
             {
                 DateTime hoy = DateTime.Now;
@@ -126,6 +121,7 @@ namespace ProyectoMain.Fractura.Forms
                 {
                     //factura.Codigofactura = codigoFactura;
                     factura.NameCliente = txtNombreCliente.Text;
+                    factura.Telefono = txtTelefono.Text;
                     factura.Cedula = txtDireccion.Text;
                     factura.Codigo = item.Codigo;
                     factura.Tipo_De_Producto = item.Tipo_de_producto;
@@ -134,7 +130,7 @@ namespace ProyectoMain.Fractura.Forms
                     factura.Precio = decimal.Parse(item.Precio.ToString());
                     factura.Cantidad = double.Parse(item.Cantidad.ToString());
                     factura.Unidad = item.unidad;
-                    factura.PrecioTotal =  decimal.Parse(item.Precio.ToString()) * decimal.Parse(item.Cantidad.ToString());
+                    factura.PrecioTotal = decimal.Parse(item.Precio.ToString()) * decimal.Parse(item.Cantidad.ToString());
                     factura.Tipofactura = cbTipoFactura.SelectedIndex;// int.Parse(cbTipoFactura.SelectedValue.ToString());
                     factura.Fecha_crear = hoy;
                     factura.Pago = 0;
@@ -143,15 +139,15 @@ namespace ProyectoMain.Fractura.Forms
                     inventario.Codigo = item.Codigo;
 
                     GenerarFactura(factura);
-                   // ReducirInventario(inventario);
+                    // ReducirInventario(inventario);
 
                 }
                 LimpiarForms();
-                MessageBox.Show("Factura Generada","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
-               // frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
-               // frmFacturaMostrar.ReducirInventario(inventario);
-               // frmFacturaMostrar.cargarDatos(codigoFactura);
-               // frmFacturaMostrar.ShowDialog(this);
+                MessageBox.Show("Factura Generada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
+                // frmFacturaMostrar.ReducirInventario(inventario);
+                // frmFacturaMostrar.cargarDatos(codigoFactura);
+                // frmFacturaMostrar.ShowDialog(this);
                 dgvDetalles.Rows.Clear();
                 _detallesfactura.Clear();
                 gridInventario.Rows.Clear();
@@ -226,7 +222,7 @@ namespace ProyectoMain.Fractura.Forms
                 {
                     if (Convert.ToString(gridInventario.Rows[e.RowIndex].Cells[3].Value) == "0")
                     {
-                        MessageBox.Show("¡No queda en el Inventario!","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        MessageBox.Show("¡No queda en el Inventario!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -243,7 +239,7 @@ namespace ProyectoMain.Fractura.Forms
                             Tipo_de_producto = gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString()
                         });
 
-                       // detallesfactura.tipoProducto = gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString();
+                        // detallesfactura.tipoProducto = gridInventario.Rows[e.RowIndex].Cells[5].Value.ToString();
                         detallesfactura.ShowDialog(this);
 
                     }

@@ -26,8 +26,8 @@ namespace ProyectoMain.Fractura.Negocio_Data
             try
             {
                 conn.Open();
-                string query = @" insert into facturas(Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto, Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago) 
-                                                        values(NEXT VALUE FOR codigoFactura,@NameCliente,@Cedula,@Codigo,@Tipo_De_Producto,@Producto,@Descripción,@Precio,@Cantidad,@unidad,@PrecioTotal,@Tipofactura,@Fecha_crear,@Pago) ";
+                string query = @" insert into facturas(Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto, Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago, Telefono) 
+                                                        values(NEXT VALUE FOR codigoFactura,@NameCliente,@Cedula,@Codigo,@Tipo_De_Producto,@Producto,@Descripción,@Precio,@Cantidad,@unidad,@PrecioTotal,@Tipofactura,@Fecha_crear,@Pago,@Telefono) ";
 
                
                 
@@ -38,6 +38,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
                 SqlParameter precio = new SqlParameter("@Precio", factura.Precio);
                 SqlParameter cantidad = new SqlParameter("@Cantidad", factura.Cantidad);
                 SqlParameter unidad = new SqlParameter("@unidad", factura.Unidad);
+                SqlParameter telefono = new SqlParameter("@Telefono", factura.Telefono);
 
 
                 SqlParameter nameCliente = new SqlParameter("@NameCliente", factura.NameCliente);
@@ -56,6 +57,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
                 command.Parameters.Add(precio);
                 command.Parameters.Add(cantidad);
                 command.Parameters.Add(unidad);
+                command.Parameters.Add(telefono);
 
                 command.Parameters.Add(nameCliente);
                 command.Parameters.Add(cedula);
@@ -86,7 +88,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
             try
             {
                 conn.Open();
-                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Producto, Descripción, Precio, Cantidad, PrecioTotal, Tipofactura, Fecha_crear, Pago, Estado from facturas ";
+                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Producto, Descripción, Precio, Cantidad, PrecioTotal, Tipofactura, Fecha_crear, Pago, Estado, Telefono from facturas ";
 
                 // SqlCommand command = new SqlCommand(querry, conn);
                 SqlCommand command = new SqlCommand();
@@ -119,7 +121,8 @@ namespace ProyectoMain.Fractura.Negocio_Data
                         Tipofactura   = int.Parse(reader["Tipofactura"].ToString()),
                         Fecha_crear   = DateTime.Parse(reader["Fecha_crear"].ToString()),
                         Pago          = int.Parse(reader["Pago"].ToString()),
-                        Estado        = int.Parse(reader["Estado"].ToString())
+                        Estado        = int.Parse(reader["Estado"].ToString()),
+                        Telefono      = reader["Telefono"].ToString()
                        // Cantidad      = int.Parse(reader["Cantidad"].ToString()),
 
                     });
@@ -147,7 +150,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
             try
             {
                 conn.Open();
-                string querry = @"select Id, Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto ,Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago, Estado from facturas";
+                string querry = @"select Id, Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto ,Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago, Estado, Telefono from facturas";
 
                 // SqlCommand command = new SqlCommand(querry, conn);
                 SqlCommand command = new SqlCommand();
@@ -183,7 +186,8 @@ namespace ProyectoMain.Fractura.Negocio_Data
                         Tipofactura = int.Parse(reader["Tipofactura"].ToString()),
                         Fecha_crear = DateTime.Parse(reader["Fecha_crear"].ToString()),
                         Pago = int.Parse(reader["Pago"].ToString()),
-                        Estado = int.Parse(reader["Estado"].ToString())
+                        Estado = int.Parse(reader["Estado"].ToString()),
+                        Telefono = reader["Telefono"].ToString()
                         // Cantidad      = int.Parse(reader["Cantidad"].ToString()),
 
                     });
@@ -234,7 +238,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
             try
             {
                 conn.Open();
-                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Producto, Descripción, Precio, Cantidad, PrecioTotal, Tipofactura, Fecha_crear, Pago from facturas";
+                string querry = @"select Codigofactura, NameCliente, Cedula, Codigo, Producto, Descripción, Precio, Cantidad, PrecioTotal, Tipofactura, Fecha_crear, Pago, Telefono from facturas";
 
                 // SqlCommand command = new SqlCommand(querry, conn);
                 SqlCommand command = new SqlCommand();
@@ -267,6 +271,7 @@ namespace ProyectoMain.Fractura.Negocio_Data
                         Tipofactura = int.Parse(reader["Tipofactura"].ToString()),
                         Fecha_crear = DateTime.Parse(reader["Fecha_crear"].ToString()),
                         Pago = int.Parse(reader["Pago"].ToString()),
+                        Telefono = reader["Telefono"].ToString()
                         // Cantidad      = int.Parse(reader["Cantidad"].ToString()),
 
                     });

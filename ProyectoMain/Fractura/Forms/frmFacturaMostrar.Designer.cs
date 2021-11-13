@@ -32,6 +32,13 @@ namespace ProyectoMain.Fractura.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFacturaMostrar));
             this.label1 = new System.Windows.Forms.Label();
             this.dgvFactura = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoproducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -51,13 +58,8 @@ namespace ProyectoMain.Fractura.Forms
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.btnDevolvertodo = new System.Windows.Forms.Button();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoproducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFactura)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -95,6 +97,50 @@ namespace ProyectoMain.Fractura.Forms
             this.dgvFactura.TabIndex = 1;
             this.dgvFactura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFactura_CellContentClick);
             // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Visible = false;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // Unidad
+            // 
+            this.Unidad.HeaderText = "Unidad";
+            this.Unidad.Name = "Unidad";
+            this.Unidad.ReadOnly = true;
+            // 
+            // PrecioTotal
+            // 
+            this.PrecioTotal.HeaderText = "Precio Total";
+            this.PrecioTotal.Name = "PrecioTotal";
+            this.PrecioTotal.ReadOnly = true;
+            // 
+            // tipoproducto
+            // 
+            this.tipoproducto.HeaderText = "Tipos";
+            this.tipoproducto.Name = "tipoproducto";
+            this.tipoproducto.ReadOnly = true;
+            this.tipoproducto.Visible = false;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnImprimir);
@@ -103,7 +149,7 @@ namespace ProyectoMain.Fractura.Forms
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.btnPagar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 431);
+            this.panel1.Location = new System.Drawing.Point(0, 466);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(695, 88);
             this.panel1.TabIndex = 2;
@@ -162,7 +208,7 @@ namespace ProyectoMain.Fractura.Forms
             // 
             this.panel2.Controls.Add(this.dgvFactura);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 135);
+            this.panel2.Location = new System.Drawing.Point(0, 170);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(695, 296);
             this.panel2.TabIndex = 3;
@@ -271,7 +317,7 @@ namespace ProyectoMain.Fractura.Forms
             // 
             this.btnDevolvertodo.Enabled = false;
             this.btnDevolvertodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDevolvertodo.Location = new System.Drawing.Point(576, 106);
+            this.btnDevolvertodo.Location = new System.Drawing.Point(588, 141);
             this.btnDevolvertodo.Name = "btnDevolvertodo";
             this.btnDevolvertodo.Size = new System.Drawing.Size(107, 23);
             this.btnDevolvertodo.TabIndex = 13;
@@ -279,55 +325,33 @@ namespace ProyectoMain.Fractura.Forms
             this.btnDevolvertodo.UseVisualStyleBackColor = true;
             this.btnDevolvertodo.Visible = false;
             // 
-            // Codigo
+            // lblTelefono
             // 
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            this.Codigo.Visible = false;
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.Location = new System.Drawing.Point(147, 137);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(39, 13);
+            this.lblTelefono.TabIndex = 15;
+            this.lblTelefono.Text = "NULL";
             // 
-            // Descripcion
+            // label8
             // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // Unidad
-            // 
-            this.Unidad.HeaderText = "Unidad";
-            this.Unidad.Name = "Unidad";
-            this.Unidad.ReadOnly = true;
-            // 
-            // PrecioTotal
-            // 
-            this.PrecioTotal.HeaderText = "Precio Total";
-            this.PrecioTotal.Name = "PrecioTotal";
-            this.PrecioTotal.ReadOnly = true;
-            // 
-            // tipoproducto
-            // 
-            this.tipoproducto.HeaderText = "Tipos";
-            this.tipoproducto.Name = "tipoproducto";
-            this.tipoproducto.ReadOnly = true;
-            this.tipoproducto.Visible = false;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(65, 137);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(61, 13);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Telefono:";
             // 
             // frmFacturaMostrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 519);
+            this.ClientSize = new System.Drawing.Size(695, 554);
+            this.Controls.Add(this.lblTelefono);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnDevolvertodo);
             this.Controls.Add(this.lblfechaCreacion);
             this.Controls.Add(this.label7);
@@ -385,5 +409,7 @@ namespace ProyectoMain.Fractura.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoproducto;
+        private System.Windows.Forms.Label lblTelefono;
+        private System.Windows.Forms.Label label8;
     }
 }

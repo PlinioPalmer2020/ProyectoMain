@@ -26,7 +26,9 @@ namespace ProyectoMain.Fractura.Entidades
         public int Id { get; set; }
         public string Codigofactura { get; set; }
         public string NameCliente { get; set; }
-        public string Cedula { get; set; }
+        public string Cedula { get; set; } // Direccion
+
+        public string Telefono { get; set; }
         public string Codigo { get; set; }
         public string Tipo_De_Producto { get; set; }
         public string Producto { get; set; }

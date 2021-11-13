@@ -86,6 +86,7 @@ namespace ProyectoMain.Fractura.Forms
                                     break;*/
                         }
                         lblNombreCliente.Text = item.NameCliente;
+                        lblTelefono.Text      = item.Telefono;
                         lblfechaCreacion.Text = item.Fecha_crear.ToString();
                     }
 
@@ -274,7 +275,7 @@ namespace ProyectoMain.Fractura.Forms
                 e.Graphics.DrawString("Cliente: " + item.NameCliente, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
                 // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Direccion: " + item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
-                // e.Graphics.DrawString("Telefono: "+item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
+                e.Graphics.DrawString("Telefono: "+item.Telefono, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
                 // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Fecha de creacion: " + item.Fecha_crear, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
                 //e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
