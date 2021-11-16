@@ -104,9 +104,9 @@ namespace ProyectoMain.Fractura.Forms
             lblTotal.Text = "0";
             txtTelefono.Text = string.Empty;
         }
-        private void GenerarFactura(Entidades.Factura factura)
+        private void GenerarFactura(Entidades.Factura factura, int secuencia = 0)
         {
-            _negocioFactura.InsentarFactura(factura);
+            _negocioFactura.InsentarFactura(factura, secuencia);
 
         }
         #endregion
@@ -171,12 +171,11 @@ namespace ProyectoMain.Fractura.Forms
                 if (dr == DialogResult.Yes)
                 {
                     DateTime hoy = DateTime.Now;
-                    //string codigoFactura = generarCodigo();
                     Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
                     Entidades.Factura factura = new Entidades.Factura();
+                    int i = 0;
                     foreach (var item in _detallesfactura)
                     {
-                        //factura.Codigofactura = codigoFactura;
                         factura.NameCliente = txtNombreCliente.Text;
                         factura.Telefono = txtTelefono.Text;
                         factura.Cedula = txtDireccion.Text;
@@ -195,7 +194,8 @@ namespace ProyectoMain.Fractura.Forms
                         inventario.Cantidad = double.Parse(item.Cantidad.ToString());
                         inventario.Codigo = item.Codigo;
 
-                        GenerarFactura(factura);
+                        GenerarFactura(factura, i);
+                        i = 1;
                         // ReducirInventario(inventario);
 
                     }

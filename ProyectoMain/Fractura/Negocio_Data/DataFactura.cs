@@ -21,13 +21,18 @@ namespace ProyectoMain.Fractura.Negocio_Data
 
         //private SqlConnection conn = new SqlConnection("Password=sinergit;Persist Security Info=True;User ID=sa;Initial Catalog=Ferreteria;Data Source=192.168.1.113");
 
-        public void InsentarFactura(Entidades.Factura factura)
+        public void InsentarFactura(Entidades.Factura factura, int secuencia = 0)
         {
             try
             {
                 conn.Open();
-                string query = @" insert into facturas(Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto, Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago, Telefono) 
-                                                        values(NEXT VALUE FOR codigoFactura,@NameCliente,@Cedula,@Codigo,@Tipo_De_Producto,@Producto,@Descripción,@Precio,@Cantidad,@unidad,@PrecioTotal,@Tipofactura,@Fecha_crear,@Pago,@Telefono) ";
+
+                string query;
+                query = secuencia == 0 ?  @" insert into facturas(Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto, Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago, Telefono) 
+                                                        values(NEXT VALUE FOR codigoFactura,@NameCliente,@Cedula,@Codigo,@Tipo_De_Producto,@Producto,@Descripción,@Precio,@Cantidad,@unidad,@PrecioTotal,@Tipofactura,@Fecha_crear,@Pago,@Telefono) " 
+                                                        :
+                                          @" insert into facturas(Codigofactura, NameCliente, Cedula, Codigo, Tipo_De_Producto, Producto, Descripción, Precio, Cantidad, unidad, PrecioTotal, Tipofactura, Fecha_crear, Pago, Telefono) 
+                                                        values(CONVERT(int,(SELECT current_value FROM sys.sequences WHERE name = 'codigoFactura')),@NameCliente,@Cedula,@Codigo,@Tipo_De_Producto,@Producto,@Descripción,@Precio,@Cantidad,@unidad,@PrecioTotal,@Tipofactura,@Fecha_crear,@Pago,@Telefono) ";
 
                
                 

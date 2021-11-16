@@ -15,9 +15,9 @@ namespace ProyectoMain.Fractura.Negocio_Data
             _dataFactura = new DataFactura();
         }
 
-        public void InsentarFactura(Entidades.Factura factura)
+        public void InsentarFactura(Entidades.Factura factura, int secuencia = 0)
         {
-            _dataFactura.InsentarFactura(factura);
+            _dataFactura.InsentarFactura(factura,secuencia);
         }
 
         public List<Entidades.Factura> TenerFactura(string buscar = null)

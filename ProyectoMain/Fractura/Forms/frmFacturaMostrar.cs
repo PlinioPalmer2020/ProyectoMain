@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -87,7 +86,7 @@ namespace ProyectoMain.Fractura.Forms
                                     break;*/
                         }
                         lblNombreCliente.Text = item.NameCliente;
-                        lblTelefono.Text      = item.Telefono;
+                        lblTelefono.Text = item.Telefono;
                         lblfechaCreacion.Text = item.Fecha_crear.ToString();
                     }
 
@@ -123,14 +122,14 @@ namespace ProyectoMain.Fractura.Forms
                 titulo = "ORIGINAL";
                 for (int i = 0; i <= 1; i++)
                 {
-                    if ( i == 1 )
+                    if (i == 1)
                     {
                         titulo = "COPIA";
                     }
                     printDocument1.PrintPage += imprimir;
                     printPreviewDialog1.Document = printDocument1;
                     printPreviewDialog1.ShowDialog();
-                  //printDocument1.Print();
+                    //printDocument1.Print();
 
                 }
             }
@@ -160,7 +159,6 @@ namespace ProyectoMain.Fractura.Forms
                     {
                         return;
                     }
-                    //var contra = Interaction.InputBox("Ingrese Contraseña", "Devolucion", "*", 100, 0);
                     if (contraseña == pass)
                     {
 
@@ -202,8 +200,8 @@ namespace ProyectoMain.Fractura.Forms
                         MessageBox.Show("Realizado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         ((frmpago.frmMenuPago)this.Owner).cargarFacturas();
-                            this.Close();
-                        
+                        this.Close();
+
 
                     }
                     else
@@ -306,7 +304,7 @@ namespace ProyectoMain.Fractura.Forms
                 e.Graphics.DrawString("Cliente: " + item.NameCliente, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
                 // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Direccion: " + item.Cedula, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
-                e.Graphics.DrawString("Telefono: "+item.Telefono, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
+                e.Graphics.DrawString("Telefono: " + item.Telefono, font, Brushes.Black, new RectangleF(0, y += 20, 200, 20));
                 // e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
                 e.Graphics.DrawString("Fecha de creacion: " + item.Fecha_crear, font, Brushes.Black, new RectangleF(0, y += 20, 200, 40));
                 //e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
