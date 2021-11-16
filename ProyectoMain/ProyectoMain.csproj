@@ -117,6 +117,12 @@
     <Compile Include="Fractura\Forms\FrmMenuFactura.Designer.cs">
       <DependentUpon>FrmMenuFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fractura\Forms\frmNotaDeCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fractura\Forms\frmNotaDeCredito.Designer.cs">
+      <DependentUpon>frmNotaDeCredito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fractura\Forms\frmpago\frmMenuPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fractura\Forms\FrmMenuFactura.resx">
       <DependentUpon>FrmMenuFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fractura\Forms\frmNotaDeCredito.resx">
+      <DependentUpon>frmNotaDeCredito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fractura\Forms\frmpago\frmMenuPago.resx">
       <DependentUpon>frmMenuPago.cs</DependentUpon>
