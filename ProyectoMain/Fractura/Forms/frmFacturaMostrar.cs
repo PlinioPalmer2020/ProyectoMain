@@ -351,7 +351,8 @@ namespace ProyectoMain.Fractura.Forms
             }
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
-            e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            font = new Font("Arial", 9, FontStyle.Bold, GraphicsUnit.Point);
+            e.Graphics.DrawString("NOTA: DESPUÉS DE 15 DÍAS. NO SE ACEPTA DEVOLUCIONES NI ENTREGA DE PENDIENTES.", font, Brushes.Black, new RectangleF(2, y += 20, 300, 0));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             //e.Graphics.DrawString("-------------------------FINAL DE LA FACTURA---------------------------------------", font, Brushes.Black, new RectangleF(0, y += 20, 400, 20));
