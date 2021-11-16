@@ -30,6 +30,7 @@ namespace ProyectoMain.Fractura.Forms
         private string RNC = string.Empty;
         public string estado = string.Empty;
         private string pass = "1234";
+        private string titulo = string.Empty;
         public frmFacturaMostrar()
         {
             InitializeComponent();
@@ -117,10 +118,29 @@ namespace ProyectoMain.Fractura.Forms
             printDocument1 = new PrintDocument();
             PrinterSettings ps = new PrinterSettings();
             printDocument1.PrinterSettings = ps;
-            printDocument1.PrintPage += imprimir;
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.ShowDialog();
-            //printDocument1.Print();
+            if (lblTipoFactura.Text == "Crédito")
+            {
+                titulo = "ORIGINAL";
+                for (int i = 0; i <= 1; i++)
+                {
+                    if ( i == 1 )
+                    {
+                        titulo = "COPIA";
+                    }
+                    printDocument1.PrintPage += imprimir;
+                    printPreviewDialog1.Document = printDocument1;
+                    printPreviewDialog1.ShowDialog();
+                  //printDocument1.Print();
+
+                }
+            }
+            else
+            {
+                printDocument1.PrintPage += imprimir;
+                printPreviewDialog1.Document = printDocument1;
+                printPreviewDialog1.ShowDialog();
+                //printDocument1.Print();
+            }
         }
         private void btnPagar_Click(object sender, EventArgs e)
         {
@@ -277,6 +297,7 @@ namespace ProyectoMain.Fractura.Forms
             e.Graphics.DrawString("Cel.:809-782-5547", font, Brushes.Black, new RectangleF(0, y += 15, 200, 20));
             e.Graphics.DrawString("        809-838-6999", font, Brushes.Black, new RectangleF(0, y += 15, 200, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
+            e.Graphics.DrawString(titulo, fonttitulo, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             e.Graphics.DrawString("\n", font, Brushes.Black, new RectangleF(100, y += 20, 150, 20));
             foreach (var item in _imprimir)
             {
