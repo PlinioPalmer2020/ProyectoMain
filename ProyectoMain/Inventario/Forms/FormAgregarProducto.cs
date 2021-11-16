@@ -41,12 +41,6 @@ namespace ProyectoMain.Inventario.Forms
     private void FormAgregarProducto_Load(object sender, EventArgs e)
         {
             txtCodigo.Enabled = false;
-            // txtTipoDeProducto.Text = tipoDeProducto;
-            // txtCantidad.Enabled = false;
-           /* if (estado == "crear" )
-            {
-                txtCodigo.Text = generarCodigo();
-            }*/
 
             var categorias = _categoriaNegocio.TenerCategoria(null);
             var unidades = _unidadNegocio.TenerUnidad(null);
@@ -60,6 +54,11 @@ namespace ProyectoMain.Inventario.Forms
             foreach (var item in unidades)
             {
                 cbUnidad.Items.Add(item.nombre_unidad);
+            }
+
+            if (estado == "crear")
+            {
+                cbUnidad.SelectedItem = "Unidad";
             }
 
             if (estado == "Añadir" || estado == "Modificar")
