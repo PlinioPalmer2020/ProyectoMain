@@ -211,10 +211,10 @@ namespace ProyectoMain.Inventario.data
 
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
             finally { conn.Close(); }
         }
