@@ -158,7 +158,7 @@ namespace ProyectoMain.Fractura.Forms.frmpago
                         frmFacturaMostrar.estado = "devolucion";
                         frmFacturaMostrar.btnPagar.Enabled = false;
                         frmFacturaMostrar.btnDevolvertodo.Enabled = true;
-                        frmFacturaMostrar.btnDevolvertodo.Visible = true;
+                        frmFacturaMostrar.btnDevolvertodo.Visible = false;
                         frmFacturaMostrar.btnImprimir.Visible = false;
                         frmFacturaMostrar.ShowDialog(this);
                     }

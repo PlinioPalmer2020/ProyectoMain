@@ -255,7 +255,7 @@ namespace ProyectoMain.Fractura.Forms
             this.txtTelefono.Location = new System.Drawing.Point(162, 81);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(225, 24);
-            this.txtTelefono.TabIndex = 12;
+            this.txtTelefono.TabIndex = 2;
             // 
             // btnCaja
             // 
@@ -296,7 +296,7 @@ namespace ProyectoMain.Fractura.Forms
             this.cbTipoFactura.Location = new System.Drawing.Point(162, 124);
             this.cbTipoFactura.Name = "cbTipoFactura";
             this.cbTipoFactura.Size = new System.Drawing.Size(121, 21);
-            this.cbTipoFactura.TabIndex = 8;
+            this.cbTipoFactura.TabIndex = 3;
             this.cbTipoFactura.SelectedIndexChanged += new System.EventHandler(this.cbTipoFactura_SelectedIndexChanged);
             // 
             // label5
