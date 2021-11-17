@@ -76,6 +76,7 @@ namespace ProyectoMain.Fractura.Forms
         #region Botones
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            // inicio producto generico
             if (genero == "generico")
             {
                 Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();

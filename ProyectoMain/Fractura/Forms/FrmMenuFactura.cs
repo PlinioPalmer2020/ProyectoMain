@@ -114,6 +114,7 @@ namespace ProyectoMain.Fractura.Forms
         #region Botones
         private void btnGenerar_Click(object sender, EventArgs e)
         {
+            // Inicio de la Generar Contizacion
             if (cbTipoFactura.SelectedItem.ToString() == "Cotización")
             {
                 DialogResult dr = MessageBox.Show("¿Estas Seguro?", "Aviso De Generar Cotización", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -121,9 +122,9 @@ namespace ProyectoMain.Fractura.Forms
                 {
                     DateTime hoy = DateTime.Now;
                     Inventario.Entidades.Inventario inventario = new Inventario.Entidades.Inventario();
-                    Entidades.Factura factura = new Entidades.Factura();
                     foreach (var item in _detallesfactura)
                     {
+                        Entidades.Factura factura = new Entidades.Factura();
                         factura.NameCliente = txtNombreCliente.Text;
                         factura.Telefono = txtTelefono.Text;
                         factura.Cedula = txtDireccion.Text;
@@ -157,6 +158,7 @@ namespace ProyectoMain.Fractura.Forms
                     printPreviewDialog1.ShowDialog();
                     //printDocument1.Print();
 
+                    _imprimir.Clear();
                     LimpiarForms();
                     dgvDetalles.Rows.Clear();
                     _detallesfactura.Clear();
@@ -165,7 +167,9 @@ namespace ProyectoMain.Fractura.Forms
 
                 }
             }
-            else
+           
+           // Inicio de Generar Factura
+           else
             {
                 DialogResult dr = MessageBox.Show("¿Estas Seguro?", "Aviso De Generar Factura", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dr == DialogResult.Yes)
@@ -201,10 +205,6 @@ namespace ProyectoMain.Fractura.Forms
                     }
                     LimpiarForms();
                     MessageBox.Show("Factura Generada", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // frmFacturaMostrar frmFacturaMostrar = new frmFacturaMostrar();
-                    // frmFacturaMostrar.ReducirInventario(inventario);
-                    // frmFacturaMostrar.cargarDatos(codigoFactura);
-                    // frmFacturaMostrar.ShowDialog(this);
                     dgvDetalles.Rows.Clear();
                     _detallesfactura.Clear();
                     gridInventario.Rows.Clear();
