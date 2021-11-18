@@ -21,6 +21,7 @@ namespace ProyectoMain.Inventario.Forms
         private Entidades.Inventario _inventario;
         private List<Entidades.Diferente_precio> _diferente_Precios;
         private List<Entidades.Diferente_precio> _diferente_Precios_eliminar;
+        private List<Entidades.Diferente_precio> _diferente_Precios_aux;
         private List<Entidades.Unidad> _unidads;
         public string estado = string.Empty;
         public string tipoproducto = string.Empty;
@@ -35,6 +36,7 @@ namespace ProyectoMain.Inventario.Forms
             _unidadNegocio = new Negocio.UnidadNegocio();
             _diferente_Precios = new List<Entidades.Diferente_precio>();
             _diferente_Precios_eliminar = new List<Entidades.Diferente_precio>();
+            _diferente_Precios_aux = new List<Entidades.Diferente_precio>();
             _Diferente_PrecioNegocio = new Negocio.Diferente_precioNegocio();
             _unidads = new List<Entidades.Unidad>(); ;
         }
@@ -82,7 +84,12 @@ namespace ProyectoMain.Inventario.Forms
                         _Diferente_PrecioNegocio.EliminarPrecio(item.id_diferente);
                     }
                 }
-                else
+                // Valido para cuando se quiere agregar un nuevo precio
+                else if(_diferente_Precios.Count() > _diferente_Precios_aux.Count())
+                {
+                    guardarInventario();
+                }
+                else // cuando se crear un nuevo producto
                 {
                     guardarInventario();
                 }
@@ -154,7 +161,7 @@ namespace ProyectoMain.Inventario.Forms
                 txtComprado.Text = inventario.comprado.ToString();
 
                 _diferente_Precios = _Diferente_PrecioNegocio.TenerDiferente_precio(inventario.Codigo);
-                
+                _diferente_Precios_aux = _diferente_Precios;
                 foreach (var item in _diferente_Precios)
                 {
                     dgvDiferente.Rows.Add(item.unidad_diferente,item.precio,item.id_diferente);
