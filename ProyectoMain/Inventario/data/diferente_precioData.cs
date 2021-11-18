@@ -132,5 +132,25 @@ namespace ProyectoMain.Inventario.data
             finally { conn.Close(); }
         }
 
+        public void EliminarPrecio(int codigo)
+        {
+            try
+            {
+                conn.Open();
+                string query = @"DELETE FROM diferente_precio WHERE id_diferente = @id_diferente";
+
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.Add(new SqlParameter("@id_diferente", codigo));
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+            finally { conn.Close(); }
+        }
+
     }
 }

@@ -32,6 +32,11 @@ namespace ProyectoMain.Inventario.Negocio
             return _diferente_PrecioData.TenerDiferente_precio(buscar);
         }
 
+        public void EliminarPrecio(int codigo)
+        {
+            _diferente_PrecioData.EliminarPrecio(codigo);
+        }
+
 
     }
 }

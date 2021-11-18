@@ -20,6 +20,7 @@ namespace ProyectoMain.Inventario.Forms
 
         private Entidades.Inventario _inventario;
         private List<Entidades.Diferente_precio> _diferente_Precios;
+        private List<Entidades.Diferente_precio> _diferente_Precios_eliminar;
         private List<Entidades.Unidad> _unidads;
         public string estado = string.Empty;
         public string tipoproducto = string.Empty;
@@ -33,6 +34,7 @@ namespace ProyectoMain.Inventario.Forms
             _categoriaNegocio = new Negocio.CategoriaNegocio();
             _unidadNegocio = new Negocio.UnidadNegocio();
             _diferente_Precios = new List<Entidades.Diferente_precio>();
+            _diferente_Precios_eliminar = new List<Entidades.Diferente_precio>();
             _Diferente_PrecioNegocio = new Negocio.Diferente_precioNegocio();
             _unidads = new List<Entidades.Unidad>(); ;
         }
@@ -73,7 +75,17 @@ namespace ProyectoMain.Inventario.Forms
         {
             if (_diferente_Precios.Count != 0)
             {
-                guardarInventario();
+                if (_diferente_Precios_eliminar.Count() != 0 && estado == "Modificar")
+                {
+                    foreach (var item in _diferente_Precios_eliminar)
+                    {
+                        _Diferente_PrecioNegocio.EliminarPrecio(item.id_diferente);
+                    }
+                }
+                else
+                {
+                    guardarInventario();
+                }
                 //txtCantidad.Enabled = true; 
                 this.Close();
                 ((FormMenuInventario)this.Owner).cargardatosdgv(null);
@@ -142,7 +154,7 @@ namespace ProyectoMain.Inventario.Forms
                 txtComprado.Text = inventario.comprado.ToString();
 
                 _diferente_Precios = _Diferente_PrecioNegocio.TenerDiferente_precio(inventario.Codigo);
-
+                
                 foreach (var item in _diferente_Precios)
                 {
                     dgvDiferente.Rows.Add(item.unidad_diferente,item.precio,item.id_diferente);
@@ -279,6 +291,9 @@ namespace ProyectoMain.Inventario.Forms
                 DataGridViewLinkCell cell = (DataGridViewLinkCell)dgvDiferente.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 if (cell.Value.ToString() == "Quitar")
                 {
+                    Entidades.Diferente_precio diferente_ = new Entidades.Diferente_precio();
+                    diferente_.id_diferente = int.Parse(dgvDiferente.Rows[e.RowIndex].Cells["id"].Value.ToString());
+                    _diferente_Precios_eliminar.Add(diferente_);
                     _diferente_Precios.RemoveAt(e.RowIndex);
                     dgvDiferente.Rows.Clear();
                     foreach (var item in _diferente_Precios)
