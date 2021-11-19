@@ -15,11 +15,11 @@ namespace ProyectoMain.Inventario.Negocio
             _diferente_PrecioData = new data.diferente_precioData();
         }
 
-        public void InsentarDiferente_precio(Entidades.Diferente_precio diferente_Precio)
+        public void InsentarDiferente_precio(Entidades.Diferente_precio diferente_Precio, string codigo = null)
         {
             if (diferente_Precio.id_diferente == 0)
             {
-                _diferente_PrecioData.InsentarDiferente_precio(diferente_Precio);
+                _diferente_PrecioData.InsentarDiferente_precio(diferente_Precio,codigo);
             }
             else
             {

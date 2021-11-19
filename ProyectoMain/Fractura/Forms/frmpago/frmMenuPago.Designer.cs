@@ -48,10 +48,10 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.btnVolverFactura = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.panelFiltros = new System.Windows.Forms.Panel();
+            this.btnRecargar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.btnRecargar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.panelFiltros.SuspendLayout();
             this.SuspendLayout();
@@ -224,6 +224,17 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.panelFiltros.Size = new System.Drawing.Size(568, 143);
             this.panelFiltros.TabIndex = 9;
             // 
+            // btnRecargar
+            // 
+            this.btnRecargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRecargar.Location = new System.Drawing.Point(471, 116);
+            this.btnRecargar.Name = "btnRecargar";
+            this.btnRecargar.Size = new System.Drawing.Size(94, 23);
+            this.btnRecargar.TabIndex = 9;
+            this.btnRecargar.Text = "Actualizar";
+            this.btnRecargar.UseVisualStyleBackColor = true;
+            this.btnRecargar.Click += new System.EventHandler(this.btnRecargar_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -257,17 +268,6 @@ namespace ProyectoMain.Fractura.Forms.frmpago
             this.txtBuscar.Size = new System.Drawing.Size(292, 20);
             this.txtBuscar.TabIndex = 6;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // btnRecargar
-            // 
-            this.btnRecargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecargar.Location = new System.Drawing.Point(471, 116);
-            this.btnRecargar.Name = "btnRecargar";
-            this.btnRecargar.Size = new System.Drawing.Size(94, 23);
-            this.btnRecargar.TabIndex = 9;
-            this.btnRecargar.Text = "Recargar";
-            this.btnRecargar.UseVisualStyleBackColor = true;
-            this.btnRecargar.Click += new System.EventHandler(this.btnRecargar_Click);
             // 
             // frmMenuPago
             // 

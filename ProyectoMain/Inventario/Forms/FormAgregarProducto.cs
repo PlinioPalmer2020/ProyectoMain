@@ -91,7 +91,7 @@ namespace ProyectoMain.Inventario.Forms
                 }
                 else // cuando se crear un nuevo producto
                 {
-                    guardarInventario();
+                    guardarInventario("N");
                 }
                 //txtCantidad.Enabled = true; 
                 this.Close();
@@ -166,9 +166,11 @@ namespace ProyectoMain.Inventario.Forms
                 {
                     dgvDiferente.Rows.Add(item.unidad_diferente,item.precio,item.id_diferente);
                 }
+                txtPrecio.Text = "1";
+                cbUnidad.Text = "Seleccionar";
             }
         }
-        private void guardarInventario()
+        private void guardarInventario(string validar = null)
         {
             //txtCodigo.Text = generarCodigo();
 
@@ -180,10 +182,12 @@ namespace ProyectoMain.Inventario.Forms
             inventario.Tipo_de_producto = cbTipoProducto.SelectedItem.ToString();
             inventario.comprado = decimal.Parse(txtComprado.Text);
 
+            string cod = string.Empty;
             foreach (var item in _diferente_Precios)
             {
                 inventario.Precio = item.precio;
                 inventario.unidad = item.unidad_diferente;
+                cod = item.codigo_producto_diferente;
                 break;
             }
 
@@ -200,7 +204,16 @@ namespace ProyectoMain.Inventario.Forms
                     diferente_Precio.codigo_producto_diferente = item.codigo_producto_diferente;
                     diferente_Precio.unidad_diferente = item.unidad_diferente;
                     diferente_Precio.precio = item.precio;
-                    _Diferente_PrecioNegocio.InsentarDiferente_precio(diferente_Precio);
+                    if (validar == "N")
+                    {
+                        _Diferente_PrecioNegocio.InsentarDiferente_precio(diferente_Precio,cod);
+
+                    }
+                    else
+                    {
+                        _Diferente_PrecioNegocio.InsentarDiferente_precio(diferente_Precio,"");
+
+                    }
                 }
             }
             else
@@ -320,7 +333,7 @@ namespace ProyectoMain.Inventario.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
                 // throw;
             }
         }

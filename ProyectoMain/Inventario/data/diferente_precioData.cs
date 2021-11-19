@@ -18,12 +18,21 @@ namespace ProyectoMain.Inventario.data
         //Conexion del negocio
         //private SqlConnection conn = new SqlConnection("Password=sinergit;Persist Security Info=True;User ID=sa;Initial Catalog=Ferreteria;Data Source=192.168.1.113");
 
-        public void InsentarDiferente_precio(Entidades.Diferente_precio diferente_Precio)
+        public void InsentarDiferente_precio(Entidades.Diferente_precio diferente_Precio, string codigo = null)
         {
             try
             {
+                string query;
                 conn.Open();
-                string query = @" Insert into diferente_precio(codigo_producto_diferente, unidad_diferente, precio) values(CONVERT(int,(SELECT current_value FROM sys.sequences WHERE name = 'codigoInventario')),@unidad_diferente,@precio) ";
+                if (codigo == "")
+                {
+                     query = @" Insert into diferente_precio(codigo_producto_diferente, unidad_diferente, precio) values(CONVERT(int,(SELECT current_value FROM sys.sequences WHERE name = 'codigoInventario')),@unidad_diferente,@precio) ";
+
+                }
+                else
+                {
+                    query = @" Insert into diferente_precio(codigo_producto_diferente, unidad_diferente, precio) values('"+codigo+"',@unidad_diferente,@precio) ";
+                }
 
                 //SqlParameter codigo_producto_diferente = new SqlParameter("@codigo_producto_diferente", diferente_Precio.codigo_producto_diferente);
                 SqlParameter unidad_diferente = new SqlParameter("@unidad_diferente", diferente_Precio.unidad_diferente);
@@ -64,7 +73,7 @@ namespace ProyectoMain.Inventario.data
                 if (!string.IsNullOrEmpty(buscar))
                 {
                     querry += @"WHERE id_diferente LIKE @buscar OR codigo_producto_diferente LIKE @buscar OR unidad_diferente LIKE @buscar ";
-                    command.Parameters.Add(new SqlParameter("@buscar", $"%{buscar}%"));
+                    command.Parameters.Add(new SqlParameter("@buscar", buscar));
                 }
 
                 command.CommandText = querry;

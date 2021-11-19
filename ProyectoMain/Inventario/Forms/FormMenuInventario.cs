@@ -114,7 +114,7 @@ namespace ProyectoMain.Inventario.Forms
             {
 
                 //throw;
-                MessageBox.Show("algo fallo");
+                //MessageBox.Show("algo fallo");
             }
         }
 

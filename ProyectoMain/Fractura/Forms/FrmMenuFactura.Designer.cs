@@ -146,7 +146,7 @@ namespace ProyectoMain.Fractura.Forms
             this.btnRecargar.Name = "btnRecargar";
             this.btnRecargar.Size = new System.Drawing.Size(95, 27);
             this.btnRecargar.TabIndex = 9;
-            this.btnRecargar.Text = "Recargar";
+            this.btnRecargar.Text = "Actualizar";
             this.btnRecargar.UseVisualStyleBackColor = true;
             this.btnRecargar.Click += new System.EventHandler(this.btnRecargar_Click);
             // 
